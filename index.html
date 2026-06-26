@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Key Shift London — Unlocking Potential. Shaping Futures.</title>
+<meta name="description" content="Key Shift London builds the precision infrastructure that turns young people's potential into measurable, lasting outcomes. South London youth development, ages 12–18.">
+<link rel="icon" type="image/png" href="ksl-assets/arrow.png">
+<link rel="apple-touch-icon" href="ksl-assets/arrow.png">
+<!-- Security headers (CSP, HSTS, X-Frame-Options, etc.) are delivered server-side via
+     .htaccess / _headers. A meta CSP is intentionally NOT used here so the page also works
+     when opened straight from disk (file://) without blocking local images/scripts. -->
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta name="theme-color" content="#C8FF00">
+<link rel="canonical" href="https://keyshiftlondon.org/">
+<!-- Social share (Open Graph + Twitter) -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Key Shift London">
+<meta property="og:title" content="Key Shift London — Unlocking Potential. Shaping Futures.">
+<meta property="og:description" content="We build the precision infrastructure that turns young people's potential into measurable, lasting outcomes. South London youth development, ages 12–18.">
+<meta property="og:url" content="https://keyshiftlondon.org/">
+<meta property="og:image" content="https://keyshiftlondon.org/ksl-assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Key Shift London — Unlocking Potential. Shaping Futures.">
+<meta name="twitter:description" content="Precision youth development infrastructure for South London. Ages 12–18.">
+<meta name="twitter:image" content="https://keyshiftlondon.org/ksl-assets/og-image.png">
+<link rel="preload" as="image" href="ksl-assets/ppp-rotation.svg" type="image/svg+xml" fetchpriority="high">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Organization","name":"Key Shift London","alternateName":"KSL","url":"https://keyshiftlondon.org/","logo":"https://keyshiftlondon.org/ksl-assets/logo-light.png","image":"https://keyshiftlondon.org/ksl-assets/og-image.png","description":"Key Shift London builds the precision infrastructure that turns young people's potential into measurable, lasting outcomes. South London youth development, ages 12–18.","email":"hello@keyshiftlondon.org","areaServed":"South London","identifier":{"@type":"PropertyValue","name":"CIC registration","value":"15685849"}}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,700;1,800;1,900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#0A0A0A;--teal:#1A7A6E;--teal-bright:#2ABFAF;
+  --lime:#C8FF00;--lime-alt:#CCFF00;--white:#FFFFFF;
+  --display:'Barlow Condensed',sans-serif;--mono:'JetBrains Mono',monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:auto}
+body{font-family:var(--display);background:var(--lime);color:var(--black);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+::selection{background:var(--black);color:var(--lime)}
+/* ---- accessibility: skip link + visible keyboard focus ---- */
+.skip-link{position:absolute;left:-9999px;top:0;z-index:9999;background:var(--black);color:var(--lime);padding:.8rem 1.2rem;font-family:var(--mono);font-size:.8rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border:2px solid var(--lime);border-radius:0 0 8px 0}
+.skip-link:focus{left:0}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,[tabindex]:focus-visible{outline:3px solid var(--teal-bright);outline-offset:3px;border-radius:4px}
+.dark a:focus-visible,.dark button:focus-visible,.dark input:focus-visible,.dark select:focus-visible,.final a:focus-visible,.signup a:focus-visible,.signup input:focus-visible,.signup select:focus-visible{outline-color:var(--lime)}
+.eyebrow{font-family:var(--mono);font-size:.72rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase}
+.chapter{font-family:var(--mono);font-size:.7rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;display:inline-flex;align-items:center;gap:.7rem}
+.chapter::before{content:"";width:34px;height:2px;background:currentColor;display:inline-block;transform-origin:left;animation:lineGrow .8s ease both}
+@keyframes lineGrow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+h1,h2,h3{font-weight:800;line-height:.92;letter-spacing:-.01em;text-transform:lowercase}
+.huge{font-size:clamp(3.2rem,11vw,9rem);font-weight:900}
+.big{font-size:clamp(2.4rem,6.5vw,5rem)}
+p{font-size:clamp(1.05rem,1.5vw,1.3rem);line-height:1.45;font-weight:400}
+section{padding:clamp(4rem,9vw,9rem) clamp(1.5rem,6vw,7rem);position:relative}
+.wrap{max-width:1400px;margin:0 auto;position:relative;z-index:2}
+
+/* ---------- LOADER ---------- */
+#loader{position:fixed;inset:0;z-index:9999;background:var(--black);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1.4rem}
+#loader .l-logo{width:min(230px,58vw);height:auto;opacity:0}
+#loader .l-bar{width:min(240px,60vw);height:3px;background:rgba(255,255,255,.15);border-radius:3px;overflow:hidden}
+#loader .l-fill{height:100%;width:0;background:var(--lime)}
+#loader .l-meta{font-family:var(--mono);font-size:.66rem;letter-spacing:.3em;text-transform:uppercase;color:var(--teal-bright)}
+body.loading{overflow:hidden;height:100vh}
+
+/* ---------- GRAIN + PROGRESS + CURSOR ---------- */
+.grain{position:fixed;inset:-50%;z-index:9000;pointer-events:none;opacity:.045;mix-blend-mode:multiply;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");animation:grainShift 8s steps(6) infinite}
+@keyframes grainShift{0%{transform:translate(0,0)}20%{transform:translate(-4%,3%)}40%{transform:translate(3%,-2%)}60%{transform:translate(-2%,4%)}80%{transform:translate(4%,-3%)}100%{transform:translate(0,0)}}
+.progress{position:fixed;top:0;left:0;height:3px;width:100%;transform:scaleX(0);transform-origin:left;background:var(--teal);z-index:200}
+.cursor-dot,.cursor-ring{position:fixed;top:0;left:0;border-radius:50%;pointer-events:none;z-index:9500;mix-blend-mode:difference;will-change:transform}
+.cursor-dot{width:7px;height:7px;background:var(--lime);margin:-3.5px 0 0 -3.5px}
+.cursor-ring{width:38px;height:38px;border:1.5px solid var(--lime);margin:-19px 0 0 -19px;transition:width .25s ease,height .25s ease,margin .25s ease,opacity .25s ease,background .25s ease}
+.cursor-ring.grow{width:64px;height:64px;margin:-32px 0 0 -32px;background:rgba(200,255,0,.08)}
+.cursor-ring .clabel{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:.5rem;letter-spacing:.12em;text-transform:uppercase;color:var(--lime);opacity:0;transition:opacity .2s}
+.cursor-ring.label .clabel{opacity:1}
+@media(hover:none),(pointer:coarse){.cursor-dot,.cursor-ring{display:none}}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1.1rem clamp(1.5rem,6vw,7rem);background:rgba(200,255,0,.85);backdrop-filter:blur(12px);border-bottom:2px solid var(--black);transition:transform .4s ease}
+.brandmark{display:flex;align-items:center;gap:.65rem;text-decoration:none}
+.brandmark .nav-arrow{width:58px;height:auto;display:block;filter:brightness(0);transition:transform .3s ease}
+.brandmark:hover .nav-arrow{transform:translateX(4px)}
+.brandmark .logo{font-weight:900;font-style:italic;line-height:.82;font-size:1.05rem;color:var(--black);letter-spacing:-.02em}
+.navlinks{display:flex;gap:2rem;align-items:center}
+.navlinks a{font-family:var(--mono);font-size:.74rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--black);text-decoration:none;opacity:.55;transition:opacity .2s;position:relative}
+.navlinks a:not(.nav-cta)::after{content:"";position:absolute;left:0;bottom:-4px;width:100%;height:2px;background:var(--teal);transform:scaleX(0);transform-origin:left;transition:transform .3s ease}
+.navlinks a:hover{opacity:1}
+.navlinks a.active{opacity:1}
+.navlinks a.active::after{transform:scaleX(1)}
+.nav-cta{background:var(--black)!important;color:var(--lime)!important;padding:.6rem 1.2rem;opacity:1!important;border-radius:50px;font-weight:700!important}
+.nav-cta::after{display:none}
+.nav-cta:hover{background:var(--teal)!important}
+.burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none}
+.burger span{width:26px;height:2.5px;background:var(--black);transition:.3s}
+.btn{font-family:var(--display);font-weight:700;text-transform:uppercase;letter-spacing:.06em;font-size:1.05rem;padding:1rem 2rem;border:2.5px solid var(--black);border-radius:50px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:.6rem;transition:transform .25s ease,box-shadow .25s ease,background .25s ease,color .25s ease;background:var(--black);color:var(--lime);will-change:transform}
+.btn .arr{display:inline-block;transition:transform .25s ease}
+.btn:hover .arr{transform:translateX(5px)}
+.btn:hover{box-shadow:5px 5px 0 var(--teal)}
+.btn.ghost{background:transparent;color:var(--black)}
+.btn.ghost:hover{background:var(--black);color:var(--lime);box-shadow:5px 5px 0 var(--teal-bright)}
+.btn.white{background:var(--white);color:var(--teal);border-color:var(--white)}
+.btn.white:hover{box-shadow:5px 5px 0 var(--black)}
+.btn.lime{background:var(--lime);color:var(--black);border-color:var(--lime)}
+.btn.lime:hover{box-shadow:5px 5px 0 var(--teal-bright)}
+.btn.sm{font-size:.9rem;padding:.7rem 1.4rem}
+.cta-strip{display:flex;align-items:center;gap:1.2rem;flex-wrap:wrap;margin-top:2.5rem;padding-top:2rem;border-top:2px solid currentColor}
+.cta-strip .cta-label{font-family:var(--mono);font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;opacity:.8}
+.px-layer{position:absolute;will-change:transform;pointer-events:none;z-index:0}
+.px-shape{position:absolute;border-radius:50%;opacity:.5;pointer-events:none;z-index:0;will-change:transform}
+.px-ring{position:absolute;border:2px solid currentColor;border-radius:50%;opacity:.25;pointer-events:none;z-index:0;will-change:transform}
+.px-word{position:absolute;font-weight:900;text-transform:uppercase;opacity:.06;font-size:clamp(8rem,22vw,22rem);line-height:.8;pointer-events:none;z-index:0;letter-spacing:-.03em;white-space:nowrap;will-change:transform}
+
+/* ---------- HERO ---------- */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding-top:7rem;position:relative;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:3rem;align-items:center}
+.hero-tag{margin-bottom:1.5rem;color:var(--teal)}
+.hero h1{margin-bottom:1.8rem}
+.hero h1 .line{display:block;overflow:hidden}
+.hero h1 .line > span{display:inline-block}
+.hero h1 .stroke{-webkit-text-stroke:2.5px var(--black);color:transparent}
+.hero-sub{max-width:30ch;font-size:clamp(1.15rem,1.8vw,1.45rem);font-weight:500;margin-bottom:2.5rem}
+.hero-ctas{display:flex;gap:1rem;flex-wrap:wrap}
+.hero-visual{position:relative;display:flex;justify-content:center}
+.globe{width:min(580px,108%);aspect-ratio:1;position:relative;display:flex;align-items:center;justify-content:center;will-change:transform}
+.globe-img{width:100%;height:100%;display:block;animation:spin 34s linear infinite;will-change:transform}
+@keyframes spin{to{transform:rotate(360deg)}}
+.scroll-cue{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);font-family:var(--mono);font-size:.66rem;letter-spacing:.25em;text-transform:uppercase;display:flex;flex-direction:column;align-items:center;gap:.5rem;opacity:.6;z-index:3}
+.scroll-cue .line{width:1.5px;height:34px;background:var(--black);animation:pulse 1.8s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:.3;transform:scaleY(.6)}50%{opacity:1;transform:scaleY(1)}}
+
+.marquee{background:var(--black);color:var(--lime);overflow:hidden;padding:1.2rem 0;border-top:2px solid var(--black);border-bottom:2px solid var(--black);position:relative;z-index:5}
+.marquee-track{display:flex;white-space:nowrap;gap:0;will-change:transform}
+.marquee-track span{font-family:var(--display);font-weight:900;font-size:1.6rem;text-transform:uppercase;letter-spacing:.02em;padding:0 1.5rem}
+.marquee-track img.dot{height:1.15rem;width:auto;margin:0 .15rem;vertical-align:middle;display:inline-block;transform:translateY(-1px)}
+
+.dark{background:var(--black);color:var(--white);overflow:hidden}
+.dark .eyebrow,.dark .chapter{color:var(--lime)}
+.dark h2 .lime{color:var(--lime)}
+.dark p{color:rgba(255,255,255,.78)}
+.section-head{margin-bottom:3.5rem;max-width:62ch}
+.section-head h2{margin:1rem 0 1.2rem}
+.who-sec{overflow:hidden}
+.who-sec .chapter{color:var(--teal)}
+.who-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.who-grid h2{margin:1.2rem 0 1.5rem}
+.who-stack{display:flex;flex-direction:column;gap:1.2rem}
+.who-photo{aspect-ratio:4/5;border-radius:18px;background:var(--black);position:relative;overflow:hidden;border:3px solid var(--black)}
+.who-photo::after{content:"progress over perfection";position:absolute;bottom:1.2rem;left:1.2rem;right:1.2rem;font-family:var(--mono);font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:var(--lime);font-weight:700;z-index:3}
+.who-photo .who-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 20%;filter:saturate(1.05)}
+.who-photo .who-grad{position:absolute;inset:0;z-index:2;background:linear-gradient(180deg,transparent 45%,rgba(10,10,10,.85) 100%)}
+.who-photo .who-badge{position:absolute;top:1.1rem;left:1.1rem;z-index:3;font-family:var(--mono);font-size:.6rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--black);background:var(--lime);padding:.35rem .6rem;border-radius:50px}
+
+.outcomes-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:0;border:2px solid rgba(255,255,255,.18)}
+.outcome{padding:2.5rem 2rem;border-right:2px solid rgba(255,255,255,.18);border-bottom:2px solid rgba(255,255,255,.18);transition:background .3s;position:relative;overflow:hidden}
+.outcome::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at var(--mx,50%) var(--my,50%),rgba(200,255,0,.10),transparent 60%);opacity:0;transition:opacity .35s}
+.outcome:hover::before{opacity:1}
+.outcome .num{font-family:var(--mono);font-size:.72rem;color:var(--teal-bright);letter-spacing:.2em;margin-bottom:1.2rem;display:block;position:relative}
+.outcome .stat{font-size:clamp(2.6rem,5vw,4.2rem);font-weight:900;color:var(--lime);line-height:.9;margin-bottom:.6rem;position:relative}
+.outcome .label{font-weight:600;font-size:1.15rem;text-transform:lowercase;color:var(--white);position:relative}
+.outcome .desc{font-size:.92rem;color:rgba(255,255,255,.6);margin-top:.5rem;line-height:1.4;position:relative}
+
+.how-sec{overflow:hidden}
+.pss-intro{text-align:center;margin-bottom:4rem}
+.pss-intro .chapter{color:var(--teal);justify-content:center}
+.pss-intro .chapter::after{content:"";width:34px;height:2px;background:currentColor}
+.pss-intro h2{margin:1rem 0}
+.pss-flow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:1rem;align-items:stretch;margin-top:2rem}
+.pss-card{background:var(--black);color:var(--white);padding:2.5rem 2rem;border-radius:18px;display:flex;flex-direction:column;position:relative;overflow:hidden;transition:transform .3s ease}
+.pss-card::after{content:"";position:absolute;top:0;left:0;width:100%;height:4px;background:var(--lime);transform:scaleX(0);transform-origin:left;transition:transform .4s ease}
+.pss-card:hover::after{transform:scaleX(1)}
+.pss-card:hover{transform:translateY(-8px)}
+.pss-card .stage{font-family:var(--mono);font-size:.72rem;letter-spacing:.25em;color:var(--teal-bright);margin-bottom:1rem}
+.pss-card .verb{font-size:clamp(2rem,3.5vw,2.8rem);font-weight:900;color:var(--lime);text-transform:lowercase;line-height:.9;margin-bottom:.4rem}
+.pss-card .name{font-weight:700;font-size:1.2rem;text-transform:lowercase;margin-bottom:1rem;color:var(--white)}
+.pss-card .body{font-size:.95rem;color:rgba(255,255,255,.72);line-height:1.45;flex:1}
+.pss-card .meta{font-family:var(--mono);font-size:.68rem;color:var(--teal-bright);letter-spacing:.1em;margin-top:1.4rem;padding-top:1.2rem;border-top:1px solid rgba(255,255,255,.15)}
+.pss-card .card-link{margin-top:1.2rem;font-family:var(--mono);font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--lime);text-decoration:none;display:inline-flex;align-items:center;gap:.4rem;transition:gap .2s}
+.pss-card .card-link:hover{gap:.8rem}
+/* ---- click-to-reveal disclosure (delivery tiers / bundle prices) — dark contexts ---- */
+.drop{margin-top:1.2rem;border-top:1px solid rgba(255,255,255,.15);padding-top:1rem}
+.drop>summary{font-family:var(--mono);font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--teal-bright);cursor:pointer;list-style:none;display:inline-flex;align-items:center;gap:.45rem}
+.drop>summary::-webkit-details-marker{display:none}
+.drop[open]>summary{color:var(--lime)}
+.drop .caret{transition:transform .25s ease;display:inline-block}
+.drop[open] .caret{transform:rotate(180deg)}
+.drop ul{list-style:none;margin:.9rem 0 0;padding:0;display:flex;flex-direction:column;gap:.55rem}
+.drop li{font-size:.86rem;color:rgba(255,255,255,.82);line-height:1.45}
+.drop li strong{color:#fff;font-weight:800;font-style:normal}
+.drop .price{font-family:var(--mono);color:var(--lime)}
+.drop .note{font-family:var(--mono);font-size:.64rem;line-height:1.55;letter-spacing:.03em;color:rgba(255,255,255,.5);margin:.9rem 0 0}
+.pss-arrow{display:flex;align-items:center;justify-content:center;font-size:2rem;color:var(--black);font-weight:900}
+.pss-arrow span{display:inline-block;animation:arrowSlide 1.8s ease-in-out infinite}
+@keyframes arrowSlide{0%,100%{transform:translateX(0)}50%{transform:translateX(6px)}}
+.pss-network{margin-top:2.5rem;background:var(--teal);color:var(--white);padding:2.2rem 2.5rem;border-radius:18px;display:flex;justify-content:space-between;align-items:center;gap:2rem;flex-wrap:wrap;position:relative;overflow:hidden}
+.pss-network .nettext{flex:1;min-width:260px;position:relative;z-index:2}
+.pss-network .stage{font-family:var(--mono);font-size:.7rem;letter-spacing:.25em;color:var(--lime);margin-bottom:.6rem;display:block}
+.pss-network h3{font-size:clamp(1.5rem,3vw,2.2rem);color:var(--white);margin-bottom:.5rem}
+.pss-network p{color:rgba(255,255,255,.88);font-size:1rem}
+.pss-network .btn{position:relative;z-index:2}
+
+.shape{background:var(--lime);overflow:hidden}
+.shape-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+.shape-list{display:flex;flex-direction:column;gap:0;border-top:2px solid var(--black)}
+.shape-row{display:grid;grid-template-columns:auto 1fr;gap:1.5rem;align-items:baseline;padding:1.6rem 0;border-bottom:2px solid var(--black);cursor:default;transition:padding-left .35s ease}
+.shape-row:hover{padding-left:1.2rem}
+.shape-row .letter{font-size:clamp(2.5rem,5vw,3.8rem);font-weight:900;color:var(--teal);line-height:.8;transition:color .3s ease,transform .35s ease}
+.shape-row:hover .letter{color:var(--black);transform:scale(1.08)}
+.shape-row .word{font-weight:800;font-size:1.4rem;text-transform:lowercase}
+.shape-row .meaning{font-size:.98rem;font-weight:400;display:block;margin-top:.2rem;opacity:.78}
+.shape-side{position:sticky;top:7rem}
+.shape-side .chapter{color:var(--teal)}
+.shape-side h2{margin:1rem 0 1.5rem}
+.callout{background:var(--black);color:var(--white);padding:2rem;border-radius:14px;margin-top:2rem}
+.callout p{color:var(--white);font-weight:600}
+.callout .em{color:var(--lime)}
+
+.proof{background:var(--teal);color:var(--white);overflow:hidden}
+.proof .eyebrow,.proof .chapter{color:var(--lime)}
+.proof h2{color:var(--white);margin:1rem 0 1.5rem;max-width:18ch}
+.proof h2 .u{color:var(--lime)}
+.proof-grid{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;margin-top:3rem}
+.proof-col h3{color:var(--lime);font-size:1.4rem;margin-bottom:1rem}
+.proof-col p{color:rgba(255,255,255,.85);padding:.4rem 0;border-bottom:1px solid rgba(255,255,255,.12)}
+.proof-col .bad{text-decoration:line-through;opacity:.55}
+
+.audience{background:var(--lime);overflow:hidden}
+.audience-head{text-align:center;margin-bottom:3.5rem}
+.audience-head .chapter{color:var(--teal);justify-content:center}
+.audience-head .chapter::after{content:"";width:34px;height:2px;background:currentColor}
+.audience-head h2{margin:1rem 0}
+.audience-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(258px,1fr));gap:1.5rem}
+.aud-card{background:var(--white);border:2.5px solid var(--black);border-radius:20px;padding:2.5rem 2rem;display:flex;flex-direction:column;transition:transform .3s ease,box-shadow .3s ease;position:relative;transform-style:preserve-3d;will-change:transform}
+.aud-card:hover{box-shadow:8px 8px 0 var(--black)}
+.aud-card .who{font-family:var(--mono);font-size:.7rem;letter-spacing:.2em;color:var(--teal);margin-bottom:1rem}
+.aud-card h3{font-size:1.8rem;color:var(--black);margin-bottom:.6rem}
+.aud-card .pitch{font-size:1rem;font-weight:400;color:var(--black);opacity:.8;flex:1;margin-bottom:1.8rem}
+.aud-card .pitch strong{font-style:italic;font-weight:800;opacity:1}
+.aud-card .btn{width:100%;justify-content:center}
+/* ---- photo media treatments (unify palette: mild desat + dark gradient) ---- */
+.pss-card .pss-media{margin:-2.5rem -2rem 1.6rem;height:168px;overflow:hidden;position:relative}
+.pss-card .pss-media img{width:100%;height:100%;object-fit:cover;filter:grayscale(.18) contrast(1.05) saturate(.92);transition:transform .6s ease}
+.pss-card:hover .pss-media img{transform:scale(1.06)}
+.pss-card .pss-media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,10,.15) 40%,rgba(10,10,10,.92) 100%)}
+.aud-card{padding-top:0;overflow:hidden}
+.aud-card .aud-media{margin:0 -2rem 1.6rem;height:188px;overflow:hidden;position:relative}
+.aud-card .aud-media img{width:100%;height:100%;object-fit:cover;filter:grayscale(.16) contrast(1.04) saturate(.94);transition:transform .6s ease}
+.aud-card:hover .aud-media img{transform:scale(1.06)}
+.aud-card .aud-media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(255,255,255,.0) 100%);box-shadow:inset 0 -1px 0 rgba(0,0,0,.08)}
+.aud-card .who{padding:0 0 0 0}
+/* ---- full-width context band ---- */
+.context-band{padding:0;position:relative;height:clamp(320px,52vh,480px);overflow:hidden;border-top:2px solid var(--black);border-bottom:2px solid var(--black);display:flex;align-items:center;justify-content:center;text-align:center}
+.context-band .cb-media{position:absolute;inset:-20% 0;z-index:0;will-change:transform}
+.context-band .cb-media img{width:100%;height:100%;object-fit:cover;filter:grayscale(.2) contrast(1.05) saturate(.9)}
+.context-band .cb-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(10,10,10,.55),rgba(10,10,10,.5)),radial-gradient(circle at 50% 50%,rgba(26,122,110,.35),transparent 70%)}
+.context-band .cb-text{position:relative;z-index:2;max-width:900px;padding:0 1.5rem}
+.context-band .cb-text .chapter{color:var(--lime);justify-content:center;margin-bottom:1rem}
+.context-band .cb-text .chapter::after{content:"";width:34px;height:2px;background:currentColor}
+.context-band .cb-text h2{color:var(--white);font-size:clamp(2rem,6vw,4.2rem)}
+.context-band .cb-text h2 .lime{color:var(--lime)}
+.context-band .cb-text p{color:rgba(255,255,255,.82);max-width:46ch;margin:1.2rem auto 0;font-family:var(--mono);font-size:.8rem;letter-spacing:.06em}
+/* ---- inline photo bands ---- */
+.photo-duo{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:3.5rem}
+.section-photo{position:relative;border-radius:18px;overflow:hidden;border:3px solid var(--black)}
+.section-photo img{width:100%;height:100%;object-fit:cover;object-position:center 25%;display:block;filter:grayscale(.16) contrast(1.04) saturate(.94);transition:transform .7s ease}
+.section-photo:hover img{transform:scale(1.05)}
+.section-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 52%,rgba(10,10,10,.6))}
+.section-photo .sp-cap{position:absolute;left:1rem;bottom:.9rem;z-index:2;font-family:var(--mono);font-size:.62rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--lime);background:rgba(10,10,10,.72);padding:.4rem .7rem;border-radius:50px;backdrop-filter:blur(4px)}
+.photo-duo .section-photo{aspect-ratio:4/5}
+.section-band{margin-top:3.5rem;aspect-ratio:21/8}
+.dark .section-photo,.proof .section-photo{border-color:rgba(255,255,255,.18)}
+@media(max-width:700px){.photo-duo{grid-template-columns:1fr}.section-band{aspect-ratio:4/3}}
+/* ---- low-opacity parallax background photos ---- */
+.shape-bg{position:absolute;z-index:0;pointer-events:none;mix-blend-mode:multiply;opacity:.24;will-change:transform;-webkit-mask-image:radial-gradient(ellipse 72% 72% at 50% 50%,#000 30%,transparent 78%);mask-image:radial-gradient(ellipse 72% 72% at 50% 50%,#000 30%,transparent 78%)}
+.shape-bg img{width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(.35) contrast(1.06)}
+@media(max-width:700px){.shape-bg{opacity:.16}}
+/* low-opacity feathered washes for dark sections */
+.dark-bg{position:absolute;z-index:0;pointer-events:none;opacity:.42;will-change:transform;-webkit-mask-image:radial-gradient(ellipse 70% 70% at 50% 50%,#000 30%,transparent 78%);mask-image:radial-gradient(ellipse 70% 70% at 50% 50%,#000 30%,transparent 78%)}
+.dark-bg img{width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(.15) contrast(1.05) brightness(.95) saturate(1.05)}
+@media(max-width:700px){.dark-bg{opacity:.28}}
+/* low-opacity feathered washes for the teal (Why) section — luminosity keeps them teal-toned */
+.proof-bg{position:absolute;z-index:0;pointer-events:none;opacity:.5;mix-blend-mode:luminosity;will-change:transform;-webkit-mask-image:radial-gradient(ellipse 70% 70% at 50% 50%,#000 26%,transparent 78%);mask-image:radial-gradient(ellipse 70% 70% at 50% 50%,#000 26%,transparent 78%)}
+.proof-bg img{width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(1) contrast(1.06)}
+@media(max-width:700px){.proof-bg{opacity:.32}}
+/* ---- The Precision Network section ---- */
+.tpn .section-head{margin-bottom:2.5rem}
+.tpn-statement{margin:0 0 3rem;padding:2.4rem 0;border-top:2px solid rgba(255,255,255,.16);border-bottom:2px solid rgba(255,255,255,.16);position:relative;z-index:2}
+.tpn-statement .eyebrow{color:var(--teal-bright);display:block;margin-bottom:1rem}
+.tpn-statement p{font-size:clamp(1.7rem,4.4vw,3.3rem);font-weight:900;text-transform:lowercase;line-height:1.02;color:var(--white);letter-spacing:-.01em}
+.tpn-statement p .lime{color:var(--lime)}
+.tpn-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:2px solid rgba(255,255,255,.18);position:relative;z-index:2}
+.tpn-node{padding:2.2rem 1.8rem;border-right:2px solid rgba(255,255,255,.18);position:relative;overflow:hidden;transition:background .3s}
+.tpn-node:last-child{border-right:none}
+.tpn-node::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at var(--mx,50%) var(--my,50%),rgba(200,255,0,.10),transparent 60%);opacity:0;transition:opacity .35s}
+.tpn-node:hover::before{opacity:1}
+.tpn-node .num{font-family:var(--mono);font-size:.72rem;color:var(--teal-bright);letter-spacing:.2em;display:block;margin-bottom:1.4rem;position:relative}
+.tpn-node h3{color:var(--lime);font-size:1.5rem;margin-bottom:.5rem;position:relative}
+.tpn-node p{font-size:.95rem;color:rgba(255,255,255,.7);line-height:1.45;position:relative}
+.tpn-foot{margin-top:3rem;display:flex;justify-content:space-between;align-items:center;gap:2.5rem;flex-wrap:wrap;position:relative;z-index:2}
+.tpn-foot p{font-size:clamp(1.3rem,2.6vw,2rem);font-weight:800;text-transform:lowercase;color:var(--white);max-width:26ch;line-height:1.1;margin:0}
+.tpn-foot p .lime{color:var(--lime)}
+@media(max-width:880px){.tpn-grid{grid-template-columns:1fr 1fr}.tpn-node{border-bottom:2px solid rgba(255,255,255,.18)}.tpn-node:nth-child(2){border-right:none}}
+@media(max-width:560px){.tpn-grid{grid-template-columns:1fr}.tpn-node{border-right:none}}
+
+.signup{background:var(--black);color:var(--white);overflow:hidden}
+.signup .chapter{color:var(--lime)}
+.signup-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
+.signup-grid h2{color:var(--white);margin:1rem 0 1rem}
+.signup-grid h2 .lime{color:var(--lime)}
+.signup-grid p{color:rgba(255,255,255,.78);margin-bottom:1rem}
+.form-card{background:rgba(255,255,255,.04);border:2px solid rgba(255,255,255,.18);border-radius:20px;padding:2.5rem}
+.form-row{margin-bottom:1.2rem}
+.form-row label{font-family:var(--mono);font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:var(--lime);display:block;margin-bottom:.5rem}
+.form-row input,.form-row select{width:100%;background:var(--black);border:2px solid rgba(255,255,255,.25);border-radius:10px;padding:.85rem 1rem;font-family:var(--display);font-size:1.05rem;color:var(--white);transition:border .2s,box-shadow .2s}
+.form-row input::placeholder{color:rgba(255,255,255,.35)}
+.form-row input:focus,.form-row select:focus{outline:none;border-color:var(--lime);box-shadow:0 0 0 3px rgba(200,255,0,.12)}
+.form-card .btn{width:100%;justify-content:center;margin-top:.5rem}
+.form-note{font-family:var(--mono);font-size:.66rem;letter-spacing:.05em;color:rgba(255,255,255,.45);margin-top:1rem;text-align:center}
+
+.final{background:var(--black);color:var(--white);text-align:center;overflow:hidden}
+.final .eyebrow,.final .chapter{color:var(--teal-bright);justify-content:center}
+.final .chapter::after{content:"";width:34px;height:2px;background:currentColor}
+.final h2{margin:1.2rem auto;max-width:16ch}
+.final h2 .lime{color:var(--lime)}
+.final .quote{font-style:italic;font-size:clamp(1.2rem,2.5vw,1.8rem);font-weight:700;color:var(--lime);max-width:30ch;margin:2.5rem auto 0;line-height:1.2}
+.final-ctas{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:2.5rem}
+
+footer{background:var(--black);color:rgba(255,255,255,.6);padding:3rem clamp(1.5rem,6vw,7rem);border-top:2px solid rgba(255,255,255,.15)}
+.footer-grid{display:flex;justify-content:space-between;align-items:flex-start;gap:2rem;flex-wrap:wrap;max-width:1400px;margin:0 auto}
+.footer-grid .footer-logo{height:74px;width:auto;display:block;margin-bottom:1rem}
+footer p,footer a{font-family:var(--mono);font-size:.72rem;letter-spacing:.05em;color:rgba(255,255,255,.55);text-decoration:none;line-height:1.8}
+footer a:hover{color:var(--lime)}
+.footer-col h4{font-family:var(--mono);font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--lime);margin-bottom:.8rem}
+.socials{display:flex;gap:.7rem;align-items:center}
+.socials a{display:inline-flex;width:34px;height:34px;align-items:center;justify-content:center;border:1.5px solid rgba(255,255,255,.25);border-radius:50%;color:rgba(255,255,255,.6);transition:color .2s ease,background .2s ease,border-color .2s ease,transform .2s ease}
+.socials a:hover{color:var(--black);background:var(--lime);border-color:var(--lime);transform:translateY(-2px)}
+.socials svg{width:17px;height:17px;fill:currentColor}
+
+/* back to top */
+.totop{position:fixed;bottom:1.6rem;right:1.6rem;z-index:90;width:48px;height:48px;border-radius:50%;background:var(--black);color:var(--lime);border:2px solid var(--lime);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1.1rem;opacity:0;transform:translateY(20px) scale(.8);transition:opacity .3s,transform .3s}
+.totop.show{opacity:1;transform:none}
+.totop:hover{background:var(--lime);color:var(--black)}
+
+/* reveal fallback (used until GSAP takes over) */
+.reveal{opacity:0}
+.no-anim .reveal{opacity:1!important;transform:none!important}
+
+@media(max-width:980px){
+  .hero-grid{grid-template-columns:1fr}.hero-visual{order:-1;margin-bottom:1rem}.globe{width:min(400px,90%)}
+  .who-grid{grid-template-columns:1fr;gap:2.5rem}.pss-flow{grid-template-columns:1fr}.pss-arrow{transform:rotate(90deg);padding:.3rem 0}
+  .shape-grid{grid-template-columns:1fr;gap:2.5rem}.shape-side{position:static}.proof-grid{grid-template-columns:1fr}
+  .audience-grid{grid-template-columns:1fr}.signup-grid{grid-template-columns:1fr;gap:2rem}.px-word{display:none}
+  .navlinks{position:fixed;top:0;right:0;height:100vh;width:75%;max-width:320px;background:var(--black);flex-direction:column;justify-content:center;gap:2rem;transform:translateX(100%);transition:transform .4s ease;padding:2rem}
+  .navlinks.open{transform:translateX(0)}.navlinks a{color:var(--lime);font-size:1rem;opacity:.85}.nav-cta{color:var(--black)!important;background:var(--lime)!important}.burger{display:flex;z-index:101}
+}
+@media(prefers-reduced-motion:reduce){
+  .px-layer,.px-shape,.px-ring,.px-word{transform:none!important}
+  .globe-img,.marquee-track,.grain,.pss-arrow span{animation:none!important}
+  .reveal{opacity:1!important;transform:none!important}
+}
+.train-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem;align-items:stretch}.train-note{margin-top:2.4rem;font-family:var(--mono);font-size:.82rem;letter-spacing:.04em;color:var(--black);opacity:.72;text-align:center}.train-note strong{color:var(--teal);opacity:1}@media(max-width:760px){.train-grid{grid-template-columns:1fr}}</style>
+</head>
+<body class="loading">
+<a href="#who" class="skip-link">Skip to content</a>
+
+<!-- LOADER -->
+<div id="loader">
+  <img class="l-logo" src="ksl-assets/logo-light.png" alt="Key Shift London" width="816" height="659">
+  <div class="l-bar"><div class="l-fill"></div></div>
+  <div class="l-meta">prepare · process · print</div>
+</div>
+
+<!-- OVERLAYS -->
+<div class="grain" aria-hidden="true"></div>
+<div class="progress" id="progress"></div>
+<div class="cursor-dot" id="cdot" aria-hidden="true"></div>
+<div class="cursor-ring" id="cring" aria-hidden="true"><span class="clabel" id="clabel"></span></div>
+
+<nav id="nav">
+  <a href="#top" class="brandmark" data-cursor aria-label="Key Shift London — home"><img class="nav-arrow" src="ksl-assets/arrow.png" alt="Key Shift London" width="805" height="497"></a>
+  <div class="navlinks" id="navlinks">
+    <a href="#who">Who</a><a href="#what">What</a><a href="#why">Why</a><a href="#how">How</a><a href="#network">Network</a><a href="#training">Training</a>
+    <a href="#signup" class="nav-cta" data-cursor>Sign Up / Enquire</a>
+  </div>
+  <button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="navlinks"><span></span><span></span><span></span></button>
+</nav>
+
+<header class="hero" id="top">
+  <div class="px-word px-layer" data-speed="0.25" style="top:8%;left:-4%;color:var(--teal)">PRECISION</div>
+  <div class="px-ring" data-speed="0.5" style="width:380px;height:380px;top:55%;right:-120px;color:var(--teal)"></div>
+  <div class="px-shape" data-speed="0.35" style="width:90px;height:90px;background:var(--teal-bright);top:20%;right:18%"></div>
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow hero-tag">Dynamic Development · Ages 12–18</div>
+      <h1 class="huge" id="heroTitle">
+        <span class="line"><span>unlocking</span></span>
+        <span class="line"><span>potential.</span></span>
+        <span class="line"><span class="stroke">shaping</span></span>
+        <span class="line"><span>futures.</span></span>
+      </h1>
+      <p class="hero-sub">We don't run programmes. We build the precision infrastructure that turns potential into measurable, lasting outcomes.</p>
+      <div class="hero-ctas">
+        <a href="#signup" class="btn" data-cursor data-magnetic>Sign Up For Training <span class="arr">→</span></a>
+        <a href="#how" class="btn ghost" data-cursor data-magnetic>See the System</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="globe" data-speed="0.15" data-cursor="explore">
+        <img class="globe-img" src="ksl-assets/ppp-rotation.svg" alt="Prepare. Process. Print." width="375" height="375" fetchpriority="high">
+      </div>
+    </div>
+  </div>
+  <div class="scroll-cue"><span>the story</span><span class="line"></span></div>
+</header>
+
+<div class="marquee">
+  <div class="marquee-track" id="marquee">
+    <span>Precision Not Provision</span><img class="dot" src="ksl-assets/arrow-marquee.png" alt="" aria-hidden="true"><span>Progress Over Perfection</span><img class="dot" src="ksl-assets/arrow-marquee.png" alt="" aria-hidden="true">
+    <span>Prepare · Process · Print</span><img class="dot" src="ksl-assets/arrow-marquee.png" alt="" aria-hidden="true"><span>A Generation Of Precision Practitioners</span><img class="dot" src="ksl-assets/arrow-marquee.png" alt="" aria-hidden="true">
+  </div>
+</div>
+
+<section class="who-sec" id="who">
+  <div class="px-word px-layer" data-speed="0.3" style="top:30%;right:-6%;color:var(--teal)">WHO</div>
+  <div class="shape-bg" data-speed="0.08" style="width:40%;height:62%;right:-5%;top:6%" aria-hidden="true"><img src="ksl-assets/photo-who1.jpg" alt="" loading="lazy"></div>
+  <div class="shape-bg" data-speed="0.17" style="width:26%;height:54%;right:9%;bottom:-6%" aria-hidden="true"><img src="ksl-assets/photo-who2.jpg" alt="" loading="lazy"></div>
+  <div class="wrap who-grid">
+    <div class="who-stack reveal"><div class="who-photo" data-cursor><img class="who-img" src="ksl-assets/photo-youth3.jpg" alt="A young person supported by Key Shift London"><div class="who-grad"></div><span class="who-badge">South London · 12–18</span></div></div>
+    <div>
+      <div class="chapter reveal">Chapter 01 — Who We Are</div>
+      <h2 class="big reveal">young people don't<br>need saving. they<br>need structure.</h2>
+      <p class="reveal">We know the schools, estates and communities where potential gets buried under pressure. Key Shift London is a South London Community Interest Company that builds the structure around young people aged 12–18 — so they can rise.</p>
+      <p class="reveal" style="margin-top:1rem">We equip parents, mentors, coaches, pastoral leads, schools and councils with the tools, training and technology to support real development — not one-off programmes, but infrastructure that lasts.</p>
+      <div class="cta-strip reveal"><span class="cta-label">Want to be part of it?</span><a href="#signup" class="btn sm" data-cursor data-magnetic>Join The Network <span class="arr">→</span></a></div>
+    </div>
+  </div>
+</section>
+
+<section class="shape" id="what">
+  <div class="px-word px-layer" data-speed="0.28" style="top:5%;left:-3%;color:var(--teal)">WHAT</div>
+  <div class="shape-bg" data-speed="0.07" style="width:82%;height:96%;left:6%;top:2%" aria-hidden="true"><img src="ksl-assets/photo-mentors.jpg" alt="" style="object-position:center 58%" loading="lazy"></div>
+  <div class="shape-bg" data-speed="0.18" style="width:46%;height:62%;right:-6%;bottom:-6%" aria-hidden="true"><img src="ksl-assets/photo-study.jpg" alt="" loading="lazy"></div>
+  <div class="wrap shape-grid">
+    <div class="shape-side">
+      <div class="chapter reveal">Chapter 02 — What We Change</div>
+      <h2 class="big reveal">we target the<br>whole life,<br>not the symptom.</h2>
+      <p class="reveal">The youth development landscape is fragmented — interventions are short, unmeasured, and disconnected from the environments that actually shape young people.</p>
+      <p class="reveal" style="margin-top:1rem">We address this through <em>Youth Precision Work</em>: a structured framework built on five core areas — the SHAPE model.</p>
+      <div class="callout reveal"><p>We don't just run programmes. We establish <span class="em">youth development infrastructure</span> that schools, PRUs, councils and academies can build on.</p></div>
+      <div class="cta-strip reveal"><span class="cta-label">For your organisation?</span><a href="#signup" class="btn sm" data-cursor data-magnetic>Enquire About PSS <span class="arr">→</span></a></div>
+    </div>
+    <div class="shape-list">
+      <div class="shape-row reveal"><div class="letter">S</div><div><div class="word">school</div><span class="meaning">How they engage with education and the adults within it.</span></div></div>
+      <div class="shape-row reveal"><div class="letter">H</div><div><div class="word">home</div><span class="meaning">The dynamics, stability and relationships in their home environment.</span></div></div>
+      <div class="shape-row reveal"><div class="letter">A</div><div><div class="word">aspirations</div><span class="meaning">Their goals, self-belief and vision for their own future.</span></div></div>
+      <div class="shape-row reveal"><div class="letter">P</div><div><div class="word">perspectives</div><span class="meaning">How they see themselves, others and the world around them.</span></div></div>
+      <div class="shape-row reveal"><div class="letter">E</div><div><div class="word">experiences</div><span class="meaning">The events and encounters that have shaped who they are.</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="dark" id="outcomes">
+  <div class="px-word px-layer" data-speed="0.22" style="top:60%;right:-4%;color:var(--lime)">PROOF</div>
+  <div class="dark-bg" data-speed="0.08" style="width:52%;height:80%;right:-6%;top:4%" aria-hidden="true"><img src="ksl-assets/photo-care.jpg" alt="" loading="lazy"></div>
+  <div class="dark-bg" data-speed="0.16" style="width:44%;height:66%;left:-6%;bottom:-6%" aria-hidden="true"><img src="ksl-assets/photo-run.jpg" alt="" loading="lazy"></div>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow reveal">What you actually get</div>
+      <h2 class="big reveal">we sell <span class="lime">outcomes,</span><br>not activities.</h2>
+      <p class="reveal">Every engagement leaves something behind: structure that lasts, evidence you can report, and young people who exit equipped — not just entertained.</p>
+    </div>
+    <div class="outcomes-grid">
+      <div class="outcome reveal"><span class="num">01 / EVIDENCE</span><div class="stat" data-count="100" data-suffix="%">0%</div><div class="label">documented outcomes</div><div class="desc">Every young person exits with a Precision Graduation Record they own — not a certificate of attendance.</div></div>
+      <div class="outcome reveal"><span class="num">02 / STRUCTURE</span><div class="stat" data-count="5">0</div><div class="label">life areas targeted</div><div class="desc">School, Home, Aspirations, Perspectives, Experiences — the environments that actually shape a young life.</div></div>
+      <div class="outcome reveal"><span class="num">03 / INFRASTRUCTURE</span><div class="stat" data-count="3">0</div><div class="label">stage delivery system</div><div class="desc">Prepare, Process, Print. A repeatable pipeline that scales across schools, PRUs, councils and academies.</div></div>
+      <div class="outcome reveal"><span class="num">04 / NETWORK</span><div class="stat">∞</div><div class="label">connected practitioners</div><div class="desc">The Precision Network ties every engagement together — so insight, evidence and impact never get lost.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="proof" id="why">
+  <div class="proof-bg" data-speed="0.07" style="width:40%;height:72%;right:-5%;top:4%" aria-hidden="true"><img src="ksl-assets/photo-why1.jpg" alt="" loading="lazy"></div>
+  <div class="proof-bg" data-speed="0.16" style="width:33%;height:54%;left:-7%;top:26%" aria-hidden="true"><img src="ksl-assets/photo-why2.jpg" alt="" loading="lazy"></div>
+  <div class="proof-bg" data-speed="0.2" style="width:36%;height:50%;right:6%;bottom:-6%" aria-hidden="true"><img src="ksl-assets/photo-why3.jpg" alt="" loading="lazy"></div>
+  <div class="px-ring" data-speed="0.4" style="width:300px;height:300px;top:-80px;left:-100px;color:var(--lime)"></div>
+  <div class="px-shape" data-speed="0.3" style="width:70px;height:70px;background:var(--lime);bottom:10%;right:12%;opacity:.3"></div>
+  <div class="wrap">
+    <div>
+      <div class="chapter reveal">Chapter 03 — Why Precision</div>
+      <h2 class="big reveal">the old model is <span class="u">full</span>.<br>but is it working?</h2>
+      <p class="reveal" style="max-width:55ch">The young people inside our schools and estates don't need saving — they need the right structure around them. Precision is the difference between activity and outcome.</p>
+    </div>
+    <div class="proof-grid">
+      <div class="proof-col reveal"><h3>provision delivers…</h3>
+        <p class="bad">One-off sessions that start and stop</p><p class="bad">Activity counted, impact assumed</p>
+        <p class="bad">Evidence in someone else's filing cabinet</p><p class="bad">Practitioners working in isolation</p>
+      </div>
+      <div class="proof-col reveal"><h3>precision delivers…</h3>
+        <p>Infrastructure that lasts beyond the funding cycle</p><p>Measurable, evidence-based development</p>
+        <p>A record the young person owns and the commissioner can report</p><p>A connected network where every outcome compounds</p>
+      </div>
+    </div>
+    <p style="margin-top:3rem;font-weight:800;font-size:clamp(1.3rem,2.5vw,1.9rem);color:var(--lime);text-transform:lowercase" class="reveal">We don't chase impact. We build the conditions for it.</p>
+    <div class="cta-strip reveal"><span class="cta-label" style="opacity:.9">Ready to commission precision?</span><a href="#signup" class="btn white sm" data-cursor data-magnetic>Talk To Us <span class="arr">→</span></a></div>
+  </div>
+</section>
+
+<section class="context-band">
+  <div class="cb-media" data-speed="0.12"><img src="ksl-assets/photo-london.jpg" alt="Electric Avenue, South London at night" loading="lazy"></div>
+  <div class="cb-overlay"></div>
+  <div class="cb-text">
+    <div class="chapter reveal">Rooted Where It Matters</div>
+    <h2 class="reveal">precision, built in<br><span class="lime">south london.</span></h2>
+    <p class="reveal">We work in the schools, estates and high streets where potential gets buried under pressure.</p>
+  </div>
+</section>
+
+<section class="how-sec" id="how">
+  <div class="px-word px-layer" data-speed="0.26" style="top:2%;right:-3%;color:var(--teal)">HOW</div>
+  <div class="wrap">
+    <div class="pss-intro">
+      <div class="chapter reveal">Chapter 04 — How It Works</div>
+      <h2 class="big reveal" style="margin-top:1rem">one system.<br>three moves.</h2>
+      <p class="reveal" style="max-width:48ch;margin:1rem auto 0">The Precision Streamline System takes a practitioner — or a young person — from raw potential to documented, networked impact. Nothing one-off. Everything connected.</p>
+    </div>
+    <div class="pss-flow">
+      <div class="pss-card reveal" data-cursor>
+        <div class="pss-media"><img src="ksl-assets/photo-training.jpg" alt="Practitioner training session" loading="lazy"></div>
+        <div class="stage">STAGE 01</div><div class="verb">prepare</div><div class="name">precision training · L1 + L2</div>
+        <div class="body">We equip parents, mentors, coaches and pastoral leads with the skills and language to deliver real youth development.</div>
+        <div class="meta">→ READY-TO-DELIVER PRACTITIONERS</div><a href="#training" class="card-link">Explore the training →</a>
+      </div>
+      <div class="pss-arrow"><span>→</span></div>
+      <div class="pss-card reveal" data-cursor>
+        <div class="pss-media"><img src="ksl-assets/photo-mentor.jpg" alt="Mentor coaching young people" loading="lazy"></div>
+        <div class="stage">STAGE 02</div><div class="verb">process</div><div class="name">precision coaching · PILLAR</div>
+        <div class="body">Trained practitioners run structured, identity-first coaching through the PILLAR framework — turning theory into measurable change.</div>
+        <details class="drop">
+          <summary><span>How it's delivered</span> <span class="caret">▾</span></summary>
+          <ul>
+            <li><strong>Foundation</strong> · 6 hours — 1:1 or cohort</li>
+            <li><strong>Formation</strong> · 8 hours — 1:1 or cohort</li>
+            <li><strong>Framework</strong> · 10 hours — 1:1 or cohort</li>
+          </ul>
+        </details>
+        <div class="meta">→ MEASURABLE DEVELOPMENT</div><a href="#signup" class="card-link" data-calcom>Book a conversation →</a>
+      </div>
+      <div class="pss-arrow"><span>→</span></div>
+      <div class="pss-card reveal" data-cursor>
+        <div class="pss-media"><img src="ksl-assets/photo-practitioner.jpg" alt="Reviewing a young person's record on a tablet" loading="lazy"></div>
+        <div class="stage">STAGE 03</div><div class="verb">print</div><div class="name">the precision network · TPN</div>
+        <div class="body">Every outcome is captured, evidenced and printed into a record the young person owns — and the institution can report.</div>
+        <div class="meta">→ OWNED, REPORTABLE EVIDENCE</div><a href="#signup" class="card-link">Explore TPN →</a>
+      </div>
+    </div>
+    <div class="pss-network reveal">
+      <div class="px-shape" data-speed="0.3" style="width:200px;height:200px;background:rgba(255,255,255,.06);top:-60px;right:10%;opacity:1"></div>
+      <div class="nettext">
+        <span class="stage">THE CONNECTIVE THREAD</span>
+        <h3>The Precision Network runs through all three.</h3>
+        <p>It's not an add-on. TPN is the infrastructure that links training, delivery and evidence into one auditable system — so impact compounds instead of disappearing.</p>
+      </div>
+      <a href="#network" class="btn white" data-cursor data-magnetic>Explore The Network <span class="arr">→</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="dark tpn" id="network">
+  <div class="px-word px-layer" data-speed="0.2" style="top:6%;left:-4%;color:var(--lime)">NETWORK</div>
+  <div class="dark-bg" data-speed="0.07" style="width:52%;height:56%;right:-6%;top:6%" aria-hidden="true"><img src="ksl-assets/photo-coaching.jpg" alt="" loading="lazy"></div>
+  <div class="dark-bg" data-speed="0.15" style="width:38%;height:48%;left:-7%;top:34%" aria-hidden="true"><img src="ksl-assets/photo-coach.jpg" alt="" loading="lazy"></div>
+  <div class="dark-bg" data-speed="0.2" style="width:34%;height:44%;right:-4%;bottom:-5%;opacity:.32" aria-hidden="true"><img src="ksl-assets/photo-home.jpg" alt="" loading="lazy"></div>
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="chapter">Chapter 05 — The Connective Thread</div>
+      <h2 class="big">the precision <span class="lime">network.</span></h2>
+      <p>The Precision Network is the structured youth development ecosystem we built — connecting young people, mentors, schools, clubs and commissioners through one aligned system, built on identity, accountability and measurable growth.</p>
+    </div>
+    <div class="tpn-statement reveal">
+      <span class="eyebrow">Through the Youth Precision Framework</span>
+      <p>every interaction has <span class="lime">purpose.</span><br>every tool has <span class="lime">intent.</span><br>every outcome is <span class="lime">trackable.</span></p>
+    </div>
+    <div class="tpn-grid">
+      <div class="tpn-node reveal"><span class="num">01 / SUPPORT</span><h3>young people</h3><p>connected to structured, identity-first support that meets them where they are.</p></div>
+      <div class="tpn-node reveal"><span class="num">02 / TOOLS</span><h3>mentors</h3><p>connected to practical, ready-to-deliver tools — not theory, but a method.</p></div>
+      <div class="tpn-node reveal"><span class="num">03 / OVERSIGHT</span><h3>organisations</h3><p>connected to live safeguarding oversight built into the system, not bolted on.</p></div>
+      <div class="tpn-node reveal"><span class="num">04 / VISIBILITY</span><h3>commissioners</h3><p>connected to real-time impact visibility — evidence you can actually report.</p></div>
+    </div>
+    <div class="tpn-foot reveal">
+      <p>It's how we dynamically <span class="lime">connect, create and contribute</span> to our community and city — at scale.</p>
+      <a href="#signup" class="btn lime" data-cursor data-magnetic>Enter The Network <span class="arr">→</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="train-sec" id="training">
+  <div class="px-word px-layer" data-speed="0.24" style="top:4%;right:-3%;color:var(--teal)">TRAIN</div>
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="chapter">Chapter 06 — Become a Practitioner</div>
+      <h2 class="big" style="margin-top:1rem">train in <span class="lime">precision work.</span></h2>
+      <p style="max-width:56ch;margin-top:1rem">Our interactive, self-paced Precision Training course equips parents, mentors, coaches and pastoral leads to deliver intentional, measurable youth development. Two levels — built, not borrowed.</p>
+    </div>
+    <div class="train-grid">
+      <div class="pss-card reveal" data-cursor>
+        <div class="pss-media"><img src="ksl-assets/photo-study.jpg" alt="Precision Training Level 1 — Foundations" loading="lazy"></div>
+        <div class="stage">LEVEL 01 · FOUNDATIONS</div>
+        <div class="verb">foundations</div>
+        <div class="name">philosophy, shape and the tier model</div>
+        <div class="body">Understand Precision Work, master SHAPE as an identity-mapping tool, the three identity tiers, the Precision Formula, and the real barriers young people face. Module checkpoints throughout, plus a final knowledge check.</div>
+        <div class="meta">→ INTERACTIVE · CHECKPOINT-GATED</div>
+        <a href="#signup" class="btn lime sm" data-cursor style="margin-top:1.4rem">Enquire for access →</a>
+      </div>
+      <div class="pss-card reveal" data-cursor>
+        <div class="pss-media"><img src="ksl-assets/photo-training.jpg" alt="Precision Training Level 2 — Application" loading="lazy"></div>
+        <div class="stage">LEVEL 02 · APPLICATION</div>
+        <div class="verb">application</div>
+        <div class="name">live delivery, pacs and safeguarding</div>
+        <div class="body">Turn the foundations into practice: session anatomy, SHAPE in live settings, the Tier Assessment, Precision Aid Cards, solution-focused language, safeguarding pathways, and tracking measurable outcomes.</div>
+        <div class="meta">→ APPLIED · CERTIFIED</div>
+        <a href="#signup" class="btn lime sm" data-cursor style="margin-top:1.4rem">Enquire for access →</a>
+      </div>
+    </div>
+    <p class="train-note reveal">Complete a level to earn an official, personalised certificate of completion.</p>
+  </div>
+</section>
+<section class="audience" id="act">
+  <div class="px-shape" data-speed="0.3" style="width:80px;height:80px;background:var(--teal);top:12%;left:8%;opacity:.4"></div>
+  <div class="wrap">
+    <div class="audience-head">
+      <div class="chapter reveal">Chapter 07 — Take The Step</div>
+      <h2 class="big reveal" style="margin-top:1rem">find your route in.</h2>
+      <p class="reveal" style="max-width:46ch;margin:1rem auto 0">Schools, charities, academies, commissioners and practitioners — each with a way in to the Precision Streamline System.</p>
+    </div>
+    <div class="audience-grid">
+      <div class="aud-card reveal" data-tilt data-cursor><div class="aud-media"><img src="ksl-assets/photo-meeting.jpg" alt="A school planning session" loading="lazy"></div><div class="who">SCHOOLS + MATs</div><h3>real youth intervention</h3>
+        <p class="pitch">License the full system. Embed <strong>measurable</strong>, reportable youth development infrastructure across your provision.</p>
+        <a href="#signup" class="btn" data-magnetic>Partner <span class="arr">→</span></a></div>
+      <div class="aud-card reveal" data-tilt data-cursor><div class="aud-media"><img src="ksl-assets/photo-care.jpg" alt="Youth charity support work" loading="lazy"></div><div class="who">YOUTH CHARITIES</div><h3>deepen your impact</h3>
+        <p class="pitch">Add <strong>evidence</strong> and structure to the work you already do — and report outcomes funders can trust.</p>
+        <a href="#signup" class="btn" data-magnetic>Work with us <span class="arr">→</span></a></div>
+      <div class="aud-card reveal" data-tilt data-cursor><div class="aud-media"><img src="ksl-assets/photo-basketball.jpg" alt="A sports academy session" loading="lazy"></div><div class="who">SPORTS ACADEMIES</div><h3>develop the whole athlete</h3>
+        <p class="pitch">Build identity and life-skills alongside performance — a <strong>structured</strong> off-pitch pathway your players own.</p>
+        <a href="#signup" class="btn" data-magnetic>Bring it in <span class="arr">→</span></a></div>
+      <div class="aud-card reveal" data-tilt data-cursor><div class="aud-media"><img src="ksl-assets/photo-mentors.jpg" alt="Commissioners in conversation" loading="lazy"></div><div class="who">COMMISSIONERS</div><h3>scoped to your outcomes</h3>
+        <p class="pitch">Commission a programme designed around your priorities, with <strong>outcome reporting</strong> built in, not bolted on.</p>
+        <a href="#signup" class="btn" data-calcom data-magnetic>Design a programme with us <span class="arr">→</span></a></div>
+      <div class="aud-card reveal" data-tilt data-cursor><div class="aud-media"><img src="ksl-assets/photo-practitioner.jpg" alt="A practitioner reviewing records" loading="lazy"></div><div class="who">PRACTITIONERS</div><h3>get certified</h3>
+        <p class="pitch">Become a <strong>Precision Practitioner</strong>. Get the training, language and evidence tools to deliver real youth development.</p>
+        <a href="#signup" class="btn" data-magnetic>Train with us <span class="arr">→</span></a></div>
+    </div>
+  </div>
+</section>
+
+<section class="signup" id="signup">
+  <div class="px-word px-layer" data-speed="0.2" style="bottom:-4%;left:-3%;color:var(--lime)">SHIFT</div>
+  <div class="wrap signup-grid">
+    <div>
+      <div class="chapter reveal">Ready To Shift?</div>
+      <h2 class="big reveal">sign up. <span class="lime">enquire.</span><br>get moving.</h2>
+      <p class="reveal">Whether you're a young person ready to activate, a school after real intervention, or an organisation wanting to license the Precision Streamline System — start here.</p>
+      <p class="reveal" style="font-family:var(--mono);font-size:.85rem;color:rgba(255,255,255,.6);letter-spacing:.05em">One form. We'll route you to the right next step within 2 working days.</p>
+      <p class="reveal" style="margin-top:1.5rem"><a href="#signup" class="btn ghost" data-calcom data-cursor data-magnetic style="border-color:var(--lime);color:var(--lime)">Or book a conversation <span class="arr">→</span></a></p>
+      <details class="drop" style="max-width:30rem">
+        <summary><span>View bundle options</span> <span class="caret">▾</span></summary>
+        <ul>
+          <li><strong>Precision Starter</strong> — <span class="price">£4,895/yr</span> <span style="opacity:.55">(£408/mo equiv.)</span></li>
+          <li><strong>Precision Professional</strong> — <span class="price">£8,840/yr</span> <span style="opacity:.55">(£737/mo equiv.)</span></li>
+          <li><strong>Precision Institutional</strong> — <span class="price">£11,250/yr</span> <span style="opacity:.55">(£938/mo equiv.)</span></li>
+          <li><strong>Commissioner programmes</strong> — scoped individually · book a conversation</li>
+        </ul>
+        <p class="note">Monthly figures are the annual cost shown monthly, for budgeting only — not a pay-monthly plan. Prices in GBP, not VAT-registered. In-person delivery adds +£29 (Greater London) or +£99 (outside London) per engagement.</p>
+      </details>
+    </div>
+    <form class="form-card reveal" id="enquiryForm" novalidate>
+      <div class="form-row"><label for="name">Your Name</label><input type="text" id="name" placeholder="First and last name" required></div>
+      <div class="form-row"><label for="email">Email</label><input type="email" id="email" placeholder="you@example.com" required></div>
+      <div class="form-row"><label for="interest">I'm enquiring about</label>
+        <select id="interest">
+          <option>Precision Training (L1 + L2)</option>
+          <option>Precision Coaching (PILLAR)</option>
+          <option>The Precision Network (TPN)</option>
+          <option>Licensing the full PSS for my organisation</option>
+          <option>Making a referral</option>
+          <option>Funding / partnership</option>
+        </select>
+      </div>
+      <button type="submit" class="btn lime" id="submitBtn" data-cursor>Send Enquiry <span class="arr">→</span></button>
+      <p class="form-note">Or email hello@keyshiftlondon.org</p>
+    </form>
+  </div>
+</section>
+
+<section class="final">
+  <div class="px-ring" data-speed="0.45" style="width:340px;height:340px;top:-100px;right:-110px;color:var(--teal-bright)"></div>
+  <div class="dark-bg" data-speed="0.08" style="width:40%;height:74%;left:-7%;top:8%" aria-hidden="true"><img src="ksl-assets/photo-final1.jpg" alt="" loading="lazy"></div>
+  <div class="dark-bg" data-speed="0.16" style="width:38%;height:64%;right:-6%;bottom:-5%" aria-hidden="true"><img src="ksl-assets/photo-final2.jpg" alt="" loading="lazy"></div>
+  <div class="wrap">
+    <div class="chapter reveal">Prepare. Process. Print.</div>
+    <h2 class="huge reveal">a generation of<br><span class="lime">precision</span><br>practitioners.</h2>
+    <p class="quote reveal">"our 'how' takes a huge commitment. our 'why' empowers future generations."</p>
+    <div class="final-ctas reveal">
+      <a href="#signup" class="btn white" data-cursor data-magnetic>Sign Up / Enquire <span class="arr">→</span></a>
+      <a href="#how" class="btn ghost" style="border-color:var(--lime);color:var(--lime)" data-cursor data-magnetic>See the System</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-col">
+      <img class="footer-logo" src="ksl-assets/logo-light.png" alt="Key Shift London" width="816" height="659">
+      <p>Unlocking Potential. Shaping Futures.</p>
+      <p>Community Interest Company · Reg. 15685849</p>
+    </div>
+    <div class="footer-col"><h4>The System</h4>
+      <a href="#how">Precision Training</a><br><a href="#how">Precision Coaching</a><br>
+      <a href="#how">The Precision Network</a><br><a href="#what">Youth Precision Work</a></div>
+    <div class="footer-col"><h4>Get Involved</h4>
+      <a href="#signup">Young People</a><br><a href="#signup">Schools + Councils</a><br>
+      <a href="#signup">Funders</a><br><a href="#signup">Make a Referral</a></div>
+    <div class="footer-col"><h4>Contact</h4>
+      <a href="https://keyshiftlondon.org" target="_blank" rel="noopener noreferrer external">keyshiftlondon.org</a><br><a href="mailto:hello@keyshiftlondon.org">hello@keyshiftlondon.org</a></div>
+    <div class="footer-col"><h4>Follow</h4>
+      <div class="socials">
+        <a href="https://instagram.com/keyshiftldn" target="_blank" rel="noopener noreferrer external" aria-label="Key Shift London on Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.86s0 3.59-.07 4.86c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.86.07s-3.59 0-4.86-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23C2.2 15.6 2.2 15.2 2.2 12s0-3.59.07-4.86c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.4 2.2 8.8 2.2 12 2.2Zm0 1.95c-3.15 0-3.52.01-4.76.07-.9.04-1.38.19-1.7.32-.43.16-.74.36-1.06.68-.32.32-.52.63-.68 1.06-.13.32-.28.8-.32 1.7-.06 1.24-.07 1.61-.07 4.76s.01 3.52.07 4.76c.04.9.19 1.38.32 1.7.16.43.36.74.68 1.06.32.32.63.52 1.06.68.32.13.8.28 1.7.32 1.24.06 1.61.07 4.76.07s3.52-.01 4.76-.07c.9-.04 1.38-.19 1.7-.32.43-.16.74-.36 1.06-.68.32-.32.52-.63.68-1.06.13-.32.28-.8.32-1.7.06-1.24.07-1.61.07-4.76s-.01-3.52-.07-4.76c-.04-.9-.19-1.38-.32-1.7a2.85 2.85 0 0 0-.68-1.06 2.85 2.85 0 0 0-1.06-.68c-.32-.13-.8-.28-1.7-.32-1.24-.06-1.61-.07-4.76-.07Zm0 3.32a4.53 4.53 0 1 1 0 9.06 4.53 4.53 0 0 1 0-9.06Zm0 7.47a2.94 2.94 0 1 0 0-5.88 2.94 2.94 0 0 0 0 5.88Zm5.77-7.69a1.06 1.06 0 1 1-2.12 0 1.06 1.06 0 0 1 2.12 0Z"/></svg></a>
+        <a href="https://tiktok.com/@keyshiftldn" target="_blank" rel="noopener noreferrer external" aria-label="Key Shift London on TikTok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.6 5.82A4.28 4.28 0 0 1 15.5 3h-3.1v12.4a2.6 2.6 0 1 1-2.6-2.6c.27 0 .53.04.78.12v-3.2a5.86 5.86 0 0 0-.78-.05A5.74 5.74 0 1 0 15.5 15.4V9.01a7.3 7.3 0 0 0 4.28 1.38V7.28a4.28 4.28 0 0 1-3.18-1.46Z"/></svg></a>
+        <a href="https://www.linkedin.com/company/keyshiftldn" target="_blank" rel="noopener noreferrer external" aria-label="Key Shift London on LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm6 0h3.8v1.64h.05c.53-1 1.83-2.06 3.77-2.06 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.4c0-1.29-.02-2.95-1.8-2.95-1.8 0-2.08 1.4-2.08 2.85V21H9V9Z"/></svg></a>
+        <a href="https://x.com/keyshiftldn" target="_blank" rel="noopener noreferrer external" aria-label="Key Shift London on X"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.24 2.25h3.31l-7.23 8.26 8.5 11.24h-6.66l-5.22-6.82-5.97 6.82H1.66l7.73-8.84L1.24 2.25h6.83l4.71 6.23 5.46-6.23Zm-1.16 17.52h1.83L7.01 4.13H5.05l12.03 15.64Z"/></svg></a>
+      </div>
+      <p style="margin-top:.7rem">@keyshiftldn</p></div>
+  </div>
+</footer>
+
+<button class="totop" id="totop" aria-label="Back to top" data-cursor>↑</button>
+
+<!-- PLUGINS -->
+<!-- Self-hosted (same-origin) — no third-party CDN dependency. -->
+<script src="ksl-assets/gsap.min.js"></script>
+<script src="ksl-assets/ScrollTrigger.min.js"></script>
+<script src="ksl-assets/lenis.min.js"></script>
+<script>
+const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const FINE = window.matchMedia('(hover:hover) and (pointer:fine)').matches;
+
+/* ---------- Mobile nav ---------- */
+const burger=document.getElementById('burger');
+const navlinks=document.getElementById('navlinks');
+function setMenu(open){navlinks.classList.toggle('open',open);burger.setAttribute('aria-expanded',open?'true':'false');}
+burger.addEventListener('click',()=>setMenu(!navlinks.classList.contains('open')));
+navlinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>setMenu(false)));
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&navlinks.classList.contains('open')){setMenu(false);burger.focus();}});
+
+/* ---------- Loader ---------- */
+function startSite(){ document.body.classList.remove('loading'); if(!REDUCED) runIntro(); }
+window.addEventListener('load',()=>{
+  const fill=document.querySelector('.l-fill');
+  const logo=document.querySelector('.l-logo');
+  const loader=document.getElementById('loader');
+  if(REDUCED || typeof gsap==='undefined'){ loader.style.display='none'; startSite(); return; }
+  const tl=gsap.timeline();
+  tl.to(logo,{opacity:1,duration:.4})
+    .to(fill,{width:'100%',duration:1.0,ease:'power2.inOut'},0)
+    .to(loader,{yPercent:-100,duration:.7,ease:'power3.inOut',onStart:startSite},'+=.15')
+    .set(loader,{display:'none'});
+});
+
+/* If GSAP failed to load, never trap the user behind the loader */
+setTimeout(()=>{ if(document.body.classList.contains('loading')){
+  document.getElementById('loader').style.display='none';
+  document.body.classList.remove('loading');
+  document.body.classList.add('no-anim');
+}},4000);
+
+if(typeof gsap==='undefined'){ document.body.classList.add('no-anim'); }
+
+if(typeof gsap!=='undefined'){
+gsap.registerPlugin(ScrollTrigger);
+
+/* ---------- Lenis smooth scroll (optional enhancement, never fatal) ---------- */
+let lenis=null;
+try{
+  const LenisLib = window.Lenis || (window.lenis && window.lenis.default);
+  if(!REDUCED && typeof LenisLib==='function'){
+    lenis=new LenisLib({lerp:.1,wheelMultiplier:1,smoothWheel:true});
+    window.lenis=lenis;
+    lenis.on('scroll',ScrollTrigger.update);
+    gsap.ticker.add((t)=>lenis.raf(t*1000));
+    gsap.ticker.lagSmoothing(0);
+  }
+}catch(err){ lenis=null; console.warn('Lenis unavailable, using native scroll',err); }
+/* anchor links through Lenis */
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const id=a.getAttribute('href');
+    if(id.length>1){const t=document.querySelector(id);
+      if(t){e.preventDefault(); lenis?lenis.scrollTo(t,{offset:-70}):t.scrollIntoView({behavior:'smooth'});}}
+  });
+});
+
+/* ---------- Intro: hero ---------- */
+function runIntro(){
+  const tl=gsap.timeline({defaults:{ease:'power3.out'}});
+  tl.from('#heroTitle .line > span',{yPercent:115,duration:1,stagger:.09})
+    .from('.hero-tag',{y:20,opacity:0,duration:.7},'-=.8')
+    .from('.hero-sub',{y:24,opacity:0,duration:.7},'-=.6')
+    .from('.hero-ctas',{y:24,opacity:0,duration:.7},'-=.55')
+    .fromTo('.hero-visual',{scale:.8,opacity:0},{scale:1,opacity:1,duration:.9,ease:'back.out(1.4)'},'-=.9')
+    .from('.scroll-cue',{opacity:0,duration:.6},'-=.3');
+  gsap.set('.hero-tag,.hero-sub,.hero-ctas,.hero-visual',{opacity:1});
+}
+
+/* ---------- Reveal on scroll (everything .reveal not in hero) ---------- */
+gsap.utils.toArray('.reveal').forEach(el=>{
+  if(el.closest('.hero')) {gsap.set(el,{opacity:1}); return;}
+  gsap.fromTo(el,{y:34,opacity:0},{y:0,opacity:1,duration:.9,ease:'power3.out',
+    scrollTrigger:{trigger:el,start:'top 88%'}});
+});
+
+/* ---------- Parallax floats ---------- */
+gsap.utils.toArray('[data-speed]').forEach(el=>{
+  const speed=parseFloat(el.getAttribute('data-speed'));
+  gsap.to(el,{yPercent:-speed*100,ease:'none',
+    scrollTrigger:{trigger:el.closest('section,header')||el,start:'top bottom',end:'bottom top',scrub:true}});
+});
+
+/* ---------- Hero title parallax drift on scroll ---------- */
+gsap.to('#heroTitle',{yPercent:18,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
+
+/* ---------- Marquee: base loop + velocity skew ---------- */
+const track=document.getElementById('marquee');
+track.innerHTML+=track.innerHTML; /* duplicate for seamless loop */
+let marqueeX=0, baseSpeed=.6;
+gsap.ticker.add(()=>{
+  marqueeX-=baseSpeed + Math.abs(velo)*.35;
+  const half=track.scrollWidth/2;
+  if(-marqueeX>=half) marqueeX+=half;
+  gsap.set(track,{x:marqueeX, skewX:gsap.utils.clamp(-10,10,velo*.6)});
+});
+let velo=0;
+if(lenis){ lenis.on('scroll',({velocity})=>{velo=velocity||0;}); }
+else { let ly=window.scrollY; window.addEventListener('scroll',()=>{velo=(window.scrollY-ly);ly=window.scrollY;}); }
+gsap.ticker.add(()=>{velo*=.9;});
+
+/* ---------- Counters ---------- */
+gsap.utils.toArray('[data-count]').forEach(el=>{
+  const end=+el.getAttribute('data-count');
+  const suffix=el.getAttribute('data-suffix')||'';
+  const obj={v:0};
+  ScrollTrigger.create({trigger:el,start:'top 85%',once:true,onEnter:()=>{
+    gsap.to(obj,{v:end,duration:1.6,ease:'power2.out',
+      onUpdate:()=>{el.textContent=Math.round(obj.v)+suffix;}});
+  }});
+});
+
+/* ---------- SHAPE rows stagger ---------- */
+gsap.from('.shape-row',{x:-30,opacity:0,duration:.7,stagger:.1,ease:'power3.out',
+  scrollTrigger:{trigger:'.shape-list',start:'top 80%'}});
+
+/* ---------- Outcome hover spotlight ---------- */
+document.querySelectorAll('.outcome').forEach(o=>{
+  o.addEventListener('pointermove',e=>{
+    const r=o.getBoundingClientRect();
+    o.style.setProperty('--mx',((e.clientX-r.left)/r.width*100)+'%');
+    o.style.setProperty('--my',((e.clientY-r.top)/r.height*100)+'%');
+  });
+});
+
+/* ---------- Active nav link ---------- */
+const sections=['who','what','why','how','network'].map(id=>document.getElementById(id)).filter(Boolean);
+const linkFor={};
+document.querySelectorAll('.navlinks a').forEach(a=>{const h=a.getAttribute('href');if(h&&h.startsWith('#'))linkFor[h.slice(1)]=a;});
+sections.forEach(sec=>{
+  ScrollTrigger.create({trigger:sec,start:'top 50%',end:'bottom 50%',
+    onToggle:self=>{const l=linkFor[sec.id];if(!l)return;
+      if(self.isActive){document.querySelectorAll('.navlinks a').forEach(x=>x.classList.remove('active'));l.classList.add('active');}}});
+});
+
+/* ---------- Progress bar + nav hide + back-to-top ---------- */
+const progress=document.getElementById('progress');
+const nav=document.getElementById('nav');
+const totop=document.getElementById('totop');
+let lastY=0;
+ScrollTrigger.create({start:0,end:'max',onUpdate:self=>{
+  gsap.set(progress,{scaleX:self.progress});
+  const y=self.scroll();
+  if(y>lastY&&y>200) gsap.to(nav,{yPercent:-100,duration:.4});
+  else gsap.to(nav,{yPercent:0,duration:.4});
+  lastY=y;
+  totop.classList.toggle('show',y>600);
+}});
+totop.addEventListener('click',()=>lenis?lenis.scrollTo(0):window.scrollTo({top:0,behavior:'smooth'}));
+
+/* ---------- Card 3D tilt ---------- */
+if(FINE && !REDUCED){
+  document.querySelectorAll('[data-tilt]').forEach(card=>{
+    const qx=gsap.quickTo(card,'rotationY',{duration:.5,ease:'power3'});
+    const qy=gsap.quickTo(card,'rotationX',{duration:.5,ease:'power3'});
+    card.addEventListener('pointermove',e=>{
+      const r=card.getBoundingClientRect();
+      const px=(e.clientX-r.left)/r.width-.5, py=(e.clientY-r.top)/r.height-.5;
+      qx(px*10); qy(-py*10);
+    });
+    card.addEventListener('pointerleave',()=>{qx(0);qy(0);});
+  });
+}
+
+/* ---------- Magnetic buttons ---------- */
+if(FINE && !REDUCED){
+  document.querySelectorAll('[data-magnetic]').forEach(btn=>{
+    const mx=gsap.quickTo(btn,'x',{duration:.4,ease:'power3'});
+    const my=gsap.quickTo(btn,'y',{duration:.4,ease:'power3'});
+    btn.addEventListener('pointermove',e=>{
+      const r=btn.getBoundingClientRect();
+      mx((e.clientX-(r.left+r.width/2))*.35);
+      my((e.clientY-(r.top+r.height/2))*.35);
+    });
+    btn.addEventListener('pointerleave',()=>{mx(0);my(0);});
+  });
+}
+
+/* ---------- Custom cursor ---------- */
+if(FINE && !REDUCED){
+  const dot=document.getElementById('cdot'), ring=document.getElementById('cring'), clabel=document.getElementById('clabel');
+  const dx=gsap.quickTo(dot,'x',{duration:.15,ease:'power3'}), dy=gsap.quickTo(dot,'y',{duration:.15,ease:'power3'});
+  const rx=gsap.quickTo(ring,'x',{duration:.35,ease:'power3'}), ry=gsap.quickTo(ring,'y',{duration:.35,ease:'power3'});
+  window.addEventListener('pointermove',e=>{dx(e.clientX);dy(e.clientY);rx(e.clientX);ry(e.clientY);});
+  document.querySelectorAll('a,button,[data-cursor],input,select,.shape-row').forEach(el=>{
+    el.addEventListener('pointerenter',()=>{ring.classList.add('grow');
+      const lab=el.getAttribute('data-cursor');
+      if(lab&&lab!=='') {ring.classList.add('label');clabel.textContent=lab;}
+    });
+    el.addEventListener('pointerleave',()=>{ring.classList.remove('grow','label');clabel.textContent='';});
+  });
+}
+
+ScrollTrigger.refresh();
+} /* end gsap guard */
+
+/* ---------- Enquiry form ---------- */
+// Set this to your deployed service endpoint to make the form live, e.g.
+//   'https://ksl-payments.onrender.com/api/licensing/enquiry'
+// (that origin is already allow-listed in the CSP connect-src above — keep them in sync).
+// While empty, the form still confirms gracefully without sending.
+const ENQUIRY_API = '';
+// Cal.com booking link — set to your Cal.com event URL (see docs/calcom-setup.md), e.g.
+//   'https://cal.com/keyshiftlondon/book-a-conversation'
+// Every [data-calcom] button opens it in a new tab. While empty, those buttons fall back
+// to scrolling to the enquiry form (the primary route).
+const CAL_LINK = 'https://cal.com/key-shift-london-uwjros/30min';
+document.querySelectorAll('[data-calcom]').forEach(a=>{
+  if(CAL_LINK){a.href=CAL_LINK;a.target='_blank';a.rel='noopener';}
+});
+const enquiryForm=document.getElementById('enquiryForm');
+const submitBtn=document.getElementById('submitBtn');
+const emailOk=v=>/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v);
+function formError(msg){
+  let n=enquiryForm.querySelector('.form-error');
+  if(!n){n=document.createElement('p');n.className='form-error';n.setAttribute('role','alert');
+    n.style.cssText='color:#ff6b6b;font-family:var(--mono);font-size:.7rem;letter-spacing:.04em;margin-top:.7rem;text-align:center';
+    enquiryForm.querySelector('.form-note').before(n);}
+  n.textContent=msg;
+}
+enquiryForm.addEventListener('submit',async function(e){
+  e.preventDefault();
+  const name=document.getElementById('name'), email=document.getElementById('email'), interest=document.getElementById('interest');
+  if(!name.value.trim()){name.focus();return;}
+  if(!emailOk(email.value)){email.focus();return;}
+  const prev=submitBtn.innerHTML;
+  submitBtn.disabled=true; submitBtn.style.opacity='.7'; submitBtn.innerHTML='Sending…';
+  const old=enquiryForm.querySelector('.form-error'); if(old) old.remove();
+  try{
+    if(ENQUIRY_API){
+      const res=await fetch(ENQUIRY_API,{method:'POST',headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({name:name.value.trim(),email:email.value.trim(),interest:interest.value})});
+      if(!res.ok) throw new Error('HTTP '+res.status);
+    }
+    submitBtn.innerHTML="Thanks — we'll be in touch ✦";
+    enquiryForm.querySelectorAll('input,select').forEach(el=>el.disabled=true);
+  }catch(err){
+    submitBtn.disabled=false; submitBtn.style.opacity=''; submitBtn.innerHTML=prev;
+    formError('Couldn’t send — please email hello@keyshiftlondon.org or try again.');
+  }
+});
+</script>
+</body>
+</html>
