@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PILLAR Diagnostic, Key Shift London</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --lime:#C8FF00; --black:#080808; --dark:#111; --mid:#1C1C1C;
+  --border:#2A2A2A; --muted:#555; --light:#888; --white:#F4F4F0;
+  --red:#FF3B30; --amber:#FF9500; --blue:#3B82F6; --green:#22C55E;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:var(--black);color:var(--white);font-family:'Barlow',sans-serif;font-weight:300;overflow:hidden}
+
+.screen{position:fixed;inset:0;display:flex;flex-direction:column;opacity:0;pointer-events:none;transition:opacity .45s ease;overflow-y:auto}
+.screen.active{opacity:1;pointer-events:all}
+
+/* INTRO */
+#s-intro{justify-content:center;align-items:center;padding:40px;text-align:center}
+.ksl-tag{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:11px;letter-spacing:.35em;color:var(--lime);text-transform:uppercase;margin-bottom:48px;display:flex;align-items:center;justify-content:center;gap:12px}
+.ksl-tag::before,.ksl-tag::after{content:'';width:40px;height:1px;background:var(--lime);opacity:.4}
+.intro-h{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(72px,12vw,136px);line-height:.88;letter-spacing:-.02em}
+.intro-h span{color:var(--lime);display:block}
+.intro-sub{font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--muted);margin:12px 0 44px}
+.intro-desc{max-width:460px;font-size:16px;line-height:1.7;color:var(--light);margin:0 auto 48px}
+.intro-desc strong{color:var(--white);font-weight:500}
+.pillar-dots{display:flex;gap:6px;justify-content:center;margin-bottom:48px}
+.p-dot{width:40px;height:40px;background:var(--mid);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:19px;color:var(--muted);transition:all .3s}
+.p-dot.done{background:var(--lime);border-color:var(--lime);color:var(--black)}
+.p-dot.current{border-color:var(--lime);color:var(--lime)}
+.disclaimer{font-size:11px;color:var(--muted);letter-spacing:.1em;margin-top:20px}
+
+/* BUTTONS */
+.btn{display:inline-flex;align-items:center;gap:10px;font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:14px;letter-spacing:.15em;text-transform:uppercase;border:none;cursor:pointer;transition:all .18s}
+.btn-primary{background:var(--lime);color:var(--black);padding:17px 38px}
+.btn-primary:hover{background:var(--white);transform:translateY(-1px)}
+.btn-ghost{background:transparent;border:1px solid var(--border);color:var(--light);padding:13px 26px}
+.btn-ghost:hover{border-color:var(--white);color:var(--white)}
+.btn-next{background:transparent;border:1px solid var(--border);color:var(--muted);padding:13px 26px}
+.btn-next.ready{background:var(--lime);border-color:var(--lime);color:var(--black)}
+.btn-next.ready:hover{background:var(--white);border-color:var(--white)}
+
+/* NAME */
+#s-name{justify-content:center;align-items:center;padding:40px}
+.name-wrap{width:100%;max-width:540px}
+.name-lbl{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--lime);margin-bottom:24px}
+.name-q{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(36px,6vw,62px);line-height:1;color:var(--white);margin-bottom:44px}
+.name-input{width:100%;background:transparent;border:none;border-bottom:2px solid var(--border);color:var(--white);font-family:'Barlow',sans-serif;font-size:27px;font-weight:300;padding:14px 0;outline:none;transition:border-color .3s;caret-color:var(--lime)}
+.name-input:focus{border-bottom-color:var(--lime)}
+.name-input::placeholder{color:var(--muted)}
+.name-actions{margin-top:44px;display:flex;align-items:center;gap:20px}
+
+/* TRANSITION */
+#s-trans{justify-content:center;align-items:center;padding:40px;text-align:center}
+.trans-letter{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(110px,18vw,200px);line-height:1;color:var(--black);-webkit-text-stroke:1px var(--border);display:inline-block;margin-bottom:12px;transition:color .5s,-webkit-text-stroke .5s}
+.trans-letter.lit{color:var(--lime);-webkit-text-stroke:0}
+.trans-pname{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(26px,4.5vw,46px);letter-spacing:.1em;text-transform:uppercase;color:var(--white);margin-bottom:14px}
+.trans-belief{font-size:14px;color:var(--muted);font-style:italic;letter-spacing:.04em;margin-bottom:44px;max-width:380px;line-height:1.6}
+.trans-count{font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);margin-bottom:44px}
+@keyframes pulse-lime{0%,100%{opacity:1}50%{opacity:.45}}
+.pulse{animation:pulse-lime 2s ease-in-out infinite}
+
+/* ASSESSMENT */
+#s-assess{background:var(--black)}
+.assess-hdr{padding:22px 40px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);flex-shrink:0}
+.pillar-id{display:flex;align-items:center;gap:14px}
+.p-badge{width:50px;height:50px;background:var(--lime);display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:26px;color:var(--black);flex-shrink:0}
+.p-meta{display:flex;flex-direction:column;gap:2px}
+.p-num{font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted)}
+.p-title{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:19px;letter-spacing:.05em;color:var(--white);text-transform:uppercase}
+.hdr-prog{display:flex;flex-direction:column;align-items:flex-end;gap:7px}
+.prog-lbl{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.prog-track{width:180px;height:2px;background:var(--border)}
+.prog-fill{height:100%;background:var(--lime);transition:width .5s ease}
+.q-area{flex:1;display:flex;flex-direction:column;justify-content:center;padding:40px;max-width:740px;margin:0 auto;width:100%}
+.q-id{font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--lime);margin-bottom:22px}
+.q-text{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:clamp(22px,3.8vw,36px);line-height:1.15;color:var(--white);margin-bottom:44px}
+.options{display:flex;flex-direction:column;gap:9px}
+.opt{display:flex;align-items:flex-start;gap:14px;padding:17px 22px;background:var(--mid);border:1px solid var(--border);cursor:pointer;transition:all .14s;text-align:left;position:relative;overflow:hidden;width:100%}
+.opt::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:transparent;transition:background .14s}
+.opt:hover,.opt.sel{border-color:var(--lime);background:#181f08}
+.opt:hover::before,.opt.sel::before{background:var(--lime)}
+.opt-key{width:24px;height:24px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:12px;color:var(--muted);flex-shrink:0;margin-top:1px;transition:all .14s}
+.opt:hover .opt-key,.opt.sel .opt-key{background:var(--lime);border-color:var(--lime);color:var(--black)}
+.opt-text{font-size:15px;line-height:1.5;color:var(--light);transition:color .14s}
+.opt:hover .opt-text,.opt.sel .opt-text{color:var(--white)}
+.q-footer{padding:22px 40px;display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--border);flex-shrink:0}
+.q-ctr{font-size:13px;color:var(--muted)}
+.q-ctr strong{color:var(--white);font-weight:500}
+
+/* RESULTS */
+#s-results{background:var(--black);overflow-y:auto}
+.r-hero{padding:56px 40px 44px;border-bottom:1px solid var(--border);max-width:880px;margin:0 auto;width:100%}
+.r-eye{font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--lime);margin-bottom:18px}
+.r-name{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(46px,8vw,92px);line-height:.9;color:var(--white);margin-bottom:10px}
+.r-subtitle{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:17px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:36px}
+.r-score-row{display:flex;align-items:baseline;gap:10px;margin-bottom:10px}
+.r-score-n{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:68px;line-height:1;color:var(--lime)}
+.r-score-d{font-family:'Barlow Condensed',sans-serif;font-weight:400;font-size:34px;color:var(--muted)}
+.r-score-lbl{font-size:12px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:28px}
+.band-pill{display:inline-block;padding:7px 18px;font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:13px;letter-spacing:.18em;text-transform:uppercase}
+.band-emerging{background:var(--red);color:var(--black)}
+.band-developing{background:var(--amber);color:var(--black)}
+.band-established{background:#E5C100;color:var(--black)}
+.band-advanced{background:var(--lime);color:var(--black)}
+.band-precision{background:var(--white);color:var(--black)}
+.r-body{padding:44px 40px;max-width:880px;margin:0 auto;width:100%}
+.sec-lbl{font-size:10px;letter-spacing:.36em;text-transform:uppercase;color:var(--muted);margin-bottom:20px;padding-bottom:10px;border-bottom:1px solid var(--border)}
+.bar-row{display:grid;grid-template-columns:130px 1fr 44px;align-items:center;gap:14px;margin-bottom:13px}
+.bar-pill{display:flex;align-items:center;gap:9px}
+.bar-l{width:26px;height:26px;background:var(--mid);display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:14px;color:var(--muted);flex-shrink:0}
+.bar-n{font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--light);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bar-track{height:5px;background:var(--mid);overflow:hidden}
+.bar-fill{height:100%;width:0%;transition:width 1.1s cubic-bezier(.16,1,.3,1)}
+.fill-low{background:var(--red)}.fill-mid{background:var(--amber)}.fill-est{background:#E5C100}.fill-adv{background:var(--lime)}.fill-prec{background:var(--white)}
+.bar-pct{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:15px;color:var(--white);text-align:right}
+.chart-wrap{margin-bottom:56px}
+.p-cards{display:flex;flex-direction:column;gap:2px;margin-bottom:56px}
+.p-card{background:var(--mid);border-left:3px solid transparent;padding:22px 26px}
+.p-card.pri{border-left-color:var(--red)}.p-card.dev{border-left-color:var(--amber)}.p-card.est{border-left-color:#E5C100}.p-card.adv{border-left-color:var(--lime)}
+.card-hdr{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:10px;gap:14px}
+.card-tg{display:flex;align-items:center;gap:10px}
+.card-l{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:30px;line-height:1;color:var(--lime)}
+.card-name{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:17px;letter-spacing:.05em;text-transform:uppercase;color:var(--white)}
+.card-sub{font-size:11px;color:var(--muted);letter-spacing:.05em;margin-top:2px}
+.card-chip{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:12px;letter-spacing:.1em;padding:5px 11px;flex-shrink:0}
+.chip-pri{background:rgba(255,59,48,.15);color:var(--red)}
+.chip-dev{background:rgba(255,149,0,.15);color:var(--amber)}
+.chip-est{background:rgba(229,193,0,.15);color:#E5C100}
+.chip-adv{background:rgba(200,255,0,.15);color:var(--lime)}
+.card-insight{font-size:14px;line-height:1.65;color:var(--light)}
+.card-insight strong{color:var(--white);font-weight:500}
+.r-cta{background:var(--dark);border-top:1px solid var(--border);padding:56px 40px}
+.cta-inner{max-width:880px;margin:0 auto;display:flex;align-items:flex-start;justify-content:space-between;gap:56px;flex-wrap:wrap}
+.cta-h{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:38px;line-height:1;color:var(--white);margin-bottom:10px}
+.cta-p{font-size:15px;line-height:1.6;color:var(--light);max-width:420px}
+.cta-acts{display:flex;flex-direction:column;gap:10px;flex-shrink:0}
+.r-foot{padding:28px 40px;max-width:880px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;border-top:1px solid var(--border)}
+.foot-ksl{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:13px;letter-spacing:.15em;color:var(--white);text-transform:uppercase}
+.foot-reg{font-size:11px;color:var(--muted);letter-spacing:.05em;margin-top:4px}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+.fu{animation:fadeUp .5s ease forwards}
+.d1{animation-delay:.1s;opacity:0}.d2{animation-delay:.2s;opacity:0}.d3{animation-delay:.3s;opacity:0}.d4{animation-delay:.4s;opacity:0}.d5{animation-delay:.5s;opacity:0}.d6{animation-delay:.65s;opacity:0}
+
+@media(max-width:580px){
+  .assess-hdr,.q-area,.q-footer{padding-left:20px;padding-right:20px}
+  .r-hero,.r-body,.r-cta,.r-foot{padding-left:20px;padding-right:20px}
+  .prog-track{width:110px}
+  .bar-row{grid-template-columns:90px 1fr 38px;gap:8px}
+  #s-intro,#s-name,#s-trans{padding:24px 20px}
+  .cta-inner{flex-direction:column;gap:28px}
+}
+
+/* ── MOTION LAYER · spring-based, Framer-Motion-style entrances ── */
+@keyframes optIn{from{opacity:0;transform:translateY(16px) scale(.985)}to{opacity:1;transform:none}}
+.opt{opacity:0;animation:optIn .46s cubic-bezier(.22,1,.36,1) both;animation-delay:var(--d,0s)}
+@keyframes popSel{0%{transform:scale(1)}42%{transform:scale(1.018)}100%{transform:scale(1)}}
+.opt.pop{animation:popSel .36s cubic-bezier(.34,1.56,.64,1)}
+.q-area{animation:qIn .5s cubic-bezier(.22,1,.36,1)}
+@keyframes qIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.p-card{opacity:0;animation:optIn .55s cubic-bezier(.22,1,.36,1) both;animation-delay:var(--d,0s)}
+.trans-letter{animation:letterIn .7s cubic-bezier(.34,1.56,.64,1)}
+@keyframes letterIn{from{opacity:0;transform:scale(.7)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){
+  .opt,.p-card,.q-area,.trans-letter{animation:none!important;opacity:1!important;transform:none!important}
+}
+</style>
+</head>
+<body>
+
+<!-- INTRO -->
+<div class="screen active" id="s-intro">
+  <div class="ksl-tag">Key Shift London CIC</div>
+  <div class="intro-h fu d1">PILLAR<span>DIAGNOSTIC</span></div>
+  <div class="intro-sub fu d2">Practitioner Identity Assessment</div>
+  <div class="intro-desc fu d3">
+    This is not a skills test. It is an honest examination of your <strong>internal operating system</strong>, the beliefs, posture, and identity you carry into the work of serving young people.
+    <br><br>30 questions &nbsp;·&nbsp; 6 pillars &nbsp;·&nbsp; approx. <strong>12 minutes</strong>
+  </div>
+  <div class="pillar-dots fu d4" id="dot-row">
+    <div class="p-dot">P</div><div class="p-dot">I</div><div class="p-dot">L</div>
+    <div class="p-dot">L</div><div class="p-dot">A</div><div class="p-dot">R</div>
+  </div>
+  <button class="btn btn-primary fu d5" id="btn-begin">Begin Assessment &nbsp;→</button>
+  <div class="disclaimer fu d6">Be honest. The value of this is entirely dependent on it.</div>
+</div>
+
+<!-- NAME -->
+<div class="screen" id="s-name">
+  <div class="name-wrap" style="margin:auto;padding:40px">
+    <div class="name-lbl fu d1">Before we begin</div>
+    <div class="name-q fu d2">What is your<br>name?</div>
+    <input class="name-input fu d3" id="name-input" type="text" placeholder="First name is enough" autocomplete="off" maxlength="40">
+    <div class="name-actions fu d4">
+      <button class="btn btn-primary" id="btn-start">Start &nbsp;→</button>
+      <button class="btn btn-ghost" id="btn-back">← Back</button>
+    </div>
+  </div>
+</div>
+
+<!-- PILLAR TRANSITION -->
+<div class="screen" id="s-trans">
+  <div class="trans-letter" id="tr-letter">P</div>
+  <div class="trans-pname" id="tr-name">Perspective</div>
+  <div class="trans-belief" id="tr-belief">"What you believe determines what you see"</div>
+  <div class="trans-count" id="tr-count">Pillar 1 of 6 &nbsp;·&nbsp; 5 Questions</div>
+  <button class="btn btn-primary pulse" id="btn-enter">Enter &nbsp;→</button>
+</div>
+
+<!-- ASSESSMENT -->
+<div class="screen" id="s-assess">
+  <div class="assess-hdr">
+    <div class="pillar-id">
+      <div class="p-badge" id="h-letter">P</div>
+      <div class="p-meta">
+        <div class="p-num" id="h-pnum">Pillar 1 of 6</div>
+        <div class="p-title" id="h-ptitle">Perspective</div>
+      </div>
+    </div>
+    <div class="hdr-prog">
+      <div class="prog-lbl" id="prog-lbl">Question 1 of 30</div>
+      <div class="prog-track"><div class="prog-fill" id="prog-fill" style="width:0%"></div></div>
+    </div>
+  </div>
+  <div class="q-area">
+    <div class="q-id" id="q-id">P1</div>
+    <div class="q-text" id="q-text"></div>
+    <div class="options" id="options"></div>
+  </div>
+  <div class="q-footer">
+    <div class="q-ctr" id="q-ctr">Question <strong>1</strong> of 30</div>
+    <button class="btn btn-next" id="btn-next">Next &nbsp;→</button>
+  </div>
+</div>
+
+<!-- RESULTS -->
+<div class="screen" id="s-results">
+  <div class="r-hero">
+    <div class="r-eye">PILLAR Practitioner Identity Diagnostic</div>
+    <div class="r-name" id="r-name">PRACTITIONER</div>
+    <div class="r-subtitle">Practitioner Posture Profile</div>
+    <div class="r-score-row">
+      <div class="r-score-n" id="r-score">0</div>
+      <div class="r-score-d">/ 100</div>
+    </div>
+    <div class="r-score-lbl">Overall Identity Strength</div>
+    <div class="band-pill" id="r-band">Emerging Practitioner</div>
+  </div>
+  <div class="r-body">
+    <div class="sec-lbl">Identity strength by pillar</div>
+    <div class="chart-wrap" id="chart-wrap"></div>
+    <div class="sec-lbl">Pillar analysis</div>
+    <div class="p-cards" id="p-cards"></div>
+  </div>
+  <div class="r-cta">
+    <div class="cta-inner">
+      <div>
+        <div class="cta-h">Your next step<br>is clear.</div>
+        <div class="cta-p">This profile is the starting point for your PILLAR coaching journey. A Key Shift London identity coach will use it to design a personalised six-session arc built around your specific development areas.</div>
+      </div>
+      <div class="cta-acts">
+        <button class="btn btn-primary" id="btn-print">Download Profile &nbsp;↓</button>
+        <button class="btn btn-ghost" id="btn-restart">Retake Assessment</button>
+      </div>
+    </div>
+  </div>
+  <div class="r-foot">
+    <div>
+      <div class="foot-ksl">Key Shift London CIC</div>
+      <div class="foot-reg">Reg. No. 15685849 &nbsp;·&nbsp; South Croydon, London</div>
+    </div>
+    <div class="foot-reg">Unlocking Potential. Shaping Futures.</div>
+  </div>
+</div>
+
+<script>
+var PILLARS=[
+  {letter:"P",name:"Perspective",      belief:"\u201cWhat you believe determines what you see\u201d",          sub:"Belief System & Worldview"},
+  {letter:"I",name:"Identity",          belief:"\u201cYou can only give what you possess\u201d",                sub:"Self-Concept & Core Values"},
+  {letter:"L",name:"Leadership Posture",belief:"\u201cAttitude is what separates presence from noise\u201d",   sub:"Bearing, Confidence & Composure"},
+  {letter:"L",name:"Lens",              belief:"\u201cFearlessness is a product of knowledge\u201d",           sub:"Knowledge, Vision & Context"},
+  {letter:"A",name:"Accountability",    belief:"\u201cLeaders respond based on their belief\u201d",             sub:"Response Patterns & Ownership"},
+  {letter:"R",name:"Resource Stewardship",belief:"\u201cPrecision begins within, and extends outward\u201d",sub:"Purpose, Sustainability & Gravity"}
+];
+
+var QUESTIONS=[
+  {id:"P1",p:0,text:"When a young person behaves in a way that frustrates you, what is your most honest first reaction?",opts:["I feel personally challenged or disrespected, it\u2019s hard not to take it personally.","I get frustrated but try to remind myself there\u2019s usually a reason behind it.","I stay relatively calm and start thinking about what might be driving the behaviour.","I see it as information, a signal about what this young person needs, not a personal attack."]},
+  {id:"P2",p:0,text:"Which statement best reflects how you view your role in a young person\u2019s development?",opts:["My job is to deliver the programme or service I\u2019ve been assigned.","I care about the young people but I\u2019m realistic, I can only do so much.","I see myself as a significant influence in their story, even if my time with them is short.","I believe I am stewarding potential that could change a life, and I carry that weight."]},
+  {id:"P3",p:0,text:"How honestly would you describe your current belief about whether the young people you work with can truly change?",opts:["Some of them, honestly, some seem too far gone.","I believe most can, but some situations make it hard to hold onto that.","I genuinely believe they all have capacity, even when the evidence is hard to see.","This conviction is foundational to how I show up every single day. I don\u2019t waver on it."]},
+  {id:"P4",p:0,text:"When a young person\u2019s home situation is chaotic or troubled, how does that affect your expectations of them?",opts:["It makes me lower my expectations, it\u2019s unfair to hold them to the same standard.","It affects my expectations a little, if I\u2019m honest, it\u2019s hard not to let it.","I acknowledge it, but I try not to let context become a ceiling for what I believe is possible.","I hold higher expectations because I know that someone believing in them may be the single most powerful thing."]},
+  {id:"P5",p:0,text:"How often do you examine and question your own assumptions about the young people you serve?",opts:["Rarely, I\u2019ve been doing this long enough to trust my read.","Sometimes, usually when something goes wrong or surprises me.","Regularly, I have a habit of checking my thinking.","It\u2019s a constant practice. I treat my assumptions as temporary, always open to revision."]},
+  {id:"I1",p:1,text:"If asked right now, could you clearly articulate who you are, what you stand for, and why you do this work?",opts:["Not really, it would come out as a jumble.","I have a general sense but it\u2019s not something I could state clearly and confidently.","I could give a solid answer, though it\u2019s not something I\u2019ve formally worked through.","Yes, I have a clear, considered personal identity statement that I\u2019ve built over time."]},
+  {id:"I2",p:1,text:"How much of your motivation to work with young people comes from a place of personal need, wanting to be needed, recognised, or validated?",opts:["Probably quite a lot, if I\u2019m honest about it.","Some, but I also genuinely care about the young people.","Mostly intrinsic motivation, though I\u2019m aware the need for recognition can creep in.","I\u2019ve done the work on this. My motivation is settled and rooted in service, not self."]},
+  {id:"I3",p:1,text:"When you encounter a young person who challenges your values, rejects your input, or dismisses you, what happens to your sense of self?",opts:["It shakes me more than I\u2019d like to admit.","I manage it, but there\u2019s a moment of destabilisation.","I can generally stay grounded, my sense of self isn\u2019t dependent on their response.","My identity is settled enough that rejection doesn\u2019t move me. I can hold steady in the tension."]},
+  {id:"I4",p:1,text:"Have you done any intentional, structured work on your own identity, explored your history, examined your values, built self-understanding?",opts:["No, not really, beyond casual reflection.","Some informal reflection, but nothing structured or deep.","Yes, I\u2019ve engaged with some development work, mentoring, coaching, or training.","Yes, I have an ongoing practice of identity development and self-examination."]},
+  {id:"I5",p:1,text:"Do you know the difference between the person you are and the role you play?",opts:["Honestly, they\u2019re fairly blurred for me, I find it hard to separate them.","I can see the difference in theory, but in practice they overlap a lot.","Yes, I can step out of my role without losing myself.","Absolutely, I have a clear sense of self that exists entirely independent of what I do."]},
+  {id:"L1",p:2,text:"When you walk into a room of young people who don\u2019t know you, what do you carry in?",opts:["Mostly anxiety, I\u2019m often unsure how they\u2019ll receive me.","A mix of confidence and caution, I read the room before committing to a posture.","A calm, grounded confidence. I\u2019m not looking for their approval before I engage.","Complete conviction. I know who I am and I carry that into every environment."]},
+  {id:"L2",p:2,text:"How consistent is your presence and energy across different environments, tough sessions, easy sessions, high-stakes moments?",opts:["Variable, I\u2019m quite different depending on how the session is going.","Reasonably consistent, but difficult sessions definitely affect me.","Fairly stable, I recover quickly when things are hard.","Very consistent. I lead from the same place regardless of conditions."]},
+  {id:"L3",p:2,text:"How do you handle it when a young person or colleague publicly questions or challenges your authority?",opts:["I get defensive or flustered, public challenge is hard for me.","I manage it, but it takes effort to stay composed.","I can hold myself with dignity under challenge, I don\u2019t need to \u2018win.\u2019","I welcome it. Challenge is information. I stay completely grounded and respond from a place of security."]},
+  {id:"L4",p:2,text:"Do the young people you work with know what you stand for, not just what you do, but who you are?",opts:["Probably not. I\u2019m focused on delivering the work, not on being known.","Some of them might have a sense of it, but I\u2019ve never been intentional about this.","I think so, my values tend to come through in how I work.","Yes. I\u2019m intentional about being transparent, my identity is visible in my practice."]},
+  {id:"L5",p:2,text:"How much does needing approval from young people or peers affect how you show up in your work?",opts:["Quite a lot, I adjust my approach based on whether I think people are responding well.","Some, I notice the pull, and it takes effort to resist it.","Minimal, I care about connection but not approval. There\u2019s a difference.","None. I operate from internal conviction, not external validation."]},
+  {id:"L6",p:3,text:"How well do you understand the structural and environmental factors, poverty, racism, trauma, housing instability, that shape the young people you serve?",opts:["I\u2019m aware they exist but I don\u2019t have deep knowledge of how they operate.","I have a reasonable understanding, though there are gaps.","Strong understanding, I\u2019ve invested in this knowledge and it shapes my practice.","This is foundational literacy for me. I can read these dynamics in real time and respond accordingly."]},
+  {id:"L7",p:3,text:"How confident are you in your understanding of adolescent development, how identity, decision-making, and relationships form during this period?",opts:["Not very confident, I work from instinct more than knowledge.","Some knowledge, but not deep enough to consistently inform my practice.","Solid grounding, I can apply developmental understanding to what I see.","Excellent. This knowledge is inseparable from how I read and respond to young people."]},
+  {id:"L8",p:3,text:"Do you have a clear vision of what you are working towards, for the young people you serve and for yourself as a practitioner?",opts:["Not really, I\u2019m more focused on day-to-day delivery.","A general sense, but not a defined or articulated vision.","Yes, I have a clear picture of the outcomes I\u2019m working toward.","Yes, and my vision drives my decisions, energy, and growth as a practitioner."]},
+  {id:"L9",p:3,text:"When something unexpected or confusing happens with a young person, how do you respond?",opts:["I often feel lost or reactive, I don\u2019t always have a framework to make sense of it.","I manage, but I\u2019m relying on instinct rather than understanding.","I can usually draw on knowledge or experience to make sense of it in the moment.","I read it quickly, locate it in a wider understanding, and respond with precision."]},
+  {id:"L10",p:3,text:"How regularly do you invest in learning, reading, training, supervision, or professional development, directly relevant to your practice?",opts:["Rarely. I\u2019m stretched enough as it is.","Occasionally, when something comes up or is required.","Regularly, I have consistent learning habits.","It\u2019s a non-negotiable part of my practice. Ongoing growth is a commitment, not an option."]},
+  {id:"A1",p:4,text:"When you make a mistake in your work with young people, what is your most honest response?",opts:["I tend to minimise it or move on quickly, dwelling feels unproductive.","I feel bad about it but don\u2019t always know how to repair or learn from it.","I acknowledge it, own it, and try to repair and learn where possible.","I have a clear process for taking accountability, with the young person, with myself, and with my development."]},
+  {id:"A2",p:4,text:"Under pressure, a difficult session, a confrontational young person, an organisational crisis, how aligned are your actions with your values?",opts:["I often abandon my values under pressure. Survival mode kicks in.","I try to hold to my values, but pressure does move me.","Generally aligned, I notice when I\u2019ve drifted and correct fairly quickly.","Pressure reveals who I am, and I like what I see. My values are stress-tested and they hold."]},
+  {id:"A3",p:4,text:"Do you have someone in your life, a mentor, supervisor, peer, who holds you genuinely accountable in your practice?",opts:["No, not really.","Sort of, I have people I talk to, but it\u2019s not structured accountability.","Yes, I have a relationship that provides meaningful challenge and support.","Yes, and I\u2019ve built a culture of accountability around me, I seek challenge, not just validation."]},
+  {id:"A4",p:4,text:"How honestly do you reflect on your practice, including the parts that aren\u2019t working?",opts:["I tend to focus on the positives, the negative is hard to sit with.","I can reflect on what\u2019s not working, but I don\u2019t have a consistent practice.","I reflect regularly and honestly, including on uncomfortable truths.","My reflective practice is rigorous. I look for what\u2019s not working before it becomes a pattern."]},
+  {id:"A5",p:4,text:"When a young person disengages, acts out, or seems unaffected by your work, what do you tell yourself?",opts:["Mostly that it\u2019s their problem or their choice, not much I can do.","A mix, I wonder if I could have done something differently, but I don\u2019t dwell.","I take it as a prompt to examine my approach, what might I be missing or doing differently?","I use it as data. I look at my practice, my posture, and the relationship, and I adjust."]},
+  {id:"R1",p:5,text:"How would you honestly describe your current energy levels and capacity for this work?",opts:["Depleted, I\u2019m running on empty more often than not.","Variable, I have good stretches and hard stretches.","Generally sustainable, I manage my energy with intention.","Strong. I\u2019ve built rhythms and boundaries that protect my capacity for the long haul."]},
+  {id:"R2",p:5,text:"Do you have a clear sense of the weight of what you steward, the human potential entrusted to you when a young person is in your care?",opts:["Not really, it\u2019s a job I care about, but I don\u2019t carry it with that kind of gravity.","Sometimes, in certain moments I feel the weight of it.","Yes, I carry a genuine sense of responsibility for the influence I have.","Completely. The gravity of what I\u2019m entrusted with is something I\u2019ve fully reckoned with."]},
+  {id:"R3",p:5,text:"Are you growing as a practitioner, and do you have an intentional plan for that growth?",opts:["No real plan, I develop as things come up.","I think about growth but don\u2019t have a structured plan.","Yes, I have a clear direction for my development, even if not a formal plan.","Yes, I have a deliberate, active development plan and I invest in it consistently."]},
+  {id:"R4",p:5,text:"How well do you protect your personal and professional relationships, the support systems that sustain you in this work?",opts:["Poorly, the work tends to crowd everything else out.","With some intention, but I know I could be better at this.","Well, I make deliberate choices to protect and invest in my relationships.","This is a non-negotiable for me. I understand that depleted relationships deplete my practice."]},
+  {id:"R5",p:5,text:"If the young people and organisations you serve were asked about the quality of what you bring, how honest would you be about the gap between your best and your current?",opts:["There\u2019s a significant gap. I know I\u2019m not operating near my potential.","A noticeable gap, I\u2019m doing good work but I\u2019m not close to my ceiling.","A small gap. I\u2019m largely operating with good quality and consistency.","Minimal gap. I operate near my capacity most of the time, and I\u2019m always working to raise the ceiling."]}
+];
+
+var INSIGHTS=[
+  {name:"Perspective",sub:"Belief System & Worldview",levels:[
+    {range:"0\u20137",label:"Priority Focus",card:"pri",chip:"chip-pri",text:"<strong>This is your most critical development area.</strong> Your belief system is actively shaping your practice in limiting ways, often without awareness. Coaching focus: surfacing your core assumptions, tracing where they came from, and beginning intentional reconstruction. The goal is not to impose a worldview, but to ensure your current one is consciously chosen."},
+    {range:"8\u201312",label:"Developing",card:"dev",chip:"chip-dev",text:"<strong>You have a working belief system, but it has not been deeply examined.</strong> Some assumptions are limiting you without your awareness. Coaching focus: accelerating your ability to read situations accurately, hold young people in higher regard, and respond from examined belief rather than reflex."},
+    {range:"13\u201316",label:"Established",card:"est",chip:"chip-est",text:"<strong>Your perspective is largely healthy and examined.</strong> You carry genuine belief in young people\u2019s potential and work to question your assumptions. Coaching focus: depth and consistency, ensuring your perspective holds under pressure and continues to evolve rather than calcify."},
+    {range:"17\u201320",label:"Advanced",card:"adv",chip:"chip-adv",text:"<strong>Perspective is a clear strength.</strong> You carry an examined, conviction-driven worldview that is resilient under challenge. The task is keeping it alive, assumptions calcify over time, and even the most advanced practitioners need continued interrogation of what they believe and why."}
+  ]},
+  {name:"Identity",sub:"Self-Concept & Core Values",levels:[
+    {range:"0\u20137",label:"Priority Focus",card:"pri",chip:"chip-pri",text:"<strong>Your identity as a practitioner is largely unresolved, and this is showing up in your work.</strong> Most people in this sector have never been given space to do this work. Coaching focus: excavating your self-concept, examining your motivation honestly, and building a settled, examined sense of who you are, independent of your role."},
+    {range:"8\u201312",label:"Developing",card:"dev",chip:"chip-dev",text:"<strong>You have a sense of identity, but it has not been formally examined or grounded.</strong> Under pressure, it may shift more than you\u2019d like. Coaching focus: building the internal stability that allows consistency even when young people or situations push against you."},
+    {range:"13\u201316",label:"Established",card:"est",chip:"chip-est",text:"<strong>Your identity is reasonably settled.</strong> You know who you are and why you serve, and it generally holds under pressure. Coaching focus: articulation and depth, being able to state your identity clearly, and continuing to refine it as you grow."},
+    {range:"17\u201320",label:"Advanced",card:"adv",chip:"chip-adv",text:"<strong>Identity is a clear strength.</strong> You bring a settled, examined sense of self into your work, and young people feel that. Coaching focus: ongoing cultivation. Identity is not a destination but a practice. The task is continued examination and building."}
+  ]},
+  {name:"Leadership Posture",sub:"Bearing, Confidence & Composure",levels:[
+    {range:"0\u20137",label:"Priority Focus",card:"pri",chip:"chip-pri",text:"<strong>Your posture in practice is being compromised, by approval-seeking, inconsistency, or internal instability.</strong> Young people read your posture before you say a word. Coaching focus: identifying the root causes and building the internal bearing that earns genuine trust, the calm, purposeful presence of someone who knows exactly who they are."},
+    {range:"8\u201312",label:"Developing",card:"dev",chip:"chip-dev",text:"<strong>You have moments of strong posture, but consistency is not yet achieved.</strong> Difficult sessions or the need for approval can move you. Coaching focus: building the internal anchors that keep your posture stable regardless of conditions, because young people need to know who you are before they can trust where you\u2019re taking them."},
+    {range:"13\u201316",label:"Established",card:"est",chip:"chip-est",text:"<strong>Your leadership posture is a genuine asset.</strong> You show up with grounded, secure bearing that young people can orient around. Coaching focus: refinement in the details, the moments under extreme pressure, the edge cases where approval-seeking or defensiveness can still emerge."},
+    {range:"17\u201320",label:"Advanced",card:"adv",chip:"chip-adv",text:"<strong>Your posture is exceptional.</strong> You lead from identity, not approval, and hold that ground under pressure. The responsibility at this level is intentional modelling, because posture is contagious within a team or organisation."}
+  ]},
+  {name:"Lens",sub:"Knowledge, Vision & Context",levels:[
+    {range:"0\u20137",label:"Priority Focus",card:"pri",chip:"chip-pri",text:"<strong>You are operating with significant knowledge gaps that are creating fear, reactivity, and imprecision in practice.</strong> This is entirely addressable. Coaching focus: building your contextual and developmental literacy so that knowledge removes fear and enables action with precision rather than guesswork."},
+    {range:"8\u201312",label:"Developing",card:"dev",chip:"chip-dev",text:"<strong>Your knowledge base is functional but not yet deep enough to provide a stable foundation for practice.</strong> Gaps create uncertainty and instinct-reliance in key moments. Coaching focus: closing those gaps and building a coherent, motivating vision to work toward."},
+    {range:"13\u201316",label:"Established",card:"est",chip:"chip-est",text:"<strong>Your lens is well-developed.</strong> You bring contextual knowledge and developmental literacy to your practice. Coaching focus: breadth and currency, keeping your knowledge current and expanding the domains you can read with confidence."},
+    {range:"17\u201320",label:"Advanced",card:"adv",chip:"chip-adv",text:"<strong>You operate with a powerful lens.</strong> Your knowledge is deep, your vision is clear, and your fear is low. Coaching focus: keeping it sharp and using what you know to mentor and develop others whose lens is less developed."}
+  ]},
+  {name:"Accountability",sub:"Response Patterns & Ownership",levels:[
+    {range:"0\u20137",label:"Priority Focus",card:"pri",chip:"chip-pri",text:"<strong>Your accountability patterns need significant work.</strong> Patterns of defensiveness, avoidance, or blame-shifting are limiting your growth and impact. These are learned protective responses, not moral failures. Coaching focus: surfacing those patterns, challenging them, and building new response architecture rooted in your developed identity."},
+    {range:"8\u201312",label:"Developing",card:"dev",chip:"chip-dev",text:"<strong>You have a functioning accountability posture, but it is not yet robust enough to hold reliably in difficult moments.</strong> Coaching focus: building consistent reflective practice and genuinely accountable relationships, not just supportive ones."},
+    {range:"13\u201316",label:"Established",card:"est",chip:"chip-est",text:"<strong>Accountability is an asset.</strong> You take ownership, reflect honestly, and have people around you who provide genuine challenge. Coaching focus: the hard edges, the accountability patterns that only surface under extreme pressure."},
+    {range:"17\u201320",label:"Advanced",card:"adv",chip:"chip-adv",text:"<strong>Accountability is one of your strongest dimensions.</strong> You have built a rigorous, honest relationship with your own practice. Coaching focus: making accountability culturally contagious, building it into the teams and organisations you operate within."}
+  ]},
+  {name:"Resource Stewardship",sub:"Purpose, Sustainability & Gravity",levels:[
+    {range:"0\u20137",label:"Priority Focus",card:"pri",chip:"chip-pri",text:"<strong>You are in danger of running out of what you need to keep going, and young people may already be feeling it.</strong> Depletion is not a badge of honour. Coaching focus: understanding the gravity of what you steward, building sustainable rhythms, and investing in your own capacity as a long-term act of service."},
+    {range:"8\u201312",label:"Developing",card:"dev",chip:"chip-dev",text:"<strong>You are sustaining yourself, but not with full intentionality.</strong> Coaching focus: moving from survival-mode sustainability to deliberate, designed sustainability, so you can keep giving at the level this work requires over the long haul."},
+    {range:"13\u201316",label:"Established",card:"est",chip:"chip-est",text:"<strong>You steward your resources well.</strong> You carry the weight of the work without being crushed by it, and invest in your own capacity. Coaching focus: ensuring your personal and professional development is purposeful, not just reactive."},
+    {range:"17\u201320",label:"Advanced",card:"adv",chip:"chip-adv",text:"<strong>You are an exemplary steward.</strong> You understand the weight of what you carry, invest in your capacity deliberately, and model what long-term, sustainable, high-quality practice looks like. This is rare and genuinely valuable to the sector."}
+  ]}
+];
+
+// ─── STATE ───────────────────────────────────────────
+var userName='', curQ=0, curPillar=-1, answers=new Array(30).fill(null);
+
+// ─── CROSS-PATTERN SCORING ────────────────────────────
+// Each pillar: raw answers are 1-4 (index 0-3 → score 1-4)
+// Component A: base score 0-10 from raw sum (range 5-20)
+// Component B: consistency 0-5 via standard deviation
+// Component C: calibration 0-5 penalising all-D patterns
+// Total per pillar: A+B+C capped at 20
+
+function stdDev(arr){
+  var mean=arr.reduce(function(a,b){return a+b},0)/arr.length;
+  var variance=arr.reduce(function(s,v){return s+Math.pow(v-mean,2)},0)/arr.length;
+  return Math.sqrt(variance);
+}
+
+function scoreComponent_A(rawScores){
+  var sum=rawScores.reduce(function(a,b){return a+b},0);
+  return ((sum-5)/15)*10;
+}
+
+function scoreComponent_B(rawScores){
+  var sd=stdDev(rawScores);
+  if(sd<=0.5) return 5;
+  if(sd<=1.0) return 4;
+  if(sd<=1.5) return 3;
+  if(sd<=2.0) return 2;
+  if(sd<=2.5) return 1;
+  return 0;
+}
+
+function scoreComponent_C(rawScores, globalAvg){
+  var fours=rawScores.filter(function(s){return s===4}).length;
+  var base;
+  if(fours<=1) base=5;
+  else if(fours===2) base=4;
+  else if(fours===3) base=2;
+  else if(fours===4) base=1;
+  else base=0; // all 5 are 4s
+  // Restore 2 pts if genuine high performer across whole assessment
+  if(fours===5 && globalAvg>=3.5) base=Math.min(5, base+2);
+  return base;
+}
+
+function computePillarScore(pillarIndex, globalAvg){
+  var qs=QUESTIONS.filter(function(q){return q.p===pillarIndex});
+  var raw=qs.map(function(q,i){
+    var ans=answers[pillarIndex*5+i];
+    return ans===null ? 2 : ans+1; // ans is 0-3 index → score 1-4
+  });
+  var A=scoreComponent_A(raw);
+  var B=scoreComponent_B(raw);
+  var C=scoreComponent_C(raw,globalAvg);
+  return Math.min(20, Math.round(A+B+C));
+}
+
+function computeAllScores(){
+  // First pass: get global average of raw answers
+  var totalRaw=0, count=0;
+  for(var i=0;i<30;i++){
+    if(answers[i]!==null){ totalRaw+=answers[i]+1; count++; }
+  }
+  var globalAvg=count>0 ? totalRaw/count : 2;
+  // Second pass: score each pillar
+  var scores=[];
+  for(var pi=0;pi<6;pi++){
+    scores.push(computePillarScore(pi,globalAvg));
+  }
+  return scores;
+}
+
+function getPillarLevel(score){
+  if(score<=7) return 0;
+  if(score<=12) return 1;
+  if(score<=16) return 2;
+  return 3;
+}
+
+function getOverallBand(pct){
+  if(pct<40) return {label:"Emerging Practitioner",cls:"band-emerging"};
+  if(pct<55) return {label:"Developing Practitioner",cls:"band-developing"};
+  if(pct<70) return {label:"Established Practitioner",cls:"band-established"};
+  if(pct<85) return {label:"Advanced Practitioner",cls:"band-advanced"};
+  return {label:"Precision Practitioner",cls:"band-precision"};
+}
+
+function getBarClass(pct){
+  if(pct<40) return "fill-low";
+  if(pct<55) return "fill-mid";
+  if(pct<70) return "fill-est";
+  if(pct<85) return "fill-adv";
+  return "fill-prec";
+}
+
+// ─── NAVIGATION ──────────────────────────────────────
+function showScreen(id){
+  document.querySelectorAll('.screen').forEach(function(s){s.classList.remove('active')});
+  document.getElementById(id).classList.add('active');
+}
+
+function startAssessment(){
+  var val=document.getElementById('name-input').value.trim();
+  userName=val||'Practitioner';
+  curQ=0; curPillar=-1;
+  answers=new Array(30).fill(null);
+  moveToNextPillar();
+}
+
+function moveToNextPillar(){
+  var next=curPillar+1;
+  if(next>=6){ showResults(); return; }
+  curPillar=next;
+  showTransition(curPillar);
+}
+
+function showTransition(pi){
+  var p=PILLARS[pi];
+  document.getElementById('tr-letter').textContent=p.letter;
+  document.getElementById('tr-letter').classList.remove('lit');
+  document.getElementById('tr-name').textContent=p.name;
+  document.getElementById('tr-belief').textContent=p.belief;
+  document.getElementById('tr-count').textContent='Pillar '+(pi+1)+' of 6 \u00b7 5 Questions';
+  setTimeout(function(){document.getElementById('tr-letter').classList.add('lit')},280);
+  showScreen('s-trans');
+}
+
+function beginPillar(){
+  showScreen('s-assess');
+  renderQ();
+}
+
+function renderQ(){
+  var q=QUESTIONS[curQ];
+  var total=curQ+1;
+  var pi=q.p;
+  document.getElementById('h-letter').textContent=PILLARS[pi].letter;
+  document.getElementById('h-pnum').textContent='Pillar '+(pi+1)+' of 6';
+  document.getElementById('h-ptitle').textContent=PILLARS[pi].name;
+  document.getElementById('prog-lbl').textContent='Question '+total+' of 30';
+  document.getElementById('prog-fill').style.width=Math.round((total/30)*100)+'%';
+  document.getElementById('q-id').textContent=q.id;
+  document.getElementById('q-ctr').innerHTML='Question <strong>'+total+'</strong> of 30';
+
+  var qt=document.getElementById('q-text');
+  qt.style.animation='none'; qt.offsetHeight; qt.style.animation='fadeUp .3s ease';
+  qt.textContent=q.text;
+
+  var keys=['A','B','C','D'];
+  var grid=document.getElementById('options');
+  grid.innerHTML='';
+  q.opts.forEach(function(opt,i){
+    var btn=document.createElement('button');
+    btn.className='opt'+(answers[curQ]===i?' sel':'');
+    btn.innerHTML='<span class="opt-key">'+keys[i]+'</span><span class="opt-text">'+opt+'</span>';
+    btn.style.setProperty('--d',(0.06+i*0.07)+'s');
+    btn.addEventListener('click',(function(idx){return function(){selectOpt(idx)}})(i));
+    grid.appendChild(btn);
+  });
+  updateNextBtn();
+}
+
+function selectOpt(idx){
+  answers[curQ]=idx;
+  document.querySelectorAll('.opt').forEach(function(b,i){
+    b.classList.toggle('sel',i===idx);
+    if(i===idx){
+      b.classList.remove('pop'); void b.offsetWidth; b.classList.add('pop'); // spring pop
+    }
+  });
+  updateNextBtn();
+}
+
+// Spring-eased count-up (Framer-Motion-style) for the results score.
+function countUp(el,to,ms){
+  var start=performance.now();
+  function tick(now){
+    var t=Math.min(1,(now-start)/ms);
+    var eased=1-Math.pow(1-t,3); // easeOutCubic
+    el.textContent=Math.round(eased*to);
+    if(t<1) requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+}
+
+function updateNextBtn(){
+  var btn=document.getElementById('btn-next');
+  var ready=answers[curQ]!==null;
+  btn.classList.toggle('ready',ready);
+  btn.textContent=(ready && curQ===29)?'View Results \u2192':'Next \u2192';
+}
+
+function nextQ(){
+  if(answers[curQ]===null) return;
+  var nextIdx=curQ+1;
+  if(nextIdx>=30){ showResults(); return; }
+  var nextPillar=QUESTIONS[nextIdx].p;
+  if(nextPillar!==QUESTIONS[curQ].p){
+    curQ=nextIdx;
+    curPillar=nextPillar-1;
+    moveToNextPillar();
+    return;
+  }
+  curQ=nextIdx;
+  renderQ();
+}
+
+// ─── RESULTS ─────────────────────────────────────────
+function showResults(){
+  showScreen('s-results');
+  var pillarScores=computeAllScores();
+  var total=pillarScores.reduce(function(a,b){return a+b},0);
+  var pct=Math.round((total/120)*100);
+  var band=getOverallBand(pct);
+
+  document.getElementById('r-name').textContent=userName.toUpperCase();
+  countUp(document.getElementById('r-score'),pct,1100);
+  var bandEl=document.getElementById('r-band');
+  bandEl.textContent=band.label;
+  bandEl.className='band-pill '+band.cls;
+
+  // bars
+  var wrap=document.getElementById('chart-wrap');
+  wrap.innerHTML='';
+  PILLARS.forEach(function(p,i){
+    var sc=pillarScores[i];
+    var ppct=Math.round((sc/20)*100);
+    var row=document.createElement('div');
+    row.className='bar-row';
+    row.innerHTML='<div class="bar-pill"><div class="bar-l">'+p.letter+'</div><div class="bar-n">'+p.name+'</div></div>'
+      +'<div class="bar-track"><div class="bar-fill '+getBarClass(ppct)+'" data-pct="'+ppct+'" style="width:0%"></div></div>'
+      +'<div class="bar-pct">'+ppct+'%</div>';
+    wrap.appendChild(row);
+  });
+  setTimeout(function(){
+    document.querySelectorAll('.bar-fill').forEach(function(el){
+      el.style.width=el.dataset.pct+'%';
+    });
+  },350);
+
+  // cards sorted priority-first
+  var sorted=pillarScores.map(function(sc,i){return{i:i,sc:sc}}).sort(function(a,b){return a.sc-b.sc});
+  var cards=document.getElementById('p-cards');
+  cards.innerHTML='';
+  sorted.forEach(function(item,ci){
+    var pi=item.i, sc=item.sc;
+    var ppct=Math.round((sc/20)*100);
+    var lvl=getPillarLevel(sc);
+    var ins=INSIGHTS[pi];
+    var lev=ins.levels[lvl];
+    var card=document.createElement('div');
+    card.className='p-card '+lev.card;
+    card.style.setProperty('--d',(ci*0.08)+'s');
+    card.innerHTML='<div class="card-hdr">'
+      +'<div class="card-tg">'
+      +'<div class="card-l">'+PILLARS[pi].letter+'</div>'
+      +'<div><div class="card-name">'+ins.name+'</div><div class="card-sub">'+ins.sub+'</div></div>'
+      +'</div>'
+      +'<div class="card-chip '+lev.chip+'">'+lev.label+' \u00b7 '+ppct+'%</div>'
+      +'</div>'
+      +'<div class="card-insight">'+lev.text+'</div>';
+    cards.appendChild(card);
+  });
+}
+
+function restartAll(){
+  answers=new Array(30).fill(null);
+  curQ=0; curPillar=-1;
+  document.getElementById('name-input').value='';
+  showScreen('s-intro');
+}
+
+// ─── WIRE UP ─────────────────────────────────────────
+document.addEventListener('DOMContentLoaded',function(){
+  document.getElementById('btn-begin').addEventListener('click',function(){showScreen('s-name')});
+  document.getElementById('btn-start').addEventListener('click',function(){startAssessment()});
+  document.getElementById('btn-back').addEventListener('click',function(){showScreen('s-intro')});
+  document.getElementById('btn-enter').addEventListener('click',function(){beginPillar()});
+  document.getElementById('btn-next').addEventListener('click',function(){nextQ()});
+  document.getElementById('btn-print').addEventListener('click',function(){window.print()});
+  document.getElementById('btn-restart').addEventListener('click',function(){restartAll()});
+  document.getElementById('name-input').addEventListener('keydown',function(e){if(e.key==='Enter')startAssessment()});
+});
+</script>
+</body>
+</html>
