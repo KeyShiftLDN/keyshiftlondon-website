@@ -167,9 +167,28 @@ html,body{height:100%;background:var(--black);color:var(--white);font-family:'Ba
 @media(prefers-reduced-motion:reduce){
   .opt,.p-card,.q-area,.trans-letter{animation:none!important;opacity:1!important;transform:none!important}
 }
+
+/* ── FEATHERED BACKGROUND WASHES · low-opacity, edge-feathered, grayscale ── */
+#bg-washes{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.wash{position:absolute;background-size:cover;background-position:center;
+  filter:grayscale(1) contrast(1.04) brightness(.82);
+  -webkit-mask-image:radial-gradient(ellipse at center,#000 26%,transparent 72%);
+          mask-image:radial-gradient(ellipse at center,#000 26%,transparent 72%);
+  transition:opacity .8s ease}
+.screen{z-index:1}
+/* let the washes read through the two solid screens */
+#s-assess,#s-results{background:transparent}
+@media(prefers-reduced-motion:reduce){.wash{transition:none}}
 </style>
 </head>
 <body>
+
+<!-- FEATHERED BACKGROUND WASHES -->
+<div id="bg-washes" aria-hidden="true">
+  <div class="wash" style="width:48%;height:56%;left:-9%;top:-8%;opacity:.10;background-image:url('ksl-assets/photo-why1.jpg')"></div>
+  <div class="wash" style="width:52%;height:60%;right:-11%;bottom:-10%;opacity:.09;background-image:url('ksl-assets/photo-coaching.jpg')"></div>
+  <div class="wash" style="width:36%;height:44%;right:-7%;top:6%;opacity:.06;background-image:url('ksl-assets/photo-mentors.jpg')"></div>
+</div>
 
 <!-- INTRO -->
 <div class="screen active" id="s-intro">
