@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PILLAR Diagnostic, Key Shift London</title>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,700;1,800;1,900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
 :root {
   --lime:#C8FF00; --black:#080808; --dark:#111; --mid:#1C1C1C;
@@ -12,7 +12,7 @@
   --red:#FF3B30; --amber:#FF9500; --blue:#3B82F6; --green:#22C55E;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html,body{height:100%;background:var(--black);color:var(--white);font-family:'Barlow',sans-serif;font-weight:300;overflow:hidden}
+html,body{height:100%;background:var(--black);color:var(--white);font-family:'Barlow Condensed',sans-serif;font-weight:400;overflow:hidden}
 
 .screen{position:fixed;inset:0;display:flex;flex-direction:column;opacity:0;pointer-events:none;transition:opacity .45s ease;overflow-y:auto}
 .screen.active{opacity:1;pointer-events:all}
@@ -47,7 +47,7 @@ html,body{height:100%;background:var(--black);color:var(--white);font-family:'Ba
 .name-wrap{width:100%;max-width:540px}
 .name-lbl{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--lime);margin-bottom:24px}
 .name-q{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(36px,6vw,62px);line-height:1;color:var(--white);margin-bottom:44px}
-.name-input{width:100%;background:transparent;border:none;border-bottom:2px solid var(--border);color:var(--white);font-family:'Barlow',sans-serif;font-size:27px;font-weight:300;padding:14px 0;outline:none;transition:border-color .3s;caret-color:var(--lime)}
+.name-input{width:100%;background:transparent;border:none;border-bottom:2px solid var(--border);color:var(--white);font-family:'Barlow Condensed',sans-serif;font-size:29px;font-weight:400;padding:14px 0;outline:none;transition:border-color .3s;caret-color:var(--lime)}
 .name-input:focus{border-bottom-color:var(--lime)}
 .name-input::placeholder{color:var(--muted)}
 .name-actions{margin-top:44px;display:flex;align-items:center;gap:20px}
@@ -179,6 +179,32 @@ html,body{height:100%;background:var(--black);color:var(--white);font-family:'Ba
 /* let the washes read through the two solid screens */
 #s-assess,#s-results{background:transparent}
 @media(prefers-reduced-motion:reduce){.wash{transition:none}}
+
+/* ── TOP NAV · Key Shift London logo (home) + return to main site ── */
+.diag-top{position:fixed;top:0;left:0;right:0;height:60px;z-index:100;display:flex;
+  align-items:center;justify-content:space-between;padding:0 clamp(18px,4vw,40px);
+  pointer-events:none;background:linear-gradient(to bottom,rgba(8,8,8,.94),rgba(8,8,8,.55) 62%,transparent)}
+.diag-top a{pointer-events:auto;text-decoration:none}
+.diag-logo img{height:34px;width:auto;display:block;transition:opacity .2s}
+.diag-logo:hover img{opacity:.8}
+.diag-back{display:inline-flex;align-items:center;gap:9px;font-family:'JetBrains Mono',monospace;
+  font-weight:500;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--light);
+  padding:9px 17px;border:1px solid var(--border);border-radius:50px;transition:border-color .18s,color .18s}
+.diag-back:hover{border-color:var(--lime);color:var(--lime)}
+.diag-back .bk{font-size:15px;line-height:1;transition:transform .18s}
+.diag-back:hover .bk{transform:translateX(-3px)}
+/* clear the fixed bar on the two top-anchored screens */
+#s-assess{padding-top:60px}
+#s-results{padding-top:60px}
+@media(max-width:580px){
+  .diag-logo img{height:28px}
+  .diag-back{font-size:10px;padding:7px 13px;letter-spacing:.12em}
+}
+
+/* ── FONT CONSISTENCY WITH MAIN SITE · JetBrains Mono for eyebrows / meta / labels ── */
+.ksl-tag,.intro-sub,.disclaimer,.name-lbl,.trans-count,.q-id,.prog-lbl,.p-num,.q-ctr,
+.r-eye,.r-subtitle,.r-score-lbl,.band-pill,.sec-lbl,.bar-n,.card-sub,.card-chip,.meta,
+.foot-ksl,.foot-reg{font-family:'JetBrains Mono',monospace}
 </style>
 </head>
 <body>
@@ -189,6 +215,14 @@ html,body{height:100%;background:var(--black);color:var(--white);font-family:'Ba
   <div class="wash" style="width:52%;height:60%;right:-11%;bottom:-10%;opacity:.09;background-image:url('ksl-assets/photo-coaching.jpg')"></div>
   <div class="wash" style="width:36%;height:44%;right:-7%;top:6%;opacity:.06;background-image:url('ksl-assets/photo-mentors.jpg')"></div>
 </div>
+
+<!-- TOP NAV · logo (home) + return to main site -->
+<nav class="diag-top">
+  <a class="diag-logo" href="index.html" aria-label="Key Shift London, back to main site">
+    <img src="ksl-assets/logo-light.png" alt="Key Shift London" width="816" height="659">
+  </a>
+  <a class="diag-back" href="index.html"><span class="bk">←</span> Return to site</a>
+</nav>
 
 <!-- INTRO -->
 <div class="screen active" id="s-intro">
