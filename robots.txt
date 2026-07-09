@@ -1,0 +1,5 @@
+# Key Shift London — https://keyshiftlondon.org
+User-agent: *
+Allow: /
+
+Sitemap: https://keyshiftlondon.org/sitemap.xml
