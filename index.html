@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Key Shift London · Unlocking Potential. Shaping Futures.</title>
-<meta name="description" content="Key Shift London builds the precision infrastructure that turns young people's potential into measurable, lasting outcomes. South London youth development, ages 12–18.">
+<title>Key Shift London · South London Youth Development CIC</title>
+<meta name="description" content="Key Shift London is a South London youth development CIC (ages 12–18) delivering precision practitioner training, PILLAR coaching and measurable outcomes schools and funders can trust.">
 <link rel="icon" type="image/png" href="ksl-assets/arrow.png">
 <link rel="apple-touch-icon" href="ksl-assets/arrow.png">
 <!-- Security headers (CSP, HSTS, X-Frame-Options, etc.) are delivered server-side via
@@ -36,7 +36,15 @@
 {"@type":["Organization","NGO"],"@id":"https://keyshiftlondon.org/#org","name":"Key Shift London","alternateName":"KSL","legalName":"Key Shift London CIC","url":"https://keyshiftlondon.org/","logo":"https://keyshiftlondon.org/ksl-assets/logo-light.png","image":"https://keyshiftlondon.org/ksl-assets/og-image.png","description":"Key Shift London builds the precision infrastructure that turns young people's potential into measurable, lasting outcomes. South London youth development, ages 12–18.","slogan":"Unlocking Potential. Shaping Futures.","email":"hello@keyshiftlondon.org","areaServed":{"@type":"Place","name":"South London"},"address":{"@type":"PostalAddress","addressLocality":"Croydon","addressRegion":"London","addressCountry":"GB"},"identifier":{"@type":"PropertyValue","name":"CIC registration","value":"15685849"}},
 {"@type":"WebSite","@id":"https://keyshiftlondon.org/#website","url":"https://keyshiftlondon.org/","name":"Key Shift London","publisher":{"@id":"https://keyshiftlondon.org/#org"},"inLanguage":"en-GB"},
 {"@type":"Course","name":"Precision Training Level 1 · Foundations","description":"Self-paced, interactive online training equipping parents, mentors, coaches and pastoral leads with the SHAPE model, the three identity tiers and the Precision Formula.","url":"https://keyshiftlondon.org/#training","provider":{"@id":"https://keyshiftlondon.org/#org"},"inLanguage":"en-GB","offers":{"@type":"Offer","category":"Paid","price":"149.00","priceCurrency":"GBP","availability":"https://schema.org/InStock","url":"https://keyshiftlondon.org/#training"},"hasCourseInstance":{"@type":"CourseInstance","courseMode":"online","courseWorkload":"PT6H"}},
-{"@type":"Course","name":"Precision Training Level 2 · Application","description":"Self-paced, interactive online training on live delivery: session anatomy, SHAPE in practice, the Tier Assessment, Precision Aid Cards, safeguarding pathways and measurable outcomes.","url":"https://keyshiftlondon.org/#training","provider":{"@id":"https://keyshiftlondon.org/#org"},"inLanguage":"en-GB","offers":{"@type":"Offer","category":"Paid","price":"159.00","priceCurrency":"GBP","availability":"https://schema.org/InStock","url":"https://keyshiftlondon.org/#training"},"hasCourseInstance":{"@type":"CourseInstance","courseMode":"online","courseWorkload":"PT8H"}}
+{"@type":"Course","name":"Precision Training Level 2 · Application","description":"Self-paced, interactive online training on live delivery: session anatomy, SHAPE in practice, the Tier Assessment, Precision Aid Cards, safeguarding pathways and measurable outcomes.","url":"https://keyshiftlondon.org/#training","provider":{"@id":"https://keyshiftlondon.org/#org"},"inLanguage":"en-GB","offers":{"@type":"Offer","category":"Paid","price":"159.00","priceCurrency":"GBP","availability":"https://schema.org/InStock","url":"https://keyshiftlondon.org/#training"},"hasCourseInstance":{"@type":"CourseInstance","courseMode":"online","courseWorkload":"PT8H"}},
+{"@type":"FAQPage","@id":"https://keyshiftlondon.org/#faq","mainEntity":[
+{"@type":"Question","name":"What is Key Shift London?","acceptedAnswer":{"@type":"Answer","text":"Key Shift London is a South London youth development Community Interest Company (CIC, reg. 15685849) working with young people aged 12 to 18. We build the precision infrastructure (training, coaching and evidence tools) that turns potential into measurable, lasting outcomes."}},
+{"@type":"Question","name":"What is Precision Training and who is it for?","acceptedAnswer":{"@type":"Answer","text":"Precision Training is our self-paced online youth practitioner training for parents, mentors, coaches, pastoral leads and youth workers. Level 1 covers the foundations and Level 2 covers live delivery and safeguarding, and each level earns an official certificate of completion."}},
+{"@type":"Question","name":"What is PILLAR coaching?","acceptedAnswer":{"@type":"Answer","text":"PILLAR is our identity-first youth coaching framework, built around six pillars of practitioner development. You can take the free PILLAR Diagnostic to see which areas to focus on before starting a coaching journey."}},
+{"@type":"Question","name":"What is The Precision Network (TPN)?","acceptedAnswer":{"@type":"Answer","text":"The Precision Network is the youth development ecosystem that connects young people, mentors, schools, clubs and commissioners through one aligned system, built on identity, accountability, safeguarding and measurable growth."}},
+{"@type":"Question","name":"Do you work with schools, charities and commissioners?","acceptedAnswer":{"@type":"Answer","text":"Yes. We partner with schools, youth charities, sports academies and commissioners to deliver youth mentoring programmes and practitioner training, with outcome reporting that funders can trust."}},
+{"@type":"Question","name":"How much does Precision Training cost?","acceptedAnswer":{"@type":"Answer","text":"Precision Training Level 1 is £149 and Level 2 is £159 to buy and complete yourself. Facilitator, cohort and organisation-wide licensing options are available on enquiry."}}
+]}
 ]}
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -321,6 +329,19 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content
 .signup-grid h2{color:var(--white);margin:1rem 0 1rem}
 .signup-grid h2 .lime{color:var(--lime)}
 .signup-grid p{color:rgba(255,255,255,.78);margin-bottom:1rem}
+/* FAQ (dark section) */
+.faq .chapter{color:var(--lime)}
+.faq-list{max-width:60rem}
+.faq-item{border-bottom:1px solid rgba(255,255,255,.14)}
+.faq-item>summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;padding:1.3rem 0;font-family:var(--display);font-weight:700;font-size:clamp(1.05rem,2vw,1.4rem);line-height:1.2;color:#fff;text-transform:lowercase}
+.faq-item>summary::-webkit-details-marker{display:none}
+.faq-item[open]>summary{color:var(--lime)}
+.faq-item .caret{transition:transform .25s ease;color:var(--lime);flex-shrink:0}
+.faq-item[open] .caret{transform:rotate(180deg)}
+.faq-a{padding:0 0 1.4rem;max-width:56ch}
+.faq-a p{color:rgba(255,255,255,.72);line-height:1.65;font-size:1rem;font-weight:400}
+.faq-a a{color:var(--lime);text-decoration:none;border-bottom:1px solid rgba(200,255,0,.4)}
+.faq-a a:hover{border-bottom-color:var(--lime)}
 .form-card{background:rgba(255,255,255,.04);border:2px solid rgba(255,255,255,.18);border-radius:20px;padding:2.5rem}
 .form-row{margin-bottom:1.2rem}
 .form-row label{font-family:var(--mono);font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:var(--lime);display:block;margin-bottom:.5rem}
@@ -708,6 +729,43 @@ footer a:hover{color:var(--lime)}
       <button type="submit" class="btn lime" id="submitBtn" data-cursor>Send Enquiry <span class="arr">→</span></button>
       <p class="form-note">Or email hello@keyshiftlondon.org</p>
     </form>
+  </div>
+</section>
+
+<section class="dark faq" id="faq">
+  <div class="px-word px-layer" data-speed="0.2" style="top:4%;right:-3%;color:var(--teal)">FAQ</div>
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="chapter">Common Questions</div>
+      <h2 class="big">frequently asked.</h2>
+      <p>Quick answers on our South London youth development work, practitioner training and coaching.</p>
+    </div>
+    <div class="faq-list">
+      <details class="faq-item reveal">
+        <summary>What is Key Shift London?<span class="caret">▾</span></summary>
+        <div class="faq-a"><p>Key Shift London is a South London youth development Community Interest Company (CIC, reg. 15685849) working with young people aged 12 to 18. We build the precision infrastructure (training, coaching and evidence tools) that turns potential into measurable, lasting outcomes.</p></div>
+      </details>
+      <details class="faq-item reveal">
+        <summary>What is Precision Training and who is it for?<span class="caret">▾</span></summary>
+        <div class="faq-a"><p>Precision Training is our self-paced online youth practitioner training for parents, mentors, coaches, pastoral leads and youth workers. Level 1 covers the foundations and Level 2 covers live delivery and safeguarding, and each level earns an official certificate of completion. <a href="#training">Explore the training</a>.</p></div>
+      </details>
+      <details class="faq-item reveal">
+        <summary>What is PILLAR coaching?<span class="caret">▾</span></summary>
+        <div class="faq-a"><p>PILLAR is our identity-first youth coaching framework, built around six pillars of practitioner development. You can take the free <a href="pillar-diagnostic.html">PILLAR Diagnostic</a> to see which areas to focus on before starting a coaching journey.</p></div>
+      </details>
+      <details class="faq-item reveal">
+        <summary>What is The Precision Network (TPN)?<span class="caret">▾</span></summary>
+        <div class="faq-a"><p>The Precision Network is the youth development ecosystem that connects young people, mentors, schools, clubs and commissioners through one aligned system, built on identity, accountability, safeguarding and measurable growth. <a href="#network">See the network</a>.</p></div>
+      </details>
+      <details class="faq-item reveal">
+        <summary>Do you work with schools, charities and commissioners?<span class="caret">▾</span></summary>
+        <div class="faq-a"><p>Yes. We partner with schools, youth charities, sports academies and commissioners to deliver youth mentoring programmes and practitioner training, with outcome reporting that funders can trust. <a href="#signup">Start a conversation</a>.</p></div>
+      </details>
+      <details class="faq-item reveal">
+        <summary>How much does Precision Training cost?<span class="caret">▾</span></summary>
+        <div class="faq-a"><p>Precision Training Level 1 is £149 and Level 2 is £159 to buy and complete yourself. Facilitator, cohort and organisation-wide licensing options are available <a href="#signup">on enquiry</a>.</p></div>
+      </details>
+    </div>
   </div>
 </section>
 
