@@ -125,6 +125,15 @@
       <p>SHAPE is taught in Key Shift London's Precision Training. Level 1 covers the foundations and the framework itself; Level 2 covers applying it in live delivery, alongside safeguarding and measuring outcomes.</p>
     </article>
 
+    <div class="share" aria-label="Share this guide">
+      <span class="lbl">Share</span>
+      <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fkeyshiftlondon.org%2Fguides%2Fthe-shape-model.html" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fkeyshiftlondon.org%2Fguides%2Fthe-shape-model.html&text=The%20SHAPE%20Model%3A%20A%20Framework%20for%20Understanding%20Youth%20Identity" target="_blank" rel="noopener">X</a>
+      <a href="https://wa.me/?text=The%20SHAPE%20Model%20https%3A%2F%2Fkeyshiftlondon.org%2Fguides%2Fthe-shape-model.html" target="_blank" rel="noopener">WhatsApp</a>
+      <a href="mailto:?subject=The%20SHAPE%20Model%3A%20A%20Framework%20for%20Understanding%20Youth%20Identity&body=Thought%20this%20might%20be%20useful%3A%20https%3A%2F%2Fkeyshiftlondon.org%2Fguides%2Fthe-shape-model.html">Email</a>
+      <button class="copy-link" type="button" data-url="https://keyshiftlondon.org/guides/the-shape-model.html">Copy link</button>
+    </div>
+
     <section class="a-cta">
       <h2>start with <span class="lime">precision.</span></h2>
       <p>Understand your own posture as a practitioner, then learn to map SHAPE with confidence.</p>
@@ -150,5 +159,15 @@
   </div>
 </footer>
 
+<script>
+document.querySelectorAll('.copy-link').forEach(function(b){
+  b.addEventListener('click',function(){
+    (navigator.clipboard?navigator.clipboard.writeText(b.dataset.url):Promise.reject()).then(function(){
+      var t=b.textContent;b.textContent='Copied';b.classList.add('copied');
+      setTimeout(function(){b.textContent=t;b.classList.remove('copied');},1600);
+    }).catch(function(){});
+  });
+});
+</script>
 </body>
 </html>

@@ -103,6 +103,13 @@ img{max-width:100%;height:auto;display:block}
 .g-foot p{font-family:var(--mono);font-size:.68rem;letter-spacing:.04em;color:var(--muted);line-height:1.7}
 .g-foot a{color:var(--muted)}.g-foot a:hover{color:var(--teal)}
 
+/* share */
+.share{display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;margin:2.6rem 0 0;padding-top:1.7rem;border-top:1px solid var(--line)}
+.share .lbl{font-family:var(--mono);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-right:.25rem}
+.share a,.share button{font-family:var(--mono);font-size:.7rem;letter-spacing:.05em;text-transform:uppercase;color:var(--black);background:transparent;border:1px solid var(--line);border-radius:50px;padding:.5rem .9rem;cursor:pointer;transition:border-color .15s,color .15s;text-decoration:none;line-height:1}
+.share a:hover,.share button:hover{border-color:var(--teal);color:var(--teal)}
+.share button.copied{border-color:var(--teal);color:var(--teal)}
+
 @media(max-width:560px){
   .g-nav{gap:.9rem}.g-logo span{display:none}
   .a-body{font-size:1.1rem}
