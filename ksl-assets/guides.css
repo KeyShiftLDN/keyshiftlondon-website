@@ -1,0 +1,109 @@
+/* Key Shift London — shared stylesheet for Resources / guides pages.
+   Light, readable long-form template. Brand fonts: Barlow Condensed + JetBrains Mono. */
+:root{
+  --black:#0A0A0A; --ink:#26261f; --teal:#1A7A6E; --teal-bright:#2ABFAF;
+  --lime:#C8FF00; --paper:#FBFBF7; --line:#E4E4DC; --muted:#6C6C63;
+  --display:'Barlow Condensed',sans-serif; --mono:'JetBrains Mono',monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--display);background:var(--paper);color:var(--ink);
+  -webkit-font-smoothing:antialiased;line-height:1.75}
+a{color:var(--teal);text-decoration:none}
+img{max-width:100%;height:auto;display:block}
+
+/* top bar */
+.g-top{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;
+  gap:1rem;padding:.8rem clamp(18px,4vw,40px);background:rgba(251,251,247,.9);
+  backdrop-filter:saturate(1.2) blur(8px);border-bottom:1px solid var(--line)}
+.g-logo{display:inline-flex;align-items:center;gap:.6rem}
+.g-logo img{height:26px;width:auto;filter:brightness(0)}
+.g-logo span{font-family:var(--display);font-weight:900;font-style:italic;text-transform:uppercase;
+  letter-spacing:.01em;font-size:1rem;color:var(--black)}
+.g-nav{display:flex;align-items:center;gap:1.4rem}
+.g-nav a{font-family:var(--mono);font-size:.72rem;font-weight:500;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--muted)}
+.g-nav a:hover{color:var(--black)}
+.g-nav a.cta{color:var(--black);border:1px solid var(--black);border-radius:50px;padding:.5rem .9rem}
+.g-nav a.cta:hover{background:var(--black);color:var(--lime)}
+
+/* layout */
+.wrap{max-width:720px;margin:0 auto;padding:0 clamp(20px,5vw,28px)}
+.crumb{font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--muted);margin:2.4rem 0 1.4rem}
+.crumb a{color:var(--muted)}.crumb a:hover{color:var(--teal)}
+.crumb span{color:var(--line)}
+
+/* article header */
+.a-eyebrow{font-family:var(--mono);font-size:.72rem;font-weight:700;letter-spacing:.24em;
+  text-transform:uppercase;color:var(--teal);margin-bottom:1rem}
+.a-title{font-family:var(--display);font-weight:900;line-height:1.02;letter-spacing:-.01em;
+  font-size:clamp(2.1rem,5.5vw,3.4rem);color:var(--black);margin-bottom:1.1rem}
+.a-meta{font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;color:var(--muted);
+  display:flex;gap:1.2rem;flex-wrap:wrap;padding-bottom:1.8rem;margin-bottom:2.2rem;border-bottom:1px solid var(--line)}
+
+/* article body */
+.a-body{font-size:1.18rem;color:var(--ink)}
+.a-body>p{margin:0 0 1.35rem}
+.a-body h2{font-family:var(--display);font-weight:800;font-size:clamp(1.6rem,3.5vw,2.1rem);
+  line-height:1.1;color:var(--black);margin:2.8rem 0 1rem;letter-spacing:-.005em}
+.a-body h3{font-family:var(--display);font-weight:700;font-size:1.28rem;color:var(--black);
+  margin:1.9rem 0 .6rem}
+.a-body strong{font-weight:700;color:var(--black)}
+.a-body em{font-style:italic}
+.a-body a{border-bottom:1px solid rgba(26,122,110,.35)}
+.a-body a:hover{border-bottom-color:var(--teal)}
+.a-body ul{margin:0 0 1.35rem;padding-left:0;list-style:none}
+.a-body ul li{position:relative;padding-left:1.5rem;margin-bottom:.6rem}
+.a-body ul li::before{content:'';position:absolute;left:0;top:.72em;width:8px;height:8px;
+  background:var(--lime);border:1px solid var(--teal)}
+.a-body .lead{font-size:1.32rem;color:var(--black);line-height:1.6;font-weight:500;margin-bottom:1.8rem}
+.pullbox{background:#0A0A0A;color:#fff;padding:1.6rem 1.8rem;margin:2.2rem 0;border-left:4px solid var(--lime)}
+.pullbox p{margin:0;font-size:1.16rem;line-height:1.55}
+.pullbox strong{color:var(--lime)}
+
+/* end CTA */
+.a-cta{background:var(--black);color:#fff;margin:3.4rem 0 0;padding:2.6rem 2rem;text-align:center}
+.a-cta h2{font-family:var(--display);font-weight:900;text-transform:lowercase;font-size:clamp(1.6rem,4vw,2.4rem);
+  color:#fff;margin-bottom:.6rem;line-height:1.05}
+.a-cta h2 .lime{color:var(--lime)}
+.a-cta p{color:rgba(255,255,255,.75);max-width:44ch;margin:0 auto 1.6rem;font-size:1.05rem}
+.a-btns{display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--mono);font-weight:700;font-size:.78rem;
+  letter-spacing:.1em;text-transform:uppercase;padding:.95rem 1.5rem;transition:transform .15s,background .15s,color .15s}
+.btn.lime{background:var(--lime);color:var(--black)}
+.btn.lime:hover{transform:translateY(-2px)}
+.btn.ghost{background:transparent;color:var(--lime);border:1px solid rgba(200,255,0,.5)}
+.btn.ghost:hover{border-color:var(--lime)}
+
+/* related */
+.related{margin:3.2rem 0 0}
+.related .sec-lbl{font-family:var(--mono);font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:1rem}
+.related a{display:block;padding:.55rem 0;border-top:1px solid var(--line);color:var(--black);
+  font-weight:600;font-size:1.05rem}
+.related a:hover{color:var(--teal)}
+
+/* hub (guides index) */
+.hub-head{padding:3rem 0 1rem}
+.hub-head h1{font-family:var(--display);font-weight:900;font-size:clamp(2.4rem,7vw,4rem);
+  text-transform:lowercase;line-height:.95;color:var(--black);letter-spacing:-.01em}
+.hub-head p{font-size:1.18rem;color:var(--muted);max-width:52ch;margin-top:1rem}
+.hub-grid{display:grid;gap:1px;background:var(--line);border:1px solid var(--line);margin:2.4rem 0 4rem}
+.hub-card{background:var(--paper);padding:1.8rem;display:flex;flex-direction:column;gap:.6rem;transition:background .18s}
+.hub-card:hover{background:#fff}
+.hub-card .cat{font-family:var(--mono);font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--teal)}
+.hub-card h2{font-family:var(--display);font-weight:800;font-size:1.5rem;line-height:1.1;color:var(--black)}
+.hub-card p{color:var(--muted);font-size:1rem}
+.hub-card .go{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--black);margin-top:.3rem}
+
+/* footer */
+.g-foot{border-top:1px solid var(--line);margin-top:4rem;padding:2.4rem 0 3rem}
+.g-foot .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;align-items:center}
+.g-foot p{font-family:var(--mono);font-size:.68rem;letter-spacing:.04em;color:var(--muted);line-height:1.7}
+.g-foot a{color:var(--muted)}.g-foot a:hover{color:var(--teal)}
+
+@media(max-width:560px){
+  .g-nav{gap:.9rem}.g-logo span{display:none}
+  .a-body{font-size:1.1rem}
+}
