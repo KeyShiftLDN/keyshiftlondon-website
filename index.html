@@ -360,6 +360,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content
 .faq-a p{color:rgba(255,255,255,.72);line-height:1.65;font-size:1rem;font-weight:400}
 .faq-a a{color:var(--lime);text-decoration:none;border-bottom:1px solid rgba(200,255,0,.4)}
 .faq-a a:hover{border-bottom-color:var(--lime)}
+/* click-to-reveal collapsible sections (shorten the page) */
+.collapsible .sec-reveal{overflow:hidden;max-height:0;opacity:0;margin-top:0;transition:max-height .7s cubic-bezier(.4,0,.2,1),opacity .5s ease,margin-top .5s ease}
+.collapsible.open .sec-reveal{max-height:6000px;opacity:1;margin-top:2.4rem}
+.sec-toggle{margin-top:1.7rem;display:inline-flex;align-items:center;gap:.7rem;background:transparent;border:1.5px solid var(--lime);color:var(--lime);font-family:var(--mono);font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;padding:.75rem 1.4rem;border-radius:50px;cursor:pointer;transition:background .2s,color .2s;position:relative;z-index:2}
+.sec-toggle:hover{background:var(--lime);color:var(--black)}
+.sec-toggle .tog-ico{font-size:1.25rem;line-height:1;transition:transform .35s ease;display:inline-block}
+.collapsible.open .sec-toggle .tog-ico{transform:rotate(45deg)}
 .form-card{background:rgba(255,255,255,.04);border:2px solid rgba(255,255,255,.18);border-radius:20px;padding:2.5rem}
 .form-row{margin-bottom:1.2rem}
 .form-row label{font-family:var(--mono);font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:var(--lime);display:block;margin-bottom:.5rem}
@@ -519,7 +526,7 @@ footer a:hover{color:var(--lime)}
   </div>
 </section>
 
-<section class="dark" id="outcomes">
+<section class="dark collapsible" id="outcomes">
   <div class="px-word px-layer" data-speed="0.22" style="top:60%;right:-4%;color:var(--lime)">PROOF</div>
   <div class="dark-bg" data-speed="0.08" style="width:52%;height:80%;right:-6%;top:4%" aria-hidden="true"><img src="ksl-assets/photo-care.jpg" alt="" loading="lazy"></div>
   <div class="dark-bg" data-speed="0.16" style="width:44%;height:66%;left:-6%;bottom:-6%" aria-hidden="true"><img src="ksl-assets/photo-run.jpg" alt="" loading="lazy"></div>
@@ -528,17 +535,20 @@ footer a:hover{color:var(--lime)}
       <div class="eyebrow reveal">What you actually get</div>
       <h2 class="big reveal">we sell <span class="lime">outcomes,</span><br>not activities.</h2>
       <p class="reveal">Every engagement leaves something behind: structure that lasts, evidence you can report, and young people who exit equipped, not just entertained.</p>
+      <button class="sec-toggle" aria-expanded="false" data-label="Reveal the outcomes"><span class="tog-txt">Reveal the outcomes</span><span class="tog-ico">+</span></button>
     </div>
+    <div class="sec-reveal">
     <div class="outcomes-grid">
       <div class="outcome reveal"><span class="num">01 / EVIDENCE</span><div class="stat" data-count="100" data-suffix="%">0%</div><div class="label">documented outcomes</div><div class="desc">Every young person exits with a Precision Graduation Record they own, not a certificate of attendance.</div></div>
       <div class="outcome reveal"><span class="num">02 / STRUCTURE</span><div class="stat" data-count="5">0</div><div class="label">life areas targeted</div><div class="desc">School, Home, Aspirations, Perspectives, Experiences, the environments that actually shape a young life.</div></div>
       <div class="outcome reveal"><span class="num">03 / INFRASTRUCTURE</span><div class="stat" data-count="3">0</div><div class="label">stage delivery system</div><div class="desc">Prepare, Process, Print. A repeatable pipeline that scales across schools, PRUs, councils and academies.</div></div>
       <div class="outcome reveal"><span class="num">04 / NETWORK</span><div class="stat">∞</div><div class="label">connected practitioners</div><div class="desc">The Precision Network ties every engagement together, so insight, evidence and impact never get lost.</div></div>
     </div>
+    </div>
   </div>
 </section>
 
-<section class="proof" id="why">
+<section class="proof collapsible" id="why">
   <div class="proof-bg" data-speed="0.07" style="width:40%;height:72%;right:-5%;top:4%" aria-hidden="true"><img src="ksl-assets/photo-why1.jpg" alt="" loading="lazy"></div>
   <div class="proof-bg" data-speed="0.16" style="width:33%;height:54%;left:-7%;top:26%" aria-hidden="true"><img src="ksl-assets/photo-why2.jpg" alt="" loading="lazy"></div>
   <div class="proof-bg" data-speed="0.2" style="width:36%;height:50%;right:6%;bottom:-6%" aria-hidden="true"><img src="ksl-assets/photo-why3.jpg" alt="" loading="lazy"></div>
@@ -549,7 +559,9 @@ footer a:hover{color:var(--lime)}
       <div class="chapter reveal">Chapter 03 · Why Precision</div>
       <h2 class="big reveal">the old model is <span class="u">full</span>.<br>but is it working?</h2>
       <p class="reveal" style="max-width:55ch">The young people inside our schools and estates don't need saving, they need the right structure around them. Precision is the difference between activity and outcome.</p>
+      <button class="sec-toggle" aria-expanded="false" data-label="See the difference"><span class="tog-txt">See the difference</span><span class="tog-ico">+</span></button>
     </div>
+    <div class="sec-reveal">
     <div class="proof-grid">
       <div class="proof-col reveal"><h3>provision delivers…</h3>
         <p class="bad">One-off sessions that start and stop</p><p class="bad">Activity counted, impact assumed</p>
@@ -562,6 +574,7 @@ footer a:hover{color:var(--lime)}
     </div>
     <p style="margin-top:3rem;font-weight:800;font-size:clamp(1.3rem,2.5vw,1.9rem);color:var(--lime);text-transform:lowercase" class="reveal">We don't chase impact. We build the conditions for it.</p>
     <div class="cta-strip reveal"><span class="cta-label" style="opacity:.9">Ready to commission precision?</span><a href="#signup" class="btn white sm" data-cursor data-magnetic>Talk To Us <span class="arr">→</span></a></div>
+    </div>
   </div>
 </section>
 
@@ -757,14 +770,16 @@ footer a:hover{color:var(--lime)}
   </div>
 </section>
 
-<section class="dark faq" id="faq">
+<section class="dark faq collapsible" id="faq">
   <div class="px-word px-layer" data-speed="0.2" style="top:4%;right:-3%;color:var(--teal)">FAQ</div>
   <div class="wrap">
     <div class="section-head reveal">
       <div class="chapter">Common Questions</div>
       <h2 class="big">frequently asked.</h2>
       <p>Quick answers on our South London youth development work, practitioner training and coaching.</p>
+      <button class="sec-toggle" aria-expanded="false" data-label="View the questions"><span class="tog-txt">View the questions</span><span class="tog-ico">+</span></button>
     </div>
+    <div class="sec-reveal">
     <div class="faq-list">
       <details class="faq-item reveal">
         <summary>What is Key Shift London?<span class="caret">▾</span></summary>
@@ -790,6 +805,7 @@ footer a:hover{color:var(--lime)}
         <summary>How much does Precision Training cost?<span class="caret">▾</span></summary>
         <div class="faq-a"><p>Precision Training Level 1 is £149 and Level 2 is £159 to buy and complete yourself. Facilitator, cohort and organisation-wide licensing options are available <a href="#signup">on enquiry</a>.</p></div>
       </details>
+    </div>
     </div>
   </div>
 </section>
@@ -935,6 +951,19 @@ gsap.utils.toArray('.pss-media img,.aud-media img,.section-photo img,.who-photo 
 
 /* ---------- Hero title parallax drift on scroll ---------- */
 gsap.to('#heroTitle',{yPercent:18,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
+
+/* ---------- Collapsible sections: click to reveal (keeps the page short) ---------- */
+document.querySelectorAll('.sec-toggle').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const sec=btn.closest('.collapsible');
+    const open=sec.classList.toggle('open');
+    btn.setAttribute('aria-expanded',open?'true':'false');
+    const txt=btn.querySelector('.tog-txt');
+    if(txt) txt.textContent=open?'Hide':(btn.dataset.label||'Reveal');
+    if(open){ gsap.set(sec.querySelectorAll('.sec-reveal .reveal'),{opacity:1,y:0}); }
+    if(window.ScrollTrigger){ setTimeout(()=>ScrollTrigger.refresh(),720); }
+  });
+});
 
 /* ---------- Marquee: base loop + velocity skew ---------- */
 const track=document.getElementById('marquee');
