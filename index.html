@@ -132,18 +132,35 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content
 
 /* ---------- HERO ---------- */
 .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding-top:7rem;position:relative;overflow:hidden}
-.hero-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:3rem;align-items:center}
-.hero-tag{margin-bottom:1.5rem;color:var(--teal)}
-.hero h1{margin-bottom:1.8rem;line-height:.87}
+.hero>.wrap{padding-left:clamp(1.5rem,6vw,7rem);padding-right:clamp(1.5rem,6vw,7rem)}
+.hero-stage{display:grid;grid-template-columns:1.12fr .88fr;gap:2rem;align-items:center;position:relative;z-index:2}
+.hero-copy{position:relative;z-index:2}
+.hero-tag{margin-bottom:1.3rem;color:var(--teal)}
+/* editorial hero accents (reference-inspired) */
+.hero-mark{position:absolute;right:-9%;bottom:-16%;width:54%;max-width:860px;opacity:.1;z-index:0;pointer-events:none;will-change:transform}
+.hero-mark img{width:100%;height:auto;display:block}
+.hero-label{position:absolute;font-family:var(--mono);font-size:.64rem;letter-spacing:.22em;text-transform:uppercase;color:var(--black);opacity:.55;z-index:3;pointer-events:none}
+.hl-side{right:1.3rem;top:50%;transform:translateY(-50%);writing-mode:vertical-rl;letter-spacing:.34em}
+.hl-index{top:7.6rem;right:clamp(1.2rem,5vw,3rem);letter-spacing:.32em}
+.hl-foot{left:clamp(1.2rem,5vw,3rem);bottom:2rem;line-height:1.8;opacity:.7}
+.hl-foot b{display:block;color:var(--teal);opacity:1;letter-spacing:.34em;font-weight:700;margin-bottom:.2rem}
+.hero-dots{display:flex;align-items:center;gap:.5rem;font-family:var(--mono);margin-top:.4rem}
+.hero-dots span{width:2rem;height:2rem;display:flex;align-items:center;justify-content:center;border:1.5px solid var(--black);border-radius:50%;font-weight:700;font-size:.78rem;transition:transform .3s}
+.hero-dots span:first-child{background:var(--black);color:var(--lime)}
+.hero-dots em{font-style:normal;font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;opacity:.55;margin-left:.5rem}
+.hero-desc{font-family:var(--mono);font-size:.64rem;letter-spacing:.05em;text-transform:uppercase;color:var(--black);opacity:.72;display:flex;flex-direction:column;gap:.3rem;margin-top:.5rem;align-self:flex-start;padding-left:8%}
+.hero-desc b{color:var(--teal);font-weight:700}
+.hero h1{margin-bottom:1.4rem;line-height:.86}
+.hero .huge{font-size:clamp(2.9rem,8.1vw,6.7rem)}
 /* padding gives the overflow:hidden reveal mask room for descenders (p, g, y);
    the negative margin cancels that room so line spacing stays driven by line-height */
 .hero h1 .line{display:block;overflow:hidden;padding:.06em 0 .22em;margin:-.06em 0 -.22em}
 .hero h1 .line > span{display:inline-block}
 .hero h1 .stroke{-webkit-text-stroke:2.5px var(--black);color:transparent}
-.hero-sub{max-width:30ch;font-size:clamp(1.15rem,1.8vw,1.45rem);font-weight:500;margin-bottom:2.5rem}
-.hero-ctas{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:1cm}
-.hero-visual{position:relative;display:flex;justify-content:center}
-.globe{width:min(580px,108%);aspect-ratio:1;position:relative;display:flex;align-items:center;justify-content:center;will-change:transform}
+.hero-sub{max-width:34ch;font-size:clamp(1.1rem,1.7vw,1.4rem);font-weight:500;margin-bottom:2rem}
+.hero-ctas{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:1.8rem}
+.hero-visual{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.globe{width:min(600px,115%);aspect-ratio:1;position:relative;display:flex;align-items:center;justify-content:center;will-change:transform;margin-right:-4%}
 .globe-img{width:100%;height:100%;display:block;animation:spin 34s linear infinite;will-change:transform}
 @keyframes spin{to{transform:rotate(360deg)}}
 .scroll-cue{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);font-family:var(--mono);font-size:.66rem;letter-spacing:.25em;text-transform:uppercase;display:flex;flex-direction:column;align-items:center;gap:.5rem;opacity:.6;z-index:3}
@@ -286,6 +303,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content
 .section-photo img{width:100%;height:100%;object-fit:cover;object-position:center 25%;display:block;filter:grayscale(.16) contrast(1.04) saturate(.94);transition:transform .7s ease}
 .section-photo:hover img{transform:scale(1.05)}
 .section-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 52%,rgba(10,10,10,.6))}
+/* content-image scroll parallax: oversize within the clipped frame so it moves without gaps
+   (selectors match the originals' specificity so these win by source order) */
+.pss-card .pss-media img,.aud-card .aud-media img,.section-photo img,.who-photo .who-img{transition:none;height:124%;top:-12%;bottom:auto;will-change:transform}
+.pss-card .pss-media img,.aud-card .aud-media img,.section-photo img{position:relative}
+.who-photo .who-img{position:absolute;left:0;right:0}
 .section-photo .sp-cap{position:absolute;left:1rem;bottom:.9rem;z-index:2;font-family:var(--mono);font-size:.62rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--lime);background:rgba(10,10,10,.72);padding:.4rem .7rem;border-radius:50px;backdrop-filter:blur(4px)}
 .photo-duo .section-photo{aspect-ratio:4/5}
 .section-band{margin-top:3.5rem;aspect-ratio:21/8}
@@ -380,7 +402,7 @@ footer a:hover{color:var(--lime)}
 .no-anim .reveal{opacity:1!important;transform:none!important}
 
 @media(max-width:980px){
-  .hero-grid{grid-template-columns:1fr}.hero-visual{order:-1;margin-bottom:1rem}.globe{width:min(400px,90%)}
+  .hero-stage{grid-template-columns:1fr}.hero-visual{order:-1;margin-bottom:1rem}.globe{width:min(400px,90%);margin-right:0}.hero-mark,.hl-side,.hl-index,.hl-foot,.hero-desc{display:none}
   .who-grid{grid-template-columns:1fr;gap:2.5rem}.pss-flow{grid-template-columns:1fr}.pss-arrow{transform:rotate(90deg);padding:.3rem 0}
   .shape-grid{grid-template-columns:1fr;gap:2.5rem}.shape-side{position:static}.proof-grid{grid-template-columns:1fr}
   .audience-grid{grid-template-columns:1fr}.signup-grid{grid-template-columns:1fr;gap:2rem}.px-word{display:none}
@@ -420,12 +442,18 @@ footer a:hover{color:var(--lime)}
 </nav>
 
 <header class="hero" id="top">
-  <div class="px-word px-layer" data-speed="0.25" style="top:8%;left:-4%;color:var(--teal)">PRECISION</div>
-  <div class="px-ring" data-speed="0.5" style="width:380px;height:380px;top:55%;right:-120px;color:var(--teal)"></div>
-  <div class="px-shape" data-speed="0.35" style="width:90px;height:90px;background:var(--teal-bright);top:20%;right:18%"></div>
-  <div class="shape-bg" data-speed="0.12" style="width:44%;height:90%;right:-6%;top:2%;opacity:.13" aria-hidden="true"><img src="ksl-assets/photo-herobg.jpg" alt="" loading="lazy"></div>
-  <div class="wrap hero-grid">
-    <div>
+  <div class="px-word px-layer" data-speed="0.2" style="top:6%;left:-4%;color:var(--teal)">PRECISION</div>
+  <div class="px-shape" data-speed="0.35" style="width:76px;height:76px;background:var(--teal-bright);top:12%;right:6%"></div>
+  <div class="shape-bg" data-speed="0.1" style="width:40%;height:88%;right:-5%;top:3%;opacity:.12" aria-hidden="true"><img src="ksl-assets/photo-herobg.jpg" alt="" loading="lazy"></div>
+  <!-- oversized brand mark bleeding off the corner -->
+  <div class="hero-mark" data-speed="0.3" aria-hidden="true"><img src="ksl-assets/arrow.png" alt="" width="805" height="497"></div>
+  <!-- editorial meta labels -->
+  <div class="hero-label hl-index" data-speed="0.14">No. 001 · The Precision System</div>
+  <div class="hero-label hl-side" data-speed="0.1">Precision Youth Development · South London</div>
+  <div class="hero-label hl-foot"><b>Prepare · Process · Print</b>Built in South London // working across the capital</div>
+
+  <div class="wrap hero-stage">
+    <div class="hero-copy">
       <div class="eyebrow hero-tag">Dynamic Development · Ages 11–18</div>
       <h1 class="huge" id="heroTitle">
         <span class="line"><span>unlocking</span></span>
@@ -438,11 +466,13 @@ footer a:hover{color:var(--lime)}
         <a href="#signup" class="btn" data-cursor data-magnetic>Sign Up For Training <span class="arr">→</span></a>
         <a href="#how" class="btn ghost" data-cursor data-magnetic>See the System</a>
       </div>
+      <div class="hero-dots" aria-hidden="true"><span>S</span><span>H</span><span>A</span><span>P</span><span>E</span><em>the shape model</em></div>
     </div>
     <div class="hero-visual">
-      <div class="globe" data-speed="0.15" data-cursor="explore">
+      <div class="globe" data-speed="0.14" data-cursor="explore">
         <img class="globe-img" src="ksl-assets/ppp-rotation.svg" alt="Prepare. Process. Print." width="375" height="375" fetchpriority="high">
       </div>
+      <div class="hero-desc" aria-hidden="true"><div><b>SHAPE</b> · identity mapping</div><div><b>PILLAR</b> · precision coaching</div><div><b>TPN</b> · the precision network</div></div>
     </div>
   </div>
   <div class="scroll-cue"><span>the story</span><span class="line"></span></div>
@@ -900,6 +930,12 @@ gsap.utils.toArray('[data-speed]').forEach(el=>{
   const speed=parseFloat(el.getAttribute('data-speed'));
   gsap.to(el,{yPercent:-speed*100,ease:'none',
     scrollTrigger:{trigger:el.closest('section,header')||el,start:'top bottom',end:'bottom top',scrub:true}});
+});
+
+/* ---------- Content-image parallax: every card/feature image drifts within its clipped frame ---------- */
+gsap.utils.toArray('.pss-media img,.aud-media img,.section-photo img,.who-photo .who-img').forEach(img=>{
+  gsap.fromTo(img,{yPercent:-6},{yPercent:6,ease:'none',
+    scrollTrigger:{trigger:img.closest('section,header')||img,start:'top bottom',end:'bottom top',scrub:true}});
 });
 
 /* ---------- Hero title parallax drift on scroll ---------- */
