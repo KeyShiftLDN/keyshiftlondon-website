@@ -1436,7 +1436,10 @@ const CHECKOUT_API = 'https://ksl-payments.onrender.com/api/training/checkout';
           levels:levels,people:Math.max(1,parseInt(peopleEl.value)||1),company_website:hp.value})});
       if(!res.ok) throw new Error('HTTP '+res.status);
       const data=await res.json();
-      if(data.checkout_url){ window.location.href=data.checkout_url; return; }
+      // Defence in depth: only ever redirect to a genuine Stripe Checkout URL.
+      if(data.checkout_url && /^https:\/\/checkout\.stripe\.com\//.test(data.checkout_url)){
+        window.location.href=data.checkout_url; return;
+      }
       throw new Error('no url');
     }catch(err){
       submitBtn.disabled=false; submitBtn.style.opacity=''; submitBtn.innerHTML=prev;
