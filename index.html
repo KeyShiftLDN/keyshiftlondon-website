@@ -420,6 +420,10 @@ footer a:hover{color:var(--lime)}
 .train-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem;align-items:stretch}.train-note{margin-top:2.4rem;font-family:var(--mono);font-size:.82rem;letter-spacing:.04em;color:var(--black);opacity:.72;text-align:center}.train-note strong{color:var(--teal);opacity:1}@media(max-width:760px){.train-grid{grid-template-columns:1fr}}
 /* ---- team & organisation tiered pricing ---- */
 .team-pricing{margin-top:3.4rem;border-top:2px solid var(--black);padding-top:2.8rem}
+.team-pricing .sec-toggle{border-color:var(--black);color:var(--black)}
+.team-pricing .sec-toggle:hover{background:var(--black);color:var(--lime)}
+.team-pricing.collapsible .sec-reveal{margin-top:0}
+.team-pricing.collapsible.open .sec-reveal{margin-top:2rem}
 .tp-eyebrow{font-family:var(--mono);font-size:.7rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--teal)}
 .tp-h{font-family:var(--display);font-weight:900;text-transform:lowercase;font-size:clamp(1.8rem,4vw,2.7rem);line-height:1;color:var(--black);margin:.7rem 0}
 .tp-sub{max-width:54ch;color:var(--black);opacity:.82;margin-bottom:2rem}
@@ -745,10 +749,12 @@ footer a:hover{color:var(--lime)}
     </div>
 
     <!-- TEAM & ORGANISATION TIERED PRICING -->
-    <div class="team-pricing reveal" id="team-pricing">
+    <div class="team-pricing reveal collapsible" id="team-pricing">
       <div class="tp-eyebrow">Team &amp; Organisation Seats</div>
       <h3 class="tp-h">the more you train,<br>the less per head.</h3>
       <p class="tp-sub">Self-completed seats for teams, schools, charities and academies. Rates apply per head, per level, and tier automatically by headcount, no cohort scheduling required.</p>
+      <button class="sec-toggle" aria-expanded="false" data-label="See team rates &amp; calculator"><span class="tog-txt">See team rates &amp; calculator</span><span class="tog-ico">+</span></button>
+      <div class="sec-reveal">
       <div class="tp-body">
         <div class="rate-wrap">
           <table class="rate-table">
@@ -787,6 +793,7 @@ footer a:hover{color:var(--lime)}
             <div class="we-row save"><span>You save up to</span><b>£3,996</b></div>
           </div>
         </div>
+      </div>
       </div>
     </div>
 
