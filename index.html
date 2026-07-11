@@ -497,7 +497,27 @@ footer a:hover{color:var(--lime)}
 .sm-total em{font-family:var(--mono);font-size:.62rem;letter-spacing:.05em;text-transform:uppercase;opacity:.65;font-style:normal;margin-top:.2rem}
 .sm-note{font-family:var(--mono);font-size:.62rem;letter-spacing:.03em;color:rgba(255,255,255,.45);margin-top:1rem;line-height:1.5}
 .sm-err{color:#FF6B5E;font-size:.85rem;margin-top:.6rem;min-height:1px}
-@media(max-width:480px){.sm-grid{grid-template-columns:1fr}.sm-card{padding:1.6rem}}</style>
+@media(max-width:480px){.sm-grid{grid-template-columns:1fr}.sm-card{padding:1.6rem}}
+/* ---- organisation bundles ---- */
+.bundles{display:flex;flex-direction:column;gap:1rem;margin-top:1.1rem}
+.bundle{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:1.3rem 1.4rem}
+.bundle.feat{border-color:var(--lime);background:linear-gradient(180deg,rgba(200,255,0,.07),transparent)}
+.b-badge{display:inline-block;font-family:var(--mono);font-size:.56rem;letter-spacing:.18em;text-transform:uppercase;color:var(--black);background:var(--lime);padding:.2rem .5rem;border-radius:50px;margin-bottom:.7rem}
+.b-name{font-family:var(--display);font-weight:900;text-transform:uppercase;font-size:1.2rem;letter-spacing:.03em;color:#fff}
+.b-tag{font-style:italic;color:var(--lime);font-size:.95rem;margin-top:.15rem}
+.b-price{display:flex;align-items:baseline;gap:.5rem;margin:.7rem 0 .6rem}
+.b-amt{font-family:var(--display);font-weight:900;font-size:1.8rem;color:var(--lime);line-height:1}
+.b-per{font-family:var(--mono);font-size:.64rem;letter-spacing:.04em;color:rgba(255,255,255,.6);text-transform:uppercase}
+.b-for{font-size:.85rem;color:rgba(255,255,255,.7);line-height:1.5;margin-bottom:.85rem}
+.b-for strong{color:#fff;font-weight:600}
+.b-list{list-style:none;margin:0 0 .9rem;padding:0;display:flex;flex-direction:column;gap:.5rem}
+.b-list li{font-size:.85rem;color:rgba(255,255,255,.85);line-height:1.45;padding-left:1.1rem;position:relative}
+.b-list li::before{content:'';position:absolute;left:0;top:.52em;width:6px;height:6px;background:var(--lime)}
+.b-list li strong{color:#fff;font-weight:600}
+.b-save{font-family:var(--mono);font-size:.72rem;letter-spacing:.02em;color:rgba(255,255,255,.55);padding-top:.7rem;border-top:1px solid rgba(255,255,255,.12)}
+.b-save strong{color:var(--lime);font-weight:700}
+.b-out{font-size:.85rem;color:rgba(255,255,255,.82);line-height:1.5;margin-top:.6rem}
+.b-out strong{color:#fff;font-weight:600}</style>
 </head>
 <body class="loading">
 <a href="#who" class="skip-link">Skip to content</a>
@@ -870,15 +890,56 @@ footer a:hover{color:var(--lime)}
       <p class="reveal">Whether you're a young person ready to activate, a school after real intervention, or an organisation wanting to license the Precision Streamline System, start here.</p>
       <p class="reveal" style="font-family:var(--mono);font-size:.85rem;color:rgba(255,255,255,.6);letter-spacing:.05em">One form. We'll route you to the right next step within 2 working days.</p>
       <p class="reveal" style="margin-top:1.5rem"><a href="#signup" class="btn ghost" data-calcom data-cursor data-magnetic style="border-color:var(--lime);color:var(--lime)">Or book a conversation <span class="arr">→</span></a></p>
-      <details class="drop" style="max-width:30rem">
-        <summary><span>View bundle options</span> <span class="caret">▾</span></summary>
-        <ul>
-          <li><strong>Precision Starter</strong> · <span class="price">£4,895/yr</span> <span style="opacity:.55">(£408/mo equiv.)</span></li>
-          <li><strong>Precision Professional</strong> · <span class="price">£8,840/yr</span> <span style="opacity:.55">(£737/mo equiv.)</span></li>
-          <li><strong>Precision Institutional</strong> · <span class="price">£11,250/yr</span> <span style="opacity:.55">(£938/mo equiv.)</span></li>
-          <li><strong>Commissioner programmes</strong> · scoped individually · book a conversation</li>
-        </ul>
-        <p class="note">Monthly figures are the annual cost shown monthly, for budgeting only, not a pay-monthly plan. Prices in GBP, not VAT-registered. In-person delivery adds +£29 (Greater London) or +£99 (outside London) per engagement.</p>
+      <details class="drop" style="max-width:42rem">
+        <summary><span>View organisation bundles</span> <span class="caret">▾</span></summary>
+        <div class="bundles">
+          <div class="bundle">
+            <div class="b-name">Precision Equip</div>
+            <div class="b-tag">"Get your whole team delivering."</div>
+            <div class="b-price"><span class="b-amt">£6,120</span><span class="b-per">/ year · £510/mo equiv.</span></div>
+            <div class="b-for"><strong>For:</strong> small-to-mid youth charities, single schools, sports academies, community orgs, anyone with a frontline team who need the frameworks in their hands now.</div>
+            <ul class="b-list">
+              <li>Precision Training L1 + L2 for up to 15 staff (self-paced team licence, everyone, not just twelve)</li>
+              <li>Precision Coaching, <strong>Foundation Tier</strong> (certifies a core group as Precision Practitioners)</li>
+              <li>The Precision Network, Organisational access (Medium)</li>
+              <li>1× CSIS case study · quarterly impact reports · free Graduation Records · co-branding</li>
+            </ul>
+            <div class="b-save">À la carte £7,650, <strong>save £1,530 (20%)</strong></div>
+            <div class="b-out"><strong>The outcome:</strong> your whole team equipped as Precision Reps, with a certified core leading them.</div>
+          </div>
+
+          <div class="bundle feat">
+            <div class="b-name">Precision Certify</div>
+            <div class="b-tag">"Turn your team into certified practitioners."</div>
+            <div class="b-price"><span class="b-amt">£8,495</span><span class="b-per">/ year · £708/mo equiv.</span></div>
+            <div class="b-for"><strong>For:</strong> established charities, secondary schools, multi-site foundations, organisations who need credentialed staff, not just trained ones.</div>
+            <ul class="b-list">
+              <li>Precision Training L1 + L2, facilitator-led cohorts (live delivery, breakout work, assessment)</li>
+              <li>Precision Coaching, <strong>Formation Tier</strong> → your staff become Certified Precision Practitioners, authorised to deliver ARISE</li>
+              <li>The Precision Network, Organisational access (Large)</li>
+              <li>4× CSIS case studies · quarterly reports · free Graduation Records · annual review with a senior KSL lead</li>
+            </ul>
+            <div class="b-save">À la carte £11,478, <strong>save £2,983 (25%)</strong></div>
+            <div class="b-out"><strong>The outcome:</strong> certified practitioners who can deliver the deep identity work, the thing no self-assembled route can buy.</div>
+          </div>
+
+          <div class="bundle">
+            <div class="b-name">Precision Embed</div>
+            <div class="b-tag">"Make Precision your infrastructure."</div>
+            <div class="b-price"><span class="b-amt">£10,760</span><span class="b-per">/ year · £897/mo equiv.</span></div>
+            <div class="b-for"><strong>For:</strong> MATs, local authorities, large national charities, Young Futures Hubs, partners who want PSS built into how they operate, with their own leadership capacity.</div>
+            <ul class="b-list">
+              <li>Precision Training L1 + L2, facilitator-led cohorts (additional cohorts at 50%)</li>
+              <li>Precision Coaching, <strong>Formation + Framework Tiers</strong> → certified practitioners plus a senior Lead track</li>
+              <li>The Precision Network, Institutional access, unlimited across your organisation</li>
+              <li>4× CSIS case studies · quarterly reports · free Graduation Records</li>
+              <li>Director-level strategic review · priority renewal + Year 2 rate lock · named partnership</li>
+            </ul>
+            <div class="b-save">À la carte £15,828, <strong>save £5,068 (32%)</strong></div>
+            <div class="b-out"><strong>The outcome:</strong> a self-sustaining Precision capability, with your own senior people equipped to lead it.</div>
+          </div>
+        </div>
+        <p class="note">Annual licences, the monthly figure is the annual cost shown monthly for budgeting only, not a pay-monthly plan. Prices in GBP, not VAT-registered. In-person delivery adds +£29 (Greater London) or +£99 (outside London) per engagement. To start a bundle, use the form or book a conversation.</p>
       </details>
     </div>
     <form class="form-card reveal" id="enquiryForm" novalidate>
