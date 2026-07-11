@@ -417,7 +417,52 @@ footer a:hover{color:var(--lime)}
   .globe-img,.marquee-track,.grain,.pss-arrow span{animation:none!important}
   .reveal{opacity:1!important;transform:none!important}
 }
-.train-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem;align-items:stretch}.train-note{margin-top:2.4rem;font-family:var(--mono);font-size:.82rem;letter-spacing:.04em;color:var(--black);opacity:.72;text-align:center}.train-note strong{color:var(--teal);opacity:1}@media(max-width:760px){.train-grid{grid-template-columns:1fr}}</style>
+.train-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem;align-items:stretch}.train-note{margin-top:2.4rem;font-family:var(--mono);font-size:.82rem;letter-spacing:.04em;color:var(--black);opacity:.72;text-align:center}.train-note strong{color:var(--teal);opacity:1}@media(max-width:760px){.train-grid{grid-template-columns:1fr}}
+/* ---- team & organisation tiered pricing ---- */
+.team-pricing{margin-top:3.4rem;border-top:2px solid var(--black);padding-top:2.8rem}
+.tp-eyebrow{font-family:var(--mono);font-size:.7rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--teal)}
+.tp-h{font-family:var(--display);font-weight:900;text-transform:lowercase;font-size:clamp(1.8rem,4vw,2.7rem);line-height:1;color:var(--black);margin:.7rem 0}
+.tp-sub{max-width:54ch;color:var(--black);opacity:.82;margin-bottom:2rem}
+.tp-body{display:grid;grid-template-columns:1.35fr 1fr;gap:1.5rem;align-items:start}
+.rate-wrap{display:flex;flex-direction:column;gap:1.4rem}
+.rate-table{width:100%;border-collapse:collapse;background:var(--black);color:var(--white);border-radius:16px;overflow:hidden}
+.rate-table th,.rate-table td{padding:.95rem 1.1rem;text-align:left;vertical-align:middle}
+.rate-table thead th{font-family:var(--mono);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--lime);border-bottom:1px solid rgba(255,255,255,.16)}
+.rate-table tbody tr{border-bottom:1px solid rgba(255,255,255,.1)}
+.rate-table tbody tr:last-child{border-bottom:none}
+.rate-table td b{font-family:var(--display);font-weight:900;font-size:1.1rem;display:block;line-height:1}
+.rate-table td small{font-family:var(--mono);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;opacity:.6}
+.rate-table td.p{font-family:var(--display);font-weight:800;font-size:1.15rem;color:var(--lime)}
+.rate-table td.logic{font-family:var(--mono);font-size:.64rem;letter-spacing:.03em;text-transform:uppercase;opacity:.62}
+.rate-table tr.best{background:linear-gradient(90deg,rgba(200,255,0,.15),transparent)}
+.rate-table tr.best td:first-child b{color:var(--lime)}
+@media(max-width:560px){.rate-table td.logic,.rate-table th.logic{display:none}}
+.calc{background:var(--black);color:var(--white);border-radius:16px;padding:1.4rem 1.5rem;display:flex;flex-direction:column;gap:1rem}
+.calc-lbl{font-family:var(--mono);font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--lime)}
+.calc-row{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.calc-num{display:flex;align-items:center;gap:.45rem}
+.calc-num button{width:2rem;height:2rem;border-radius:50%;border:1.5px solid rgba(255,255,255,.3);background:transparent;color:var(--white);font-size:1.1rem;cursor:pointer;line-height:1;padding:0}
+.calc-num button:hover{border-color:var(--lime);color:var(--lime)}
+.calc-num input{width:3.2rem;background:transparent;border:none;border-bottom:2px solid var(--lime);color:var(--white);font-family:var(--display);font-weight:900;font-size:1.4rem;text-align:center;outline:none}
+.calc .chk{display:inline-flex;align-items:center;gap:.5rem;cursor:pointer;font-family:var(--display);font-weight:600;font-size:.95rem}
+.calc .chk input{accent-color:var(--lime);width:1.1rem;height:1.1rem}
+.calc-out{border-top:1px solid rgba(255,255,255,.14);padding-top:1rem}
+.calc-total{display:flex;align-items:baseline;gap:.7rem;flex-wrap:wrap}
+.calc-total #calcTotal{font-family:var(--display);font-weight:900;font-size:clamp(2rem,5vw,2.7rem);color:var(--lime);line-height:1}
+.calc-total em{font-family:var(--mono);font-size:.64rem;letter-spacing:.05em;text-transform:uppercase;opacity:.7;font-style:normal}
+.calc-save{font-family:var(--mono);font-size:.7rem;letter-spacing:.03em;color:var(--lime);margin-top:.5rem;min-height:1em}
+.calc-cta{align-self:flex-start;margin-top:.2rem}
+.worked-example{background:var(--teal);color:var(--white);border-radius:16px;padding:1.7rem 1.8rem;display:flex;flex-direction:column}
+.we-label{font-family:var(--mono);font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;color:var(--lime)}
+.we-scenario{font-family:var(--display);font-weight:700;font-size:1.02rem;margin-top:.55rem;opacity:.92}
+.we-amt{font-family:var(--display);font-weight:900;font-size:clamp(2.5rem,7vw,3.4rem);color:var(--lime);line-height:1;margin-top:.35rem}
+.we-per{font-family:var(--mono);font-size:.68rem;letter-spacing:.03em;opacity:.85;margin-top:.3rem}
+.we-vs{margin-top:1.3rem;border-top:1px solid rgba(255,255,255,.22);padding-top:1rem;display:flex;flex-direction:column;gap:.55rem}
+.we-row{display:flex;justify-content:space-between;align-items:baseline;font-size:.92rem}
+.we-row span{opacity:.85}.we-row b{font-family:var(--display);font-weight:800}
+.we-row.save{border-top:1px dashed rgba(255,255,255,.28);padding-top:.7rem;margin-top:.15rem}
+.we-row.save span,.we-row.save b{color:var(--lime)}
+@media(max-width:820px){.tp-body{grid-template-columns:1fr}}</style>
 </head>
 <body class="loading">
 <a href="#who" class="skip-link">Skip to content</a>
@@ -698,7 +743,54 @@ footer a:hover{color:var(--lime)}
         <a href="#signup" class="card-link" data-cursor style="margin-top:.9rem">Facilitator or cohort? Enquire →</a>
       </div>
     </div>
-    <p class="train-note reveal">Complete a level to earn an official, personalised certificate of completion.</p>
+
+    <!-- TEAM & ORGANISATION TIERED PRICING -->
+    <div class="team-pricing reveal" id="team-pricing">
+      <div class="tp-eyebrow">Team &amp; Organisation Seats</div>
+      <h3 class="tp-h">the more you train,<br>the less per head.</h3>
+      <p class="tp-sub">Self-completed seats for teams, schools, charities and academies. Rates apply per head, per level, and tier automatically by headcount, no cohort scheduling required.</p>
+      <div class="tp-body">
+        <div class="rate-wrap">
+          <table class="rate-table">
+            <thead><tr><th>Team seats</th><th>L1 · head</th><th>L2 · head</th><th class="logic">Why</th></tr></thead>
+            <tbody>
+              <tr><td><b>1–4</b><small>individual</small></td><td class="p">£149</td><td class="p">£159</td><td class="logic">Single-buyer rate</td></tr>
+              <tr><td><b>5–14</b><small>team block</small></td><td class="p">£119</td><td class="p">£129</td><td class="logic">~20% off</td></tr>
+              <tr class="best"><td><b>15+</b><small>full cohort-plus</small></td><td class="p">£99</td><td class="p">£109</td><td class="logic">~33% off · best value</td></tr>
+            </tbody>
+          </table>
+          <div class="calc" aria-label="Team quote calculator">
+            <div class="calc-lbl">Live quote</div>
+            <div class="calc-row">
+              <span class="chk" style="cursor:default">How many people?</span>
+              <div class="calc-num"><button type="button" data-step="-1" aria-label="Fewer">–</button><input id="calcN" type="number" min="1" value="15" inputmode="numeric" aria-label="Number of people"><button type="button" data-step="1" aria-label="More">+</button></div>
+            </div>
+            <div class="calc-row" style="gap:1.4rem;justify-content:flex-start">
+              <label class="chk"><input type="checkbox" id="calcL1" checked> Level 1</label>
+              <label class="chk"><input type="checkbox" id="calcL2" checked> Level 2</label>
+            </div>
+            <div class="calc-out">
+              <div class="calc-total"><span id="calcTotal">£3,120</span><em id="calcRate">£208 / head · 15+ rate</em></div>
+              <div class="calc-save" id="calcSave">Saves £1,500 vs individual seats</div>
+            </div>
+            <a href="#signup" class="btn lime sm calc-cta" id="calcCta" data-cursor data-magnetic>Request this quote <span class="arr">→</span></a>
+          </div>
+        </div>
+        <div class="worked-example">
+          <span class="we-label">Worked example</span>
+          <div class="we-scenario">15 people · both levels (L1 + L2)</div>
+          <div class="we-amt">£3,120</div>
+          <div class="we-per">£208 per head at the 15+ team rate</div>
+          <div class="we-vs">
+            <div class="we-row"><span>15 individual seats</span><b>£4,620</b></div>
+            <div class="we-row"><span>Two full cohorts</span><b>£7,116</b></div>
+            <div class="we-row save"><span>You save up to</span><b>£3,996</b></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p class="train-note reveal">Complete a level to earn an official, personalised certificate of completion. Team seats are invoiced at the tiered rate, one bill, one team.</p>
   </div>
 </section>
 <section class="audience" id="act">
@@ -757,6 +849,7 @@ footer a:hover{color:var(--lime)}
       <div class="form-row"><label for="interest">I'm enquiring about</label>
         <select id="interest">
           <option>Precision Training (L1 + L2)</option>
+          <option>Team / organisation training seats</option>
           <option>Precision Coaching (PILLAR)</option>
           <option>The Precision Network (TPN)</option>
           <option>Licensing the full PSS for my organisation</option>
@@ -1110,7 +1203,7 @@ enquiryForm.addEventListener('submit',async function(e){
   try{
     if(ENQUIRY_API){
       const res=await fetch(ENQUIRY_API,{method:'POST',headers:{'Content-Type':'application/json'},
-        body:JSON.stringify({name:name.value.trim(),email:email.value.trim(),interest:interest.value})});
+        body:JSON.stringify({name:name.value.trim(),email:email.value.trim(),interest:interest.value,message:(window.__kslQuote||'')})});
       if(!res.ok) throw new Error('HTTP '+res.status);
     }
     submitBtn.innerHTML="Thanks, we'll be in touch ✦";
@@ -1120,6 +1213,39 @@ enquiryForm.addEventListener('submit',async function(e){
     formError('Couldn’t send, please email hello@keyshiftlondon.org or try again.');
   }
 });
+
+/* ---------- Team seat quote calculator ---------- */
+(function(){
+  const R={l1:[149,119,99],l2:[159,129,109]};       // [1–4, 5–14, 15+]
+  const BAND=['1–4','5–14','15+'];
+  const tier=n=>n>=15?2:(n>=5?1:0);
+  const gbp=x=>'£'+x.toLocaleString('en-GB');
+  const nEl=document.getElementById('calcN'), l1=document.getElementById('calcL1'), l2=document.getElementById('calcL2');
+  if(!nEl) return;
+  const totalEl=document.getElementById('calcTotal'), rateEl=document.getElementById('calcRate'),
+        saveEl=document.getElementById('calcSave'), cta=document.getElementById('calcCta');
+  function calc(){
+    let n=Math.max(1,parseInt(nEl.value)||1); const ti=tier(n);
+    const per=(l1.checked?R.l1[ti]:0)+(l2.checked?R.l2[ti]:0);
+    const total=per*n;
+    const indPer=(l1.checked?R.l1[0]:0)+(l2.checked?R.l2[0]:0);
+    const save=indPer*n-total;
+    const lv=(l1.checked?'L1':'')+(l1.checked&&l2.checked?' + ':'')+(l2.checked?'L2':'')||'no level selected';
+    totalEl.textContent=per?gbp(total):'£0';
+    rateEl.textContent=per?gbp(per)+' / head · '+BAND[ti]+' rate':'select a level';
+    saveEl.textContent= save>0 ? 'Saves '+gbp(save)+' vs individual seats' : (ti===0?'Individual rate · add 5+ for team pricing':'');
+    window.__kslQuote='Team quote: '+n+' seats · '+lv+' · '+gbp(total)+' ('+(per?gbp(per):'—')+'/head, '+BAND[ti]+' tier)';
+  }
+  [nEl,l1,l2].forEach(e=>e.addEventListener('input',calc));
+  document.querySelectorAll('.calc-num button').forEach(b=>b.addEventListener('click',()=>{
+    nEl.value=Math.max(1,(parseInt(nEl.value)||1)+parseInt(b.dataset.step)); calc();
+  }));
+  cta.addEventListener('click',()=>{
+    const sel=document.getElementById('interest');
+    if(sel) for(let i=0;i<sel.options.length;i++){ if(/team/i.test(sel.options[i].text)){sel.selectedIndex=i;break;} }
+  });
+  calc();
+})();
 </script>
 </body>
 </html>
