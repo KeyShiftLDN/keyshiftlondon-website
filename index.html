@@ -997,6 +997,8 @@ footer a:hover{color:var(--lime)}
           <option>Funding / partnership</option>
         </select>
       </div>
+      <input type="text" id="enqHp" name="company_website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+      <div id="cfTurnstile" class="cf-turnstile" style="margin:.2rem 0 1rem"></div>
       <button type="submit" class="btn lime" id="submitBtn" data-cursor>Send Enquiry <span class="arr">→</span></button>
       <p class="form-note">Or email hello@keyshiftlondon.org</p>
     </form>
@@ -1128,6 +1130,19 @@ footer a:hover{color:var(--lime)}
 
 <!-- PLUGINS -->
 <!-- Self-hosted (same-origin), no third-party CDN dependency. -->
+<!-- Cloudflare Turnstile (enquiry-form anti-spam). Site key is public; paste yours below.
+     Empty = widget disabled (form still works); server-side check fail-opens until the
+     Render env var TURNSTILE_SECRET is also set. -->
+<script>
+  window.TURNSTILE_SITEKEY = '';   // <-- paste your Turnstile SITE key here
+  function onCfTurnstile(){
+    if(window.TURNSTILE_SITEKEY && window.turnstile){
+      var el=document.getElementById('cfTurnstile');
+      if(el){ try{ window.__cfWid = window.turnstile.render('#cfTurnstile',{sitekey:window.TURNSTILE_SITEKEY}); }catch(e){} }
+    }
+  }
+</script>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onCfTurnstile&render=explicit" async defer></script>
 <script src="ksl-assets/gsap.min.js"></script>
 <script src="ksl-assets/ScrollTrigger.min.js"></script>
 <script src="ksl-assets/lenis.min.js"></script>
@@ -1377,19 +1392,28 @@ enquiryForm.addEventListener('submit',async function(e){
   const name=document.getElementById('name'), email=document.getElementById('email'), interest=document.getElementById('interest');
   if(!name.value.trim()){name.focus();return;}
   if(!emailOk(email.value)){email.focus();return;}
+  // Cloudflare Turnstile token (only enforced when the widget is active).
+  const tsToken = (window.TURNSTILE_SITEKEY && window.turnstile && window.__cfWid!=null)
+    ? (window.turnstile.getResponse(window.__cfWid) || '') : '';
+  if(window.TURNSTILE_SITEKEY && !tsToken){
+    formError('Please complete the “I’m human” check and try again.'); return;
+  }
+  const enqHp=document.getElementById('enqHp');
   const prev=submitBtn.innerHTML;
   submitBtn.disabled=true; submitBtn.style.opacity='.7'; submitBtn.innerHTML='Sending…';
   const old=enquiryForm.querySelector('.form-error'); if(old) old.remove();
   try{
     if(ENQUIRY_API){
       const res=await fetch(ENQUIRY_API,{method:'POST',headers:{'Content-Type':'application/json'},
-        body:JSON.stringify({name:name.value.trim(),email:email.value.trim(),interest:interest.value,message:(window.__kslQuote||'')})});
+        body:JSON.stringify({name:name.value.trim(),email:email.value.trim(),interest:interest.value,
+          message:(window.__kslQuote||''),company_website:enqHp?enqHp.value:'',turnstile_token:tsToken})});
       if(!res.ok) throw new Error('HTTP '+res.status);
     }
     submitBtn.innerHTML="Thanks, we'll be in touch ✦";
     enquiryForm.querySelectorAll('input,select').forEach(el=>el.disabled=true);
   }catch(err){
     submitBtn.disabled=false; submitBtn.style.opacity=''; submitBtn.innerHTML=prev;
+    if(window.turnstile && window.__cfWid!=null){ try{ window.turnstile.reset(window.__cfWid); }catch(e){} }
     formError('Couldn’t send, please email hello@keyshiftlondon.org or try again.');
   }
 });
