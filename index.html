@@ -1138,9 +1138,19 @@ footer a:hover{color:var(--lime)}
   function onCfTurnstile(){
     if(window.TURNSTILE_SITEKEY && window.turnstile){
       var el=document.getElementById('cfTurnstile');
-      if(el){ try{ window.__cfWid = window.turnstile.render('#cfTurnstile',{sitekey:window.TURNSTILE_SITEKEY}); }catch(e){} }
+      if(el){ try{ window.__cfWid = window.turnstile.render('#cfTurnstile',{
+        sitekey: window.TURNSTILE_SITEKEY,
+        'refresh-expired':'auto',   // silently re-issue an expired token
+        'retry':'auto',             // retry on Cloudflare-side hiccups
+        'error-callback': function(){ window.cfRefresh(); }
+      }); }catch(e){} }
     }
   }
+  // Force a fresh single-use token — call after every submit so a second attempt
+  // never reuses a spent token (which Cloudflare rejects with a 403).
+  window.cfRefresh = function(){
+    if(window.turnstile && window.__cfWid!=null){ try{ window.turnstile.reset(window.__cfWid); }catch(e){} }
+  };
 </script>
 <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onCfTurnstile&render=explicit" async defer></script>
 <script src="ksl-assets/gsap.min.js"></script>
@@ -1396,7 +1406,8 @@ enquiryForm.addEventListener('submit',async function(e){
   const tsToken = (window.TURNSTILE_SITEKEY && window.turnstile && window.__cfWid!=null)
     ? (window.turnstile.getResponse(window.__cfWid) || '') : '';
   if(window.TURNSTILE_SITEKEY && !tsToken){
-    formError('Please complete the “I’m human” check and try again.'); return;
+    window.cfRefresh&&window.cfRefresh();   // kick a fresh challenge so the retry has a token
+    formError('Just verifying you’re human — give it a second, then tap Send again.'); return;
   }
   const enqHp=document.getElementById('enqHp');
   const prev=submitBtn.innerHTML;
@@ -1413,7 +1424,7 @@ enquiryForm.addEventListener('submit',async function(e){
     enquiryForm.querySelectorAll('input,select').forEach(el=>el.disabled=true);
   }catch(err){
     submitBtn.disabled=false; submitBtn.style.opacity=''; submitBtn.innerHTML=prev;
-    if(window.turnstile && window.__cfWid!=null){ try{ window.turnstile.reset(window.__cfWid); }catch(e){} }
+    window.cfRefresh&&window.cfRefresh();   // spent/failed token -> issue a fresh one for the retry
     formError('Couldn’t send, please email hello@keyshiftlondon.org or try again.');
   }
 });
