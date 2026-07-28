@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Breakthrough Blueprint — a free tool for the young people you can't reach</title>
+<meta name="description" content="They're not unreachable. You've been working with part of the picture. Free from Key Shift London CIC.">
+<link rel="icon" type="image/png" href="ksl-assets/arrow.png">
+<link rel="apple-touch-icon" href="ksl-assets/arrow.png">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta name="theme-color" content="#C8FF00">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://keyshiftlondon.org/blueprint">
+<!-- Social share (Open Graph + Twitter) -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Key Shift London">
+<meta property="og:title" content="The Breakthrough Blueprint — a free tool for the young people you can't reach">
+<meta property="og:description" content="They're not unreachable. You've been working with part of the picture. Free from Key Shift London CIC.">
+<meta property="og:url" content="https://keyshiftlondon.org/blueprint">
+<meta property="og:image" content="https://keyshiftlondon.org/ksl-assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="The Breakthrough Blueprint — Key Shift London CIC">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Breakthrough Blueprint — a free tool for the young people you can't reach">
+<meta name="twitter:description" content="They're not unreachable. You've been working with part of the picture. Free from Key Shift London CIC.">
+<meta name="twitter:image" content="https://keyshiftlondon.org/ksl-assets/og-image.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,700;1,800;1,900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#0A0A0A;--teal:#1A7A6E;--teal-dark:#0F4F47;--teal-bright:#2ABFAF;
+  --lime:#C8FF00;--lime-alt:#CCFF00;--white:#FFFFFF;
+  --display:'Barlow Condensed',sans-serif;--mono:'JetBrains Mono',monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--display);background:var(--white);color:var(--black);-webkit-font-smoothing:antialiased;line-height:1.5}
+::selection{background:var(--black);color:var(--lime)}
+a{color:inherit}
+img{max-width:100%}
+.wrap{width:100%;max-width:1040px;margin:0 auto;padding:0 clamp(1.1rem,4vw,2.4rem)}
+.eyebrow{font-family:var(--mono);font-size:.72rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase}
+h1,h2,h3{font-weight:900;line-height:1.02;letter-spacing:-.01em}
+h1{font-size:clamp(2.2rem,6.4vw,4.2rem)}
+h2{font-size:clamp(1.9rem,5vw,3.1rem);margin-bottom:1.1rem}
+h3{font-size:clamp(1.3rem,3.2vw,1.7rem)}
+.lime{color:var(--lime)}
+.teal{color:var(--teal)}
+p{font-size:clamp(1.02rem,2.2vw,1.16rem)}
+section{padding:clamp(3rem,8vw,5.5rem) 0;position:relative;overflow:hidden}
+.lead{max-width:60ch}
+:focus-visible{outline:3px solid var(--teal-bright);outline-offset:3px;border-radius:4px}
+.skip{position:absolute;left:-9999px;top:0;background:var(--black);color:var(--lime);padding:.7rem 1rem;font-family:var(--mono);font-size:.8rem;z-index:99}
+.skip:focus{left:0}
+
+/* buttons — match the main site's pill CTAs */
+.btn{font-family:var(--display);font-weight:800;text-transform:uppercase;letter-spacing:.05em;font-size:clamp(1rem,2.4vw,1.15rem);padding:1rem 2rem;border:2.5px solid var(--black);border-radius:50px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:.55rem;transition:transform .2s,box-shadow .2s,background .2s,color .2s;background:var(--black);color:var(--lime)}
+.btn:hover{transform:translateY(-2px)}
+.btn.lime{background:var(--lime);color:var(--black);border-color:var(--lime)}
+.btn.lime:hover{box-shadow:5px 5px 0 var(--teal-bright)}
+.btn.dark{background:var(--black);color:var(--lime);border-color:var(--black)}
+.btn.dark:hover{box-shadow:5px 5px 0 var(--teal)}
+.btn.block{width:100%;justify-content:center}
+.arr{font-weight:700}
+
+/* hero */
+.hero{background:var(--lime);color:var(--black)}
+.hero .eyebrow{color:var(--teal-dark)}
+.hero h1{margin:1rem 0 1.2rem}
+.hero .sub{font-size:clamp(1.2rem,3vw,1.7rem);font-weight:700;max-width:30ch;margin-bottom:1.4rem}
+.hero .body{max-width:58ch;margin-bottom:2rem}
+.reassure{font-family:var(--mono);font-size:.82rem;letter-spacing:.02em;color:var(--teal-dark);margin-top:1.3rem;max-width:52ch}
+
+/* generic section variants */
+.dark{background:var(--black);color:var(--white)}
+.dark .eyebrow{color:var(--lime)}
+.dark h2 .lime{color:var(--lime)}
+.tint{background:#f5f7f3}
+.teal-sec{background:var(--teal);color:var(--white)}
+.teal-sec .eyebrow{color:var(--lime)}
+
+/* two tools */
+.tools{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem;margin-top:2rem}
+.tool{border:2.5px solid var(--black);border-radius:18px;padding:1.8rem 1.6rem;background:var(--white)}
+.dark .tool{background:#141414;border-color:rgba(255,255,255,.18)}
+.tool h3{margin-bottom:.6rem}
+.tool .k{font-family:var(--mono);font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--teal);display:block;margin-bottom:.5rem}
+.dark .tool .k{color:var(--lime)}
+
+/* lists */
+.grouped{display:grid;grid-template-columns:1fr 1fr;gap:1.6rem 2.2rem;margin-top:1.8rem}
+.grouped h3{margin-bottom:.9rem;font-size:1.15rem;font-family:var(--mono);letter-spacing:.06em;text-transform:uppercase}
+.ticks{list-style:none;display:flex;flex-direction:column;gap:.55rem}
+.ticks li{position:relative;padding-left:1.7rem;font-size:1.02rem}
+.ticks li::before{content:"→";position:absolute;left:0;color:var(--teal);font-weight:700}
+.dark .ticks li::before,.teal-sec .ticks li::before{color:var(--lime)}
+.who-list{columns:2;column-gap:2.2rem;list-style:none;margin-top:1.4rem}
+.who-list li{break-inside:avoid;padding:.4rem 0 .4rem 1.6rem;position:relative}
+.who-list li::before{content:"•";position:absolute;left:.2rem;color:var(--lime);font-weight:900}
+
+/* numbers */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-top:1rem}
+.stat{background:#141414;border:1.5px solid rgba(255,255,255,.14);border-radius:16px;padding:1.6rem 1.4rem}
+.stat .big{font-family:var(--display);font-weight:900;font-size:clamp(1.9rem,4.5vw,2.7rem);color:var(--lime);line-height:1;margin-bottom:.5rem}
+.stat p{font-size:.98rem;color:rgba(255,255,255,.86)}
+.src{display:block;font-family:var(--mono);font-size:.62rem;line-height:1.5;letter-spacing:.02em;color:rgba(255,255,255,.5);margin-top:.7rem}
+.stat-foot{margin-top:1.6rem;font-weight:700;font-size:1.1rem;color:var(--white)}
+
+/* faq */
+.faq{margin-top:1.6rem;border-top:1.5px solid rgba(0,0,0,.14)}
+.faq details{border-bottom:1.5px solid rgba(0,0,0,.14)}
+.faq summary{cursor:pointer;list-style:none;padding:1.1rem .2rem;font-weight:800;font-size:1.15rem;display:flex;justify-content:space-between;gap:1rem;align-items:center}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";color:var(--teal);font-weight:400;font-size:1.5rem;transition:transform .25s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq .a{padding:0 .2rem 1.2rem;max-width:66ch;color:#333}
+
+/* form / final CTA */
+.final{background:var(--black);color:var(--white)}
+.final .eyebrow{color:var(--lime)}
+.formcard{background:#141414;border:2px solid rgba(255,255,255,.18);border-radius:20px;padding:clamp(1.6rem,4vw,2.4rem);max-width:34rem;margin-top:2rem}
+.frow{margin-bottom:1.15rem}
+.frow label{display:block;font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--lime);margin-bottom:.5rem}
+.frow input,.frow select{width:100%;background:var(--black);border:2px solid rgba(255,255,255,.25);border-radius:10px;padding:.9rem 1rem;font-family:var(--display);font-size:1.1rem;color:var(--white)}
+.frow input::placeholder{color:rgba(255,255,255,.35)}
+.frow input:focus,.frow select:focus{outline:none;border-color:var(--lime);box-shadow:0 0 0 3px rgba(200,255,0,.14)}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.undercta{font-family:var(--mono);font-size:.72rem;color:rgba(255,255,255,.5);text-align:center;margin-top:.9rem}
+.formerr{color:#ffb3b3;font-size:.95rem;margin-top:.6rem;min-height:1.2em}
+#cfBp{margin:.2rem 0 1.1rem}
+
+/* success panel */
+.success{display:none}
+.success.show{display:block}
+.success .dl{display:flex;flex-wrap:wrap;gap:1rem;margin:1.6rem 0}
+.book{display:inline-flex;align-items:center;gap:.5rem;margin-top:1rem;font-weight:800;color:var(--lime);text-decoration:none;border-bottom:2px solid var(--lime);padding-bottom:2px}
+
+/* footer */
+footer{background:var(--black);color:rgba(255,255,255,.7);padding:2.4rem 0;font-size:.85rem}
+.foot{display:flex;flex-wrap:wrap;align-items:center;gap:1rem 1.6rem;justify-content:space-between}
+.foot img{height:34px;width:auto}
+.foot a{color:var(--teal-bright);text-decoration:none}
+.foot .meta{font-family:var(--mono);font-size:.72rem;letter-spacing:.03em}
+
+@media(max-width:720px){
+  .tools,.grouped,.stats{grid-template-columns:1fr}
+  .who-list{columns:1}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#signup-form">Skip to the form</a>
+
+<!-- 1. HERO -->
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="eyebrow">Free from Key Shift London CIC</div>
+    <h1>There's a young person you can't reach. You've tried everything. Nothing's working.</h1>
+    <p class="sub">They're not unreachable. You've been working with part of the picture.</p>
+    <p class="body">Get the free Breakthrough Blueprint — a step-by-step tool that helps you find what you've been missing about one specific young person, and gives you three concrete moves to make this week. Comes with the Precision Field Toolkit: seven printable cards for the moments that happen in corridors, on touchlines, and when there's no time to think.</p>
+    <a href="#signup-form" class="btn dark" data-scrollform>Send me the free toolkit <span class="arr">→</span></a>
+    <p class="reassure">Free. No cost, no catch. Used by mentors, teachers, youth workers, coaches and pastoral teams across South London.</p>
+  </div>
+</header>
+
+<!-- 2. THE PROBLEM -->
+<section class="tint">
+  <div class="wrap">
+    <div class="eyebrow teal">The problem</div>
+    <h2 style="margin-top:.8rem">Every practitioner has one.</h2>
+    <p class="lead">The one who shuts down. The one who kicks off. The one who's stopped turning up. You've tried the sanctions. You've tried the conversations. You've tried being kind, being firm, being consistent. And still — nothing moves.</p>
+    <p class="lead" style="margin-top:1.1rem">Here's what most training never tells you: A young person is never just their behaviour. The defiance, the silence, the bravado, the absence — these are signals, not the story. Behind every one is a context you may not have seen yet. When you can read the context, the behaviour starts to make sense. And once it makes sense, you know what to do.</p>
+  </div>
+</section>
+
+<!-- 3. WHAT YOU GET -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow teal">What you get</div>
+    <div class="tools">
+      <div class="tool">
+        <span class="k">Tool 01</span>
+        <h3>The Breakthrough Blueprint</h3>
+        <p>A guided diagnostic you work through for one specific young person you have in mind. It walks you through the five contexts every young person lives inside at once — and surfaces the one you've been missing.</p>
+      </div>
+      <div class="tool">
+        <span class="k">Tool 02</span>
+        <h3>The Precision Field Toolkit</h3>
+        <p>Seven printable cards for the moments that matter. Print them, fold them, keep them on you.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. WHAT'S INSIDE -->
+<section class="dark">
+  <div class="wrap">
+    <div class="eyebrow">What's inside</div>
+    <div class="grouped">
+      <div>
+        <h3 class="lime">In the Blueprint</h3>
+        <ul class="ticks">
+          <li>The Five Contexts (the SHAPE lens)</li>
+          <li>The Diagnostic worksheet</li>
+          <li>The Behaviour Decoder</li>
+          <li>A worked example (Kayden, 14, heading for exclusion)</li>
+          <li>The Never List</li>
+          <li>The Safeguarding Sightline</li>
+          <li>The Action Planner</li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="lime">In the Toolkit</h3>
+        <ul class="ticks">
+          <li>1. The Five Contexts</li>
+          <li>2. The First Five Minutes</li>
+          <li>3. Say This, Not That</li>
+          <li>4. When It Kicks Off</li>
+          <li>5. The Safeguarding Sightline</li>
+          <li>6. The Five-Minute Debrief</li>
+          <li>7. The Seven-Day Tracker</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. WHO IT'S FOR -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow teal">Who it's for</div>
+    <ul class="who-list">
+      <li>Teachers, pastoral leads and SENCOs</li>
+      <li>Youth workers and mentors</li>
+      <li>PRUs and alternative provision</li>
+      <li>Sports coaches and academies</li>
+      <li>Residential and social care teams</li>
+      <li>Heads, CEOs and commissioners</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 6. WHY WE'RE GIVING THIS AWAY -->
+<section class="teal-sec">
+  <div class="wrap">
+    <div class="eyebrow">Why we're giving this away</div>
+    <h2 style="margin-top:.8rem;color:#fff">Key Shift London is a Community Interest Company.</h2>
+    <p class="lead">Key Shift London is a Community Interest Company working across Croydon, Lambeth and Southwark. We build practitioner development — training, coaching, and a platform that proves impact. This blueprint is drawn from Level 1 of our Precision Training. We share it free because we'd rather show you what we do than tell you. And because one reached young person is worth more to us than any paywall.</p>
+  </div>
+</section>
+
+<!-- 7. THE NUMBERS -->
+<section class="dark">
+  <div class="wrap">
+    <div class="eyebrow">The numbers</div>
+    <div class="stats">
+      <div class="stat">
+        <div class="big">335,671</div>
+        <p>suspensions in the autumn term of 2024/25 in England — 88% above the pre-pandemic autumn term.</p>
+        <span class="src">DfE, Suspensions and permanent exclusions in England, November 2025</span>
+      </div>
+      <div class="stat">
+        <div class="big">1 in 5</div>
+        <p>pupils was persistently absent in 2023/24.</p>
+        <span class="src">DfE, Pupil absence in schools in England, 2023/24</span>
+      </div>
+      <div class="stat">
+        <div class="big">15%</div>
+        <p>Of pupils permanently excluded, 15% had a caution or conviction for serious violence before 18 — compared with around 1% of pupils who weren't excluded.</p>
+        <span class="src">DfE / Ministry of Justice linked dataset, 2022</span>
+      </div>
+    </div>
+    <p class="stat-foot">Behind every one of those numbers is a young person somebody couldn't reach.</p>
+  </div>
+</section>
+
+<!-- 8. FAQ -->
+<section class="tint">
+  <div class="wrap">
+    <div class="eyebrow teal">FAQ</div>
+    <div class="faq">
+      <details><summary>Is it really free?</summary><div class="a">Yes. No card, no trial, no upsell wall. Give us an email address and we'll send both tools.</div></details>
+      <details><summary>How long does it take?</summary><div class="a">The Blueprint takes about thirty focused minutes for one young person. The Toolkit cards you can print and use immediately.</div></details>
+      <details><summary>Do I need training first?</summary><div class="a">No. It's written to be used straight away by anyone working with young people.</div></details>
+      <details><summary>Can I share it with my team?</summary><div class="a">Please do. The Toolkit is free to use and share, unaltered. That's what it's for.</div></details>
+      <details><summary>What happens after I download it?</summary><div class="a">We'll send the tools. If you want to talk about bringing Precision to your whole team, there's a link. If you don't, you keep the tools anyway.</div></details>
+    </div>
+  </div>
+</section>
+
+<!-- 9. FINAL CTA + FORM -->
+<section class="final" id="signup-form">
+  <div class="wrap">
+    <div class="eyebrow">Start here</div>
+    <h2 style="margin-top:.8rem">The young person you're thinking about right now. <span class="lime">Start with them.</span></h2>
+
+    <!-- form -->
+    <form class="formcard" id="bpForm" novalidate>
+      <div class="frow">
+        <label for="bpEmail">Where should we send it?</label>
+        <input type="email" id="bpEmail" name="email" placeholder="your@email.com" autocomplete="email" required aria-required="true">
+      </div>
+      <div class="frow">
+        <label for="bpRole">Your role (so we send relevant things, not everything)</label>
+        <select id="bpRole" name="role">
+          <option value="">Select…</option>
+          <option>Teacher/Pastoral</option>
+          <option>Youth Worker/Mentor</option>
+          <option>Sports Coach</option>
+          <option>Social/Residential Care</option>
+          <option>Charity/Org Leader</option>
+          <option>Council/Commissioner</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <input type="text" id="bpHp" name="company_website" tabindex="-1" autocomplete="off" aria-hidden="true" class="hp">
+      <div id="cfBp" class="cf-turnstile"></div>
+      <button type="submit" class="btn lime block" id="bpSubmit">Send me the toolkit <span class="arr">→</span></button>
+      <p class="formerr" id="bpErr" role="alert" aria-live="assertive"></p>
+      <p class="undercta">No spam. Unsubscribe any time.</p>
+    </form>
+
+    <!-- success panel (swaps the form) -->
+    <div class="formcard success" id="bpSuccess" tabindex="-1">
+      <h3 tabindex="-1" id="bpSuccessH">It's on its way. Now go and think about that one young person.</h3>
+      <p style="margin-top:.9rem;color:rgba(255,255,255,.85)">We've emailed both tools to you — check your inbox (and your spam folder, just in case). You can also download them right here:</p>
+      <div class="dl">
+        <a class="btn lime" id="dlBlueprint" href="downloads/breakthrough-blueprint.pdf" download>Download the Breakthrough Blueprint</a>
+        <a class="btn lime" id="dlToolkit" href="downloads/precision-field-toolkit.pdf" download>Download the Precision Field Toolkit</a>
+      </div>
+      <a class="book" href="https://cal.com/key-shift-london-uwjros/30min" target="_blank" rel="noopener">Want this across your whole team? Book a conversation →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <img src="ksl-assets/logo-light.png" alt="Key Shift London" width="816" height="659">
+    <span class="meta">Community Interest Company · Reg. 15685849</span>
+    <a href="privacy.html">Privacy</a>
+  </div>
+</footer>
+
+<!-- Cloudflare Turnstile (same widget as the enquiry form) -->
+<script>
+  window.TURNSTILE_SITEKEY = '0x4AAAAAAD6DMsPG1LLrJEqb';
+  function onCfBp(){
+    if(window.TURNSTILE_SITEKEY && window.turnstile){
+      var el=document.getElementById('cfBp');
+      if(el){ try{ window.__cfBp = window.turnstile.render('#cfBp',{
+        sitekey: window.TURNSTILE_SITEKEY, 'refresh-expired':'auto', 'retry':'auto',
+        'error-callback': function(){ window.bpRefresh(); }
+      }); }catch(e){} }
+    }
+  }
+  window.bpRefresh = function(){ if(window.turnstile && window.__cfBp!=null){ try{ window.turnstile.reset(window.__cfBp); }catch(e){} } };
+</script>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onCfBp&render=explicit" async defer></script>
+
+<script>
+const BLUEPRINT_API = 'https://ksl-payments.onrender.com/api/blueprint/signup';
+const form=document.getElementById('bpForm'), emailEl=document.getElementById('bpEmail'),
+      roleEl=document.getElementById('bpRole'), hpEl=document.getElementById('bpHp'),
+      btn=document.getElementById('bpSubmit'), errEl=document.getElementById('bpErr'),
+      panel=document.getElementById('bpSuccess');
+const emailOk=v=>/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test((v||'').trim());
+
+// Hero CTA -> focus the email field after scrolling to the form.
+document.querySelectorAll('[data-scrollform]').forEach(a=>a.addEventListener('click',()=>{
+  setTimeout(()=>emailEl.focus(),450);
+}));
+
+function showError(msg){ errEl.textContent=msg; }
+
+form.addEventListener('submit',async function(e){
+  e.preventDefault();
+  showError('');
+  if(!emailOk(emailEl.value)){ showError('Please enter a valid email address.'); emailEl.focus(); return; }
+  const tsToken=(window.TURNSTILE_SITEKEY && window.turnstile && window.__cfBp!=null)
+    ? (window.turnstile.getResponse(window.__cfBp)||'') : '';
+  if(window.TURNSTILE_SITEKEY && !tsToken){
+    window.bpRefresh&&window.bpRefresh();
+    showError('Just verifying you’re human — give it a second, then tap Send again.'); return;
+  }
+  const prev=btn.innerHTML;
+  btn.disabled=true; btn.style.opacity='.7'; btn.innerHTML='Sending…';
+  try{
+    const res=await fetch(BLUEPRINT_API,{method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({email:emailEl.value.trim(),role:roleEl.value||null,
+        company_website:hpEl.value,turnstile_token:tsToken})});
+    if(!res.ok) throw new Error('HTTP '+res.status);
+    let data={}; try{ data=await res.json(); }catch(_){}
+    // Point the download buttons at whatever the API returns (falls back to the static paths).
+    if(data.downloads){
+      if(data.downloads.blueprint) document.getElementById('dlBlueprint').href=data.downloads.blueprint;
+      if(data.downloads.toolkit) document.getElementById('dlToolkit').href=data.downloads.toolkit;
+    }
+    // TODO: analytics — fire the signup conversion event here when an analytics vendor is added.
+    form.style.display='none';
+    panel.classList.add('show');
+    document.getElementById('bpSuccessH').focus();
+  }catch(err){
+    btn.disabled=false; btn.style.opacity=''; btn.innerHTML=prev;
+    window.bpRefresh&&window.bpRefresh();
+    showError('Couldn’t send just now — please try again, or email hello@keyshiftlondon.org.');
+  }
+});
+</script>
+</body>
+</html>
