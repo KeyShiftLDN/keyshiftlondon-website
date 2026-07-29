@@ -42,17 +42,28 @@ body{font-family:var(--display);background:var(--white);color:var(--black);-webk
 ::selection{background:var(--black);color:var(--lime)}
 a{color:inherit}
 img{max-width:100%}
-.wrap{width:100%;max-width:1040px;margin:0 auto;padding:0 clamp(1.1rem,4vw,2.4rem)}
-.eyebrow{font-family:var(--mono);font-size:.72rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase}
+.wrap{width:100%;max-width:1040px;margin:0 auto;padding:0 clamp(1.1rem,4vw,2.4rem);position:relative;z-index:1}
+.eyebrow{font-family:var(--mono);font-size:.72rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;display:inline-block;margin-bottom:1.2rem}
 h1,h2,h3{font-weight:900;line-height:1.02;letter-spacing:-.01em}
 h1{font-size:clamp(2.2rem,6.4vw,4.2rem)}
-h2{font-size:clamp(1.9rem,5vw,3.1rem);margin-bottom:1.1rem}
+h2{font-size:clamp(1.9rem,5vw,3.1rem);margin-bottom:1.3rem}
 h3{font-size:clamp(1.3rem,3.2vw,1.7rem)}
 .lime{color:var(--lime)}
 .teal{color:var(--teal)}
 p{font-size:clamp(1.02rem,2.2vw,1.16rem)}
-section{padding:clamp(3rem,8vw,5.5rem) 0;position:relative;overflow:hidden}
-.lead{max-width:60ch}
+section{padding:clamp(4rem,9.5vw,7rem) 0;position:relative;overflow:hidden}
+.lead{max-width:62ch}
+.lead + .lead{margin-top:1.3rem}
+
+/* feathered low-opacity background washes (static — like the homepage .shape-bg/.dark-bg) */
+.wash{position:absolute;z-index:0;pointer-events:none;overflow:hidden;
+  -webkit-mask-image:radial-gradient(ellipse at center,#000 38%,transparent 74%);
+  mask-image:radial-gradient(ellipse at center,#000 38%,transparent 74%)}
+.wash img{width:100%;height:100%;object-fit:cover;display:block}
+.wash.light img{mix-blend-mode:multiply;opacity:.12;filter:grayscale(.25)}
+.wash.dark img{mix-blend-mode:normal;opacity:.28;filter:grayscale(.35) brightness(.85) contrast(1.05)}
+.wash.teal img{mix-blend-mode:luminosity;opacity:.4;filter:grayscale(.4) contrast(1.05)}
+@media(prefers-reduced-motion:no-preference){.wash{transition:opacity .6s}}
 :focus-visible{outline:3px solid var(--teal-bright);outline-offset:3px;border-radius:4px}
 .skip{position:absolute;left:-9999px;top:0;background:var(--black);color:var(--lime);padding:.7rem 1rem;font-family:var(--mono);font-size:.8rem;z-index:99}
 .skip:focus{left:0}
@@ -68,12 +79,12 @@ section{padding:clamp(3rem,8vw,5.5rem) 0;position:relative;overflow:hidden}
 .arr{font-weight:700}
 
 /* hero */
-.hero{background:var(--lime);color:var(--black)}
+.hero{background:var(--lime);color:var(--black);padding:clamp(4.5rem,11vw,8rem) 0;position:relative;overflow:hidden}
 .hero .eyebrow{color:var(--teal-dark)}
-.hero h1{margin:1rem 0 1.2rem}
-.hero .sub{font-size:clamp(1.2rem,3vw,1.7rem);font-weight:700;max-width:30ch;margin-bottom:1.4rem}
-.hero .body{max-width:58ch;margin-bottom:2rem}
-.reassure{font-family:var(--mono);font-size:.82rem;letter-spacing:.02em;color:var(--teal-dark);margin-top:1.3rem;max-width:52ch}
+.hero h1{margin:.3rem 0 1.5rem;max-width:20ch}
+.hero .sub{font-size:clamp(1.25rem,3vw,1.75rem);font-weight:700;max-width:32ch;margin-bottom:1.8rem}
+.hero .body{max-width:60ch;margin-bottom:2.4rem}
+.reassure{font-family:var(--mono);font-size:.82rem;line-height:1.7;letter-spacing:.02em;color:var(--teal-dark);margin-top:1.6rem;max-width:52ch}
 
 /* generic section variants */
 .dark{background:var(--black);color:var(--white)}
@@ -84,26 +95,26 @@ section{padding:clamp(3rem,8vw,5.5rem) 0;position:relative;overflow:hidden}
 .teal-sec .eyebrow{color:var(--lime)}
 
 /* two tools */
-.tools{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem;margin-top:2rem}
-.tool{border:2.5px solid var(--black);border-radius:18px;padding:1.8rem 1.6rem;background:var(--white)}
+.tools{display:grid;grid-template-columns:1fr 1fr;gap:1.7rem;margin-top:2.8rem}
+.tool{border:2.5px solid var(--black);border-radius:18px;padding:2.2rem 2rem;background:var(--white)}
 .dark .tool{background:#141414;border-color:rgba(255,255,255,.18)}
 .tool h3{margin-bottom:.6rem}
 .tool .k{font-family:var(--mono);font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--teal);display:block;margin-bottom:.5rem}
 .dark .tool .k{color:var(--lime)}
 
 /* lists */
-.grouped{display:grid;grid-template-columns:1fr 1fr;gap:1.6rem 2.2rem;margin-top:1.8rem}
-.grouped h3{margin-bottom:.9rem;font-size:1.15rem;font-family:var(--mono);letter-spacing:.06em;text-transform:uppercase}
-.ticks{list-style:none;display:flex;flex-direction:column;gap:.55rem}
+.grouped{display:grid;grid-template-columns:1fr 1fr;gap:2rem 3rem;margin-top:2.6rem}
+.grouped h3{margin-bottom:1.2rem;font-size:1.15rem;font-family:var(--mono);letter-spacing:.06em;text-transform:uppercase}
+.ticks{list-style:none;display:flex;flex-direction:column;gap:.7rem}
 .ticks li{position:relative;padding-left:1.7rem;font-size:1.02rem}
 .ticks li::before{content:"→";position:absolute;left:0;color:var(--teal);font-weight:700}
 .dark .ticks li::before,.teal-sec .ticks li::before{color:var(--lime)}
-.who-list{columns:2;column-gap:2.2rem;list-style:none;margin-top:1.4rem}
-.who-list li{break-inside:avoid;padding:.4rem 0 .4rem 1.6rem;position:relative}
+.who-list{columns:2;column-gap:2.6rem;list-style:none;margin-top:2rem}
+.who-list li{break-inside:avoid;padding:.5rem 0 .5rem 1.6rem;position:relative;font-size:1.05rem}
 .who-list li::before{content:"•";position:absolute;left:.2rem;color:var(--lime);font-weight:900}
 
 /* numbers */
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-top:1rem}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem;margin-top:2.4rem}
 .stat{background:#141414;border:1.5px solid rgba(255,255,255,.14);border-radius:16px;padding:1.6rem 1.4rem}
 .stat .big{font-family:var(--display);font-weight:900;font-size:clamp(1.9rem,4.5vw,2.7rem);color:var(--lime);line-height:1;margin-bottom:.5rem}
 .stat p{font-size:.98rem;color:rgba(255,255,255,.86)}
@@ -157,6 +168,7 @@ footer{background:var(--black);color:rgba(255,255,255,.7);padding:2.4rem 0;font-
 
 <!-- 1. HERO -->
 <header class="hero" id="top">
+  <div class="wash light" style="width:50%;height:90%;right:-9%;top:5%" aria-hidden="true"><img src="ksl-assets/photo-herobg.jpg" alt="" loading="lazy"></div>
   <div class="wrap">
     <div class="eyebrow">Free from Key Shift London CIC</div>
     <h1>There's a young person you can't reach. You've tried everything. Nothing's working.</h1>
@@ -169,6 +181,7 @@ footer{background:var(--black);color:rgba(255,255,255,.7);padding:2.4rem 0;font-
 
 <!-- 2. THE PROBLEM -->
 <section class="tint">
+  <div class="wash light" style="width:46%;height:84%;left:-9%;top:8%" aria-hidden="true"><img src="ksl-assets/photo-youth3.jpg" alt="" loading="lazy"></div>
   <div class="wrap">
     <div class="eyebrow teal">The problem</div>
     <h2 style="margin-top:.8rem">Every practitioner has one.</h2>
@@ -179,6 +192,7 @@ footer{background:var(--black);color:rgba(255,255,255,.7);padding:2.4rem 0;font-
 
 <!-- 3. WHAT YOU GET -->
 <section>
+  <div class="wash light" style="width:44%;height:82%;right:-9%;top:7%" aria-hidden="true"><img src="ksl-assets/photo-tablet.jpg" alt="" loading="lazy"></div>
   <div class="wrap">
     <div class="eyebrow teal">What you get</div>
     <div class="tools">
@@ -198,6 +212,7 @@ footer{background:var(--black);color:rgba(255,255,255,.7);padding:2.4rem 0;font-
 
 <!-- 4. WHAT'S INSIDE -->
 <section class="dark">
+  <div class="wash dark" style="width:44%;height:82%;left:-8%;top:9%" aria-hidden="true"><img src="ksl-assets/photo-study.jpg" alt="" loading="lazy"></div>
   <div class="wrap">
     <div class="eyebrow">What's inside</div>
     <div class="grouped">
@@ -231,6 +246,7 @@ footer{background:var(--black);color:rgba(255,255,255,.7);padding:2.4rem 0;font-
 
 <!-- 5. WHO IT'S FOR -->
 <section>
+  <div class="wash light" style="width:46%;height:84%;left:-9%;top:6%" aria-hidden="true"><img src="ksl-assets/photo-meeting.jpg" alt="" loading="lazy"></div>
   <div class="wrap">
     <div class="eyebrow teal">Who it's for</div>
     <ul class="who-list">
@@ -246,6 +262,7 @@ footer{background:var(--black);color:rgba(255,255,255,.7);padding:2.4rem 0;font-
 
 <!-- 6. WHY WE'RE GIVING THIS AWAY -->
 <section class="teal-sec">
+  <div class="wash teal" style="width:48%;height:86%;right:-9%;top:7%" aria-hidden="true"><img src="ksl-assets/photo-care.jpg" alt="" loading="lazy"></div>
   <div class="wrap">
     <div class="eyebrow">Why we're giving this away</div>
     <h2 style="margin-top:.8rem;color:#fff">Key Shift London is a Community Interest Company.</h2>
@@ -255,6 +272,7 @@ footer{background:var(--black);color:rgba(255,255,255,.7);padding:2.4rem 0;font-
 
 <!-- 7. THE NUMBERS -->
 <section class="dark">
+  <div class="wash dark" style="width:48%;height:84%;right:-9%;bottom:-6%" aria-hidden="true"><img src="ksl-assets/photo-london.jpg" alt="" loading="lazy"></div>
   <div class="wrap">
     <div class="eyebrow">The numbers</div>
     <div class="stats">
@@ -280,6 +298,7 @@ footer{background:var(--black);color:rgba(255,255,255,.7);padding:2.4rem 0;font-
 
 <!-- 8. FAQ -->
 <section class="tint">
+  <div class="wash light" style="width:44%;height:82%;right:-9%;bottom:-4%" aria-hidden="true"><img src="ksl-assets/photo-aspire.jpg" alt="" loading="lazy"></div>
   <div class="wrap">
     <div class="eyebrow teal">FAQ</div>
     <div class="faq">
@@ -294,6 +313,8 @@ footer{background:var(--black);color:rgba(255,255,255,.7);padding:2.4rem 0;font-
 
 <!-- 9. FINAL CTA + FORM -->
 <section class="final" id="signup-form">
+  <div class="wash dark" style="width:40%;height:76%;left:-7%;top:8%" aria-hidden="true"><img src="ksl-assets/photo-final1.jpg" alt="" loading="lazy"></div>
+  <div class="wash dark" style="width:38%;height:66%;right:-7%;bottom:-5%" aria-hidden="true"><img src="ksl-assets/photo-final2.jpg" alt="" loading="lazy"></div>
   <div class="wrap">
     <div class="eyebrow">Start here</div>
     <h2 style="margin-top:.8rem">The young person you're thinking about right now. <span class="lime">Start with them.</span></h2>
