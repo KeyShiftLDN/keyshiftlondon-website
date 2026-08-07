@@ -80,9 +80,9 @@ section{padding:clamp(4rem,9.5vw,7rem) 0;position:relative;overflow:hidden}
 
 /* motion — progressive enhancement (GSAP/Lenis), all respecting reduced-motion */
 .scrollbar{position:fixed;top:0;left:0;height:3px;width:100%;transform:scaleX(0);transform-origin:0 50%;background:var(--lime);z-index:100;pointer-events:none}
-.tool,.stat{transition:transform .3s ease,box-shadow .3s ease}
-.tool:hover{transform:translateY(-5px)}
+.stat{transition:transform .3s ease,box-shadow .3s ease}
 .stat:hover{transform:translateY(-4px)}
+.hero h1 .wd{display:inline-block;will-change:transform,filter}
 .success.show{animation:bpIn .55s ease both}
 @keyframes bpIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
 @media(prefers-reduced-motion:reduce){.tool,.stat{transition:none}.success.show{animation:none}}
@@ -475,17 +475,76 @@ form.addEventListener('submit',async function(e){
     });
   });
 
-  /* hero arrival */
-  if(!REDUCED){
-    gsap.from('.hero .wrap > *',{y:24,opacity:0,duration:.8,stagger:.09,ease:'power3.out',delay:.1});
+  /* thin lime scroll-progress bar (kept even under reduced-motion — it's an indicator) */
+  const bar=document.getElementById('bpProgress');
+  if(bar){ ScrollTrigger.create({start:0,end:'max',onUpdate:s=>gsap.set(bar,{scaleX:s.progress})}); }
+
+  /* Reduced-motion: stop here. Nothing above hid content, so the page stays fully visible. */
+  if(REDUCED){ ScrollTrigger.refresh(); return; }
+
+  /* ---- motion-primitive-style effects (built on GSAP) ---- */
+
+  /* TextEffect — split a heading into word spans (content + spacing preserved) */
+  function splitWords(el){
+    const parts=el.textContent.split(/(\s+)/), out=[];
+    el.textContent='';
+    parts.forEach(p=>{
+      if(p==='') return;
+      if(/^\s+$/.test(p)){ el.appendChild(document.createTextNode(p)); return; }
+      const s=document.createElement('span'); s.className='wd'; s.textContent=p;
+      el.appendChild(s); out.push(s);
+    });
+    return out;
   }
 
-  /* reveal on scroll — matches the homepage feel (y:30 -> 0, power3.out, top 88%) */
-  const sel='section .eyebrow,section h2,section .lead,.tool,.grouped > div,.who-list li,.stat,.stat-foot,#bpForm';
-  gsap.utils.toArray(sel).forEach(el=>{
-    gsap.fromTo(el,{y:30,opacity:0},{y:0,opacity:1,duration:.85,ease:'power3.out',
+  /* Hero arrival: eyebrow in, headline reveals word-by-word (blur + rise), rest follows */
+  const h1=document.querySelector('.hero h1');
+  const eyebrow=document.querySelector('.hero .eyebrow');
+  const rest=[...document.querySelectorAll('.hero .wrap > *')].filter(e=>e!==h1 && e!==eyebrow);
+  const words=h1?splitWords(h1):[];
+  gsap.timeline({delay:.15,defaults:{ease:'power3.out'}})
+    .from(eyebrow,{y:18,opacity:0,duration:.6})
+    .from(words,{yPercent:55,opacity:0,filter:'blur(6px)',duration:.75,stagger:.045},'-=.15')
+    .from(rest,{y:22,opacity:0,duration:.7,stagger:.09},'-=.45');
+
+  /* BlurIn — section headings resolve out of a blur as they enter */
+  gsap.utils.toArray('section h2').forEach(h=>{
+    gsap.fromTo(h,{opacity:0,filter:'blur(10px)',y:16},
+      {opacity:1,filter:'blur(0px)',y:0,duration:.9,ease:'power2.out',
+       scrollTrigger:{trigger:h,start:'top 86%'}});
+  });
+
+  /* InView — standalone bits rise + fade */
+  gsap.utils.toArray('section .eyebrow,section .lead,.stat-foot,#bpForm').forEach(el=>{
+    gsap.fromTo(el,{y:28,opacity:0},{y:0,opacity:1,duration:.8,ease:'power3.out',
       scrollTrigger:{trigger:el,start:'top 88%'}});
   });
+
+  /* AnimatedGroup — children stagger in when the group scrolls into view */
+  function group(containerSel, childSel){
+    document.querySelectorAll(containerSel).forEach(c=>{
+      const kids=c.querySelectorAll(childSel);
+      if(!kids.length) return;
+      gsap.fromTo(kids,{y:26,opacity:0},{y:0,opacity:1,duration:.7,ease:'power3.out',stagger:.08,
+        scrollTrigger:{trigger:c,start:'top 84%'}});
+    });
+  }
+  group('.tools','.tool');
+  group('.stats','.stat');
+  group('.who-list','li');
+  group('.grouped',':scope > div');
+
+  /* Tilt — the two tool cards lean toward the pointer (fine pointers only) */
+  if(FINE){
+    document.querySelectorAll('.tool').forEach(card=>{
+      gsap.set(card,{transformPerspective:800,transformStyle:'preserve-3d'});
+      const qx=gsap.quickTo(card,'rotationY',{duration:.5,ease:'power3'});
+      const qy=gsap.quickTo(card,'rotationX',{duration:.5,ease:'power3'});
+      card.addEventListener('pointermove',e=>{ const r=card.getBoundingClientRect();
+        qx(((e.clientX-r.left)/r.width-.5)*8); qy(-((e.clientY-r.top)/r.height-.5)*8); });
+      card.addEventListener('pointerleave',()=>{ qx(0); qy(0); });
+    });
+  }
 
   /* subtle parallax drift on the feathered washes (clipped by each section) */
   gsap.utils.toArray('.wash').forEach(w=>{
@@ -493,8 +552,8 @@ form.addEventListener('submit',async function(e){
       scrollTrigger:{trigger:w.closest('section,header')||w,start:'top bottom',end:'bottom top',scrub:true}});
   });
 
-  /* magnetic buttons (fine pointer only) */
-  if(FINE && !REDUCED){
+  /* Magnetic — buttons pull toward the pointer (fine pointers only) */
+  if(FINE){
     document.querySelectorAll('.btn').forEach(btn=>{
       const mx=gsap.quickTo(btn,'x',{duration:.4,ease:'power3'});
       const my=gsap.quickTo(btn,'y',{duration:.4,ease:'power3'});
@@ -503,10 +562,6 @@ form.addEventListener('submit',async function(e){
       btn.addEventListener('pointerleave',()=>{ mx(0); my(0); });
     });
   }
-
-  /* thin lime scroll-progress bar */
-  const bar=document.getElementById('bpProgress');
-  if(bar){ ScrollTrigger.create({start:0,end:'max',onUpdate:s=>gsap.set(bar,{scaleX:s.progress})}); }
 
   ScrollTrigger.refresh();
 })();
