@@ -37,7 +37,7 @@
   --display:'Barlow Condensed',sans-serif;--mono:'JetBrains Mono',monospace;
 }
 *{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
+html{scroll-behavior:auto}   /* Lenis handles smoothing; native is the no-JS fallback */
 body{font-family:var(--display);background:var(--white);color:var(--black);-webkit-font-smoothing:antialiased;line-height:1.5}
 ::selection{background:var(--black);color:var(--lime)}
 a{color:inherit}
@@ -77,6 +77,15 @@ section{padding:clamp(4rem,9.5vw,7rem) 0;position:relative;overflow:hidden}
 .btn.dark:hover{box-shadow:5px 5px 0 var(--teal)}
 .btn.block{width:100%;justify-content:center}
 .arr{font-weight:700}
+
+/* motion — progressive enhancement (GSAP/Lenis), all respecting reduced-motion */
+.scrollbar{position:fixed;top:0;left:0;height:3px;width:100%;transform:scaleX(0);transform-origin:0 50%;background:var(--lime);z-index:100;pointer-events:none}
+.tool,.stat{transition:transform .3s ease,box-shadow .3s ease}
+.tool:hover{transform:translateY(-5px)}
+.stat:hover{transform:translateY(-4px)}
+.success.show{animation:bpIn .55s ease both}
+@keyframes bpIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.tool,.stat{transition:none}.success.show{animation:none}}
 
 /* hero */
 .hero{background:var(--lime);color:var(--black);padding:clamp(4.5rem,11vw,8rem) 0;position:relative;overflow:hidden}
@@ -164,6 +173,7 @@ footer{background:var(--black);color:rgba(255,255,255,.7);padding:2.4rem 0;font-
 </style>
 </head>
 <body>
+<div class="scrollbar" id="bpProgress" aria-hidden="true"></div>
 <a class="skip" href="#signup-form">Skip to the form</a>
 
 <!-- 1. HERO -->
@@ -430,6 +440,76 @@ form.addEventListener('submit',async function(e){
     showError('Couldn’t send just now — please try again, or email hello@keyshiftlondon.org.');
   }
 });
+</script>
+
+<!-- Motion: same GSAP + ScrollTrigger + Lenis system as the homepage (self-hosted). -->
+<script src="ksl-assets/gsap.min.js"></script>
+<script src="ksl-assets/ScrollTrigger.min.js"></script>
+<script src="ksl-assets/lenis.min.js"></script>
+<script>
+(function(){
+  if(typeof gsap==='undefined') return;   // no JS/lib -> page is fully visible & usable
+  const REDUCED=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const FINE=window.matchMedia('(hover:hover) and (pointer:fine)').matches;
+  gsap.registerPlugin(ScrollTrigger);
+
+  /* Lenis smooth scroll (never fatal) */
+  let lenis=null;
+  try{
+    const L=window.Lenis||(window.lenis&&window.lenis.default);
+    if(!REDUCED && typeof L==='function'){
+      lenis=new L({lerp:.1,wheelMultiplier:1,smoothWheel:true});
+      window.lenis=lenis;
+      lenis.on('scroll',ScrollTrigger.update);
+      gsap.ticker.add(t=>lenis.raf(t*1000));
+      gsap.ticker.lagSmoothing(0);
+    }
+  }catch(e){ lenis=null; }
+
+  /* in-page anchors (hero CTA / skip link) glide through Lenis */
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click',e=>{
+      const id=a.getAttribute('href');
+      if(id.length>1){ const t=document.querySelector(id);
+        if(t){ e.preventDefault(); lenis?lenis.scrollTo(t,{offset:-20}):t.scrollIntoView({behavior:'smooth'}); } }
+    });
+  });
+
+  /* hero arrival */
+  if(!REDUCED){
+    gsap.from('.hero .wrap > *',{y:24,opacity:0,duration:.8,stagger:.09,ease:'power3.out',delay:.1});
+  }
+
+  /* reveal on scroll — matches the homepage feel (y:30 -> 0, power3.out, top 88%) */
+  const sel='section .eyebrow,section h2,section .lead,.tool,.grouped > div,.who-list li,.stat,.stat-foot,#bpForm';
+  gsap.utils.toArray(sel).forEach(el=>{
+    gsap.fromTo(el,{y:30,opacity:0},{y:0,opacity:1,duration:.85,ease:'power3.out',
+      scrollTrigger:{trigger:el,start:'top 88%'}});
+  });
+
+  /* subtle parallax drift on the feathered washes (clipped by each section) */
+  gsap.utils.toArray('.wash').forEach(w=>{
+    gsap.fromTo(w,{yPercent:-7},{yPercent:7,ease:'none',
+      scrollTrigger:{trigger:w.closest('section,header')||w,start:'top bottom',end:'bottom top',scrub:true}});
+  });
+
+  /* magnetic buttons (fine pointer only) */
+  if(FINE && !REDUCED){
+    document.querySelectorAll('.btn').forEach(btn=>{
+      const mx=gsap.quickTo(btn,'x',{duration:.4,ease:'power3'});
+      const my=gsap.quickTo(btn,'y',{duration:.4,ease:'power3'});
+      btn.addEventListener('pointermove',ev=>{ const r=btn.getBoundingClientRect();
+        mx((ev.clientX-(r.left+r.width/2))*.3); my((ev.clientY-(r.top+r.height/2))*.3); });
+      btn.addEventListener('pointerleave',()=>{ mx(0); my(0); });
+    });
+  }
+
+  /* thin lime scroll-progress bar */
+  const bar=document.getElementById('bpProgress');
+  if(bar){ ScrollTrigger.create({start:0,end:'max',onUpdate:s=>gsap.set(bar,{scaleX:s.progress})}); }
+
+  ScrollTrigger.refresh();
+})();
 </script>
 </body>
 </html>
