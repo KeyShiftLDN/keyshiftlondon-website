@@ -1229,10 +1229,14 @@ function runIntro(){
 }
 
 /* ---------- Reveal on scroll (everything .reveal not in hero) ---------- */
+/* Big section headings additionally resolve out of a blur (BlurIn) — a filter tween,
+   so their inline lime spans and line breaks are untouched (no text splitting). */
 gsap.utils.toArray('.reveal').forEach(el=>{
   if(el.closest('.hero')) {gsap.set(el,{opacity:1}); return;}
-  gsap.fromTo(el,{y:34,opacity:0},{y:0,opacity:1,duration:.9,ease:'power3.out',
-    scrollTrigger:{trigger:el,start:'top 88%'}});
+  const from={y:34,opacity:0}, to={y:0,opacity:1,duration:.9,ease:'power3.out',
+    scrollTrigger:{trigger:el,start:'top 88%'}};
+  if(el.matches('.big,.huge')){ from.filter='blur(12px)'; to.filter='blur(0px)'; to.duration=1.05; to.ease='power2.out'; }
+  gsap.fromTo(el,from,to);
 });
 
 /* ---------- Parallax floats ---------- */
