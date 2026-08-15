@@ -432,10 +432,10 @@ form.addEventListener('submit',async function(e){
       if(data.downloads.blueprint) document.getElementById('dlBlueprint').href=data.downloads.blueprint;
       if(data.downloads.toolkit) document.getElementById('dlToolkit').href=data.downloads.toolkit;
     }
-    // TODO: analytics — fire the signup conversion event here when an analytics vendor is added.
-    form.style.display='none';
-    panel.classList.add('show');
-    document.getElementById('bpSuccessH').focus();
+    // Redirect to the dedicated thank-you page (downloads shown there) — a trackable
+    // conversion pageview for analytics.
+    window.location.href='thank-you.html?type=blueprint';
+    return;
   }catch(err){
     btn.disabled=false; btn.style.opacity=''; btn.innerHTML=prev;
     window.bpRefresh&&window.bpRefresh();

@@ -11,9 +11,9 @@
 
   // ---- CONFIGURE YOUR ANALYTICS HERE (both cookieless / GDPR-friendly) ----------------
   var ANALYTICS = {
-    provider: "",                       // "plausible" | "cloudflare" | ""  ("" = off)
+    provider: "cloudflare",             // "plausible" | "cloudflare" | ""  ("" = off)
     plausibleDomain: "keyshiftlondon.org",
-    cloudflareToken: ""                 // paste your Cloudflare Web Analytics token
+    cloudflareToken: ""                 // <-- paste your Cloudflare Web Analytics token here
   };
   // -------------------------------------------------------------------------------------
 
