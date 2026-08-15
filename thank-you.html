@@ -4,69 +4,78 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Thank you · Key Shift London</title>
-<meta name="description" content="Thanks — we've got it.">
+<meta name="description" content="Thanks, we've got it.">
 <meta name="robots" content="noindex, follow">
-<meta name="theme-color" content="#FBFBF7">
+<meta name="theme-color" content="#0A0A0A">
 <link rel="icon" type="image/png" href="ksl-assets/arrow.png">
 <link rel="apple-touch-icon" href="ksl-assets/arrow.png">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="ksl-assets/guides.css">
 <style>
-  .ty-wrap{min-height:60vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:3rem 1.2rem}
-  .ty-tick{width:66px;height:66px;border-radius:50%;background:#C8FF00;display:flex;align-items:center;justify-content:center;margin-bottom:1.2rem}
-  .ty-tick svg{width:32px;height:32px}
-  .ty-title{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(1.9rem,5.5vw,2.8rem);line-height:1.02;margin:0 0 .7rem}
-  .ty-text{max-width:48ch;color:#444;margin:0 auto 1.8rem;font-size:1.08rem;line-height:1.5}
-  .ty-ctas{display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center}
-  .ty-btn{font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:.05em;font-size:1rem;padding:.85rem 1.6rem;border-radius:50px;text-decoration:none;border:2.5px solid #0A0A0A;background:#C8FF00;color:#0A0A0A}
-  .ty-btn.dark{background:#0A0A0A;color:#C8FF00}
-  .ty-btn.ghost{background:transparent;color:#0A0A0A}
-  .ty-book{margin-top:1.5rem;font-family:'JetBrains Mono',monospace;font-size:.82rem}
-  .ty-book a{color:#1A7A6E;font-weight:700;text-decoration:none;border-bottom:2px solid #1A7A6E;padding-bottom:2px}
-  .ty-home{margin-top:1.6rem;font-family:'JetBrains Mono',monospace;font-size:.78rem}
-  .ty-home a{color:#1A7A6E;text-decoration:none}
+  :root{--black:#0A0A0A;--teal:#1A7A6E;--teal-bright:#2ABFAF;--lime:#C8FF00;--white:#FFFFFF;
+    --display:'Barlow Condensed',sans-serif;--mono:'JetBrains Mono',monospace}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:var(--display);background:var(--black);color:var(--white);min-height:100vh;
+    display:flex;flex-direction:column;-webkit-font-smoothing:antialiased}
+  ::selection{background:var(--lime);color:var(--black)}
+  a{color:inherit}
+  .ty-top{padding:1.6rem clamp(1.1rem,4vw,2.4rem)}
+  .ty-top img{height:30px;width:auto;display:block}
+  main{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:2rem clamp(1.1rem,4vw,2.4rem) 3rem}
+  .ty-eyebrow{font-family:var(--mono);font-size:.72rem;font-weight:700;letter-spacing:.3em;
+    text-transform:uppercase;color:var(--lime);margin-bottom:1.4rem}
+  .ty-tick{width:70px;height:70px;border-radius:50%;background:var(--lime);display:flex;
+    align-items:center;justify-content:center;margin-bottom:1.4rem}
+  .ty-tick svg{width:34px;height:34px}
+  .ty-title{font-family:var(--display);font-weight:900;letter-spacing:-.01em;line-height:1;
+    font-size:clamp(2.4rem,7vw,4rem);text-transform:lowercase;margin-bottom:1rem}
+  .ty-title .lime{color:var(--lime)}
+  .ty-text{max-width:48ch;color:rgba(255,255,255,.8);margin:0 auto 2rem;font-size:1.1rem;line-height:1.5}
+  .ty-text strong{color:var(--white)}
+  .ty-ctas{display:flex;flex-wrap:wrap;gap:.9rem;justify-content:center}
+  .btn{font-family:var(--display);font-weight:800;text-transform:uppercase;letter-spacing:.06em;
+    font-size:1.05rem;padding:1rem 2rem;border:2.5px solid var(--lime);border-radius:50px;
+    text-decoration:none;display:inline-flex;align-items:center;gap:.5rem;transition:transform .2s,box-shadow .2s}
+  .btn.lime{background:var(--lime);color:var(--black)}
+  .btn.lime:hover{transform:translateY(-2px);box-shadow:5px 5px 0 var(--teal)}
+  .btn.ghost{background:transparent;color:var(--lime)}
+  .btn.ghost:hover{background:var(--lime);color:var(--black)}
+  .ty-book{margin-top:1.7rem;font-family:var(--mono);font-size:.82rem}
+  .ty-book a{color:var(--teal-bright);font-weight:700;text-decoration:none;border-bottom:2px solid var(--teal-bright);padding-bottom:2px}
+  .ty-foot{padding:1.6rem clamp(1.1rem,4vw,2.4rem);border-top:1px solid rgba(255,255,255,.12);
+    font-family:var(--mono);font-size:.7rem;letter-spacing:.03em;color:rgba(255,255,255,.55);
+    text-align:center;line-height:1.7}
+  .ty-foot a{color:var(--teal-bright);text-decoration:none}
 </style>
 </head>
 <body>
 
-<header class="g-top">
-  <a class="g-logo" href="index.html" aria-label="Key Shift London, home">
-    <img src="ksl-assets/arrow.png" alt="Key Shift London" width="805" height="497">
-    <span>Key Shift London</span>
-  </a>
-  <nav class="g-nav">
-    <a href="index.html">Home</a>
-    <a href="guides/">Resources</a>
-    <a class="cta" href="index.html#signup">Enquire</a>
-  </nav>
-</header>
+<div class="ty-top">
+  <a href="index.html" aria-label="Key Shift London, home"><img src="ksl-assets/logo-light.png" alt="Key Shift London"></a>
+</div>
 
 <main>
-  <div class="ty-wrap">
-    <div class="ty-tick" aria-hidden="true">
-      <svg viewBox="0 0 24 24" fill="none" stroke="#0A0A0A" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-    </div>
-    <h1 class="ty-title" id="tyTitle">Thanks — we've got it.</h1>
-    <p class="ty-text" id="tyText">One of the directors will be in touch personally within <strong>2 working days</strong>. In the meantime, feel free to explore our free resources.</p>
-
-    <div class="ty-ctas" id="tyCtas">
-      <a class="ty-btn dark" href="index.html">Back to home →</a>
-      <a class="ty-btn ghost" href="guides/">Browse resources</a>
-    </div>
-
-    <p class="ty-book"><a href="https://cal.com/key-shift-london-uwjros/30min" target="_blank" rel="noopener">Or book a conversation →</a></p>
-    <p class="ty-home"><a href="index.html">← Key Shift London home</a></p>
+  <div class="ty-eyebrow" id="tyEyebrow">You're in</div>
+  <div class="ty-tick" aria-hidden="true">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#0A0A0A" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
   </div>
+  <h1 class="ty-title" id="tyTitle">thanks, <span class="lime">we've got it.</span></h1>
+  <p class="ty-text" id="tyText">One of the directors will be in touch personally within <strong>2 working days</strong>. In the meantime, explore our free resources.</p>
+
+  <div class="ty-ctas" id="tyCtas">
+    <a class="btn lime" href="index.html">Back to home →</a>
+    <a class="btn ghost" href="guides/">Browse resources</a>
+  </div>
+
+  <p class="ty-book"><a href="https://cal.com/key-shift-london-uwjros/30min" target="_blank" rel="noopener">Or book a conversation →</a></p>
 </main>
 
-<footer class="g-foot">
-  <div class="wrap">
-    <p><strong>Key Shift London</strong> · Community Interest Company · Reg. 15685849 · South Croydon, CR2 6NB<br>Unlocking Potential. Shaping Futures.</p>
-    <p><a href="index.html">Home</a> · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="mailto:hello@keyshiftlondon.org">hello@keyshiftlondon.org</a></p>
-  </div>
+<footer class="ty-foot">
+  <strong style="color:#fff">Key Shift London</strong> · Community Interest Company · Reg. 15685849 · South Croydon, CR2 6NB<br>
+  <a href="index.html">Home</a> · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="mailto:hello@keyshiftlondon.org">hello@keyshiftlondon.org</a>
 </footer>
 
 <script>
@@ -74,12 +83,13 @@
   (function(){
     var type = new URLSearchParams(location.search).get('type');
     if (type === 'blueprint') {
-      document.getElementById('tyTitle').textContent = "It's on its way.";
+      document.getElementById('tyEyebrow').textContent = 'Your toolkit';
+      document.getElementById('tyTitle').innerHTML = "it's on its <span class=\"lime\">way.</span>";
       document.getElementById('tyText').innerHTML =
-        "We've emailed both tools to you — check your inbox (and your spam folder, just in case). You can also download them right here:";
+        "We've emailed both tools to you. Check your inbox (and your spam folder, just in case). You can also download them right here:";
       document.getElementById('tyCtas').innerHTML =
-        '<a class="ty-btn" href="downloads/breakthrough-blueprint.pdf" download>Download the Breakthrough Blueprint</a>' +
-        '<a class="ty-btn" href="downloads/precision-field-toolkit.pdf" download>Download the Precision Field Toolkit</a>';
+        '<a class="btn lime" href="downloads/breakthrough-blueprint.pdf" download>Download the Breakthrough Blueprint</a>' +
+        '<a class="btn ghost" href="downloads/precision-field-toolkit.pdf" download>Download the Precision Field Toolkit</a>';
     }
   })();
 </script>
