@@ -13,7 +13,7 @@
   var ANALYTICS = {
     provider: "cloudflare",             // "plausible" | "cloudflare" | ""  ("" = off)
     plausibleDomain: "keyshiftlondon.org",
-    cloudflareToken: ""                 // <-- paste your Cloudflare Web Analytics token here
+    cloudflareToken: "<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "9931eefe58674ba38db66f9b1cd41e69"}'></script><!-- End Cloudflare Web Analytics -->"                 // <-- paste your Cloudflare Web Analytics token here
   };
   // -------------------------------------------------------------------------------------
 
