@@ -339,7 +339,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content
 .tpn-foot p{font-size:clamp(1.3rem,2.6vw,2rem);font-weight:800;text-transform:lowercase;color:var(--white);max-width:26ch;line-height:1.1;margin:0}
 .tpn-foot p .lime{color:var(--lime)}
 .tpn-ctas{display:flex;gap:.9rem;flex-wrap:wrap;justify-content:flex-end}
-@media(max-width:600px){.tpn-ctas{justify-content:flex-start}.tpn-ctas .btn{width:100%;justify-content:center}}
+.tpn-foot .tpn-note{flex:1 1 100%;max-width:none;text-align:right;font-family:var(--mono);font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--lime);line-height:1.4;margin:.3rem 0 0}
+@media(max-width:600px){.tpn-ctas{justify-content:flex-start}.tpn-ctas .btn{width:100%;justify-content:center}.tpn-foot .tpn-note{text-align:center}}
 @media(max-width:880px){.tpn-grid{grid-template-columns:1fr 1fr}.tpn-node{border-bottom:2px solid rgba(255,255,255,.18)}.tpn-node:nth-child(2){border-right:none}}
 @media(max-width:560px){.tpn-grid{grid-template-columns:1fr}.tpn-node{border-right:none}}
 
@@ -789,6 +790,7 @@ footer a:hover{color:var(--lime)}
       <div class="tpn-ctas">
         <a href="https://precisionnetwork.keyshiftlondon.org/auth" target="_blank" rel="noopener" class="btn lime" data-cursor data-magnetic>Start your 30-day free trial <span class="arr">→</span></a>
         <a href="https://precisionnetwork.keyshiftlondon.org" target="_blank" rel="noopener" class="btn ghost" data-cursor data-magnetic style="border-color:var(--lime);color:var(--lime)">Enter The Network <span class="arr">→</span></a>
+        <p class="tpn-note">30 days free · no card required</p>
       </div>
     </div>
   </div>
