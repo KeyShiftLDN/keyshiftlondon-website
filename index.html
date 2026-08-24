@@ -30,7 +30,7 @@
 <meta name="twitter:description" content="Dynamic youth development infrastructure for South London and across the capital. Ages 11–18.">
 <meta name="twitter:image" content="https://keyshiftlondon.org/ksl-assets/og-image.png">
 <meta name="twitter:image:alt" content="Key Shift London · Unlocking Potential. Shaping Futures.">
-<link rel="preload" as="image" href="ksl-assets/ppp-rotation.svg" type="image/svg+xml" fetchpriority="high">
+<link rel="preload" as="image" href="ksl-assets/globe-tagline.png" type="image/png" fetchpriority="high">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
 {"@type":["Organization","NGO"],"@id":"https://keyshiftlondon.org/#org","name":"Key Shift London","alternateName":"KSL","legalName":"Key Shift London CIC","url":"https://keyshiftlondon.org/","logo":"https://keyshiftlondon.org/ksl-assets/logo-light.png","image":"https://keyshiftlondon.org/ksl-assets/og-image.png","description":"Key Shift London builds and establishes precision infrastructure that develops young people's potential into measurable, lasting outcomes. Dynamic youth development based in South London, working across the capital. Ages 11–18.","slogan":"Unlocking Potential. Shaping Futures.","email":"hello@keyshiftlondon.org","areaServed":{"@type":"Place","name":"London"},"address":{"@type":"PostalAddress","addressLocality":"South Croydon","addressRegion":"London","postalCode":"CR2 6NB","addressCountry":"GB"},"identifier":{"@type":"PropertyValue","name":"CIC registration","value":"15685849"}},
@@ -57,7 +57,7 @@
   --display:'Barlow Condensed',sans-serif;--mono:'JetBrains Mono',monospace;
 }
 *{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:auto}
+html{scroll-behavior:auto;overflow-x:hidden}
 body{font-family:var(--display);background:var(--lime);color:var(--black);overflow-x:hidden;-webkit-font-smoothing:antialiased}
 ::selection{background:var(--black);color:var(--lime)}
 /* ---- accessibility: skip link + visible keyboard focus ---- */
@@ -156,7 +156,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content
 .hero-sub{max-width:34ch;font-size:clamp(1.1rem,1.7vw,1.4rem);font-weight:500;margin-bottom:2rem}
 .hero-ctas{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:1.8rem}
 .hero-visual{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center}
-.globe{width:min(600px,115%);aspect-ratio:1;position:relative;display:flex;align-items:center;justify-content:center;will-change:transform;margin-right:-4%}
+.globe{width:min(725px,120%);aspect-ratio:1;position:relative;display:flex;align-items:center;justify-content:center;will-change:transform;margin-right:-4%}
 .globe-img{width:100%;height:100%;display:block;animation:spin 34s linear infinite;will-change:transform}
 @keyframes spin{to{transform:rotate(360deg)}}
 .scroll-cue{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);font-family:var(--mono);font-size:.66rem;letter-spacing:.25em;text-transform:uppercase;display:flex;flex-direction:column;align-items:center;gap:.5rem;opacity:.6;z-index:3}
@@ -408,7 +408,7 @@ footer a:hover{color:var(--lime)}
 .no-anim .reveal{opacity:1!important;transform:none!important}
 
 @media(max-width:980px){
-  .hero-stage{grid-template-columns:1fr}.hero-visual{order:-1;margin-bottom:1rem}.globe{width:min(400px,90%);margin-right:0}.hero-mark,.hl-side,.hl-index,.hl-foot,.hero-desc{display:none}
+  .hero-stage{grid-template-columns:1fr}.hero-visual{order:-1;margin-bottom:1rem}.globe{width:min(470px,96%);margin-right:0}.hero-mark,.hl-side,.hl-index,.hl-foot,.hero-desc{display:none}
   .who-grid{grid-template-columns:1fr;gap:2.5rem}.pss-flow{grid-template-columns:1fr}.pss-arrow{transform:rotate(90deg);padding:.3rem 0}
   .shape-grid{grid-template-columns:1fr;gap:2.5rem}.shape-side{position:static}.proof-grid{grid-template-columns:1fr}
   .audience-grid{grid-template-columns:1fr}.signup-grid{grid-template-columns:1fr;gap:2rem}.px-word{display:none}
@@ -595,7 +595,7 @@ footer a:hover{color:var(--lime)}
     </div>
     <div class="hero-visual">
       <div class="globe" data-speed="0.14" data-cursor="explore">
-        <img class="globe-img" src="ksl-assets/ppp-rotation.svg" alt="Prepare. Process. Print." width="375" height="375" fetchpriority="high">
+        <img class="globe-img" src="ksl-assets/globe-tagline.png" alt="Shaping with precision. Unlocking for purpose." width="460" height="460" fetchpriority="high">
       </div>
       <div class="hero-desc" aria-hidden="true"><div><b>SHAPE</b> · identity mapping</div><div><b>PILLAR</b> · precision coaching</div><div><b>TPN</b> · the precision network</div></div>
     </div>
