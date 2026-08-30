@@ -41,7 +41,7 @@
 {"@type":"Question","name":"What is Key Shift London?","acceptedAnswer":{"@type":"Answer","text":"Key Shift London is a South London youth development Community Interest Company (CIC, reg. 15685849) working with young people aged 11 to 18. We build the precision infrastructure (training, coaching and evidence tools) that turns potential into measurable, lasting outcomes."}},
 {"@type":"Question","name":"What is Precision Training and who is it for?","acceptedAnswer":{"@type":"Answer","text":"Precision Training is our self-paced online youth practitioner training for parents, mentors, coaches, pastoral leads and youth workers. Level 1 covers the foundations and Level 2 covers live delivery and safeguarding, and each level earns an official certificate of completion."}},
 {"@type":"Question","name":"What is PILLAR coaching?","acceptedAnswer":{"@type":"Answer","text":"PILLAR is our identity-first youth coaching framework, built around six pillars of practitioner development. You can take the free PILLAR Diagnostic to see which areas to focus on before starting a coaching journey."}},
-{"@type":"Question","name":"What is The Precision Network (TPN)?","acceptedAnswer":{"@type":"Answer","text":"The Precision Network is the youth development ecosystem that connects young people, mentors, schools, clubs and commissioners through one aligned system, built on identity, accountability, safeguarding and measurable growth."}},
+{"@type":"Question","name":"What is PRE:CORD?","acceptedAnswer":{"@type":"Answer","text":"PRE:CORD is the youth development ecosystem that connects young people, mentors, schools, clubs and commissioners through one aligned system, built on identity, accountability, safeguarding and measurable growth."}},
 {"@type":"Question","name":"Do you work with schools, charities and commissioners?","acceptedAnswer":{"@type":"Answer","text":"Yes. We partner with schools, youth charities, sports academies and commissioners to deliver youth mentoring programmes and practitioner training, with outcome reporting that funders can trust."}},
 {"@type":"Question","name":"How much does Precision Training cost?","acceptedAnswer":{"@type":"Answer","text":"Precision Training Level 1 is £149 and Level 2 is £159 to buy and complete yourself. Facilitator, cohort and organisation-wide licensing options are available on enquiry."}}
 ]}
@@ -321,8 +321,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content
 .proof-bg{position:absolute;z-index:0;pointer-events:none;opacity:.5;mix-blend-mode:luminosity;will-change:transform;-webkit-mask-image:radial-gradient(ellipse 70% 70% at 50% 50%,#000 26%,transparent 78%);mask-image:radial-gradient(ellipse 70% 70% at 50% 50%,#000 26%,transparent 78%)}
 .proof-bg img{width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(1) contrast(1.06)}
 @media(max-width:700px){.proof-bg{opacity:.32}}
-/* ---- The Precision Network section ---- */
+/* ---- PRE:CORD section ---- */
 .tpn .section-head{margin-bottom:2.5rem}
+.tpn .section-head{max-width:70ch}
+.precord-logo{display:flex;align-items:center;gap:clamp(.6rem,1.4vw,1rem);flex-wrap:nowrap;margin:0;max-width:100%}
+.precord-logo .pc-globe{width:clamp(52px,11vw,88px);height:auto;flex:0 0 auto;display:block;animation:spin 30s linear infinite;will-change:transform}
+.precord-logo .pc-word{width:clamp(200px,56vw,360px);height:auto;flex:0 0 auto;display:block}
+@media(prefers-reduced-motion:reduce){.precord-logo .pc-globe{animation:none}}
 .tpn-statement{margin:0 0 3rem;padding:2.4rem 0;border-top:2px solid rgba(255,255,255,.16);border-bottom:2px solid rgba(255,255,255,.16);position:relative;z-index:2}
 .tpn-statement .eyebrow{color:var(--teal-bright);display:block;margin-bottom:1rem}
 .tpn-statement p{font-size:clamp(1.7rem,4.4vw,3.3rem);font-weight:900;text-transform:lowercase;line-height:1.02;color:var(--white);letter-spacing:-.01em}
@@ -561,7 +566,7 @@ footer a:hover{color:var(--lime)}
 <nav id="nav">
   <a href="#top" class="brandmark" data-cursor aria-label="Key Shift London, home"><img class="nav-arrow" src="ksl-assets/arrow.png" alt="Key Shift London" width="805" height="497"></a>
   <div class="navlinks" id="navlinks">
-    <a href="#who">Who</a><a href="#what">What</a><a href="#why">Why</a><a href="#how">How</a><a href="#network">Network</a><a href="#training">Training</a><a href="guides/">Resources</a>
+    <a href="#who">Who</a><a href="#what">What</a><a href="#why">Why</a><a href="#how">How</a><a href="#network">PRE:CORD</a><a href="#training">Training</a><a href="guides/">Resources</a>
     <a href="#signup" class="nav-cta" data-cursor>Sign Up / Enquire</a>
   </div>
   <button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="navlinks"><span></span><span></span><span></span></button>
@@ -597,7 +602,7 @@ footer a:hover{color:var(--lime)}
       <div class="globe" data-speed="0.14" data-cursor="explore">
         <img class="globe-img" src="ksl-assets/globe-tagline.png" alt="Shaping with precision. Unlocking for purpose." width="460" height="460" fetchpriority="high">
       </div>
-      <div class="hero-desc" aria-hidden="true"><div><b>SHAPE</b> · identity mapping</div><div><b>PILLAR</b> · precision coaching</div><div><b>TPN</b> · the precision network</div></div>
+      <div class="hero-desc" aria-hidden="true"><div><b>SHAPE</b> · identity mapping</div><div><b>PILLAR</b> · precision coaching</div><div><b>PRE:CORD</b> · connected ecosystem</div></div>
     </div>
   </div>
   <div class="scroll-cue"><span>the story</span><span class="line"></span></div>
@@ -665,7 +670,7 @@ footer a:hover{color:var(--lime)}
       <div class="outcome reveal"><span class="num">01 / EVIDENCE</span><div class="stat" data-count="100" data-suffix="%">0%</div><div class="label">documented outcomes</div><div class="desc">Every young person exits with a Precision Graduation Record they own, not a certificate of attendance.</div></div>
       <div class="outcome reveal"><span class="num">02 / STRUCTURE</span><div class="stat" data-count="5">0</div><div class="label">life areas targeted</div><div class="desc">School, Home, Aspirations, Perspectives, Experiences, the environments that actually shape a young life.</div></div>
       <div class="outcome reveal"><span class="num">03 / INFRASTRUCTURE</span><div class="stat" data-count="3">0</div><div class="label">stage delivery system</div><div class="desc">Prepare, Process, Print. A repeatable pipeline that scales across schools, PRUs, councils and academies.</div></div>
-      <div class="outcome reveal"><span class="num">04 / NETWORK</span><div class="stat">∞</div><div class="label">connected practitioners</div><div class="desc">The Precision Network ties every engagement together, so insight, evidence and impact never get lost.</div></div>
+      <div class="outcome reveal"><span class="num">04 / NETWORK</span><div class="stat">∞</div><div class="label">connected practitioners</div><div class="desc">PRE:CORD ties every engagement together, so insight, evidence and impact never get lost.</div></div>
     </div>
     </div>
   </div>
@@ -747,19 +752,19 @@ footer a:hover{color:var(--lime)}
       <div class="pss-arrow"><span>→</span></div>
       <div class="pss-card reveal" data-cursor>
         <div class="pss-media"><img src="ksl-assets/photo-practitioner.jpg" alt="Reviewing a young person's record on a tablet" loading="lazy"></div>
-        <div class="stage">STAGE 03</div><div class="verb">print</div><div class="name">the precision network · TPN</div>
+        <div class="stage">STAGE 03</div><div class="verb">print</div><div class="name">PRE:CORD</div>
         <div class="body">Every outcome is captured, evidenced and printed into a record the young person owns, and the institution can report.</div>
-        <div class="meta">→ OWNED, REPORTABLE EVIDENCE</div><a href="#signup" class="card-link">Explore TPN →</a>
+        <div class="meta">→ OWNED, REPORTABLE EVIDENCE</div><a href="#signup" class="card-link">Explore PRE:CORD →</a>
       </div>
     </div>
     <div class="pss-network reveal">
       <div class="px-shape" data-speed="0.3" style="width:200px;height:200px;background:rgba(255,255,255,.06);top:-60px;right:10%;opacity:1"></div>
       <div class="nettext">
         <span class="stage">THE CONNECTIVE THREAD</span>
-        <h3>The Precision Network runs through all three.</h3>
-        <p>It's not an add-on. TPN is the infrastructure that links training, delivery and evidence into one auditable system, so impact compounds instead of disappearing.</p>
+        <h3>PRE:CORD runs through all three.</h3>
+        <p>It's not an add-on. PRE:CORD is the infrastructure that links training, delivery and evidence into one auditable system, so impact compounds instead of disappearing.</p>
       </div>
-      <a href="#network" class="btn white" data-cursor data-magnetic>Explore The Network <span class="arr">→</span></a>
+      <a href="#network" class="btn white" data-cursor data-magnetic>Explore PRE:CORD <span class="arr">→</span></a>
     </div>
   </div>
 </section>
@@ -772,8 +777,11 @@ footer a:hover{color:var(--lime)}
   <div class="wrap">
     <div class="section-head reveal">
       <div class="chapter">Chapter 05 · The Connective Thread</div>
-      <h2 class="big">the precision <span class="lime">network.</span></h2>
-      <p>The Precision Network is the structured youth development ecosystem we built, connecting young people, mentors, schools, clubs and commissioners through one aligned system, built on identity, accountability and measurable growth.</p>
+      <h2 class="big precord-logo" aria-label="PRE:CORD">
+        <img class="pc-globe" src="ksl-assets/precord-globe.png" alt="" aria-hidden="true" width="104" height="104">
+        <img class="pc-word" src="ksl-assets/precord-wordmark.png" alt="PRE:CORD" width="1200" height="110">
+      </h2>
+      <p>PRE:CORD is the structured youth development ecosystem we built, connecting young people, mentors, schools, clubs and commissioners through one aligned system, built on identity, accountability and measurable growth.</p>
     </div>
     <div class="tpn-statement reveal">
       <span class="eyebrow">Through the Youth Precision Framework</span>
@@ -789,7 +797,7 @@ footer a:hover{color:var(--lime)}
       <p>It's how we dynamically <span class="lime">connect, create and contribute</span> to our community and city, at scale.</p>
       <div class="tpn-ctas">
         <a href="https://precisionnetwork.keyshiftlondon.org/auth" target="_blank" rel="noopener" class="btn lime" data-cursor data-magnetic>Start your 30-day free trial <span class="arr">→</span></a>
-        <a href="https://precisionnetwork.keyshiftlondon.org" target="_blank" rel="noopener" class="btn ghost" data-cursor data-magnetic style="border-color:var(--lime);color:var(--lime)">Enter The Network <span class="arr">→</span></a>
+        <a href="https://precisionnetwork.keyshiftlondon.org" target="_blank" rel="noopener" class="btn ghost" data-cursor data-magnetic style="border-color:var(--lime);color:var(--lime)">Enter PRE:CORD <span class="arr">→</span></a>
         <p class="tpn-note">30 days free · no card required</p>
       </div>
     </div>
@@ -950,7 +958,7 @@ footer a:hover{color:var(--lime)}
             <ul class="b-list">
               <li>Precision Training L1 + L2 for up to 15 staff (self-paced team licence, everyone, not just twelve)</li>
               <li>Precision Coaching, <strong>Foundation Tier</strong> (certifies a core group as Precision Practitioners)</li>
-              <li>The Precision Network, Organisational access (Medium)</li>
+              <li>PRE:CORD, Organisational access (Medium)</li>
               <li>1× CSIS case study · quarterly impact reports · free Graduation Records · co-branding</li>
             </ul>
             <div class="b-save">À la carte £7,650, <strong>save £1,530 (20%)</strong></div>
@@ -965,7 +973,7 @@ footer a:hover{color:var(--lime)}
             <ul class="b-list">
               <li>Precision Training L1 + L2, facilitator-led cohorts (live delivery, breakout work, assessment)</li>
               <li>Precision Coaching, <strong>Formation Tier</strong> → your staff become Certified Precision Practitioners, authorised to deliver ARISE</li>
-              <li>The Precision Network, Organisational access (Large)</li>
+              <li>PRE:CORD, Organisational access (Large)</li>
               <li>4× CSIS case studies · quarterly reports · free Graduation Records · annual review with a senior KSL lead</li>
             </ul>
             <div class="b-save">À la carte £11,478, <strong>save £2,983 (25%)</strong></div>
@@ -980,7 +988,7 @@ footer a:hover{color:var(--lime)}
             <ul class="b-list">
               <li>Precision Training L1 + L2, facilitator-led cohorts (additional cohorts at 50%)</li>
               <li>Precision Coaching, <strong>Formation + Framework Tiers</strong> → certified practitioners plus a senior Lead track</li>
-              <li>The Precision Network, Institutional access, unlimited across your organisation</li>
+              <li>PRE:CORD, Institutional access, unlimited across your organisation</li>
               <li>4× CSIS case studies · quarterly reports · free Graduation Records</li>
               <li>Director-level strategic review · priority renewal + Year 2 rate lock · named partnership</li>
             </ul>
@@ -999,7 +1007,7 @@ footer a:hover{color:var(--lime)}
           <option>Precision Training (L1 + L2)</option>
           <option>Team / organisation training seats</option>
           <option>Precision Coaching (PILLAR)</option>
-          <option>The Precision Network (TPN)</option>
+          <option>PRE:CORD (the network)</option>
           <option>Licensing the full PSS for my organisation</option>
           <option>Making a referral</option>
           <option>Funding / partnership</option>
@@ -1037,8 +1045,8 @@ footer a:hover{color:var(--lime)}
         <div class="faq-a"><p>PILLAR is our identity-first youth coaching framework, built around six pillars of practitioner development. You can take the free <a href="pillar-diagnostic.html">PILLAR Diagnostic</a> to see which areas to focus on before starting a coaching journey.</p></div>
       </details>
       <details class="faq-item reveal">
-        <summary>What is The Precision Network (TPN)?<span class="caret">▾</span></summary>
-        <div class="faq-a"><p>The Precision Network is the youth development ecosystem that connects young people, mentors, schools, clubs and commissioners through one aligned system, built on identity, accountability, safeguarding and measurable growth. <a href="#network">See the network</a>.</p></div>
+        <summary>What is PRE:CORD?<span class="caret">▾</span></summary>
+        <div class="faq-a"><p>PRE:CORD is the youth development ecosystem that connects young people, mentors, schools, clubs and commissioners through one aligned system, built on identity, accountability, safeguarding and measurable growth. <a href="#network">See the network</a>.</p></div>
       </details>
       <details class="faq-item reveal">
         <summary>Do you work with schools, charities and commissioners?<span class="caret">▾</span></summary>
@@ -1077,7 +1085,7 @@ footer a:hover{color:var(--lime)}
     </div>
     <div class="footer-col"><h4>The System</h4>
       <a href="#how">Precision Training</a><br><a href="#how">Precision Coaching</a><br>
-      <a href="#how">The Precision Network</a><br><a href="#what">Youth Precision Work</a></div>
+      <a href="#how">PRE:CORD</a><br><a href="#what">Youth Precision Work</a></div>
     <div class="footer-col"><h4>Get Involved</h4>
       <a href="#signup">Young People</a><br><a href="#signup">Schools + Councils</a><br>
       <a href="#signup">Funders</a><br><a href="#signup">Make a Referral</a></div>
