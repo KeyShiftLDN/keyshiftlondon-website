@@ -346,6 +346,24 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content
 .tpn-ctas{display:flex;gap:.9rem;flex-wrap:wrap;justify-content:flex-end}
 .tpn-foot .tpn-note{flex:1 1 100%;max-width:none;text-align:right;font-family:var(--mono);font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--lime);line-height:1.4;margin:.3rem 0 0}
 @media(max-width:600px){.tpn-ctas{justify-content:flex-start}.tpn-ctas .btn{width:100%;justify-content:center}.tpn-foot .tpn-note{text-align:center}}
+/* PRE:CORD — In Practice (ungated resource + scoping-call CTA) */
+.precord-practice{margin-top:3rem;border:2px solid rgba(255,255,255,.16);border-radius:18px;padding:clamp(1.6rem,3.5vw,2.6rem);display:grid;grid-template-columns:1.5fr 1fr;gap:clamp(1.6rem,4vw,3rem);align-items:center;position:relative;z-index:2;background:rgba(255,255,255,.02)}
+.precord-practice .eyebrow{color:var(--teal-bright);display:block;margin-bottom:.7rem}
+.precord-practice h3{font-family:var(--display);font-weight:900;font-size:clamp(1.5rem,3vw,2.1rem);text-transform:lowercase;color:var(--white);margin:0 0 .7rem;line-height:1}
+.pp-copy p{font-size:1rem;color:rgba(255,255,255,.72);line-height:1.5;max-width:54ch}
+.pp-actions{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:1.3rem}
+.pp-email{margin-top:1.6rem}
+.pp-lbl{font-family:var(--mono);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.5);display:block;margin-bottom:.5rem}
+.pp-row{display:flex;gap:.6rem;flex-wrap:wrap}
+.pp-row input[type=email]{flex:1 1 220px;min-width:0;background:rgba(255,255,255,.05);border:2px solid rgba(255,255,255,.2);border-radius:50px;padding:.7rem 1.1rem;color:var(--white);font-family:var(--display);font-size:1rem}
+.pp-row input[type=email]::placeholder{color:rgba(255,255,255,.4)}
+.pp-row input[type=email]:focus{outline:none;border-color:var(--lime);box-shadow:0 0 0 3px rgba(200,255,0,.12)}
+.pp-msg{font-family:var(--mono);font-size:.72rem;letter-spacing:.03em;margin:.6rem 0 0;min-height:1em;color:var(--lime)}
+.pp-msg.err{color:#ffb3b3}
+.pp-cta{border-left:2px solid rgba(200,255,0,.3);padding-left:clamp(1.2rem,3vw,2rem)}
+.pp-cta-lead{font-family:var(--display);font-weight:800;font-size:1.15rem;color:var(--white);margin:0 0 1rem;line-height:1.15}
+.pp-cta-sub{font-family:var(--mono);font-size:.68rem;letter-spacing:.05em;color:rgba(255,255,255,.5);margin:.9rem 0 0;line-height:1.5}
+@media(max-width:820px){.precord-practice{grid-template-columns:1fr}.pp-cta{border-left:none;border-top:2px solid rgba(200,255,0,.3);padding-left:0;padding-top:1.6rem}}
 @media(max-width:880px){.tpn-grid{grid-template-columns:1fr 1fr}.tpn-node{border-bottom:2px solid rgba(255,255,255,.18)}.tpn-node:nth-child(2){border-right:none}}
 @media(max-width:560px){.tpn-grid{grid-template-columns:1fr}.tpn-node{border-right:none}}
 
@@ -801,6 +819,33 @@ footer a:hover{color:var(--lime)}
         <p class="tpn-note">30 days free · no card required</p>
       </div>
     </div>
+
+    <div class="precord-practice reveal">
+      <div class="pp-copy">
+        <span class="eyebrow">Understand PRE:CORD</span>
+        <h3>PRE:CORD — In Practice</h3>
+        <p>A practical, no-gate guide to how PRE:CORD actually works: the ecosystem it connects, the roles each part plays, and the workflow from a young person's first interaction to reportable impact. Read it, share it, no email required.</p>
+        <div class="pp-actions">
+          <a href="downloads/pre-cord-in-practice.pdf" target="_blank" rel="noopener" class="btn lime sm" data-cursor data-magnetic>Read it <span class="arr">→</span></a>
+          <a href="downloads/pre-cord-in-practice.pdf" download class="btn ghost sm" data-cursor data-magnetic style="border-color:var(--lime);color:var(--lime)">Download PDF ↓</a>
+        </div>
+        <form class="pp-email" id="precordForm" novalidate>
+          <label class="pp-lbl" for="precordEmail">Prefer it emailed to you?</label>
+          <div class="pp-row">
+            <input type="email" id="precordEmail" placeholder="you@organisation.org" autocomplete="email" aria-label="Your email">
+            <input type="text" id="precordHp" name="company_website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+            <button type="submit" class="btn lime sm" id="precordSend">Email it to me</button>
+          </div>
+          <div id="cfPrecord" class="cf-turnstile" style="margin:.5rem 0 0"></div>
+          <p class="pp-msg" id="precordMsg" role="alert" aria-live="polite"></p>
+        </form>
+      </div>
+      <div class="pp-cta">
+        <p class="pp-cta-lead">Bringing PRE:CORD to a school, trust, council or VRU?</p>
+        <a href="#signup" class="btn lime" data-calcom data-cursor data-magnetic>Book a scoping conversation <span class="arr">→</span></a>
+        <p class="pp-cta-sub">A short call to scope a pilot around your outcomes. For decision-makers with budget and authority.</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1177,12 +1222,20 @@ footer a:hover{color:var(--lime)}
         'retry':'auto',             // retry on Cloudflare-side hiccups
         'error-callback': function(){ window.cfRefresh(); }
       }); }catch(e){} }
+      var el2=document.getElementById('cfPrecord');
+      if(el2){ try{ window.__cfPrecordWid = window.turnstile.render('#cfPrecord',{
+        sitekey: window.TURNSTILE_SITEKEY, 'refresh-expired':'auto', 'retry':'auto',
+        'error-callback': function(){ window.precordRefresh(); }
+      }); }catch(e){} }
     }
   }
   // Force a fresh single-use token — call after every submit so a second attempt
   // never reuses a spent token (which Cloudflare rejects with a 403).
   window.cfRefresh = function(){
     if(window.turnstile && window.__cfWid!=null){ try{ window.turnstile.reset(window.__cfWid); }catch(e){} }
+  };
+  window.precordRefresh = function(){
+    if(window.turnstile && window.__cfPrecordWid!=null){ try{ window.turnstile.reset(window.__cfPrecordWid); }catch(e){} }
   };
 </script>
 <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onCfTurnstile&render=explicit" async defer></script>
@@ -1424,6 +1477,37 @@ const CAL_LINK = 'https://cal.com/key-shift-london-uwjros/30min';
 document.querySelectorAll('[data-calcom]').forEach(a=>{
   if(CAL_LINK){a.href=CAL_LINK;a.target='_blank';a.rel='noopener';}
 });
+
+/* PRE:CORD — In Practice: optional "email it to me" (convenience, not a gate) */
+const PRECORD_API = 'https://ksl-payments.onrender.com/api/precord/send';
+(function(){
+  const form=document.getElementById('precordForm'); if(!form) return;
+  const email=document.getElementById('precordEmail'), hp=document.getElementById('precordHp'),
+        btn=document.getElementById('precordSend'), msg=document.getElementById('precordMsg');
+  const ok=v=>/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test((v||'').trim());
+  form.addEventListener('submit',async function(e){
+    e.preventDefault(); msg.className='pp-msg'; msg.textContent='';
+    if(!ok(email.value)){ msg.className='pp-msg err'; msg.textContent='Enter a valid email.'; email.focus(); return; }
+    const tsToken=(window.TURNSTILE_SITEKEY && window.turnstile && window.__cfPrecordWid!=null)
+      ? (window.turnstile.getResponse(window.__cfPrecordWid)||'') : '';
+    if(window.TURNSTILE_SITEKEY && !tsToken){ window.precordRefresh&&window.precordRefresh();
+      msg.className='pp-msg err'; msg.textContent='Just verifying you’re human — give it a second, then tap Send again.'; return; }
+    const prev=btn.textContent; btn.disabled=true; btn.style.opacity='.7'; btn.textContent='Sending…';
+    try{
+      const res=await fetch(PRECORD_API,{method:'POST',headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({email:email.value.trim(),company_website:hp?hp.value:'',turnstile_token:tsToken})});
+      if(!res.ok) throw new Error('HTTP '+res.status);
+      form.querySelector('.pp-row').style.display='none';
+      const cf=document.getElementById('cfPrecord'); if(cf) cf.style.display='none';
+      msg.className='pp-msg'; msg.textContent='Sent ✦ check your inbox (and spam) for the PDF link.';
+    }catch(err){
+      btn.disabled=false; btn.style.opacity=''; btn.textContent=prev;
+      window.precordRefresh&&window.precordRefresh();
+      msg.className='pp-msg err'; msg.textContent='Couldn’t send just now — use the Download button above, or try again.';
+    }
+  });
+})();
+
 const enquiryForm=document.getElementById('enquiryForm');
 const submitBtn=document.getElementById('submitBtn');
 const emailOk=v=>/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v);
