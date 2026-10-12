@@ -444,36 +444,21 @@ footer a:hover{color:var(--lime)}
   .reveal{opacity:1!important;transform:none!important}
 }
 .train-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem;align-items:stretch}.train-note{margin-top:2.4rem;font-family:var(--mono);font-size:.82rem;letter-spacing:.04em;color:var(--black);opacity:.72;text-align:center}.train-note strong{color:var(--teal);opacity:1}@media(max-width:760px){.train-grid{grid-template-columns:1fr}}
-/* ---- team & organisation flat pricing ---- */
-.team-pricing{margin-top:3.4rem;border-top:2px solid var(--black);padding-top:2.8rem}
-.tp-eyebrow{font-family:var(--mono);font-size:.7rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--teal)}
-.tp-h{font-family:var(--display);font-weight:900;text-transform:lowercase;font-size:clamp(1.8rem,4vw,2.7rem);line-height:1;color:var(--black);margin:.7rem 0}
-.tp-sub{max-width:54ch;color:var(--black);opacity:.82;margin-bottom:1.8rem}
-.flat-rates{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;max-width:40rem}
-.flat-rate{background:var(--black);color:var(--white);border-radius:16px;padding:1.5rem 1.6rem}
-.flat-rate .fr-lvl{font-family:var(--mono);font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;color:var(--lime)}
-.flat-rate .fr-amt{font-family:var(--display);font-weight:900;font-size:clamp(2.2rem,6vw,3rem);line-height:1;margin:.5rem 0 .2rem;color:var(--lime)}
-.flat-rate .fr-amt.free{color:var(--lime)}
-.flat-rate .fr-note{font-family:var(--mono);font-size:.64rem;letter-spacing:.04em;text-transform:uppercase;opacity:.65}
-.tp-foot{margin-top:1.4rem;max-width:54ch;color:var(--black);opacity:.82;font-size:.95rem}
-@media(max-width:560px){.flat-rates{grid-template-columns:1fr}}
 /* price pill on training cards */
 .price-pill{display:inline-block;margin-left:.5rem;font-family:var(--mono);font-size:.56rem;font-weight:700;letter-spacing:.12em;padding:.2rem .55rem;border-radius:50px;background:var(--black);color:var(--lime);vertical-align:middle}
 .price-pill.free{background:var(--lime);color:var(--black)}
-/* ---- support / donations section ---- */
-.support{background:var(--black);color:var(--white);padding:clamp(3.5rem,9vw,6rem) 0}
-.support-card{max-width:46rem;margin:0 auto;text-align:center}
-.sup-eyebrow{font-family:var(--mono);font-size:.7rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--lime)}
-.sup-h{font-family:var(--display);font-weight:900;text-transform:lowercase;font-size:clamp(2rem,6vw,3.4rem);line-height:.98;margin:.8rem 0}
-.sup-sub{max-width:52ch;margin:0 auto 2rem;color:rgba(255,255,255,.8);line-height:1.55}
-.don-amts{display:flex;flex-wrap:wrap;gap:.6rem;justify-content:center;margin-bottom:1.4rem}
-.don-amt{font-family:var(--display);font-weight:800;font-size:1.05rem;padding:.7rem 1.25rem;border-radius:50px;border:1.6px solid rgba(255,255,255,.3);background:transparent;color:var(--white);cursor:pointer;transition:all .2s}
+/* ---- donate controls (inside the sign-up modal) ---- */
+.don-amts{display:flex;flex-wrap:wrap;gap:.55rem;margin:1.1rem 0 1.4rem}
+.don-amt{font-family:var(--display);font-weight:800;font-size:1.02rem;padding:.6rem 1.1rem;border-radius:50px;border:1.6px solid rgba(255,255,255,.3);background:transparent;color:var(--white);cursor:pointer;transition:all .2s}
 .don-amt:hover{border-color:var(--lime);color:var(--lime)}
 .don-amt.is-on{background:var(--lime);border-color:var(--lime);color:var(--black)}
-.don-custom{display:inline-flex;align-items:center;gap:.25rem;border:1.6px solid rgba(255,255,255,.3);border-radius:50px;padding:.1rem .9rem}
+.don-custom{display:inline-flex;align-items:center;gap:.25rem;border:1.6px solid rgba(255,255,255,.3);border-radius:50px;padding:.1rem .85rem}
 .don-custom span{font-family:var(--display);font-weight:800;opacity:.7}
-.don-custom input{width:4.2rem;background:transparent;border:none;color:var(--white);font-family:var(--display);font-weight:800;font-size:1.05rem;outline:none;padding:.6rem 0}
+.don-custom input{width:4rem;background:transparent;border:none;color:var(--white);font-family:var(--display);font-weight:800;font-size:1.02rem;outline:none;padding:.55rem 0}
+#suDonate #donSubmit{width:100%}
 .don-note{font-family:var(--mono);font-size:.62rem;letter-spacing:.04em;opacity:.55;margin-top:1rem}
+.don-skip{display:block;margin:1rem auto 0;background:none;border:none;color:rgba(255,255,255,.5);font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;text-decoration:underline;cursor:pointer}
+.don-skip:hover{color:#fff}
 #donateForm .sm-err{color:#FF6B5E;margin-top:.6rem;min-height:1em}
 /* ---- 21st.dev layered parallax statement (branded) ---- */
 .parallax{position:relative;background:var(--black);overflow:hidden;}
@@ -929,41 +914,7 @@ footer a:hover{color:var(--lime)}
       </div>
     </div>
 
-    <!-- TEAM & ORGANISATION PRICING (flat) -->
-    <div class="team-pricing reveal" id="team-pricing">
-      <div class="tp-eyebrow">Team &amp; Organisation Seats</div>
-      <h3 class="tp-h">one price.<br>no tiers to work out.</h3>
-      <p class="tp-sub">Level 1 is free for your whole team. Level 2 is a flat £34.99 a head, whether that's one person or a hundred. Self-paced, so there's no cohort scheduling to organise.</p>
-      <div class="flat-rates">
-        <div class="flat-rate"><div class="fr-lvl">Level 1 · Foundations</div><div class="fr-amt free">Free</div><div class="fr-note">for everyone, forever</div></div>
-        <div class="flat-rate"><div class="fr-lvl">Level 2 · Application</div><div class="fr-amt">£34.99</div><div class="fr-note">per person, flat</div></div>
-      </div>
-      <p class="tp-foot">Buying Level 2 for a team? <a href="#signup" style="color:var(--teal)">Request an invoice</a> for the whole group, or <a href="#signup" data-calcom style="color:var(--teal)">book a conversation</a> about facilitator-led or cohort delivery.</p>
-    </div>
-
-    <p class="train-note reveal">Complete a level to earn an official, personalised certificate of completion. Level 1 is free and <a href="#support" style="color:var(--teal)">kept free by donations</a>; Level 2 is a flat £34.99 — one sign-up, or <a href="#signup" style="color:var(--teal)">request an invoice</a> for a team.</p>
-  </div>
-</section>
-<section class="support" id="support">
-  <div class="wrap">
-    <div class="support-card reveal">
-      <div class="sup-eyebrow">Support the work</div>
-      <h2 class="sup-h">level 1 is <span class="lime">free.</span><br>help keep it that way.</h2>
-      <p class="sup-sub">We made Precision Training Level 1 free so cost is never the reason a practitioner goes without it. If the work is useful to you, a donation of any size keeps it free for the next mentor, coach or pastoral lead — and funds the wider work behind it.</p>
-      <form id="donateForm" novalidate>
-        <div class="don-amts" role="group" aria-label="Donation amount">
-          <button type="button" class="don-amt" data-amt="10">£10</button>
-          <button type="button" class="don-amt is-on" data-amt="25">£25</button>
-          <button type="button" class="don-amt" data-amt="50">£50</button>
-          <button type="button" class="don-amt" data-amt="100">£100</button>
-          <div class="don-custom"><span>£</span><input id="donOther" type="number" min="1" step="1" inputmode="numeric" placeholder="Other" aria-label="Other amount in pounds"></div>
-        </div>
-        <input type="text" id="donHp" name="company_website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
-        <button type="submit" class="btn lime" id="donSubmit" data-cursor data-magnetic>Donate <span id="donAmtLbl">£25</span> <span class="arr">→</span></button>
-        <p class="don-note">Secure one-off payment by Stripe. Key Shift London CIC · Reg. 15685849.</p>
-        <p class="sm-err" id="donErr" role="alert"></p>
-      </form>
-    </div>
+    <p class="train-note reveal">Complete a level to earn an official, personalised certificate of completion. Level 1 is free and <a href="#" data-donate style="color:var(--teal)">kept free by donations</a>; Level 2 is a flat £34.99 — one sign-up, or <a href="#signup" style="color:var(--teal)">request an invoice</a> for a team.</p>
   </div>
 </section>
 <section class="audience" id="act">
@@ -1139,7 +1090,7 @@ footer a:hover{color:var(--lime)}
       </details>
       <details class="faq-item reveal">
         <summary>How much does Precision Training cost?<span class="caret">▾</span></summary>
-        <div class="faq-a"><p>Precision Training <strong>Level 1 is free</strong> — instant access, no card needed. <strong>Level 2 is £34.99</strong> to buy and complete yourself. Facilitator, cohort and organisation-wide licensing options are available <a href="#signup">on enquiry</a>, and <a href="#support">a donation</a> helps keep Level 1 free for the next practitioner.</p></div>
+        <div class="faq-a"><p>Precision Training <strong>Level 1 is free</strong> — instant access, no card needed. <strong>Level 2 is £34.99</strong> to buy and complete yourself. Facilitator, cohort and organisation-wide licensing options are available <a href="#signup">on enquiry</a>, and <a href="#" data-donate>a donation</a> helps keep Level 1 free for the next practitioner.</p></div>
       </details>
     </div>
     </div>
@@ -1173,7 +1124,7 @@ footer a:hover{color:var(--lime)}
       <a href="#how">PRE:CORD</a><br><a href="#what">Youth Precision Work</a></div>
     <div class="footer-col"><h4>Get Involved</h4>
       <a href="#signup">Young People</a><br><a href="#signup">Schools + Councils</a><br>
-      <a href="#signup">Funders</a><br><a href="#signup">Make a Referral</a><br><a href="#support">Support Our Work</a></div>
+      <a href="#signup">Funders</a><br><a href="#signup">Make a Referral</a><br><a href="#" data-donate>Support Our Work</a></div>
     <div class="footer-col"><h4>Contact</h4>
       <a href="mailto:hello@keyshiftlondon.org">hello@keyshiftlondon.org</a><br><span style="opacity:.8">South Croydon, CR2 6NB</span><br><a href="guides/">Resources</a><br><a href="privacy.html">Privacy Policy</a><br><a href="terms.html">Terms of Use</a></div>
     <div class="footer-col"><h4>Follow</h4>
@@ -1216,6 +1167,7 @@ footer a:hover{color:var(--lime)}
   <div class="sm-backdrop" data-sm-close></div>
   <div class="sm-card" role="dialog" aria-modal="true" aria-labelledby="smTitle">
     <button class="sm-x" data-sm-close aria-label="Close">×</button>
+    <div id="suFormView">
     <div class="sm-eyebrow">Precision Training · Sign Up</div>
     <h3 id="smTitle" class="sm-title">start your training.</h3>
     <p class="sm-sub">Tell us who's training. Level 1 is free and set up instantly; Level 2 continues to secure payment. Your details set up your access and certificate.</p>
@@ -1240,6 +1192,26 @@ footer a:hover{color:var(--lime)}
       <p class="sm-note" id="suNote">Level 2 checkout is secured by Stripe. Level 1 is free — no card needed.</p>
       <p class="sm-err" id="suErr" role="alert"></p>
     </form>
+    </div><!-- /#suFormView -->
+    <div id="suDonate" hidden>
+      <div class="sm-eyebrow">Support the work</div>
+      <h3 class="sm-title" id="donTitle">keep level 1 free.</h3>
+      <p class="sm-sub" id="donSub">We made Precision Training Level 1 free so cost is never the reason a practitioner goes without it. A donation of any size keeps it free for the next mentor, coach or pastoral lead.</p>
+      <form id="donateForm" novalidate>
+        <div class="don-amts" role="group" aria-label="Donation amount">
+          <button type="button" class="don-amt" data-amt="10">£10</button>
+          <button type="button" class="don-amt is-on" data-amt="25">£25</button>
+          <button type="button" class="don-amt" data-amt="50">£50</button>
+          <button type="button" class="don-amt" data-amt="100">£100</button>
+          <div class="don-custom"><span>£</span><input id="donOther" type="number" min="1" step="1" inputmode="numeric" placeholder="Other" aria-label="Other amount in pounds"></div>
+        </div>
+        <input type="text" id="donHp" name="company_website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+        <button type="submit" class="btn lime" id="donSubmit" data-cursor data-magnetic>Donate <span id="donAmtLbl">£25</span> <span class="arr">→</span></button>
+        <p class="don-note">Secure one-off payment by Stripe. Key Shift London CIC · Reg. 15685849.</p>
+        <p class="sm-err" id="donErr" role="alert"></p>
+        <button type="button" class="don-skip" id="donSkip" data-sm-close>No thanks — I’m done</button>
+      </form>
+    </div><!-- /#suDonate -->
   </div>
 </div>
 
@@ -1673,13 +1645,33 @@ const L2_PRICE = 34.99;
     if(opts.level==='L1'){l1.checked=true;l2.checked=false;}
     else if(opts.level==='L2'){l1.checked=true;l2.checked=true;}   // L2 grant includes L1
     else if(opts.level==='both'){l1.checked=true;l2.checked=true;}
-    errEl.textContent=''; recompute();
+    showForm(); errEl.textContent=''; recompute();
     lastFocus=document.activeElement;
     modal.classList.add('open'); modal.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden';
     setTimeout(()=>nameEl.focus(),60);
   }
-  function close(){ modal.classList.remove('open'); modal.setAttribute('aria-hidden','true'); document.body.style.overflow=''; if(lastFocus&&lastFocus.focus) lastFocus.focus(); }
+  function close(){ modal.classList.remove('open'); modal.setAttribute('aria-hidden','true'); document.body.style.overflow=''; showForm(); if(lastFocus&&lastFocus.focus) lastFocus.focus(); }
   window.kslOpenSignup=open;
+  /* two views inside the modal: the sign-up form, and a donate step */
+  const formView=$('suFormView'), donView=$('suDonate');
+  function showForm(){ if(formView)formView.hidden=false; if(donView)donView.hidden=true; }
+  function showDonate(afterEnrol){
+    if(!donView) return;
+    if(formView)formView.hidden=true; donView.hidden=false;
+    const t=$('donTitle'), s=$('donSub');
+    if(t) t.textContent = afterEnrol ? 'you’re in — keep it free?' : 'keep level 1 free.';
+    if(s) s.textContent = afterEnrol
+      ? 'Your free Level 1 link is on its way to your inbox. Level 1 is free because cost shouldn’t keep anyone out — a donation of any size keeps it free for the next practitioner.'
+      : 'We made Precision Training Level 1 free so cost is never the reason a practitioner goes without it. A donation of any size keeps it free for the next mentor, coach or pastoral lead.';
+  }
+  window.kslOpenDonate=function(){
+    showDonate(false);
+    lastFocus=document.activeElement;
+    modal.classList.add('open'); modal.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden';
+  };
+  document.querySelectorAll('[data-donate]').forEach(el=>el.addEventListener('click',e=>{e.preventDefault(); window.kslOpenDonate();}));
+  /* deep links: ?donate, #support or #donate open the donate step directly (e.g. from the welcome email) */
+  try{ const q=new URLSearchParams(location.search); if(q.has('donate')||location.hash==='#support'||location.hash==='#donate'){ window.kslOpenDonate(); } }catch(e){}
   modal.querySelectorAll('[data-sm-close]').forEach(b=>b.addEventListener('click',close));
   document.addEventListener('keydown',e=>{ if(e.key==='Escape'&&modal.classList.contains('open')) close(); });
   [l1,l2].forEach(e=>e.addEventListener('input',recompute));
@@ -1704,13 +1696,10 @@ const L2_PRICE = 34.99;
       if(data.checkout_url && /^https:\/\/checkout\.stripe\.com\//.test(data.checkout_url)){
         window.location.href=data.checkout_url; return;
       }
-      // Free path: instant enrolment — confirm in place.
+      // Free path: instant enrolment — confirm + offer to keep it free, in place.
       if(data.free || data.status==='enrolled'){
-        close();
-        const b=document.getElementById('payBanner'), m=document.getElementById('payBannerMsg');
-        if(m) m.textContent='✓ You’re in. Check your email for your free Level 1 access link.';
-        if(b){ b.classList.add('show'); setTimeout(()=>b.classList.remove('show'),12000);
-          document.getElementById('payBannerX').addEventListener('click',()=>b.classList.remove('show')); }
+        submitBtn.disabled=false; submitBtn.style.opacity=''; submitBtn.innerHTML=prev;
+        showDonate(true);   // stay in the modal, switch to the donate step
         return;
       }
       throw new Error('no url');
