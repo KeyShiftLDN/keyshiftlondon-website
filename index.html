@@ -475,6 +475,38 @@ footer a:hover{color:var(--lime)}
 .don-custom input{width:4.2rem;background:transparent;border:none;color:var(--white);font-family:var(--display);font-weight:800;font-size:1.05rem;outline:none;padding:.6rem 0}
 .don-note{font-family:var(--mono);font-size:.62rem;letter-spacing:.04em;opacity:.55;margin-top:1rem}
 #donateForm .sm-err{color:#FF6B5E;margin-top:.6rem;min-height:1em}
+/* ---- 21st.dev layered parallax statement (branded) ---- */
+.parallax{position:relative;background:var(--black);overflow:hidden;}
+.parallax__header{position:relative;min-height:122vh;overflow:hidden;background:var(--black);}
+.parallax__visuals{position:absolute;inset:0;}
+.parallax__layers{position:absolute;inset:0;}
+.parallax__layer-img{position:absolute;left:50%;transform:translateX(-50%);pointer-events:none;user-select:none;will-change:transform;}
+/* layer 1 — London backdrop (moves most) */
+.pl-photo{top:-40%;width:154vw;height:180%;object-fit:cover;object-position:center 42%;filter:brightness(.3) saturate(.72) contrast(1.03);}
+/* layer 2 — faint globe (mid depth) */
+.pl-globe{top:12%;width:min(680px,92vw);opacity:.14;mix-blend-mode:screen;}
+/* layer 3 — the statement */
+.parallax__layer-title{position:absolute;left:50%;transform:translateX(-50%);top:30%;width:92%;max-width:1120px;text-align:center;z-index:3;}
+.parallax__eyebrow{font-family:var(--mono);font-size:clamp(.6rem,1.4vw,.78rem);font-weight:700;letter-spacing:.34em;text-transform:uppercase;color:var(--lime);margin-bottom:1.1rem;}
+.parallax__title{font-family:var(--display);font-weight:900;text-transform:lowercase;font-size:clamp(3rem,12.5vw,10.5rem);line-height:.84;color:var(--white);letter-spacing:-.012em;}
+.parallax__title .l{display:block;}
+.parallax__title .lime{color:var(--lime);}
+.parallax__sub{font-family:var(--mono);font-size:clamp(.72rem,1.5vw,.9rem);letter-spacing:.06em;color:rgba(255,255,255,.6);margin-top:1.5rem;}
+/* layer 4 — lime arrow foreground (moves least) */
+.pl-arrow{top:60%;width:min(560px,82vw);height:auto;filter:drop-shadow(0 28px 60px rgba(0,0,0,.55));}
+.parallax__fade{position:absolute;inset:0;pointer-events:none;background:radial-gradient(130% 72% at 50% 40%,transparent 42%,rgba(10,10,10,.55) 100%);}
+.parallax__black-line-overflow{position:absolute;left:0;right:0;bottom:-1px;height:170px;z-index:4;pointer-events:none;background:linear-gradient(transparent,var(--black));}
+.parallax__content{position:relative;z-index:5;background:var(--black);text-align:center;padding:4.5rem 1.5rem 6rem;}
+.osmo-icon-svg{width:clamp(40px,6vw,58px);height:auto;color:var(--lime);margin:0 auto 1.6rem;display:block;}
+.parallax__content-line{font-family:var(--display);font-weight:700;text-transform:lowercase;font-size:clamp(1.4rem,3.6vw,2.3rem);color:var(--white);max-width:20ch;margin:0 auto 1.9rem;line-height:1.04;}
+@media(max-width:760px){
+  .parallax__header{min-height:90vh;}
+  .pl-photo{width:190vw;top:-30%;height:160%;}
+  .pl-globe{width:135vw;top:16%;}
+  .parallax__layer-title{top:26%;}
+  .pl-arrow{top:62%;width:118vw;}
+  .parallax__content{padding:3.4rem 1.2rem 4.4rem;}
+}
 /* ---- delivery options: compact click-to-reveal outcomes ---- */
 .delivery-opts{margin-top:2.4rem;max-width:62rem}
 .do-eyebrow{font-family:var(--mono);font-size:.7rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--teal);margin-bottom:.4rem}
@@ -963,6 +995,33 @@ footer a:hover{color:var(--lime)}
   </div>
 </section>
 
+<!-- ============ PARALLAX STATEMENT (21st.dev component, adapted + branded) ============ -->
+<section class="parallax" aria-label="Unlock potential. Shape futures.">
+  <div class="parallax__header">
+    <div class="parallax__visuals">
+      <div class="parallax__black-line-overflow"></div>
+      <div data-parallax-layers class="parallax__layers">
+        <img src="ksl-assets/photo-cityscape.jpg" loading="lazy" alt="" data-parallax-layer="1" class="parallax__layer-img pl-photo">
+        <img src="ksl-assets/globe-tagline.png" loading="lazy" width="800" alt="" data-parallax-layer="2" class="parallax__layer-img pl-globe">
+        <div data-parallax-layer="3" class="parallax__layer-title">
+          <div class="parallax__eyebrow">The Key Shift</div>
+          <h2 class="parallax__title"><span class="l">unlock potential.</span><span class="l lime">shape futures.</span></h2>
+          <p class="parallax__sub">Precision youth development — built, not borrowed. South London.</p>
+        </div>
+        <img src="ksl-assets/arrow.png" loading="lazy" width="805" height="497" alt="" data-parallax-layer="4" class="parallax__layer-img pl-arrow">
+      </div>
+      <div class="parallax__fade"></div>
+    </div>
+  </div>
+  <div class="parallax__content">
+    <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 160 160" fill="none" class="osmo-icon-svg" aria-hidden="true">
+      <path d="M94.8284 53.8578C92.3086 56.3776 88 54.593 88 51.0294V0H72V59.9999C72 66.6273 66.6274 71.9999 60 71.9999H0V87.9999H51.0294C54.5931 87.9999 56.3777 92.3085 53.8579 94.8283L18.3431 130.343L29.6569 141.657L65.1717 106.142C67.684 103.63 71.9745 105.396 72 108.939V160L88.0001 160L88 99.9999C88 93.3725 93.3726 87.9999 100 87.9999H160V71.9999H108.939C105.407 71.9745 103.64 67.7091 106.12 65.1938L106.142 65.1716L141.657 29.6568L130.343 18.3432L94.8284 53.8578Z" fill="currentColor"></path>
+    </svg>
+    <p class="parallax__content-line">Every young person deserves targeted, intentional support.</p>
+    <a href="#signup" class="btn lime" data-cursor data-magnetic>Start the shift <span class="arr">→</span></a>
+  </div>
+</section>
+
 <section class="signup" id="signup">
   <div class="dark-bg" data-speed="0.1" style="width:46%;height:70%;right:-6%;top:-4%;opacity:.34" aria-hidden="true"><img src="ksl-assets/photo-cityscape.jpg" alt="" loading="lazy"></div>
   <div class="px-word px-layer" data-speed="0.2" style="bottom:-4%;left:-3%;color:var(--lime)">SHIFT</div>
@@ -1317,6 +1376,39 @@ gsap.utils.toArray('.pss-media img,.aud-media img,.section-photo img,.who-photo 
 
 /* ---------- Hero title parallax drift on scroll ---------- */
 gsap.to('#heroTitle',{yPercent:18,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
+
+/* ---------- 21st.dev layered parallax statement ----------
+   Adapted from the React/GSAP/Lenis component: reuses THIS page's already-registered
+   ScrollTrigger + single Lenis (no second smooth-scroll instance). Magnitudes are tuned
+   so each layer stays within its clipped frame (background drifts most, arrow least).
+   The "framer-motion" entrance is done with GSAP (opacity on the layers so it never
+   clashes with the scrub transform; y/stagger on the title children). */
+(function(){
+  const scene=document.querySelector('[data-parallax-layers]');
+  const header=document.querySelector('.parallax__header');
+  if(!scene||!header) return;
+  if(REDUCED) return;   // reduced-motion: leave the statement static (CSS positions it)
+
+  // depth scrub — [layer, yPercent], all easing none, tied to one timeline (matches source)
+  const tl=gsap.timeline({scrollTrigger:{trigger:header,start:'top top',end:'bottom top',scrub:0}});
+  [['1',20],['2',14],['3',9],['4',3]].forEach((p,i)=>{
+    tl.to(scene.querySelector('[data-parallax-layer="'+p[0]+'"]'),{yPercent:p[1],ease:'none'},i===0?undefined:'<');
+  });
+
+  // entrance (framer-motion-style): scene fades in, then eyebrow / title lines / sub rise
+  gsap.set('.parallax__layer-img',{autoAlpha:0});
+  gsap.timeline({scrollTrigger:{trigger:header,start:'top 72%',once:true},defaults:{ease:'power3.out'}})
+    .to('.parallax__layer-img',{autoAlpha:1,duration:1.1,stagger:.14})
+    .from('.parallax__eyebrow',{y:24,opacity:0,duration:.7},'-=.85')
+    .from('.parallax__title .l',{yPercent:70,opacity:0,duration:.95,stagger:.13,ease:'power4.out'},'-=.55')
+    .from('.parallax__sub',{y:18,opacity:0,duration:.7},'-=.55');
+
+  // content beat below
+  gsap.from('.osmo-icon-svg',{scrollTrigger:{trigger:'.parallax__content',start:'top 82%',once:true},
+    rotate:-60,scale:.4,opacity:0,duration:.9,ease:'back.out(1.6)'});
+  gsap.from('.parallax__content-line',{scrollTrigger:{trigger:'.parallax__content',start:'top 82%',once:true},
+    y:24,opacity:0,duration:.8,delay:.12,ease:'power3.out'});
+})();
 
 /* ---------- Collapsible sections: click to reveal (keeps the page short) ---------- */
 document.querySelectorAll('.sec-toggle').forEach(btn=>{
