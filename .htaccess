@@ -5,7 +5,7 @@
 
 <IfModule mod_headers.c>
   # Content Security Policy — only allow the sources this site actually uses
-  Header always set Content-Security-Policy "default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-ancestors 'none'; img-src 'self' data:; font-src https://fonts.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; script-src 'self' 'unsafe-inline'; connect-src 'self' https://ksl-payments.onrender.com; upgrade-insecure-requests"
+  Header always set Content-Security-Policy "default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-ancestors 'none'; img-src 'self' data:; font-src https://fonts.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; script-src 'self' 'unsafe-inline' https://challenges.cloudflare.com https://plausible.io https://static.cloudflareinsights.com; frame-src https://challenges.cloudflare.com; connect-src 'self' https://ksl-payments.onrender.com https://challenges.cloudflare.com https://plausible.io https://cloudflareinsights.com; upgrade-insecure-requests"
 
   # Force HTTPS for a year (only takes effect when served over HTTPS)
   Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"

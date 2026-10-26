@@ -6,3 +6,6 @@ desktop.ini
 .vscode/
 .idea/
 serve.py
+
+# prototype reference, never publish
+_reference/
