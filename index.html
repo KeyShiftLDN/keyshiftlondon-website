@@ -39,6 +39,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,700;1,800;1,900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="ksl-assets/site.css">
+<link rel="stylesheet" href="ksl-assets/journey.css">
 </head>
 <body>
 <a href="#what-we-do" class="skip-link">Skip to content</a>
@@ -112,48 +113,53 @@
   </div>
 </section>
 
-<!-- 2 · WHAT WE DO -->
-<section class="how-sec" id="what-we-do">
-  <div class="wrap gallery">
-    <div class="gallery-head reveal">
-      <div class="chapter">Precision Streamline System</div>
-      <h2 class="big">one system.<br>three moves.</h2>
-      <p>Young people don't need saving. They need structure. The Precision Streamline System builds it in three moves.</p>
-      <a href="approach.html" class="gallery-all" data-cursor>See the full approach <span class="arr">→</span></a>
-      <div class="gallery-pager" aria-hidden="true"><span class="on">01</span><span>02</span><span>03</span></div>
+<!-- 2 · WHAT WE DO — scroll-driven "three moves" journey (drop-in kit) -->
+<section class="kj" id="what-we-do" aria-label="One system. Three moves.">
+  <div class="kj-view">
+    <div class="kj-stage" id="kj-stage" aria-hidden="true"></div>
+    <div class="kj-shade" aria-hidden="true"></div>
+
+    <div class="kj-panel kj-intro" data-from="0" data-to=".13">
+      <div class="kj-wrap"><div class="kj-copy">
+        <div class="chapter">Precision Streamline System</div>
+        <h2 class="big">One system.<br>Three moves.</h2>
+        <p class="kj-lede">Young people don't need saving. They need structure. The Precision Streamline System builds it in three moves.</p>
+      </div></div>
     </div>
-    <div class="gallery-cards">
-      <a class="gcard reveal" href="training.html#level-1" data-cursor>
-        <div class="gc-media"><img src="ksl-assets/photo-stafftraining.jpg" alt="Staff training session" loading="lazy"></div>
-        <span class="gc-index">01</span>
-        <div class="gc-label">
-          <span class="gc-stage">PREPARE</span>
-          <span class="gc-title">precision training</span>
-          <span class="gc-body">Learn the method. Level 1 is free and self-paced. Level 2 is £34.99.</span>
-        </div>
-        <span class="gc-arr" aria-hidden="true">↗</span>
-      </a>
-      <a class="gcard reveal" href="https://cal.com/key-shift-london-uwjros/30min" data-calcom data-cursor>
-        <div class="gc-media"><img src="ksl-assets/photo-whiteboard.jpg" alt="Mapping a coaching plan on paper" loading="lazy"></div>
-        <span class="gc-index">02</span>
-        <div class="gc-label">
-          <span class="gc-stage">PROCESS</span>
-          <span class="gc-title">precision coaching</span>
-          <span class="gc-body">Put it into practice with a KSL coach through the PILLAR framework. Become a Certified Precision Practitioner.</span>
-        </div>
-        <span class="gc-arr" aria-hidden="true">↗</span>
-      </a>
-      <a class="gcard reveal" href="precord.html" data-cursor>
-        <div class="gc-media"><img src="ksl-assets/photo-practitioner.jpg" alt="Reviewing a young person's record on a tablet" loading="lazy"></div>
-        <span class="gc-index">03</span>
-        <div class="gc-label">
-          <span class="gc-stage">PRECORD</span>
-          <span class="gc-title">PRE:CORD</span>
-          <span class="gc-body">Record every session, track each young person's progress and report the impact.</span>
-        </div>
-        <span class="gc-arr" aria-hidden="true">↗</span>
-      </a>
+
+    <div class="kj-panel" id="move-1" data-from=".19" data-to=".39">
+      <div class="kj-wrap"><div class="kj-copy">
+        <span class="kj-idx">01</span>
+        <span class="kj-stage-l">Prepare</span>
+        <h3 class="kj-title">Precision training</h3>
+        <p class="kj-lede">Learn the method. Level 1 is free and self-paced. Level 2 is £34.99.</p>
+        <a class="kj-go" href="training.html#level-1">Start training <span aria-hidden="true">↗</span></a>
+      </div></div>
     </div>
+
+    <div class="kj-panel" id="move-2" data-from=".43" data-to=".63">
+      <div class="kj-wrap"><div class="kj-copy">
+        <span class="kj-idx">02</span>
+        <span class="kj-stage-l">Process</span>
+        <h3 class="kj-title">Precision coaching</h3>
+        <p class="kj-lede">Put it into practice with a KSL coach through the PILLAR framework. This is how you become a Certified Precision Practitioner.</p>
+        <a class="kj-go" href="https://cal.com/key-shift-london-uwjros/30min" data-calcom>Book a conversation <span aria-hidden="true">↗</span></a>
+      </div></div>
+    </div>
+
+    <div class="kj-panel" id="move-3" data-from=".67" data-to=".9">
+      <div class="kj-wrap"><div class="kj-copy">
+        <span class="kj-idx">03</span>
+        <span class="kj-stage-l">Precord</span>
+        <h3 class="kj-title">PRE:CORD</h3>
+        <p class="kj-lede">Record every session, track each young person’s progress and report the impact.</p>
+        <a class="kj-go" href="#precord">Explore PRE:CORD <span aria-hidden="true">↓</span></a>
+      </div></div>
+    </div>
+
+    <div class="kj-pager-wrap"><nav class="kj-pager ink" aria-label="Three moves">
+      <a href="#move-1" data-at=".29">01</a><a href="#move-2" data-at=".53">02</a><a href="#move-3" data-at=".78">03</a>
+    </nav></div>
   </div>
 </section>
 
@@ -349,5 +355,6 @@
 <script src="ksl-assets/motion.js" defer></script>
 <!-- 3D scenes paused during the layout rebuild; re-enable once structure is locked:
 <script type="module" src="ksl-assets/three-scenes.js"></script> -->
+<script type="module" src="ksl-assets/journey.js"></script>
 </body>
 </html>

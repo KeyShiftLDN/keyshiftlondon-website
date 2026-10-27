@@ -15,6 +15,7 @@
   /* 1) Scroll reveals: fade + rise; big headings also resolve out of a light blur */
   gsap.utils.toArray('.reveal').forEach(function (el) {
     if (el.closest('.hero')) return;                 // hero shows immediately
+    if (el.closest('#what-we-do')) return;           // the journey owns its own scroll
     var from = { autoAlpha: 0, y: 36 };
     var to = { autoAlpha: 1, y: 0, duration: .9, ease: 'power3.out',
                scrollTrigger: { trigger: el, start: 'top 86%' } };
@@ -42,6 +43,7 @@
   /* 4) Section headings scale in a touch as they enter (not in the hero) */
   gsap.utils.toArray('h1.big, h2.big, .huge').forEach(function (h) {
     if (h.closest('.hero')) return;
+    if (h.closest('#what-we-do')) return;            // the journey owns its own scroll
     gsap.from(h, { scale: .93, ease: 'power2.out', duration: .9,
       scrollTrigger: { trigger: h, start: 'top 85%' } });
   });

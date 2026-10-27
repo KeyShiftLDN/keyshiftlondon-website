@@ -4,8 +4,8 @@
   --display:'Barlow Condensed',sans-serif;--mono:'JetBrains Mono',monospace;
 }
 *{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:auto;overflow-x:hidden}
-body{font-family:var(--display);background:var(--lime);color:var(--black);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+html{scroll-behavior:auto;overflow-x:clip}
+body{font-family:var(--display);background:var(--lime);color:var(--black);overflow-x:clip;-webkit-font-smoothing:antialiased}
 ::selection{background:var(--black);color:var(--lime)}
 /* ---- accessibility: skip link + visible keyboard focus ---- */
 .skip-link{position:absolute;left:-9999px;top:0;z-index:9999;background:var(--black);color:var(--lime);padding:.8rem 1.2rem;font-family:var(--mono);font-size:.8rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border:2px solid var(--lime);border-radius:0 0 8px 0}

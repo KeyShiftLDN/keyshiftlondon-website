@@ -1,0 +1,48 @@
+/* KSL "three moves" journey. Replaces the #what-we-do gallery on the homepage.
+   Uses the site tokens from site.css (--black, --lime, --teal, --teal-bright, --white, --display, --mono).
+   Default state is a static, readable stack. journey.js adds .kj-live to <html> only once the 3D scene is ready. */
+
+.kj{position:relative;background:var(--black) url("journey-pattern-dark.jpg") center top/820px auto repeat;color:var(--white)}
+.kj::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,10,10,.93),rgba(10,10,10,.65));pointer-events:none}
+.kj-view{position:relative}
+.kj-stage{display:none}
+.kj-shade,.kj-pager-wrap{display:none}
+
+.kj-panel{position:relative;padding-block:clamp(3rem,8vw,5rem);padding-inline:clamp(1.5rem,6vw,7rem);border-bottom:1px solid rgba(255,255,255,.16)}
+.kj-panel .kj-wrap{max-width:1400px;margin:0 auto}
+.kj-copy{display:grid;gap:1rem;max-width:560px}
+.kj-intro{background:var(--lime);color:var(--black)}
+.kj-intro .kj-copy{max-width:640px}
+.kj-intro .kj-lede{color:var(--black)}
+.kj-idx{font-family:var(--mono);font-size:.72rem;font-weight:700;letter-spacing:.2em;color:var(--teal-bright)}
+.kj-stage-l{font-family:var(--mono);font-size:.72rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--teal-bright)}
+.kj-title{font-family:var(--display);font-weight:900;text-transform:uppercase;line-height:.88;font-size:clamp(3rem,8vw,6.4rem);color:var(--lime);margin:0;text-wrap:balance}
+.kj-lede{font-size:clamp(1.05rem,1.5vw,1.25rem);line-height:1.45;max-width:40ch;color:rgba(255,255,255,.72);margin:0}
+.kj-go{font-family:var(--mono);font-size:.74rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--lime);text-decoration:none;display:inline-flex;gap:.5rem;align-items:center}
+.kj-go:hover{text-decoration:underline}
+
+/* live: pinned 3D viewport */
+.kj-live .kj{background:var(--black);height:480vh}
+.kj-live .kj::before{display:none}
+.kj-live .kj-view{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
+.kj-live .kj-stage{display:block;position:absolute;inset:0}
+.kj-live .kj-stage canvas{display:block;width:100%!important;height:100%!important}
+.kj-live .kj-shade{display:block;position:absolute;inset:0;pointer-events:none;opacity:var(--kj-dark,0);background:linear-gradient(90deg,rgba(10,10,10,.8) 0%,rgba(10,10,10,.35) 40%,rgba(10,10,10,0) 60%)}
+.kj-live .kj-panel{position:absolute;inset:0;display:flex;align-items:center;padding-block:0;border:0;background:none;opacity:0;visibility:hidden;will-change:opacity,transform}
+.kj-live .kj-panel.on{visibility:visible}
+.kj-live .kj-panel>.kj-wrap{width:100%;padding-top:3rem}
+.kj-live .kj-pager-wrap{display:block;position:absolute;inset:auto 0 0 0;padding-inline:clamp(1.5rem,6vw,7rem);pointer-events:none}
+.kj-pager{display:flex;gap:1.1rem;max-width:1400px;margin:0 auto;padding-bottom:calc(1.6rem + env(safe-area-inset-bottom,0px));font-family:var(--mono);font-size:.74rem;font-weight:700;letter-spacing:.12em}
+.kj-pager a{text-decoration:none;color:rgba(255,255,255,.4);padding-bottom:.25rem;border-bottom:2px solid transparent;pointer-events:auto}
+.kj-pager a.on{color:var(--lime);border-color:var(--lime)}
+.kj-pager.ink a{color:rgba(10,10,10,.45)}
+.kj-pager.ink a.on{color:var(--black);border-color:var(--black)}
+
+@media(max-width:820px){
+  .kj-live .kj{height:400vh}
+  .kj-live .kj-shade{background:linear-gradient(0deg,rgba(10,10,10,.92) 0%,rgba(10,10,10,.55) 45%,rgba(10,10,10,0) 70%)}
+  .kj-live .kj-panel{align-items:flex-end}
+  .kj-live .kj-panel>.kj-wrap{padding-bottom:calc(4.6rem + env(safe-area-inset-bottom,0px))}
+  .kj-live .kj-intro{align-items:center}
+  .kj-live .kj-intro>.kj-wrap{padding-bottom:0}
+}
