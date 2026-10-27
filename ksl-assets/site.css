@@ -577,3 +577,12 @@ h1,h2,h3,h4{text-transform:uppercase}
 /* gallery card sub-line + system delivery detail (Approach) */
 .gc-sub{font-family:var(--mono);font-size:.62rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--teal-bright)}
 .sys-detail{text-align:center;font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(10,10,10,.55);margin-top:2.4rem}
+
+/* Journey pager vs the site's bottom-fixed chrome: hide it under the
+   first-visit cookie card, and lift it above the mobile sticky CTA
+   (which owns the bottom 62px at <=720px). Consent-neutral. */
+body.ksl-consent-open .kj-pager-wrap{opacity:0;pointer-events:none;transition:opacity .25s ease}
+@media(max-width:720px){
+  html.kj-live .kj-pager-wrap{bottom:66px}
+  .kj-live .kj-panel:not(.kj-intro)>.kj-wrap{padding-bottom:calc(4.6rem + 66px + env(safe-area-inset-bottom,0px))}
+}
