@@ -79,8 +79,10 @@
       <p style="font-family:var(--mono);font-size:.72rem;letter-spacing:.05em;opacity:.6;margin-top:1.4rem">Community Interest Company · Croydon, Lambeth, Southwark</p>
     </div>
     <div class="hero-visual">
-      <div class="globe" data-speed="0.14" data-cursor="explore">
-        <img class="globe-img" src="ksl-assets/globe-tagline.png" alt="Shaping with precision. Unlocking for purpose." width="460" height="460" fetchpriority="high">
+      <div class="globe" id="heroGlobe" data-scene="globe" data-cursor="explore">
+        <img class="globe-img globe-fallback" src="ksl-assets/globe-tagline.png" alt="Shaping with precision. Unlocking for purpose." width="460" height="460" fetchpriority="high">
+        <canvas class="globe-canvas" aria-hidden="true"></canvas>
+        <div class="globe-ui" aria-hidden="true"><span class="globe-lon" id="globeLon">0.13&deg; W</span></div>
       </div>
       <div class="hero-desc" aria-hidden="true"><div><b>SHAPE</b> · identity mapping</div><div><b>PILLAR</b> · precision coaching</div><div><b>PRE:CORD</b> · connected ecosystem</div></div>
     </div>
@@ -311,5 +313,6 @@
 <script src="ksl-assets/lenis.min.js"></script>
 <script src="ksl-assets/site.js" defer></script>
 <script src="ksl-assets/motion.js" defer></script>
+<script type="module" src="ksl-assets/three-scenes.js"></script>
 </body>
 </html>
