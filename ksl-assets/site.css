@@ -537,9 +537,9 @@ footer a:hover{color:var(--lime)}
 .community-bg img{width:100%;height:100%;object-fit:cover;object-position:center 40%;filter:grayscale(.1) contrast(1.05) brightness(.82);display:block}
 .final.community::after{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;background:linear-gradient(rgba(10,10,10,.42),rgba(10,10,10,.66))}
 .community .community-row{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:clamp(1.6rem,4vw,2.4rem);flex-wrap:wrap}
-.community-copy{max-width:40ch;margin:0 auto}
+.community-copy{max-width:92vw;margin:0 auto}
 .community .community-copy h2{margin:0 auto}
-.community .community-copy p{margin:1rem auto 0;color:rgba(255,255,255,.78)}
+.community .community-copy p{max-width:42ch;margin:1rem auto 0;color:rgba(255,255,255,.78)}
 .community .final-ctas{margin-top:0;justify-content:center}
 
 /* Responsive */
@@ -600,3 +600,9 @@ body.ksl-consent-open .kj-pager-wrap{opacity:0;pointer-events:none;transition:op
 @keyframes pfOut{from{opacity:1;visibility:visible}to{opacity:0;visibility:hidden}}
 body.pf-leaving .page-fade{animation:none;visibility:visible;opacity:1;transition:opacity .4s ease}
 @media(prefers-reduced-motion:reduce){.page-fade{animation:none;opacity:0;visibility:hidden}}
+
+/* Closing headline: two words per line, two tight lines, centred */
+.final h2.huge{max-width:none;white-space:nowrap;line-height:.82;letter-spacing:-.02em;font-size:clamp(3rem,10vw,7.5rem)}
+
+/* Handwritten founder quote (Why Trust Us) */
+.tf-quote{font-family:'Caveat',cursive;color:var(--lime);font-weight:600;font-size:clamp(1.65rem,3vw,2.5rem);line-height:1.25;max-width:26ch;margin:1.7rem auto .2rem;text-transform:none;letter-spacing:0}
