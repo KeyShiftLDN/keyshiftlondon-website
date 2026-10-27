@@ -573,3 +573,7 @@ h1,h2,h3,h4{text-transform:uppercase}
 .tf-bio{max-width:52ch;margin:0 auto;font-size:clamp(1.05rem,1.6vw,1.3rem);color:rgba(255,255,255,.82);line-height:1.5}
 .tf-meta{font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;color:var(--teal-bright);margin-top:1.5rem}
 @media(max-width:520px){.tf-portrait{width:clamp(120px,32vw,150px)}}
+
+/* gallery card sub-line + system delivery detail (Approach) */
+.gc-sub{font-family:var(--mono);font-size:.62rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--teal-bright)}
+.sys-detail{text-align:center;font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(10,10,10,.55);margin-top:2.4rem}
