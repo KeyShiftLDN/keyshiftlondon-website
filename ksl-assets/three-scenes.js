@@ -158,8 +158,127 @@ async function initGlobe(host) {
   }), { threshold: 0 }).observe(host);
 }
 
+/* ============================ PRE:CORD NETWORK ============================ */
+async function initNetwork(host) {
+  const THREE = await import('./vendor/three.module.min.js');
+  const canvas = host.querySelector('.network-canvas');
+  const uiLayer = host.querySelector('.network-ui');
+  // the accessible list is the source of truth; cards drive node selection
+  const cards = [...document.querySelectorAll('[data-node]')];
+
+  const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, powerPreference: 'low-power' });
+  renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+  const scene = new THREE.Scene();
+  const cam = new THREE.PerspectiveCamera(40, 1, 0.1, 100);
+  cam.position.set(0, 0, 6.2);
+  const root = new THREE.Group(); scene.add(root);
+
+  // hub: wireframe icosahedron
+  const hub = new THREE.LineSegments(
+    new THREE.WireframeGeometry(new THREE.IcosahedronGeometry(0.72, 1)),
+    new THREE.LineBasicMaterial({ color: TEALB, transparent: true, opacity: 0.85 }));
+  root.add(hub);
+  const hubCore = new THREE.Mesh(new THREE.IcosahedronGeometry(0.28, 0),
+    new THREE.MeshBasicMaterial({ color: LIME })); root.add(hubCore);
+
+  // 4 nodes: [name, x, y, z, inward]  (commissioners = outward)
+  const defs = [
+    ['young people', -2.5, 1.25, 0.2, true],
+    ['mentors', 2.5, 1.25, -0.2, true],
+    ['organisations', -2.5, -1.25, -0.2, true],
+    ['commissioners', 2.5, -1.25, 0.2, false],
+  ];
+  const nodes = defs.map(([name, x, y, z, inward], i) => {
+    const p = new THREE.Vector3(x, y, z);
+    const dot = new THREE.Mesh(new THREE.SphereGeometry(0.16, 20, 20),
+      new THREE.MeshBasicMaterial({ color: TEAL })); dot.position.copy(p); root.add(dot);
+    const halo = new THREE.Mesh(new THREE.RingGeometry(0.22, 0.26, 32),
+      new THREE.MeshBasicMaterial({ color: LIME, transparent: true, opacity: 0, side: THREE.DoubleSide }));
+    halo.position.copy(p); root.add(halo);
+    // cord: gentle bow from node to hub
+    const mid = p.clone().multiplyScalar(0.5).add(new THREE.Vector3(0, 0, 0.6));
+    const curve = new THREE.CatmullRomCurve3([p.clone(), mid, new THREE.Vector3(0, 0, 0)]);
+    const tubeG = new THREE.TubeGeometry(curve, 48, 0.022, 8, false);
+    const cord = new THREE.Mesh(tubeG, new THREE.MeshBasicMaterial({ color: TEAL, transparent: true, opacity: 0.6 }));
+    cord.geometry.setDrawRange(0, 0); root.add(cord);
+    // pulse
+    const pulse = new THREE.Mesh(new THREE.SphereGeometry(0.07, 12, 12),
+      new THREE.MeshBasicMaterial({ color: LIME })); pulse.visible = false; root.add(pulse);
+    // in-scene label (aria-hidden; the list carries this for a11y)
+    const el = document.createElement('button'); el.className = 'network-label'; el.type = 'button';
+    el.textContent = name; el.setAttribute('tabindex', '-1'); el.setAttribute('aria-hidden', 'true');
+    el.addEventListener('click', () => setActive(i)); uiLayer.appendChild(el);
+    return { name, p, dot, halo, cord, curve, pulse, inward, el, idxCount: tubeG.index.count };
+  });
+
+  let active = -1;
+  function setActive(i) {
+    active = i;
+    nodes.forEach((n, j) => {
+      const on = j === i;
+      n.dot.material.color.setHex(on ? LIME : TEAL);
+      n.cord.material.color.setHex(on ? LIME : TEAL);
+      n.cord.material.opacity = on ? 0.95 : 0.6;
+      n.el.classList.toggle('on', on);
+    });
+    cards.forEach((c, j) => c.classList.toggle('node-active', j === i));
+  }
+  cards.forEach((c, i) => { c.style.cursor = 'pointer'; c.addEventListener('click', () => setActive(i)); });
+
+  function size() { const w = host.clientWidth, h = host.clientHeight; renderer.setSize(w, h, false); cam.aspect = w / h; cam.updateProjectionMatrix(); }
+  size(); new ResizeObserver(size).observe(host);
+  host.classList.add('scene-on');
+
+  const start = performance.now(), DRAW = 1200;
+  const tmp = new THREE.Vector3();
+  let running = true, raf = 0;
+  function frame(now) {
+    if (!running) return;
+    const draw = Math.min((now - start) / DRAW, 1);
+    const ease = 1 - Math.pow(1 - draw, 3);
+    if (!REDUCED) root.rotation.y = Math.sin(now / 4000) * 0.18;
+
+    nodes.forEach((n, i) => {
+      n.cord.geometry.setDrawRange(0, Math.floor(n.idxCount * ease));
+      // pulse travels once cords are drawn
+      if (!REDUCED && draw >= 1) {
+        n.pulse.visible = true;
+        let t = ((now / 1000) + i * 0.4) % 1.6 / 1.6;          // 0..1
+        if (!n.inward) t = 1 - t;                               // commissioners: hub -> node
+        n.pulse.position.copy(n.curve.getPointAt(t));
+        n.pulse.material.color.setHex(i === active ? LIME : TEALB);
+      }
+      // halo pulse on the active node
+      if (i === active && !REDUCED) {
+        const p = (now / 1000) % 1.4 / 1.4; const s = 1 + p * 1.8;
+        n.halo.scale.set(s, s, s); n.halo.material.opacity = (1 - p) * 0.7;
+      } else { n.halo.material.opacity = 0; }
+      // position the HTML label
+      tmp.copy(n.p).applyEuler(root.rotation).project(cam);
+      n.el.style.left = (tmp.x * 0.5 + 0.5) * 100 + '%';
+      n.el.style.top = (-tmp.y * 0.5 + 0.5) * 100 + '%';
+    });
+    hubCore.rotation.y += 0.004; hub.rotation.y -= 0.002;
+
+    renderer.render(scene, cam);
+    if (!REDUCED || draw < 1) raf = requestAnimationFrame(frame);
+  }
+  raf = requestAnimationFrame(frame);
+  setActive(0);
+
+  new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting && !running) { running = true; raf = requestAnimationFrame(frame); }
+    else if (!e.isIntersecting) { running = false; cancelAnimationFrame(raf); }
+  }), { threshold: 0 }).observe(host);
+}
+
 /* bootstrap */
 if (webglOK() && !LOWPOWER) {
   const g = document.querySelector('[data-scene="globe"]');
   if (g) onNear(g, () => initGlobe(g).catch(err => console.warn('globe scene failed', err)));
+  const n = document.querySelector('[data-scene="network"]');
+  if (n) onNear(n, () => initNetwork(n).catch(err => { console.warn('network scene failed', err); n.classList.add('no-webgl'); }));
+} else {
+  /* no WebGL / low power: collapse the reserved scene space; the node list stands alone */
+  document.querySelectorAll('.tpn-scene').forEach(s => s.classList.add('no-webgl'));
 }
