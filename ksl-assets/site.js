@@ -361,3 +361,36 @@ document.querySelectorAll('.sec-toggle').forEach(btn=>{
     }
   });
 })();
+
+/* ---------- Page transitions (fade the overlay back in before internal nav) ----------
+   The overlay reveals itself on load via CSS; this only handles leaving. Guarded for
+   reduced motion, and it ignores in-page #anchors, new tabs, downloads, Cal.com and
+   cross-origin / non-http links so nothing normal is intercepted. */
+(function(){
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  function internal(a){
+    if(!a) return false;
+    if(a.target && a.target!=='' && a.target!=='_self') return false;
+    if(a.hasAttribute('download')) return false;
+    if(a.hasAttribute('data-calcom')) return false;
+    var raw=a.getAttribute('href')||'';
+    if(!raw || raw.charAt(0)==='#') return false;
+    if(/^(mailto:|tel:|javascript:)/i.test(raw)) return false;
+    var u; try{ u=new URL(a.href, location.href); }catch(e){ return false; }
+    if(u.protocol!=='http:' && u.protocol!=='https:') return false;
+    if(u.origin!==location.origin) return false;
+    if(u.pathname===location.pathname) return false;   // same page (e.g. #anchor) — let it be
+    return true;
+  }
+  document.addEventListener('click',function(e){
+    if(e.defaultPrevented||e.button!==0||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey) return;
+    var a=e.target.closest?e.target.closest('a'):null;
+    if(!internal(a)) return;
+    e.preventDefault();
+    var href=a.href;
+    document.body.classList.add('pf-leaving');
+    setTimeout(function(){ window.location.href=href; },430);
+  });
+  // returning via back/forward cache: clear the leaving state so the page is visible
+  window.addEventListener('pageshow',function(ev){ if(ev.persisted) document.body.classList.remove('pf-leaving'); });
+})();

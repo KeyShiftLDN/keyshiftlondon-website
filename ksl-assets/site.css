@@ -531,9 +531,11 @@ footer a:hover{color:var(--lime)}
 .pcb-cta{display:flex;align-items:center;gap:1.2rem;flex-wrap:wrap}
 .pcb-note{font-family:var(--mono);font-size:.7rem;color:rgba(255,255,255,.55);letter-spacing:.03em;max-width:28ch}
 
-/* Section 6 — community band (centred, over a faint journey pattern) */
+/* Section 6 — community band (centred, over a faint night-track photo with parallax) */
 .final.community{text-align:center;position:relative}
-.final.community::before{content:"";position:absolute;inset:0;background:url(journey-pattern-dark.jpg) center/820px auto repeat;opacity:.06;pointer-events:none;z-index:0}
+.community-bg{position:absolute;left:0;top:-14%;width:100%;height:128%;z-index:0;pointer-events:none;opacity:.24;will-change:transform}
+.community-bg img{width:100%;height:100%;object-fit:cover;object-position:center 40%;filter:grayscale(.1) contrast(1.05) brightness(.82);display:block}
+.final.community::after{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;background:linear-gradient(rgba(10,10,10,.42),rgba(10,10,10,.66))}
 .community .community-row{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:clamp(1.6rem,4vw,2.4rem);flex-wrap:wrap}
 .community-copy{max-width:40ch;margin:0 auto}
 .community .community-copy h2{margin:0 auto}
@@ -587,3 +589,14 @@ body.ksl-consent-open .kj-pager-wrap{opacity:0;pointer-events:none;transition:op
   html.kj-live .kj-pager-wrap{bottom:66px}
   .kj-live .kj-panel:not(.kj-intro)>.kj-wrap{padding-bottom:calc(4.6rem + 66px + env(safe-area-inset-bottom,0px))}
 }
+
+/* ============================================================
+   Page transitions: a brand overlay covers each page on first
+   paint and fades out (CSS-only, so no-JS/reduced-motion users
+   still see content); site.js fades it back in before an
+   internal navigation. z above grain(9000) and cursor(9500).
+   ============================================================ */
+.page-fade{position:fixed;inset:0;z-index:9800;background:var(--black);pointer-events:none;animation:pfOut .55s ease .02s forwards}
+@keyframes pfOut{from{opacity:1;visibility:visible}to{opacity:0;visibility:hidden}}
+body.pf-leaving .page-fade{animation:none;visibility:visible;opacity:1;transition:opacity .4s ease}
+@media(prefers-reduced-motion:reduce){.page-fade{animation:none;opacity:0;visibility:hidden}}

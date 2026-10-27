@@ -52,11 +52,17 @@
         held and zooms up as you scroll through it, then releases to the footer. */
   var close = document.querySelector('.final');
   var closeHead = close && (close.querySelector('.huge') || close.querySelector('h2'));
+  var closeBg = close && close.querySelector('.community-bg');
   if (close && closeHead && DESKTOP) {
-    gsap.timeline({
+    var tl = gsap.timeline({
       scrollTrigger: { trigger: close, start: 'top top', end: '+=70%', scrub: true,
         pin: true, pinSpacing: true, anticipatePin: 1 }
-    }).fromTo(closeHead, { scale: .82, autoAlpha: .35 }, { scale: 1.1, autoAlpha: 1, ease: 'none' });
+    });
+    tl.fromTo(closeHead, { scale: .82, autoAlpha: .35 }, { scale: 1.1, autoAlpha: 1, ease: 'none' });
+    if (closeBg) tl.fromTo(closeBg, { yPercent: -7, scale: 1.12 }, { yPercent: 7, scale: 1, ease: 'none' }, 0);  // bg drifts behind the pinned zoom
+  } else if (closeBg) {
+    gsap.fromTo(closeBg, { yPercent: -10 }, { yPercent: 10, ease: 'none',   // mobile / no-pin: plain scrub parallax
+      scrollTrigger: { trigger: close, start: 'top bottom', end: 'bottom top', scrub: true } });
   }
 
   ScrollTrigger.refresh();
