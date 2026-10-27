@@ -461,3 +461,98 @@ footer a:hover{color:var(--lime)}
 .network-label.on{color:var(--lime)}
 .tpn-node{transition:border-color .3s ease,background .3s ease}
 .tpn-node.node-active{border-color:var(--lime)}
+
+/* ============================================================
+   LAYOUT v2 — NEXUS-direction structure (hero badge, feature
+   strip, numbered card gallery, PRE:CORD banner, community band)
+   ============================================================ */
+
+/* Hero floating badge */
+.hero-badge{position:absolute;left:-4%;bottom:7%;z-index:4;display:block;background:var(--black);color:#fff;border-radius:14px;padding:1rem 2.6rem 1.05rem 1.2rem;box-shadow:6px 6px 0 var(--teal)}
+.hb-kicker{display:block;font-family:var(--mono);font-size:.62rem;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--lime)}
+.hb-main{display:block;font-family:var(--display);font-weight:800;text-transform:uppercase;letter-spacing:.015em;font-size:1.02rem;line-height:1.05;margin-top:.28rem}
+.hb-arr{position:absolute;top:.85rem;right:1rem;color:var(--lime);font-size:1.05rem}
+
+/* Feature strip */
+.fstrip{background:var(--black);color:#fff}
+.fstrip-row{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;padding-top:0;padding-bottom:0}
+.fstrip{padding-top:clamp(1.3rem,2.4vw,1.8rem);padding-bottom:clamp(1.3rem,2.4vw,1.8rem)}
+.fs-item{display:flex;align-items:center;gap:.7rem;font-family:var(--mono);font-size:.74rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#fff}
+.fs-ico{width:30px;height:30px;flex:0 0 auto;fill:none;stroke:var(--lime);stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+.fs-plus{color:var(--teal-bright);font-weight:400;font-size:1.4rem;opacity:.6}
+
+/* Section 2 — numbered card gallery */
+.gallery{display:grid;grid-template-columns:.9fr 2.4fr;gap:clamp(1.8rem,4vw,3rem);align-items:start}
+.gallery-head .chapter{color:var(--teal)}
+.gallery-head h2{margin:1rem 0 1.1rem}
+.gallery-head p{max-width:34ch;margin-bottom:1.6rem}
+.gallery-all{font-family:var(--mono);font-size:.74rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--black);text-decoration:none;display:inline-flex;gap:.5rem;align-items:center;border-bottom:2px solid var(--lime);padding-bottom:.3rem;transition:gap .2s}
+.gallery-all:hover{gap:.9rem}
+.gallery-pager{display:flex;gap:1rem;margin-top:2.2rem;font-family:var(--mono);font-weight:700;font-size:.82rem;color:rgba(10,10,10,.28)}
+.gallery-pager .on{color:var(--black)}
+.gallery-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem}
+.gcard{position:relative;display:block;border-radius:16px;overflow:hidden;aspect-ratio:3/4;text-decoration:none;background:var(--black)}
+.gc-media{position:absolute;inset:0}
+.gc-media img{width:100%;height:100%;object-fit:cover;filter:grayscale(.12) contrast(1.05);transition:transform .6s ease}
+.gcard:hover .gc-media img{transform:scale(1.06)}
+.gcard::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,10,0) 28%,rgba(10,10,10,.9) 100%)}
+.gc-index{position:absolute;top:1rem;left:1.1rem;z-index:2;font-family:var(--mono);font-size:.82rem;font-weight:700;letter-spacing:.1em;color:var(--lime)}
+.gc-label{position:absolute;left:1.1rem;right:3.9rem;bottom:1.1rem;z-index:2;display:flex;flex-direction:column;gap:.28rem}
+.gc-stage{font-family:var(--mono);font-size:.64rem;letter-spacing:.24em;text-transform:uppercase;color:var(--teal-bright)}
+.gc-title{font-family:var(--display);font-weight:900;text-transform:lowercase;font-size:clamp(1.3rem,2vw,1.65rem);line-height:.95;color:var(--lime)}
+.gc-body{font-size:.82rem;line-height:1.4;color:rgba(255,255,255,.82);max-height:0;overflow:hidden;opacity:0;transition:max-height .45s ease,opacity .45s ease,margin .45s ease}
+.gcard:hover .gc-body,.gcard:focus-visible .gc-body{max-height:8rem;opacity:1;margin-top:.15rem}
+.gc-arr{position:absolute;right:1.05rem;bottom:1.1rem;z-index:3;width:40px;height:40px;border-radius:50%;background:var(--lime);color:var(--black);display:grid;place-items:center;font-size:1.05rem;transition:transform .3s ease}
+.gcard:hover .gc-arr{transform:translate(2px,-2px)}
+
+/* Section 3 — PRE:CORD feature banner */
+.pcb{overflow:hidden}
+.pcb-grid{display:grid;grid-template-columns:.82fr 1.18fr;gap:clamp(1.8rem,4vw,3rem);align-items:stretch}
+.pcb-panel{position:relative;background:var(--lime);border-radius:18px;overflow:hidden;min-height:440px}
+.pcb-photo{position:absolute;inset:0}
+.pcb-photo img{width:100%;height:100%;object-fit:cover;filter:grayscale(.25) contrast(1.05);mix-blend-mode:luminosity;opacity:.92}
+.pcb-panel::after{content:"";position:absolute;inset:0;background:linear-gradient(155deg,rgba(200,255,0,.28),rgba(10,10,10,.28))}
+.pcb-vtag{position:absolute;left:1.2rem;bottom:1.3rem;z-index:2;font-family:var(--mono);font-size:.66rem;font-weight:700;letter-spacing:.24em;color:var(--black)}
+.pcb-barcode{position:absolute;top:1.3rem;left:1.2rem;z-index:2;width:96px;height:34px;background:repeating-linear-gradient(90deg,var(--black) 0 2px,transparent 2px 5px)}
+.pcb-body{position:relative}
+.pcb-globe{position:absolute;top:-6px;right:0;width:clamp(120px,15vw,186px);height:auto;opacity:.45;z-index:0;animation:spin 46s linear infinite}
+.pcb-body>*{position:relative;z-index:1}
+.pcb-body .precord-logo{margin-bottom:.2rem}
+.pcb-body .pc-word{width:clamp(190px,30vw,300px)}
+.pcb-coords{display:block;font-family:var(--mono);font-size:.66rem;letter-spacing:.14em;color:var(--teal-bright);margin:.9rem 0 .3rem}
+.pcb-body h2{margin:.3rem 0 1rem}
+.pcb-body>p{max-width:54ch;color:rgba(255,255,255,.8)}
+.pcb-nodes{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.8rem 0}
+.pcb-node{border:1px solid rgba(255,255,255,.14);border-radius:12px;padding:1.1rem 1.2rem;transition:border-color .3s ease,background .3s ease}
+.pcb-node:hover{border-color:var(--lime);background:rgba(200,255,0,.045)}
+.pcb-node .num{font-family:var(--mono);font-size:.6rem;letter-spacing:.18em;color:var(--teal-bright)}
+.pcb-node h3{font-size:1.15rem;color:#fff;text-transform:lowercase;margin:.35rem 0}
+.pcb-node p{font-size:.82rem;color:rgba(255,255,255,.7);margin:0;line-height:1.4}
+.pcb-cta{display:flex;align-items:center;gap:1.2rem;flex-wrap:wrap}
+.pcb-note{font-family:var(--mono);font-size:.7rem;color:rgba(255,255,255,.55);letter-spacing:.03em;max-width:28ch}
+
+/* Section 6 — community band */
+.final.community{text-align:left}
+.community .community-row{display:flex;align-items:center;justify-content:space-between;gap:clamp(1.6rem,4vw,3rem);flex-wrap:wrap}
+.community-copy{max-width:36ch}
+.community .community-copy h2{margin:0}
+.community .community-copy p{margin:1rem 0 0;color:rgba(255,255,255,.78)}
+.community .final-ctas{margin-top:0;justify-content:flex-start}
+
+/* Responsive */
+@media(max-width:960px){
+  .gallery{grid-template-columns:1fr}
+  .pcb-grid{grid-template-columns:1fr}
+  .pcb-panel{min-height:300px}
+  .hero-badge{display:none}
+}
+@media(max-width:620px){
+  .gallery-cards{grid-template-columns:1fr}
+  .gcard{aspect-ratio:16/10}
+  .gc-body{max-height:8rem;opacity:1;margin-top:.15rem}
+  .pcb-nodes{grid-template-columns:1fr}
+  .fs-plus{display:none}
+  .fstrip-row{justify-content:flex-start;gap:1.4rem 2rem}
+  .fs-item{flex:1 1 42%}
+}
+@media(prefers-reduced-motion:reduce){.pcb-globe{animation:none}}
