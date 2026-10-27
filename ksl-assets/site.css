@@ -606,3 +606,20 @@ body.pf-leaving .page-fade{animation:none;visibility:visible;opacity:1;transitio
 
 /* Handwritten founder quote (Why Trust Us) */
 .tf-quote{font-family:'Caveat',cursive;color:var(--lime);font-weight:600;font-size:clamp(1.65rem,3vw,2.5rem);line-height:1.25;max-width:26ch;margin:1.7rem auto .2rem;text-transform:none;letter-spacing:0}
+
+/* ============================================================
+   KSL entry loader (homepage). Reveals via CSS (klOut) so no-JS
+   users are never trapped; site.js clears it sooner once loaded.
+   ============================================================ */
+.ksl-loader{position:fixed;inset:0;z-index:9900;background:var(--black);display:flex;align-items:center;justify-content:center;padding:2rem;animation:klOut .7s ease 1.7s forwards}
+.kl-inner{text-align:center;animation:klIn .7s cubic-bezier(.22,1,.36,1) both}
+.kl-logo{width:clamp(130px,22vw,200px);height:auto;display:block;margin:0 auto}
+.kl-word{font-family:var(--display);font-weight:900;text-transform:uppercase;letter-spacing:.05em;color:#fff;font-size:clamp(1.3rem,4vw,2rem);margin-top:1.1rem;line-height:1}
+.kl-tag{font-family:var(--mono);font-size:.64rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--lime);margin-top:.7rem}
+.kl-bar{width:150px;height:2px;background:rgba(255,255,255,.14);border-radius:2px;overflow:hidden;margin:1.8rem auto 0}
+.kl-bar span{display:block;height:100%;width:45%;background:var(--lime);border-radius:2px;animation:klBar 1.1s ease-in-out infinite}
+@keyframes klIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@keyframes klOut{to{opacity:0;visibility:hidden}}
+@keyframes klBar{0%{transform:translateX(-120%)}100%{transform:translateX(340%)}}
+body.kl-done .ksl-loader{animation:none;opacity:0;visibility:hidden;transition:opacity .55s ease}
+@media(prefers-reduced-motion:reduce){.ksl-loader{animation:klOut .4s ease .5s forwards}.kl-inner,.kl-bar span{animation:none}}

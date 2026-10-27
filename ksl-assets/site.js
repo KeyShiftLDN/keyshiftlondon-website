@@ -394,3 +394,17 @@ document.querySelectorAll('.sec-toggle').forEach(btn=>{
   // returning via back/forward cache: clear the leaving state so the page is visible
   window.addEventListener('pageshow',function(ev){ if(ev.persisted) document.body.classList.remove('pf-leaving'); });
 })();
+
+/* ---------- KSL entry loader: clear once the page has loaded (min visible time) ---------- */
+(function(){
+  var el=document.getElementById('kslLoader'); if(!el) return;
+  var start=Date.now(), MIN=850;
+  function clear(){
+    var wait=Math.max(0, MIN-(Date.now()-start));
+    setTimeout(function(){
+      document.body.classList.add('kl-done');
+      setTimeout(function(){ if(el.parentNode) el.parentNode.removeChild(el); }, 650);
+    }, wait);
+  }
+  if(document.readyState==='complete') clear(); else window.addEventListener('load', clear);
+})();
