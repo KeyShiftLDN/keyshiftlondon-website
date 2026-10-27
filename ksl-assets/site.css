@@ -35,7 +35,7 @@ section{padding:clamp(4rem,9vw,9rem) clamp(1.5rem,6vw,7rem);position:relative}
 .cursor-ring.label .clabel{opacity:1}
 @media(hover:none),(pointer:coarse){.cursor-dot,.cursor-ring{display:none}}
 
-nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1.1rem clamp(1.5rem,6vw,7rem);background:rgba(200,255,0,.85);backdrop-filter:blur(12px);border-bottom:2px solid var(--black);transition:transform .4s ease}
+#nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1.1rem clamp(1.5rem,6vw,7rem);background:rgba(200,255,0,.85);backdrop-filter:blur(12px);border-bottom:2px solid var(--black);transition:transform .4s ease}
 .brandmark{display:flex;align-items:center;gap:.65rem;text-decoration:none}
 .brandmark .nav-arrow{width:58px;height:auto;display:block;filter:brightness(0);transition:transform .3s ease}
 .brandmark:hover .nav-arrow{transform:translateX(4px)}
