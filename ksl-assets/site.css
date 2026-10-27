@@ -187,7 +187,7 @@ section{padding:clamp(4rem,9vw,9rem) clamp(1.5rem,6vw,7rem);position:relative}
 .aud-card{background:var(--white);border:2.5px solid var(--black);border-radius:20px;padding:2.5rem 2rem;display:flex;flex-direction:column;transition:transform .3s ease,box-shadow .3s ease;position:relative;transform-style:preserve-3d;will-change:transform}
 .aud-card:hover{box-shadow:8px 8px 0 var(--black)}
 .aud-card .who{font-family:var(--mono);font-size:.7rem;letter-spacing:.2em;color:var(--teal);margin-bottom:1rem}
-.aud-card h3{font-size:1.8rem;color:var(--black);margin-bottom:.6rem}
+.aud-card h3{font-size:1.8rem;color:var(--black);line-height:1.08;margin-bottom:.9rem;min-height:2.16em}
 .aud-card .pitch{font-size:1rem;font-weight:400;color:var(--black);opacity:.8;flex:1;margin-bottom:1.8rem}
 .aud-card .pitch strong{font-style:italic;font-weight:800;opacity:1}
 .aud-card .btn{width:100%;justify-content:center}
@@ -531,13 +531,14 @@ footer a:hover{color:var(--lime)}
 .pcb-cta{display:flex;align-items:center;gap:1.2rem;flex-wrap:wrap}
 .pcb-note{font-family:var(--mono);font-size:.7rem;color:rgba(255,255,255,.55);letter-spacing:.03em;max-width:28ch}
 
-/* Section 6 — community band */
-.final.community{text-align:left}
-.community .community-row{display:flex;align-items:center;justify-content:space-between;gap:clamp(1.6rem,4vw,3rem);flex-wrap:wrap}
-.community-copy{max-width:36ch}
-.community .community-copy h2{margin:0}
-.community .community-copy p{margin:1rem 0 0;color:rgba(255,255,255,.78)}
-.community .final-ctas{margin-top:0;justify-content:flex-start}
+/* Section 6 — community band (centred, over a faint journey pattern) */
+.final.community{text-align:center;position:relative}
+.final.community::before{content:"";position:absolute;inset:0;background:url(journey-pattern-dark.jpg) center/820px auto repeat;opacity:.06;pointer-events:none;z-index:0}
+.community .community-row{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:clamp(1.6rem,4vw,2.4rem);flex-wrap:wrap}
+.community-copy{max-width:40ch;margin:0 auto}
+.community .community-copy h2{margin:0 auto}
+.community .community-copy p{margin:1rem auto 0;color:rgba(255,255,255,.78)}
+.community .final-ctas{margin-top:0;justify-content:center}
 
 /* Responsive */
 @media(max-width:960px){
@@ -566,13 +567,13 @@ h1,h2,h3,h4{text-transform:uppercase}
 .tf-eyebrow{font-family:var(--mono);font-size:.72rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--teal-bright);margin-bottom:1.8rem}
 .tf-namewrap{position:relative;display:inline-block;margin:0 auto}
 .tf-name{font-family:var(--display);font-weight:900;text-transform:uppercase;line-height:.82;color:var(--lime);font-size:clamp(3.2rem,13vw,10.5rem);letter-spacing:-.01em;margin:0;position:relative;z-index:1}
-.tf-portrait{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:2;width:clamp(140px,18vw,232px);aspect-ratio:3/4;border-radius:50%/44%;overflow:hidden;box-shadow:0 24px 70px rgba(0,0,0,.55)}
-.tf-portrait img{width:100%;height:100%;object-fit:cover;filter:grayscale(.08) contrast(1.05)}
+.tf-portrait{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:2;width:clamp(112px,14.4vw,186px);aspect-ratio:3/4;border-radius:50%/44%;overflow:hidden;box-shadow:0 24px 70px rgba(0,0,0,.55)}
+.tf-portrait img{width:100%;height:100%;object-fit:cover;object-position:center;filter:grayscale(.08) contrast(1.05)}
 .tf-spark{color:var(--lime);font-size:1.7rem;line-height:1;margin:2.2rem 0 1.5rem}
 .tf-role{font-family:var(--mono);font-size:.8rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--lime);margin:0 0 1.1rem}
 .tf-bio{max-width:52ch;margin:0 auto;font-size:clamp(1.05rem,1.6vw,1.3rem);color:rgba(255,255,255,.82);line-height:1.5}
 .tf-meta{font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;color:var(--teal-bright);margin-top:1.5rem}
-@media(max-width:520px){.tf-portrait{width:clamp(120px,32vw,150px)}}
+@media(max-width:520px){.tf-portrait{width:clamp(96px,25.6vw,120px)}}
 
 /* gallery card sub-line + system delivery detail (Approach) */
 .gc-sub{font-family:var(--mono);font-size:.62rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--teal-bright)}
