@@ -623,3 +623,9 @@ body.pf-leaving .page-fade{animation:none;visibility:visible;opacity:1;transitio
 @keyframes klBar{0%{transform:translateX(-120%)}100%{transform:translateX(340%)}}
 body.kl-done .ksl-loader{animation:none;opacity:0;visibility:hidden;transition:opacity .55s ease}
 @media(prefers-reduced-motion:reduce){.ksl-loader{animation:klOut .4s ease .5s forwards}.kl-inner,.kl-bar span{animation:none}}
+
+/* Neon section transition: a glowing line sweeps across the top of each section
+   as it enters (element added + animated by motion.js; absent for reduced motion). */
+.neon-line{position:absolute;top:0;left:0;width:100%;height:2px;z-index:6;pointer-events:none;transform-origin:left;transform:scaleX(0);background:linear-gradient(90deg,transparent,var(--teal-bright) 22%,var(--lime) 50%,var(--teal-bright) 78%,transparent);box-shadow:0 0 6px var(--teal-bright),0 0 16px rgba(42,191,175,.55),0 0 26px rgba(200,255,0,.22)}
+.neon-line.lit{animation:neonFlicker 3.2s ease-in-out 1s infinite}
+@keyframes neonFlicker{0%,46%,54%,70%,74%,100%{opacity:1}50%{opacity:.75}72%{opacity:.88}}

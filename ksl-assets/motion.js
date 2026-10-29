@@ -65,5 +65,19 @@
       scrollTrigger: { trigger: close, start: 'top bottom', end: 'bottom top', scrub: true } });
   }
 
+  /* 6) Neon section transition: a glowing line sweeps across the top of each section
+        as it enters the viewport, then settles with a subtle flicker. */
+  gsap.utils.toArray('section').forEach(function (sec) {
+    var line = document.createElement('div');
+    line.className = 'neon-line';
+    line.setAttribute('aria-hidden', 'true');
+    sec.insertBefore(line, sec.firstChild);
+    gsap.fromTo(line, { scaleX: 0, opacity: .25 }, {
+      scaleX: 1, opacity: 1, duration: 1.0, ease: 'power3.out',
+      scrollTrigger: { trigger: sec, start: 'top 90%' },
+      onComplete: function () { line.classList.add('lit'); }
+    });
+  });
+
   ScrollTrigger.refresh();
 })();
