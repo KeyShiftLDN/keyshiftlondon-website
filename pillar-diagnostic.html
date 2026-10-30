@@ -447,32 +447,25 @@ function stdDev(arr){
   return Math.sqrt(variance);
 }
 
-function scoreComponent_A(rawScores){
-  var sum=rawScores.reduce(function(a,b){return a+b},0);
-  return ((sum-5)/15)*10;
+// Answer quality is the dominant component so the score tracks the answers
+// across the full range; consistency and calibration are small modifiers.
+function scoreComponent_A(rawScores){            // quality (0-14)
+  var sum=rawScores.reduce(function(a,b){return a+b},0);   // 5..20
+  return ((sum-5)/15)*14;
 }
 
-function scoreComponent_B(rawScores){
+function scoreComponent_B(rawScores){            // consistency bonus (0-3)
   var sd=stdDev(rawScores);
-  if(sd<=0.5) return 5;
-  if(sd<=1.0) return 4;
-  if(sd<=1.5) return 3;
-  if(sd<=2.0) return 2;
-  if(sd<=2.5) return 1;
+  if(sd<=0.5) return 3;
+  if(sd<=1.0) return 2;
+  if(sd<=1.5) return 1;
   return 0;
 }
 
-function scoreComponent_C(rawScores, globalAvg){
+function scoreComponent_C(rawScores, globalAvg){ // calibration (0-3): dock only likely over-claiming
   var fours=rawScores.filter(function(s){return s===4}).length;
-  var base;
-  if(fours<=1) base=5;
-  else if(fours===2) base=4;
-  else if(fours===3) base=2;
-  else if(fours===4) base=1;
-  else base=0; // all 5 are 4s
-  // Restore 2 pts if genuine high performer across whole assessment
-  if(fours===5 && globalAvg>=3.5) base=Math.min(5, base+2);
-  return base;
+  if(fours<5) return 3;                          // normal answering — no penalty
+  return globalAvg>=3.5 ? 3 : 1;                 // all top answers: keep for a genuine high performer, dock a likely over-claimer
 }
 
 function computePillarScore(pillarIndex, globalAvg){

@@ -112,5 +112,23 @@
       scrollTrigger: { trigger: close, start: 'top bottom', end: 'bottom top', scrub: true } });
   }
 
+  /* ---------- 5) Journey stage backdrops: mirror each move panel's opacity
+        (journey.js sets panel.style.opacity each frame), so a stage's faint photos
+        fade in exactly with its title, behind the 3D scene ---------- */
+  var kj = document.getElementById('what-we-do');
+  var tiles = kj ? Array.prototype.map.call(kj.querySelectorAll('.kj-si'), function (el) {
+    return { el: el, peak: parseFloat(el.dataset.peak), panel: document.getElementById(el.dataset.panel) };
+  }) : [];
+  if (tiles.length) {
+    (function tick(){
+      for (var i = 0; i < tiles.length; i++) {
+        var t = tiles[i];
+        var po = t.panel ? (parseFloat(t.panel.style.opacity) || 0) : 0;
+        t.el.style.opacity = (po * t.peak).toFixed(3);
+      }
+      requestAnimationFrame(tick);
+    })();
+  }
+
   ScrollTrigger.refresh();
 })();

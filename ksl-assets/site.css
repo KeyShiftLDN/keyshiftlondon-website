@@ -624,3 +624,10 @@ body.pf-leaving .page-fade{animation:none;visibility:visible;opacity:1;transitio
 body.kl-done .ksl-loader{animation:none;opacity:0;visibility:hidden;transition:opacity .55s ease}
 @media(prefers-reduced-motion:reduce){.ksl-loader{animation:klOut .4s ease .5s forwards}.kl-inner,.kl-bar span{animation:none}}
 
+
+/* Journey stage backdrops: faint, highly-feathered photos behind the 3D scene;
+   shown only when the scene is live (kj-live). Opacity is scroll-driven by motion.js. */
+.kj-story{display:none}
+.kj-live .kj-story{display:block;position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.kj-si{position:absolute;background-size:cover;background-position:center;opacity:0;will-change:opacity;filter:grayscale(.4) brightness(.72) contrast(1.05);-webkit-mask-image:radial-gradient(ellipse 58% 58% at 50% 50%,#000 0%,transparent 60%);mask-image:radial-gradient(ellipse 58% 58% at 50% 50%,#000 0%,transparent 60%)}
+.kj-si.net{filter:grayscale(0) brightness(.95) contrast(1.05) saturate(1.12)}
