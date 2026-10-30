@@ -1,10 +1,14 @@
-/* Key Shift London — scroll-motion layer (reveals, parallax-zoom, zoom-on-scroll,
-   one pinned zoom). Loaded after site.js on every page.
+/* Key Shift London — scroll-motion layer. Loaded after site.js on every page.
 
-   Robustness: every reveal/zoom lives INSIDE the gsap + reduced-motion guard below.
-   If GSAP is missing, or the visitor prefers reduced motion, this file does nothing
-   and the page stays exactly as site.css renders it (content visible at rest). So
-   there is no "hidden until JS" state for no-JS or reduced-motion users. */
+   Entrance animations: as each section scrolls into view the first time, its
+   top-level content blocks fade + rise in a stagger (big headings also resolve
+   out of a soft blur). The hero / page top plays on arrival, right after the
+   KSL loader leaves.
+
+   Robustness: everything lives INSIDE the gsap + reduced-motion guard below.
+   If GSAP is missing, or the visitor prefers reduced motion, this file does
+   nothing and the page stays exactly as site.css renders it (content visible at
+   rest) — so there is no "hidden until JS" state for no-JS / reduced-motion. */
 (function(){
   if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
@@ -12,44 +16,87 @@
   gsap.registerPlugin(ScrollTrigger);
   var DESKTOP = window.matchMedia('(min-width: 820px)').matches;
 
-  /* 1) Scroll reveals: fade + rise; big headings also resolve out of a light blur */
-  gsap.utils.toArray('.reveal').forEach(function (el) {
-    if (el.closest('.hero')) return;                 // hero shows immediately
-    if (el.closest('#what-we-do')) return;           // the journey owns its own scroll
-    var from = { autoAlpha: 0, y: 36 };
-    var to = { autoAlpha: 1, y: 0, duration: .9, ease: 'power3.out',
-               scrollTrigger: { trigger: el, start: 'top 86%' } };
-    if (el.matches('.big, .huge')) { from.filter = 'blur(10px)'; to.filter = 'blur(0px)'; to.duration = 1.05; }
-    gsap.fromTo(el, from, to);
+  /* ---------- 1) Content entrance (text, images, elements) ---------- */
+  // Top-level content units. Nested matches are dropped so a card animates as one
+  // piece (not the card AND its inner text). Transform-positioned pieces (e.g.
+  // .tf-portrait, .globe) are handled separately so we don't fight their centring.
+  var UNIT = 'h1,h2,h3,h4,p,.chapter,.eyebrow,.lead,.btn,.gcard,.aud-card,.pcb-node,' +
+             '.tpn-node,.fs-item,.callout,.pss-card,.dopt,.proof-col,.shape-row,' +
+             'picture,.pcb-panel,.tf-quote,.precord-logo,.gallery-pager,.sys-detail,' +
+             '.train-note,.cta-strip,.final-ctas,.don-amts,.form-card,.price-pill';
+
+  function topLevel(scope){
+    var cands = Array.prototype.slice.call(scope.querySelectorAll(UNIT));
+    return cands.filter(function(el){
+      return !cands.some(function(o){ return o !== el && o.contains(el); });
+    });
+  }
+
+  function revealSection(sec){
+    var units = topLevel(sec);
+    if (units.length){
+      gsap.from(units, {
+        autoAlpha: 0, y: 32, duration: .8, ease: 'power3.out', stagger: .07,
+        scrollTrigger: { trigger: sec, start: 'top 82%', once: true }
+      });
+    }
+    // big headings also resolve from a soft blur
+    gsap.utils.toArray(sec.querySelectorAll('.big, .huge')).forEach(function (h) {
+      gsap.fromTo(h, { filter: 'blur(9px)' }, {
+        filter: 'blur(0px)', duration: 1, ease: 'power3.out',
+        scrollTrigger: { trigger: sec, start: 'top 82%', once: true }
+      });
+    });
+  }
+
+  function heroIntro(){
+    var txt = document.querySelectorAll('.hero .hero-tag, .hero h1, .hero-sub, .hero-ctas, .hero-copy > p, .hero-badge, .hero-desc');
+    if (txt.length) gsap.from(txt, { autoAlpha: 0, y: 34, duration: .9, ease: 'power3.out', stagger: .09 });
+    var globe = document.querySelector('.hero .globe');            // autoAlpha only — it has its own spin + parallax
+    if (globe) gsap.from(globe, { autoAlpha: 0, duration: 1.1, ease: 'power2.out' });
+    if (document.querySelector('.hero h1'))
+      gsap.fromTo('.hero h1', { filter: 'blur(10px)' }, { filter: 'blur(0px)', duration: 1.1, ease: 'power3.out' });
+  }
+
+  // Sections to reveal: skip the journey (owns its own scroll) and the closing
+  // section (its entrance is the signature pinned zoom, set up below).
+  var sections = gsap.utils.toArray('section').filter(function (s) {
+    return s.id !== 'what-we-do' && !s.classList.contains('final');
   });
 
-  /* 2) Zoom on scroll: section media gently scales as it travels through the viewport */
-  gsap.utils.toArray('.pss-media img, .aud-media img, .who-img, .trust-photo img').forEach(function (img) {
-    gsap.fromTo(img, { scale: 1.14 }, {
+  var done = false;
+  function setupReveals(){
+    if (done) return; done = true;
+    sections.forEach(revealSection);
+    heroIntro();
+    ScrollTrigger.refresh();
+  }
+  // Play after the homepage loader leaves; on pages without it, play on run.
+  if (document.getElementById('kslLoader')) {
+    document.addEventListener('ksl:ready', setupReveals, { once: true });
+    setTimeout(setupReveals, 2600);                 // fallback if the loader never signals
+  } else {
+    setupReveals();
+  }
+
+  /* ---------- 2) Zoom on scroll: section media gently scales through the viewport ---------- */
+  gsap.utils.toArray('.pss-media img, .aud-media img, .who-img, .trust-photo img, .gc-media img').forEach(function (img) {
+    gsap.fromTo(img, { scale: 1.12 }, {
       scale: 1, ease: 'none',
       scrollTrigger: { trigger: img.closest('section, header') || img, start: 'top bottom', end: 'bottom top', scrub: true }
     });
   });
 
-  /* 3) Hero parallax-zoom: copy eases back and fades, the visual pushes in, on scroll out */
+  /* ---------- 3) Hero parallax-zoom on scroll-out ---------- */
   var hero = document.querySelector('.hero');
   if (hero) {
     gsap.to('.hero-copy', { yPercent: 6, scale: .96, autoAlpha: 0, ease: 'none',
       scrollTrigger: { trigger: hero, start: 'top top', end: 'bottom top', scrub: true } });
-    gsap.to('.hero-visual', { scale: 1.14, ease: 'none',
+    gsap.to('.hero-visual', { scale: 1.12, ease: 'none',
       scrollTrigger: { trigger: hero, start: 'top top', end: 'bottom top', scrub: true } });
   }
 
-  /* 4) Section headings scale in a touch as they enter (not in the hero) */
-  gsap.utils.toArray('h1.big, h2.big, .huge').forEach(function (h) {
-    if (h.closest('.hero')) return;
-    if (h.closest('#what-we-do')) return;            // the journey owns its own scroll
-    gsap.from(h, { scale: .93, ease: 'power2.out', duration: .9,
-      scrollTrigger: { trigger: h, start: 'top 85%' } });
-  });
-
-  /* 5) Signature pinned zoom on the closing section (desktop only): the headline is
-        held and zooms up as you scroll through it, then releases to the footer. */
+  /* ---------- 4) Signature pinned zoom on the closing section (desktop) ---------- */
   var close = document.querySelector('.final');
   var closeHead = close && (close.querySelector('.huge') || close.querySelector('h2'));
   var closeBg = close && close.querySelector('.community-bg');
@@ -64,20 +111,6 @@
     gsap.fromTo(closeBg, { yPercent: -10 }, { yPercent: 10, ease: 'none',   // mobile / no-pin: plain scrub parallax
       scrollTrigger: { trigger: close, start: 'top bottom', end: 'bottom top', scrub: true } });
   }
-
-  /* 6) Neon section transition: a glowing line sweeps across the top of each section
-        as it enters the viewport, then settles with a subtle flicker. */
-  gsap.utils.toArray('section').forEach(function (sec) {
-    var line = document.createElement('div');
-    line.className = 'neon-line';
-    line.setAttribute('aria-hidden', 'true');
-    sec.insertBefore(line, sec.firstChild);
-    gsap.fromTo(line, { scaleX: 0, opacity: .25 }, {
-      scaleX: 1, opacity: 1, duration: 1.0, ease: 'power3.out',
-      scrollTrigger: { trigger: sec, start: 'top 90%' },
-      onComplete: function () { line.classList.add('lit'); }
-    });
-  });
 
   ScrollTrigger.refresh();
 })();

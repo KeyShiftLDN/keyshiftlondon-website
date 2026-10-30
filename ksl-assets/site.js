@@ -403,6 +403,7 @@ document.querySelectorAll('.sec-toggle').forEach(btn=>{
     var wait=Math.max(0, MIN-(Date.now()-start));
     setTimeout(function(){
       document.body.classList.add('kl-done');
+      document.dispatchEvent(new Event('ksl:ready'));   // cue motion.js to play the arrival entrance
       setTimeout(function(){ if(el.parentNode) el.parentNode.removeChild(el); }, 650);
     }, wait);
   }
