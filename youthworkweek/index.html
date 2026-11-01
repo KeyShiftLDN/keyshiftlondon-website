@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shape the Future · Youth Work Week · Key Shift London</title>
+<meta name="description" content="Youth Work Week: Precision Training is the method behind real youth work. Level 1 is free, always. Level 2 is normally £34.99 — free until midnight on Sunday 8 November 2026.">
+<link rel="icon" type="image/png" href="../ksl-assets/arrow.png">
+<link rel="apple-touch-icon" href="../ksl-assets/arrow.png">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta name="theme-color" content="#CCFF00">
+<link rel="canonical" href="https://keyshiftlondon.org/youthworkweek/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Key Shift London">
+<meta property="og:title" content="Shape the Future · Youth Work Week · Key Shift London">
+<meta property="og:description" content="Precision Training is the method behind real youth work. Level 1 free, always. Level 2 free until midnight Sun 8 Nov 2026.">
+<meta property="og:url" content="https://keyshiftlondon.org/youthworkweek/">
+<meta property="og:image" content="https://keyshiftlondon.org/ksl-assets/og-image.png">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Shape the Future · Youth Work Week · Key Shift London">
+<meta name="twitter:description" content="Precision Training, the method behind real youth work. Level 1 free, always. Level 2 free until midnight Sun 8 Nov 2026.">
+<meta name="twitter:image" content="https://keyshiftlondon.org/ksl-assets/og-image.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,700;1,800;1,900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../ksl-assets/site.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"Course","name":"Precision Training Level 1 · Foundations","description":"Self-paced, interactive online training equipping parents, mentors, coaches and pastoral leads with the SHAPE model, the three identity tiers and the Precision Formula.","url":"https://keyshiftlondon.org/youthworkweek/","provider":{"@type":"Organization","name":"Key Shift London","url":"https://keyshiftlondon.org/"},"inLanguage":"en-GB","isAccessibleForFree":true,"offers":{"@type":"Offer","category":"Free","price":"0.00","priceCurrency":"GBP","availability":"https://schema.org/InStock"},"hasCourseInstance":{"@type":"CourseInstance","courseMode":"online","courseWorkload":"PT6H"}},
+{"@type":"Course","name":"Precision Training Level 2 · Application","description":"Self-paced, interactive online training on live delivery: session anatomy, SHAPE in practice, the Tier Assessment, Precision Aid Cards, safeguarding pathways and measurable outcomes. Free for Youth Work Week until 23:59 GMT on 8 November 2026, normally £34.99.","url":"https://keyshiftlondon.org/youthworkweek/","provider":{"@type":"Organization","name":"Key Shift London","url":"https://keyshiftlondon.org/"},"inLanguage":"en-GB","offers":{"@type":"Offer","category":"Paid","price":"34.99","priceCurrency":"GBP","availability":"https://schema.org/InStock","priceValidUntil":"2026-11-08"},"hasCourseInstance":{"@type":"CourseInstance","courseMode":"online","courseWorkload":"PT8H"}}
+]}
+</script>
+<style>
+/* ---- Youth Work Week campaign page. Scoped; reuses site.css classes.
+       All lime references use --lime-alt (#CCFF00), the graphics' lime. ---- */
+/* The [hidden] attr must win over elements that set their own display
+   (price pills, deadline chips), so only one campaign state ever shows. */
+[data-yww][hidden]{display:none !important}
+.yww-hero{background:var(--black);color:#fff;overflow:hidden;padding-top:clamp(7.5rem,14vw,10rem)}
+.yww-hero .wrap{max-width:62rem}
+.yww-badge{display:inline-flex;align-items:center;gap:.6rem;font-family:var(--mono);font-size:.68rem;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--lime-alt);border:1.5px solid rgba(204,255,0,.4);padding:.5rem .9rem;border-radius:50px}
+.yww-hero h1{font-size:clamp(3.4rem,13vw,9.5rem);font-weight:900;line-height:.88;margin:1.6rem 0 0;color:#fff}
+.yww-hero h1 .lime{color:var(--lime-alt)}
+.yww-offer{font-size:clamp(1.15rem,2.4vw,1.5rem);line-height:1.4;color:rgba(255,255,255,.82);max-width:40ch;margin:1.8rem 0 0}
+.yww-offer b{color:#fff;font-weight:700}
+.yww-deadline{display:inline-flex;align-items:center;gap:.7rem;font-family:var(--mono);font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--black);background:var(--lime-alt);padding:.55rem 1rem;border-radius:50px;margin-top:1.8rem}
+.yww-deadline.ended{background:rgba(255,255,255,.1);color:#fff}
+.yww-hero-ctas{display:flex;gap:1rem;flex-wrap:wrap;margin-top:2.2rem}
+.yww-hero-ctas .btn.lime{background:var(--lime-alt);border-color:var(--lime-alt)}
+.yww-micro{font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-top:1.4rem}
+
+/* what you get — reuses .train-grid / .pss-card */
+.yww-get .pss-card .stage s{opacity:.5}
+.price-pill.free{background:var(--lime-alt)}
+.yww-feat{list-style:none;margin:1.1rem 0 0;padding:0}
+.yww-feat li{font-size:1rem;line-height:1.5;padding:.35rem 0 .35rem 1.5rem;position:relative;opacity:.85}
+.yww-feat li::before{content:"→";position:absolute;left:0;color:var(--teal);font-weight:700}
+
+/* why it matters — one sourced stat */
+.yww-stat{background:var(--black);color:#fff;text-align:center}
+.yww-stat .wrap{max-width:52rem}
+.yww-bignum{font-weight:900;font-size:clamp(3.6rem,16vw,11rem);line-height:.9;color:var(--lime-alt);letter-spacing:-.02em}
+.yww-stat .claim{font-size:clamp(1.3rem,3vw,2rem);font-weight:700;line-height:1.25;max-width:22ch;margin:1.2rem auto 0;color:#fff;text-transform:lowercase}
+.yww-source{font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-top:1.6rem}
+.yww-stat .reframe{font-size:1.05rem;color:rgba(255,255,255,.78);max-width:46ch;margin:1.8rem auto 0}
+
+/* who it is for */
+.yww-who-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem;margin-top:1rem}
+.yww-who-card{background:var(--white);border:2.5px solid var(--black);border-radius:16px;padding:1.6rem 1.4rem;transition:box-shadow .3s ease,transform .3s ease}
+.yww-who-card:hover{box-shadow:6px 6px 0 var(--black)}
+.yww-who-card .n{font-family:var(--mono);font-size:.64rem;letter-spacing:.2em;color:var(--teal);display:block;margin-bottom:.6rem}
+.yww-who-card h3{font-size:1.3rem;line-height:1.05;color:var(--black)}
+@media(max-width:760px){.yww-who-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:460px){.yww-who-grid{grid-template-columns:1fr}}
+
+/* founder note */
+.yww-founder{background:var(--black);color:#fff}
+.yww-founder .wrap{display:grid;grid-template-columns:260px 1fr;gap:3rem;align-items:center;max-width:62rem}
+.yww-portrait{border-radius:18px;overflow:hidden;border:3px solid rgba(255,255,255,.18);aspect-ratio:1/1}
+.yww-portrait img{width:100%;height:100%;object-fit:cover;object-position:center 22%;filter:grayscale(1) contrast(1.05)}
+.yww-founder blockquote{font-size:clamp(1.5rem,3.4vw,2.2rem);font-weight:800;line-height:1.15;color:#fff;text-transform:lowercase}
+.yww-founder blockquote .lime{color:var(--lime-alt)}
+.yww-founder .note{font-size:1.05rem;color:rgba(255,255,255,.8);margin-top:1.4rem;line-height:1.5}
+.yww-founder .sig{font-family:var(--mono);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--lime-alt);margin-top:1.4rem}
+@media(max-width:680px){.yww-founder .wrap{grid-template-columns:1fr;gap:1.8rem}.yww-portrait{max-width:220px}}
+
+/* where we're going — the goal */
+.yww-goal{background:#0f4f47;color:#fff;text-align:center}
+.yww-goal .wrap{max-width:52rem}
+.yww-eq{display:flex;align-items:center;justify-content:center;gap:clamp(1rem,4vw,2.5rem);flex-wrap:wrap;margin:1.6rem 0}
+.yww-eq .num{font-weight:900;font-size:clamp(3rem,11vw,7rem);line-height:.9;color:var(--lime-alt)}
+.yww-eq .op{font-weight:900;font-size:clamp(2rem,6vw,4rem);color:rgba(255,255,255,.6)}
+.yww-eq .lbl{font-family:var(--mono);font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.92);display:block;margin-top:.5rem}
+.yww-goal .aim{font-family:var(--mono);font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;color:var(--lime-alt)}
+.yww-goal p{color:rgba(255,255,255,.85);max-width:44ch;margin:1.2rem auto 0}
+
+/* faq — reuses .dopt details pattern */
+.yww-faq .wrap{max-width:52rem}
+.yww-faq .dopt summary .do-mode{font-size:clamp(1rem,2.2vw,1.25rem)}
+
+/* taking-part strip (participation only; no endorsement) */
+.yww-partof{font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.55);text-align:center}
+.yww-partof b{color:var(--lime-alt);font-weight:700}
+
+/* a11y: footer column titles rendered as h3 (keeps heading order h2→h3),
+   and footer links sized as comfortable ≥24px tap targets */
+.footer-col h3{font-family:var(--mono);font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--lime);margin-bottom:.8rem}
+.footer-col a{display:inline-block;padding:.32rem 0}
+</style>
+</head>
+<body>
+<div class="page-fade" aria-hidden="true"></div>
+<a href="#get" class="skip-link">Skip to content</a>
+<div class="grain" aria-hidden="true"></div>
+<div class="progress" id="progress"></div>
+<div class="cursor-dot" id="cdot" aria-hidden="true"></div>
+<div class="cursor-ring" id="cring" aria-hidden="true"><span class="clabel" id="clabel"></span></div>
+
+<nav id="nav">
+  <a href="../index.html" class="brandmark" data-cursor aria-label="Key Shift London, home"><img class="nav-arrow" src="../ksl-assets/arrow.png" alt="Key Shift London" width="805" height="497"></a>
+  <div class="navlinks" id="navlinks">
+    <a href="../approach.html">Approach</a><a href="../training.html">Training</a><a href="../precord.html">PRE:CORD</a><a href="../organisations.html">Organisations</a>
+    <a href="#get" class="nav-cta" data-cursor>Enrol free</a>
+  </div>
+  <button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="navlinks"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- 1 · HERO -->
+<section class="yww-hero" id="top">
+  <div class="wrap">
+    <div class="hero-copy">
+      <span class="yww-badge">Youth Work Week · YWW26</span>
+      <h1>shape the <span class="lime">future.</span></h1>
+      <p class="yww-offer">Precision Training is the method behind real youth work. <b>Level&nbsp;1 is free, always.</b> Level&nbsp;2 is normally £34.99 — <b data-yww="live">free for Youth Work Week, until midnight on Sunday 8 November.</b><b data-yww="ended" hidden>back to £34.99 now Youth Work Week has closed.</b></p>
+      <span class="yww-deadline" data-yww="live">◆ Free until Sun 8 Nov, 23:59</span>
+      <span class="yww-deadline ended" data-yww="ended" hidden>Youth Work Week has closed</span>
+      <div class="yww-hero-ctas">
+        <a href="#" data-signup="both" class="btn lime" data-cursor data-magnetic>Enrol free <span class="arr">→</span></a>
+        <a href="#get" class="btn ghost" style="border-color:var(--lime-alt);color:var(--lime-alt)" data-cursor data-magnetic>See what you get <span class="arr">→</span></a>
+      </div>
+      <p class="yww-micro">Self-paced · online · free Precision Graduation Record · no card needed for Level&nbsp;1</p>
+    </div>
+  </div>
+</section>
+
+<!-- Prepare · Process · PRE:CORD strip -->
+<section class="fstrip" aria-label="The Precision Streamline System">
+  <div class="wrap fstrip-row">
+    <div class="fs-item"><svg class="fs-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2v20M2 12h20M5 5l14 14M19 5L5 19"/></svg><span>Prepare</span></div>
+    <span class="fs-plus" aria-hidden="true">+</span>
+    <div class="fs-item"><svg class="fs-ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1"/></svg><span>Process</span></div>
+    <span class="fs-plus" aria-hidden="true">+</span>
+    <div class="fs-item"><svg class="fs-ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg><span>PRE:CORD</span></div>
+  </div>
+</section>
+
+<!-- 2 · WHAT YOU GET -->
+<section class="yww-get" id="get">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="chapter">What you get</div>
+      <h2 class="big" style="margin-top:1rem">two levels. one <span style="color:var(--teal)">method.</span></h2>
+      <p class="lead">Precision Training equips the adults around young people — parents, mentors, coaches, pastoral leads — to deliver intentional, measurable youth development, ages 11–18.</p>
+    </div>
+    <div class="train-grid">
+      <div class="pss-card" data-cursor>
+        <div class="stage">LEVEL 01 · FOUNDATIONS <span class="price-pill free">FREE</span></div>
+        <div class="verb">foundations</div>
+        <div class="name">philosophy, SHAPE and the tier model</div>
+        <div class="body">Understand Precision Work, master SHAPE as an identity-mapping tool, the three identity tiers, the Precision Formula, and the real barriers young people face.</div>
+        <ul class="yww-feat">
+          <li>Interactive and checkpoint-gated</li>
+          <li>About 6 hours, fully self-paced</li>
+          <li>Free forever — no card needed</li>
+          <li>Free Precision Graduation Record</li>
+        </ul>
+        <a href="#" data-signup="L1" class="btn lime sm" data-cursor data-magnetic style="margin-top:1.4rem">Start Level 1 free <span class="arr">→</span></a>
+      </div>
+      <div class="pss-card" data-cursor>
+        <div class="stage">LEVEL 02 · APPLICATION
+          <span class="price-pill free" data-yww="live">FREE <s>£34.99</s></span>
+          <span class="price-pill" data-yww="ended" hidden>£34.99</span>
+        </div>
+        <div class="verb">application</div>
+        <div class="name">live delivery, PACs and safeguarding</div>
+        <div class="body">Turn the foundations into practice: session anatomy, SHAPE in live settings, the Tier Assessment, Precision Aid Cards, solution-focused language, safeguarding pathways, and tracking measurable outcomes.</div>
+        <ul class="yww-feat">
+          <li>Everything in Level 1, applied</li>
+          <li>About 8 hours, fully self-paced</li>
+          <li><span data-yww="live">Free for Youth Work Week (normally £34.99)</span><span data-yww="ended" hidden>£34.99 one-off</span></li>
+          <li>Free Precision Graduation Record</li>
+        </ul>
+        <a href="#" data-signup="both" class="btn lime sm" data-cursor data-magnetic style="margin-top:1.4rem">
+          <span data-yww="live">Enrol in both, free <span class="arr">→</span></span>
+          <span data-yww="ended" hidden>Sign up · £34.99 <span class="arr">→</span></span>
+        </a>
+      </div>
+    </div>
+    <p class="train-note">Level 1 is free and <a href="#" data-donate style="color:var(--black);text-decoration:underline">kept free by donations</a>. Training in a whole team? <a href="../organisations.html#enquire" style="color:var(--black);text-decoration:underline">Request an invoice or a cohort</a>.</p>
+  </div>
+</section>
+
+<!-- 3 · WHY IT MATTERS (one sourced statistic) -->
+<section class="yww-stat">
+  <div class="wrap">
+    <div class="chapter" style="justify-content:center;color:var(--lime-alt)">Why it matters</div>
+    <div class="yww-bignum">335,671</div>
+    <p class="claim">suspensions from England's schools in a single term.</p>
+    <p class="yww-source">Source: Department for Education, November 2025</p>
+    <p class="reframe">Behind every number is a young person drifting from the people meant to reach them. Precision Training equips those people to reach them on purpose.</p>
+  </div>
+</section>
+
+<!-- 4 · WHO IT IS FOR -->
+<section id="who">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="chapter">Who it's for</div>
+      <h2 class="big" style="margin-top:1rem">built for the people <span style="color:var(--teal)">in the room.</span></h2>
+    </div>
+    <div class="yww-who-grid">
+      <div class="yww-who-card"><span class="n">01</span><h3>Schools</h3></div>
+      <div class="yww-who-card"><span class="n">02</span><h3>PRUs</h3></div>
+      <div class="yww-who-card"><span class="n">03</span><h3>Alternative provision</h3></div>
+      <div class="yww-who-card"><span class="n">04</span><h3>Sport academies</h3></div>
+      <div class="yww-who-card"><span class="n">05</span><h3>Councils</h3></div>
+      <div class="yww-who-card"><span class="n">06</span><h3>Community organisations</h3></div>
+    </div>
+  </div>
+</section>
+
+<!-- 5 · FOUNDER NOTE -->
+<section class="yww-founder" id="founder">
+  <div class="wrap">
+    <div class="yww-portrait"><img src="../ksl-assets/emmanuel-portrait.webp" alt="Emmanuel Adeyemi, Founder and Director of Key Shift London" loading="lazy" width="855" height="1140"></div>
+    <div>
+      <div class="chapter" style="color:var(--lime-alt)">From the founder</div>
+      <blockquote>“i built this because i kept meeting young people <span class="lime">no one could reach.</span>”</blockquote>
+      <p class="note">I'm a youth worker first. Precision Training is the method I wish I'd had on day one — a shared language and a repeatable way to show up with intention, not improvisation. For Youth Work Week, I want it in as many hands as possible. Take Level 1. If it's useful, take Level 2 too, free this week.</p>
+      <p class="sig">— Emmanuel Adeyemi · Founder &amp; Director</p>
+    </div>
+  </div>
+</section>
+
+<!-- 6 · WHERE WE ARE GOING (the goal) -->
+<section class="yww-goal" id="goal">
+  <div class="wrap">
+    <div class="chapter" style="justify-content:center;color:var(--lime-alt)">Where we're going</div>
+    <div class="yww-eq" aria-hidden="true">
+      <div><span class="num">96</span><span class="lbl">practitioners</span></div>
+      <span class="op">=</span>
+      <div><span class="num">1,300+</span><span class="lbl">young people</span></div>
+    </div>
+    <p class="aim">Our goal by September 2027</p>
+    <p>We're building toward 96 trained precision practitioners reaching more than 1,300 young people across London. Every enrolment this week is a step toward it. Join us.</p>
+  </div>
+</section>
+
+<!-- 7 · FAQ -->
+<section class="yww-faq" id="faq">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="chapter">FAQ</div>
+      <h2 class="big" style="margin-top:1rem">the short <span style="color:var(--teal)">answers.</span></h2>
+    </div>
+    <div class="delivery-opts" style="margin-top:0">
+      <details class="dopt">
+        <summary><span class="do-mode">is it actually free?</span><span class="do-plus">+</span></summary>
+        <p class="do-out">Yes. Level 1 is free permanently and always has been. For Youth Work Week, Level 2 — normally £34.99 — is <b>also free until 23:59 (GMT) on Sunday 8 November 2026</b>. No card is needed to enrol this week.</p>
+      </details>
+      <details class="dopt">
+        <summary><span class="do-mode">what's the difference between level 1 and level 2?</span><span class="do-plus">+</span></summary>
+        <p class="do-out">Level 1 is the <b>foundations</b> — the philosophy, the SHAPE model, the identity tiers and the Precision Formula. Level 2 is <b>application</b> — running real sessions, the Tier Assessment, Precision Aid Cards, safeguarding pathways and measuring outcomes.</p>
+      </details>
+      <details class="dopt">
+        <summary><span class="do-mode">how long does each level take?</span><span class="do-plus">+</span></summary>
+        <p class="do-out">Both are self-paced and online. Level 1 is around <b>6 hours</b>, Level 2 around <b>8 hours</b>. Start, pause and come back whenever you like — your progress is saved.</p>
+      </details>
+      <details class="dopt">
+        <summary><span class="do-mode">do i get a certificate?</span><span class="do-plus">+</span></summary>
+        <p class="do-out">Yes — completing a level earns a free, personalised <b>Precision Graduation Record</b>. To be clear, that is not a professional certification: <b>Certified Precision Practitioner status comes only through Precision Coaching</b>, our PILLAR arc, not the training.</p>
+      </details>
+      <details class="dopt">
+        <summary><span class="do-mode">who is precision training for?</span><span class="do-plus">+</span></summary>
+        <p class="do-out">Anyone who works with young people aged 11–18: schools, PRUs, alternative provision, sport academies, councils and community organisations — plus parents, mentors, coaches and pastoral leads.</p>
+      </details>
+      <details class="dopt">
+        <summary><span class="do-mode">what happens after 8 november?</span><span class="do-plus">+</span></summary>
+        <p class="do-out">Level 1 stays free, forever. Level 2 simply returns to its normal <b>£34.99</b>. Anything you've already enrolled in stays yours.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- CLOSING CTA -->
+<section class="final community page-cta">
+  <div class="community-bg" aria-hidden="true"><img src="../ksl-assets/photo-everyshift.webp" alt="" loading="lazy"></div>
+  <div class="wrap community-row">
+    <div class="community-copy">
+      <h2 class="huge">shape the<br><span class="lime">future.</span></h2>
+      <p data-yww="live">Level 1 is free, always. Level 2 is free until midnight on Sunday 8 November. Enrol in two minutes.</p>
+      <p data-yww="ended" hidden>Level 1 is free, always. Start the method behind real youth work today.</p>
+      <p class="yww-partof" style="margin-top:1.4rem">Key Shift London is taking part in <b>Youth Work Week</b> · #YWW26 · #YouthWorkChangesLives</p>
+    </div>
+    <div class="final-ctas">
+      <a href="#" class="btn white" data-signup="both" data-cursor data-magnetic>Enrol free <span class="arr">→</span></a>
+      <a href="../training.html" class="btn ghost" style="border-color:var(--lime-alt);color:var(--lime-alt)" data-cursor data-magnetic>About the training <span class="arr">→</span></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-col">
+      <img class="footer-logo" src="../ksl-assets/logo-light.png" alt="Key Shift London" width="816" height="659">
+      <p>Prepare. Process. PRE:CORD. A generation of precision practitioners.</p>
+      <p>Shaping with precision. Unlocking for purpose.</p>
+      <p>Community Interest Company · Reg. 15685849</p>
+    </div>
+    <div class="footer-col"><h3>Explore</h3>
+      <a href="../approach.html">Approach</a><br><a href="../training.html">Training</a><br>
+      <a href="../precord.html">PRE:CORD</a><br><a href="../organisations.html">Organisations</a><br><a href="../faq.html">FAQ</a></div>
+    <div class="footer-col"><h3>Get Involved</h3>
+      <a href="../organisations.html#enquire">Schools + Councils</a><br><a href="../organisations.html#enquire">Funders</a><br>
+      <a href="../organisations.html#enquire">Make a Referral</a><br><a href="#get">Start training free</a></div>
+    <div class="footer-col"><h3>Contact</h3>
+      <a href="mailto:hello@keyshiftlondon.org">hello@keyshiftlondon.org</a><br><span style="opacity:.8">South Croydon, CR2 6NB</span><br><a href="../guides/">Resources</a><br><a href="../privacy.html">Privacy</a><br><a href="../terms.html">Terms</a></div>
+    <div class="footer-col"><h3>Follow</h3>
+      <div class="socials">
+        <a href="https://instagram.com/keyshiftldn" target="_blank" rel="noopener noreferrer external" aria-label="Key Shift London on Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.86s0 3.59-.07 4.86c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.86.07s-3.59 0-4.86-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23C2.2 15.6 2.2 15.2 2.2 12s0-3.59.07-4.86c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.4 2.2 8.8 2.2 12 2.2Z"/></svg></a>
+        <a href="https://tiktok.com/@keyshiftldn" target="_blank" rel="noopener noreferrer external" aria-label="Key Shift London on TikTok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.6 5.82A4.28 4.28 0 0 1 15.5 3h-3.1v12.4a2.6 2.6 0 1 1-2.6-2.6c.27 0 .53.04.78.12v-3.2a5.86 5.86 0 0 0-.78-.05A5.74 5.74 0 1 0 15.5 15.4V9.01a7.3 7.3 0 0 0 4.28 1.38V7.28a4.28 4.28 0 0 1-3.18-1.46Z"/></svg></a>
+        <a href="https://www.linkedin.com/company/keyshiftldn" target="_blank" rel="noopener noreferrer external" aria-label="Key Shift London on LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm6 0h3.8v1.64h.05c.53-1 1.83-2.06 3.77-2.06 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.4c0-1.29-.02-2.95-1.8-2.95-1.8 0-2.08 1.4-2.08 2.85V21H9V9Z"/></svg></a>
+        <a href="https://x.com/keyshiftldn" target="_blank" rel="noopener noreferrer external" aria-label="Key Shift London on X"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.24 2.25h3.31l-7.23 8.26 8.5 11.24h-6.66l-5.22-6.82-5.97 6.82H1.66l7.73-8.84L1.24 2.25h6.83l4.71 6.23 5.46-6.23Zm-1.16 17.52h1.83L7.01 4.13H5.05l12.03 15.64Z"/></svg></a>
+      </div>
+      <p style="margin-top:.7rem">@keyshiftldn</p></div>
+  </div>
+</footer>
+
+<div class="sticky-cta" id="stickyCta">
+  <span data-yww="live">Free until Sun 8 Nov</span>
+  <span data-yww="ended" hidden>Start the method</span>
+  <a href="#" data-signup="both" data-cursor>Enrol free →</a>
+</div>
+<button class="totop" id="totop" aria-label="Back to top" data-cursor>↑</button>
+
+<div class="pay-banner" id="payBanner" role="status" aria-live="polite">
+  <span id="payBannerMsg">✓ All set. Check your email for your Precision Training access link.</span>
+  <button class="pb-x" id="payBannerX" aria-label="Dismiss">×</button>
+</div>
+
+<!-- TRAINING SIGN-UP + DONATE MODAL (shared chrome, wired by site.js) -->
+<div class="signup-modal" id="signupModal" aria-hidden="true">
+  <div class="sm-backdrop" data-sm-close></div>
+  <div class="sm-card" role="dialog" aria-modal="true" aria-labelledby="smTitle">
+    <button class="sm-x" data-sm-close aria-label="Close">×</button>
+    <div id="suFormView">
+    <div class="sm-eyebrow">Precision Training · Sign Up</div>
+    <h3 id="smTitle" class="sm-title">start your training.</h3>
+    <p class="sm-sub">Tell us who's training. Level 1 is free and set up instantly. Your details set up your access and Precision Graduation Record.</p>
+    <form id="signupForm" novalidate>
+      <div class="sm-grid">
+        <div class="sm-row"><label for="suName">Full name</label><input id="suName" type="text" autocomplete="name" required></div>
+        <div class="sm-row"><label for="suEmail">Email</label><input id="suEmail" type="email" autocomplete="email" required></div>
+        <div class="sm-row"><label for="suOrg">Organisation <span>optional</span></label><input id="suOrg" type="text" autocomplete="organization"></div>
+        <div class="sm-row"><label for="suRole">Your role <span>optional</span></label><input id="suRole" type="text"></div>
+      </div>
+      <div class="sm-opts">
+        <div class="sm-levels"><span class="sm-lbl">Levels</span>
+          <label class="chk"><input type="checkbox" id="suL1" checked> Level 1 <span style="opacity:.6">· free</span></label>
+          <label class="chk"><input type="checkbox" id="suL2" checked> Level 2 <span style="opacity:.6">· £34.99</span></label>
+        </div>
+      </div>
+      <input type="text" id="suHp" name="company_website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+      <div class="sm-foot">
+        <div class="sm-total"><span id="suTotal">£34.99</span><em id="suRate">one-off</em></div>
+        <button type="submit" class="btn lime" id="suSubmit">Continue <span class="arr">→</span></button>
+      </div>
+      <p class="sm-note" id="suNote">Level 1 is free, no card needed. We’ll email your access link right away.</p>
+      <p class="sm-err" id="suErr" role="alert"></p>
+    </form>
+    </div><!-- /#suFormView -->
+    <div id="suDonate" hidden>
+      <div class="sm-eyebrow">Support the work</div>
+      <h3 class="sm-title" id="donTitle">keep level 1 free.</h3>
+      <p class="sm-sub" id="donSub">We made Precision Training Level 1 free so cost is never the reason a practitioner goes without it. A donation of any size keeps it free for the next mentor, coach or pastoral lead.</p>
+      <form id="donateForm" novalidate>
+        <div class="don-amts" role="group" aria-label="Donation amount">
+          <button type="button" class="don-amt" data-amt="10">£10</button>
+          <button type="button" class="don-amt is-on" data-amt="25">£25</button>
+          <button type="button" class="don-amt" data-amt="50">£50</button>
+          <button type="button" class="don-amt" data-amt="100">£100</button>
+          <div class="don-custom"><span>£</span><input id="donOther" type="number" min="1" step="1" inputmode="numeric" placeholder="Other" aria-label="Other amount in pounds"></div>
+        </div>
+        <input type="text" id="donHp" name="company_website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+        <button type="submit" class="btn lime" id="donSubmit" data-cursor data-magnetic>Donate <span id="donAmtLbl">£25</span> <span class="arr">→</span></button>
+        <p class="don-note">Secure one-off payment by Stripe. Key Shift London CIC · Reg. 15685849.</p>
+        <p class="sm-err" id="donErr" role="alert"></p>
+        <button type="button" class="don-skip" id="donSkip" data-sm-close>No thanks, I’m done</button>
+      </form>
+    </div><!-- /#suDonate -->
+  </div>
+</div>
+
+<!-- Campaign price state: single UTC deadline mirrors the backend date-gate.
+     Default HTML shows the LIVE state (correct during the campaign, and for no-JS);
+     after the deadline this flips every [data-yww] element to the ended state. -->
+<script>
+(function(){
+  // 2026-11-08 23:59:00 GMT (November = UTC, no BST). Keep in lockstep with the backend gate.
+  var DEADLINE_UTC = Date.UTC(2026, 10, 8, 23, 59, 0);
+  try{
+    var ended = Date.now() > DEADLINE_UTC;
+    if(!ended) return;                       // live is the default markup; nothing to do
+    document.querySelectorAll('[data-yww="live"]').forEach(function(el){ el.hidden = true; });
+    document.querySelectorAll('[data-yww="ended"]').forEach(function(el){ el.hidden = false; });
+  }catch(e){}
+})();
+</script>
+
+<script src="../ksl-assets/consent.js" defer></script>
+<script src="../ksl-assets/gsap.min.js"></script>
+<script src="../ksl-assets/ScrollTrigger.min.js"></script>
+<script src="../ksl-assets/lenis.min.js"></script>
+<script src="../ksl-assets/site.js" defer></script>
+<script src="../ksl-assets/motion.js" defer></script>
+</body>
+</html>
