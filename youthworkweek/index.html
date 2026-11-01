@@ -408,14 +408,60 @@
      after the deadline this flips every [data-yww] element to the ended state. -->
 <script>
 (function(){
-  // 2026-11-08 23:59:00 GMT (November = UTC, no BST). Keep in lockstep with the backend gate.
-  var DEADLINE_UTC = Date.UTC(2026, 10, 8, 23, 59, 0);
+  // ── The campaign deadline — the ONLY date on this page ──────────────────────
+  // This MUST equal the backend's pricing.CAMPAIGN_L2_FREE_UNTIL (2026-11-08 23:59
+  // UTC). There is deliberately one constant here, used for BOTH the section copy
+  // and the enrolment modal below, so the campaign can never expire at two times.
+  // (A static page and a Python service can't share a literal; change both together.)
+  var YWW_DEADLINE_UTC = Date.UTC(2026, 10, 8, 23, 59, 0);   // 2026-11-08 23:59:00 UTC
+  var live = Date.now() <= YWW_DEADLINE_UTC;
+
+  // 1) Section copy: after the deadline, flip every [data-yww] element to the ended
+  //    state (live is the default markup, so no-JS + in-campaign render correctly).
   try{
-    var ended = Date.now() > DEADLINE_UTC;
-    if(!ended) return;                       // live is the default markup; nothing to do
-    document.querySelectorAll('[data-yww="live"]').forEach(function(el){ el.hidden = true; });
-    document.querySelectorAll('[data-yww="ended"]').forEach(function(el){ el.hidden = false; });
+    if(!live){
+      document.querySelectorAll('[data-yww="live"]').forEach(function(el){ el.hidden = true; });
+      document.querySelectorAll('[data-yww="ended"]').forEach(function(el){ el.hidden = false; });
+    }
   }catch(e){}
+
+  // 2) Enrolment modal: while the window is open, Level 2 is free, so the modal must
+  //    never quote £34.99 or "Continue to payment" — that is the conversion point and
+  //    the backend charges nothing until the deadline. site.js owns the modal and
+  //    rewrites its copy on open / checkbox change, so we re-apply the free wording
+  //    after each of its recomputes via a guarded observer (the guards make it a no-op
+  //    once correct, so it can't loop). After the deadline this whole block is skipped
+  //    and site.js's normal £34.99 copy stands.
+  if(live){
+    var applyFree = function(){
+      try{
+        var l2 = document.getElementById('suL2');
+        var total = document.getElementById('suTotal');
+        if(!l2 || !total || !l2.checked) return;        // only when Level 2 is selected
+        var rate = document.getElementById('suRate');
+        var note = document.getElementById('suNote');
+        var btn = document.getElementById('suSubmit');
+        if(total.textContent !== 'Free') total.textContent = 'Free';
+        if(rate && rate.textContent !== 'Youth Work Week') rate.textContent = 'Youth Work Week';
+        if(btn && !/enrol free/i.test(btn.textContent)) btn.innerHTML = 'Enrol free <span class="arr">→</span>';
+        if(note && !/free for youth work week/i.test(note.textContent))
+          note.textContent = 'Free for Youth Work Week — no card needed. Your access link is emailed right away.';
+      }catch(e){}
+    };
+    var card = document.querySelector('#signupModal .sm-card');
+    if(card && 'MutationObserver' in window){
+      new MutationObserver(applyFree).observe(card, {childList:true, subtree:true, characterData:true});
+    }
+    // Belt-and-braces: also re-apply right after an open click or a Level 2 toggle.
+    document.addEventListener('click', function(e){
+      if(e.target.closest && e.target.closest('[data-signup]')) setTimeout(applyFree, 0);
+    });
+    document.addEventListener('DOMContentLoaded', function(){
+      var l2 = document.getElementById('suL2');
+      if(l2) l2.addEventListener('input', function(){ setTimeout(applyFree, 0); });
+      applyFree();
+    });
+  }
 })();
 </script>
 
