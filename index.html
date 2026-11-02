@@ -40,6 +40,20 @@
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,700;1,800;1,900&family=Caveat:wght@500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="ksl-assets/site.css">
 <link rel="stylesheet" href="ksl-assets/journey.css">
+<style>
+/* Youth Work Week announcement ribbon (links to /youthworkweek; auto-removed after the deadline) */
+.yww-ribbon{display:flex;align-items:center;justify-content:center;gap:1rem 1.4rem;flex-wrap:wrap;
+  background:var(--lime-alt);color:var(--black);text-decoration:none;
+  padding:.85rem clamp(1.5rem,6vw,7rem);border-bottom:2px solid var(--black);transition:background .25s ease}
+.yww-ribbon:hover{background:#d9ff3a}
+.yww-ribbon .yr-tag{font-family:var(--mono);font-size:.64rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;background:var(--black);color:var(--lime-alt);padding:.4rem .75rem;border-radius:50px}
+.yww-ribbon .yr-main{font-family:var(--display);font-weight:700;font-size:clamp(1rem,2vw,1.25rem);text-transform:uppercase;letter-spacing:.01em}
+.yww-ribbon .yr-main b{text-decoration:underline;text-underline-offset:3px}
+.yww-ribbon .yr-cta{display:inline-flex;align-items:center;gap:.5rem;background:var(--black);color:var(--lime-alt);font-family:var(--mono);font-weight:700;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;padding:.6rem 1.1rem;border-radius:50px}
+.yww-ribbon .yr-cta .arr{transition:transform .25s ease}
+.yww-ribbon:hover .yr-cta .arr{transform:translateX(4px)}
+@media(max-width:620px){.yww-ribbon{gap:.55rem;padding:.7rem 1.1rem}.yww-ribbon .yr-main{font-size:.92rem}}
+</style>
 </head>
 <body>
 <!-- KSL entry loader (homepage only); reveals itself via CSS so it never traps no-JS users -->
@@ -102,6 +116,17 @@
     </div>
   </div>
 </header>
+
+<!-- Youth Work Week ribbon → /youthworkweek (auto-hidden after the campaign deadline) -->
+<a class="yww-ribbon" id="ywwRibbon" href="youthworkweek/" data-cursor>
+  <span class="yr-tag">Youth Work Week</span>
+  <span class="yr-main">Precision Training <b>Level 2 is free</b> until Sun 8 Nov — normally £34.99</span>
+  <span class="yr-cta">Enrol free <span class="arr">→</span></span>
+</a>
+<script>
+// Remove the ribbon after the campaign deadline (2026-11-08 23:59 UTC — one constant, matches the backend gate and the /youthworkweek page).
+(function(){try{if(Date.now()>Date.UTC(2026,10,8,23,59,0)){var r=document.getElementById('ywwRibbon');if(r)r.remove();}}catch(e){}})();
+</script>
 
 <!-- 1b · FEATURE STRIP -->
 <section class="fstrip" aria-label="What we stand for">

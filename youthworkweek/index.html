@@ -24,7 +24,7 @@
 <meta name="twitter:image" content="https://keyshiftlondon.org/ksl-assets/og-image.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,700;1,800;1,900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,700;1,800;1,900&family=JetBrains+Mono:wght@400;500;700&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../ksl-assets/site.css">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
@@ -108,6 +108,25 @@
    and footer links sized as comfortable ≥24px tap targets */
 .footer-col h3{font-family:var(--mono);font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--lime);margin-bottom:.8rem}
 .footer-col a{display:inline-block;padding:.32rem 0}
+
+/* ---- campaign v2: low-opacity background washes (grayscale, feathered) ---- */
+.yww-bg{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.yww-bg img{width:100%;height:100%;object-fit:cover;object-position:center;
+  filter:grayscale(1) contrast(1.05) brightness(.85);
+  -webkit-mask-image:radial-gradient(ellipse 88% 76% at 50% 42%,#000 28%,transparent 80%);
+          mask-image:radial-gradient(ellipse 88% 76% at 50% 42%,#000 28%,transparent 80%)}
+.yww-hero .yww-bg img{opacity:.17}
+.yww-stat .yww-bg img{opacity:.15}
+.yww-goal .yww-bg img{opacity:.13;mix-blend-mode:luminosity}
+.yww-hero .wrap,.yww-stat .wrap,.yww-goal .wrap{position:relative;z-index:1}
+
+/* ---- poster edge: lime on grey-lavender, mono vertical rail, handwritten
+        scrawl — echoes the campaign poster (Caveat for the marker scrawl) ---- */
+.yww-rail{position:absolute;top:0;bottom:0;right:clamp(.5rem,2vw,1.5rem);display:flex;align-items:center;z-index:1;pointer-events:none}
+.yww-rail span{writing-mode:vertical-rl;transform:rotate(180deg);font-family:var(--mono);font-size:.62rem;font-weight:700;letter-spacing:.42em;text-transform:uppercase;color:#c9cdd6;opacity:.55;white-space:nowrap}
+.yww-scrawl{font-family:'Caveat',cursive;font-weight:700;font-size:clamp(1.6rem,4.2vw,2.6rem);color:var(--lime-alt);line-height:.9;transform:rotate(-7deg);transform-origin:left center;margin:.7rem 0 -.1rem;display:inline-block}
+.yww-scrawl .star{color:#c9cdd6}
+@media(max-width:820px){.yww-rail{display:none}}
 </style>
 </head>
 <body>
@@ -129,10 +148,13 @@
 
 <!-- 1 · HERO -->
 <section class="yww-hero" id="top">
+  <div class="yww-bg" aria-hidden="true"><img src="../ksl-assets/yww-bg-hero.webp" alt="" fetchpriority="low"></div>
+  <div class="yww-rail" aria-hidden="true"><span>Shape the future — YWW26</span></div>
   <div class="wrap">
     <div class="hero-copy">
       <span class="yww-badge">Youth Work Week · YWW26</span>
       <h1>shape the <span class="lime">future.</span></h1>
+      <div class="yww-scrawl" data-yww="live" aria-hidden="true">free all week <span class="star">✳</span></div>
       <p class="yww-offer">Precision Training is the method behind real youth work. <b>Level&nbsp;1 is free, always.</b> Level&nbsp;2 is normally £34.99 — <b data-yww="live">free for Youth Work Week, until midnight on Sunday 8 November.</b><b data-yww="ended" hidden>back to £34.99 now Youth Work Week has closed.</b></p>
       <span class="yww-deadline" data-yww="live">◆ Free until Sun 8 Nov, 23:59</span>
       <span class="yww-deadline ended" data-yww="ended" hidden>Youth Work Week has closed</span>
@@ -204,6 +226,7 @@
 
 <!-- 3 · WHY IT MATTERS (one sourced statistic) -->
 <section class="yww-stat">
+  <div class="yww-bg" aria-hidden="true"><img src="../ksl-assets/yww-bg-stat.webp" alt="" loading="lazy"></div>
   <div class="wrap">
     <div class="chapter" style="justify-content:center;color:var(--lime-alt)">Why it matters</div>
     <div class="yww-bignum">335,671</div>
@@ -246,6 +269,7 @@
 
 <!-- 6 · WHERE WE ARE GOING (the goal) -->
 <section class="yww-goal" id="goal">
+  <div class="yww-bg" aria-hidden="true"><img src="../ksl-assets/yww-bg-goal.webp" alt="" loading="lazy"></div>
   <div class="wrap">
     <div class="chapter" style="justify-content:center;color:var(--lime-alt)">Where we're going</div>
     <div class="yww-eq" aria-hidden="true">
