@@ -118,6 +118,16 @@
 .yww-hero .yww-bg img{opacity:.17}
 .yww-stat .yww-bg img{opacity:.15}
 .yww-goal .yww-bg img{opacity:.13;mix-blend-mode:luminosity}
+/* second wash per band — feathers in from a side edge for a layered collage */
+.yww-bg2{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.yww-bg2 img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.05) brightness(.8)}
+.yww-stat .yww-bg2 img{opacity:.14;object-position:left center;
+  -webkit-mask-image:linear-gradient(to right,#000 0%,#000 20%,transparent 60%);
+          mask-image:linear-gradient(to right,#000 0%,#000 20%,transparent 60%)}
+.yww-goal .yww-bg2 img{opacity:.12;mix-blend-mode:luminosity;object-position:right center;
+  -webkit-mask-image:linear-gradient(to left,#000 0%,#000 20%,transparent 60%);
+          mask-image:linear-gradient(to left,#000 0%,#000 20%,transparent 60%)}
+@media(max-width:620px){.yww-bg2 img{opacity:.09 !important}}
 .yww-hero .wrap,.yww-stat .wrap,.yww-goal .wrap{position:relative;z-index:1}
 
 /* ---- poster edge: lime on grey-lavender, mono vertical rail, handwritten
@@ -227,6 +237,7 @@
 <!-- 3 · WHY IT MATTERS (one sourced statistic) -->
 <section class="yww-stat">
   <div class="yww-bg" aria-hidden="true"><img src="../ksl-assets/yww-bg-stat.webp" alt="" loading="lazy"></div>
+  <div class="yww-bg2" aria-hidden="true"><img src="../ksl-assets/yww-bg-stat2.webp" alt="" loading="lazy"></div>
   <div class="wrap">
     <div class="chapter" style="justify-content:center;color:var(--lime-alt)">Why it matters</div>
     <div class="yww-bignum">335,671</div>
@@ -270,6 +281,7 @@
 <!-- 6 · WHERE WE ARE GOING (the goal) -->
 <section class="yww-goal" id="goal">
   <div class="yww-bg" aria-hidden="true"><img src="../ksl-assets/yww-bg-goal.webp" alt="" loading="lazy"></div>
+  <div class="yww-bg2" aria-hidden="true"><img src="../ksl-assets/yww-bg-goal2.webp" alt="" loading="lazy"></div>
   <div class="wrap">
     <div class="chapter" style="justify-content:center;color:var(--lime-alt)">Where we're going</div>
     <div class="yww-eq" aria-hidden="true">
