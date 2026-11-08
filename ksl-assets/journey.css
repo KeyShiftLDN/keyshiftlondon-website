@@ -2,7 +2,7 @@
    Uses the site tokens from site.css (--black, --lime, --teal, --teal-bright, --white, --display, --mono).
    Default state is a static, readable stack. journey.js adds .kj-live to <html> only once the 3D scene is ready. */
 
-.kj{position:relative;background:var(--black) url("journey-pattern-dark.jpg") center top/820px auto repeat;color:var(--white)}
+.kj{position:relative;background:var(--black) url("journey-pattern-dark.webp") center top/820px auto repeat;color:var(--white)}
 .kj::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,10,10,.93),rgba(10,10,10,.65));pointer-events:none}
 .kj-view{position:relative}
 .kj-stage{display:none}
