@@ -449,7 +449,7 @@
   // UTC). There is deliberately one constant here, used for BOTH the section copy
   // and the enrolment modal below, so the campaign can never expire at two times.
   // (A static page and a Python service can't share a literal; change both together.)
-  var YWW_DEADLINE_UTC = Date.UTC(2026, 10, 8, 23, 59, 0);   // 2026-11-08 23:59:00 UTC
+  var YWW_DEADLINE_UTC = Date.UTC(2026, 10, 8, 22, 0, 0);   // CONCLUDED 2026-11-08 — deadline in the past so the page shows the standard £34.99 (must match backend pricing.CAMPAIGN_L2_FREE_UNTIL)
   var live = Date.now() <= YWW_DEADLINE_UTC;
 
   // 1) Section copy: after the deadline, flip every [data-yww] element to the ended
